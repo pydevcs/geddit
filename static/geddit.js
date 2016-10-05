@@ -301,27 +301,25 @@ $(document).on('click', '.vote', function(event) {
 	switch(cls) {
 	case "star vote":
 		console.log("upvote")
+		if (dir === true || dir === false) {
+			dir = 0;
+			console.log("unvote")
+		}
+		else {
+			dir = 1;
+			console.log("upvote")
+		}
 		break;
 	case "box vote":
-		console.log("downvote")
-		break;
-	}
-	
-	if (cls == "star vote") {
 		if (dir === true || dir === false) {
 			dir = 0;
+			console.log("unvote")
 		}
-		if (dir === null) {
-			dir = 1;
-		}
-	}
-	if (cls == "box vote") {
-		if (dir === true || dir === false) {
-			dir = 0;
-		}
-		if (dir === null) {
+		else {
 			dir = -1;
+			console.log("downvote")
 		}
+		break;
 	}
     $.ajax({
       url: 'https://oauth.reddit.com/api/vote',
@@ -333,27 +331,10 @@ $(document).on('click', '.vote', function(event) {
       data: { id: data_id, dir: dir },
       dataType: 'json',
       success:function(){
-	      if (dir == 1) {
-	      	  $(event).attr("src","static/img/upstar.svg");
-	      	  $(event).data('dir', true);
-	      }
-	      if (dir == -1) {
-	      	  $(event).attr("src","static/img/downbox.svg");
-	      	  $(event).data('dir', false);
-	      }
-	      if (dir == 0) {
-		      $(event).data('dir', null);
-		      if (cls == "star vote") {
-			      $(event).attr("src","static/img/star.svg");
-		      }
-		      else {
-			      $(event).attr("src","static/img/box.svg");
-		      }
-	      } 
+	      console.log("huzzah!");
       },
       error: function(error, textStatus, xhr) {
-	      console.log("UpVote Error: " + textStatus);
-	      console.log(xhr.status);
+	      console.log("Voting Error");
 	  }
     });
 });
