@@ -301,7 +301,7 @@ function upDown(likes){
 	if (likes == false) {
 		return -1;		
 	}
-	if (like == null) {
+	if (likes == null) {
 		return 0;				
 	} 
 }
