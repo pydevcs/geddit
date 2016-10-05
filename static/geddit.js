@@ -299,21 +299,21 @@ $(document).on('click', '.vote', function(event) {
 	var dir = $(this).parent().attr("data-dir");
 	var cls = $(this).attr("class");
 	if (cls == "star vote") {
-		if (dir || dir == false) {
+		if (dir === true || dir === false) {
 			dir = 0;
 			console.log("unvote");
 		}
-		if (dir == null) {
+		if (dir === null) {
 			dir = 1;
 			console.log("upvote");
 		}
 	}
 	if (cls == "box vote") {
-		if (dir || dir == false) {
+		if (dir === true || dir === false) {
 			dir = 0;
 			console.log("unvote");
 		}
-		if (dir == null) {
+		if (dir === null) {
 			dir = -1;
 			console.log("downvote");
 		}
