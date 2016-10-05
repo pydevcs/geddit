@@ -289,7 +289,7 @@ $(document).on('click', '.vote', function() {
 		if (dir == "null" || dir == "false") {
 			dir = 1;
 			$(this).attr("src","static/img/upstar.svg");
-			$(this).closest("box").attr("src","static/img/box.svg");
+			$(this).closest(".box").attr("src","static/img/box.svg");
 			$(this).parent().attr("data-dir", "true");
 			console.log("upvote")
 		}
@@ -304,7 +304,7 @@ $(document).on('click', '.vote', function() {
 		if (dir == "null" || dir == "true") {
 			dir = -1;
 			$(this).attr("src","static/img/downbox.svg");
-			$(this).closest("star").attr("src","static/img/star.svg");
+			$(this).closest(".star").attr("src","static/img/star.svg");
 			$(this).parent().attr("data-dir", "false");
 			console.log("downvote")
 		}
