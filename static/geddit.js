@@ -111,7 +111,7 @@ function getToken(code) {
 	      if (token != "") {
 	          setCookie('token', token);
 		      console.log("Token " + token);
-		      return token;
+		      //return token;
 	      }
 	      else {
 		      console.log("No Token\n");
@@ -123,7 +123,7 @@ function getToken(code) {
 	      }
 	      else {
 		      console.log("No Refresh Token");
-		      //return token;
+		      return token;
 	      }
 	  },
       error: function(error) {
