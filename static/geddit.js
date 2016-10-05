@@ -277,21 +277,18 @@ $(document).on('click', '.vote', function() {
 	var data_id = $(this).parent().attr("data-id");
 	var dir = $(this).parent().attr("data-dir");
 	var cls = $(this).attr("class");
-	console.log(dir);
 	switch(cls) {
 	case "star vote":
 		if (dir == "true") {
 			dir = 0;
 			$(this).attr("src","static/img/star.svg");
 			$(this).parent().attr("data-dir", "null");
-			console.log("unvote")
 		}
 		if (dir == "null" || dir == "false") {
 			dir = 1;
 			$(this).attr("src","static/img/upstar.svg");
-			$(this).closest(".box").attr("src","static/img/box.svg");
+			$(this).siblings(".box").attr("src","static/img/box.svg");
 			$(this).parent().attr("data-dir", "true");
-			console.log("upvote")
 		}
 		break;
 	case "box vote":
@@ -299,14 +296,12 @@ $(document).on('click', '.vote', function() {
 			dir = 0;
 			$(this).attr("src","static/img/box.svg");
 			$(this).parent().attr("data-dir", "null");
-			console.log("unvote")
 		}
 		if (dir == "null" || dir == "true") {
 			dir = -1;
 			$(this).attr("src","static/img/downbox.svg");
-			$(this).closest(".star").attr("src","static/img/star.svg");
+			$(this).siblings(".star").attr("src","static/img/star.svg");
 			$(this).parent().attr("data-dir", "false");
-			console.log("downvote")
 		}
 		break;
 	}
