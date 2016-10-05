@@ -106,14 +106,17 @@ function getToken(code) {
       dataType: 'json',
       data: data,
       success: function(data) {
-	      var token = data.access_token;
-	      setCookie('token', token);	      
-		  console.log(token);
 	      var refresh_token = data.refresh_token;
 	      if (refresh_token != "") {
 		      setCookie('refresh', refresh_token);
 		      console.log("Refreshed Token\n");
+		      console.log(refresh_token);
 		      return token;
+	      }
+	      else {
+	      	var token = data.access_token;
+		  	setCookie('token', token);	      
+		  	console.log(token);
 	      }
 	  },
       error: function(error) {
