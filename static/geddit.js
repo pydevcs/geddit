@@ -56,16 +56,8 @@ function getUrlParameter(sParam) {
 };
 
 function setCookie(cname, cvalue) {
-    var expiration;
+    var expiration = 30*24*60*60*1000;     //30 day expiration in ms;
     var d = new Date();
-    switch(cname) {
-	    case "code":
-	        expiration = 60*60*1000;     //1 hour expiration in ms
-	    case "refresh":
-	        expiration = 60*60*1000;     //1 hour expiration in ms
-	    case "state":
-	        expiration = 30*24*60*60*1000;     //30 day expiration in ms
-    }
     d.setTime(d.getTime() + expiration);
     var expires = "expires=" + d.toGMTString();
     document.cookie = cname + "=" + cvalue + "; " + expires;
