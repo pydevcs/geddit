@@ -83,7 +83,6 @@ function getCookie(cname) {
 function getToken(code) {
 	var data;
 	if (code == "refresh") {
-		console.log("Refreshing. . . ");
 		code = getCookie('refresh');
 		data = {
 	        "grant_type": "refresh_token",
@@ -92,7 +91,6 @@ function getToken(code) {
 	    };
 	}
 	else {
-		console.log("Initial Token Auth. . . ");
 		data = {
 	        "grant_type": "authorization_code",
 	        "code" : code,
@@ -108,24 +106,21 @@ function getToken(code) {
       dataType: 'json',
       data: data,
       success: function(data) {
-      	  console.log(data);
 	      var token = data.access_token;
-	      if (token !== undefined) {
-	          setCookie('token', token);
-		      console.log("Token " + token);
-		      //return token;
-	      }
-	      else {
-		      console.log("No Token\n");
-	      }
+          setCookie('token', token);
+          
+      	  console.log(data);
+	      console.log("Token " + token);
+	      
 	      var refresh_token = data.refresh_token;
 	      if (refresh_token  !== undefined) {
+	      	  console.log("Initial Authorization");
 		      setCookie('refresh', refresh_token);
 		      console.log("Refresh Token " + refresh_token);
 	      }
 	      else {
-		      console.log("No Refresh Token");
-		      //return token;
+	      	  console.log("Refresh Authorization");
+	      	  return token;
 	      }
 	  },
       error: function(error) {
@@ -138,8 +133,6 @@ function getAuth() {
 	var code = getUrlParameter("code");
 	var state = getUrlParameter("state");
     if (code != "") {
-		setCookie("code", code);
-		console.log("Code: " + code);
 		if (state == getCookie("state")) {
 				getToken(code);
 		}
@@ -189,8 +182,8 @@ function geddit(token, kind, endpoint) {
       success:function(data){ jsonCallback(data, kind); },
       error: function(error) {
 	      console.log("Token Has Expired");
-	      getToken("refresh");
-	      token = getCookie('token');
+	      token = getToken("refresh");
+	      //token = getCookie('token');
 	      $.ajax(this);
 	      return;
 	  }
