@@ -111,12 +111,7 @@ function getToken(code) {
 	      console.log("Token " + token);
 	      var refresh_token = data.refresh_token;
 	      if (refresh_token  !== undefined) {
-	      	  console.log("Initial Authorization");
 		      setCookie('refresh', refresh_token);
-	      }
-	      else {
-	      	  console.log("Refresh Authorization");
-	      	  return token;
 	      }
 	  },
       error: function(error) {
@@ -178,10 +173,10 @@ function geddit(token, kind, endpoint) {
       success:function(data){ jsonCallback(data, kind); },
       error: function(error) {
 	      console.log("Token Has Expired");
-	      token = getToken("refresh");
-	      //token = getCookie('token');
+	      getToken("refresh");
+	      token = getCookie('token');
 	      $.ajax(this);
-	      return;
+	      //return;
 	  }
     });
 }
