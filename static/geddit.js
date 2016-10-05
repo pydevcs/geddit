@@ -106,6 +106,7 @@ function getToken(code) {
       dataType: 'json',
       data: data,
       success: function(data) {
+      	  console.log(data);
 	      var refresh_token = data.refresh_token;
 	      if (refresh_token != "") {
 		      setCookie('refresh', refresh_token);
