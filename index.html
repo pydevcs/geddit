@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Geddit</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
+<link rel="stylesheet" href="static/stylin.css">
+</head>
+<body onload="checkAuth('front', '/?limit=50')">
+<div class="container-fluid">
+  <div class="row">
+  
+    <div class="col-xs-12" id="top"><!-- top bar -->
+	  <a href="index.html" class="no-select"><img id="top-logo" src="static/img/glogo.svg" width="91px" height="31px"></a>
+	  <input class="search srchbar">
+	  <div class="no-select" id="top-arrow">
+		  <img src="static/img/top-arw.svg" width="7px" height="4px">
+	  </div>
+	  <div class="srchbar no-select" id="top-magnify" tabindex="0">
+		  <img src="static/img/magnify.svg" width="15px" height="15px">
+	  </div>
+	  <img id="top-profile" class="no-select" src="static/img/profile.svg" width="32px" height="32px">
+	  <img id="top-notify" class="no-select" src="static/img/mail.svg" width="20px" height="20px">
+	  <img src="static/img/apps.svg" class="no-select" width="16px" height="16px" id="top-apps">
+    </div><!-- end top bar -->
+    
+    <div class="col-xs-12 no-select" id="mid"><!-- mid bar -->
+	  <div id="mid-title">Mail</div>
+	  <div id="mid-arrow">
+		  <img src="static/img/mid-arw.svg" width="7px" height="4px">
+	  </div>
+	  <div class="mid-box">
+          <div id="mid-box-sqr"></div>
+          <img class="mid-box-arw" src="static/img/mid-arw-2.svg" width="7px" height="4px">	      
+	  </div>
+	  <div class="mid-box">
+		  <img id="mid-box-refresh" src="static/img/refresh.svg" width="14px" height="14px">
+	  </div>
+	  <div class="mid-box">
+		  <span id="mid-box-more">More</span>
+		  <img class="mid-box-arw" src="static/img/mid-arw-2.svg" width="7px" height="4px">
+	  </div>
+	  <div id="mid-box-gear">
+		  <img id="gear" src="static/img/gear.svg" width="17px" height="17px">
+		  <img class="mid-box-arw" src="static/img/mid-arw-2.svg" width="7px" height="4px">
+	  </div>
+	  <div id="mid-box-rgt">
+	    <img src="static/img/arw-rgt.svg" width="8px" height="13px">
+	  </div>
+	  <div id="mid-box-lft">
+	    <img src="static/img/arw-lft.svg" width="8px" height="13px">
+	  </div>
+	  <div id="mid-box-qty">1<span>--</span>50 <span>of</span> 1,000</div>
+    </div><!-- end mid bar -->
+
+    <div class="col-xs-12 no-select"><!-- main content -->
+      <div id="side-bar"><!-- side bar -->
+	    <div id="compose">COMPOSE</div>
+	    <div id="inbox-brdr"></div>
+	    <a href="index.html"><div id="inbox-txt">Inbox (6)</div></a>
+	    <div class="label">Starred</div>
+	    <div class="label">Important</div>
+	    <div class="label">Sent Mail</div>
+	    <div class="label">Drafts</div>
+	    <div class="lbl-arw lbl-spc"><img src="static/img/lbl-arw.svg" width="4px" height="7px">Circles</div>
+	    <div class="lbl-arw"><img src="static/img/lbl-arw.svg" width="4px" height="7px">[Mailbox]</div>
+	    <div class="label">Work</div>
+	    <div class="label" id="more">More<img src="static/img/lbl-arw-dwn.svg" width="7px" height="4px"></div>
+	    <div class="more-spc"></div>
+	    <div id="side-bar-more">
+	      <div class="label">Chats</div>
+	      <div class="label">All Mail</div>
+	      <div class="label lbl-bld">Spam (13)</div>
+	      <div class="label lbl-spc">Trash</div>
+	      <div class="lbl-arw lbl-bld"><img src="static/img/lbl-arw.svg" width="4px" height="7px">Categories</div>
+	      <div class="lbl-mng">Manage labels</div>
+	      <div class="lbl-mng">Create new label</div>
+	    </div>
+	    <!-- <div id="side-bar-footer"></div> -->
+      </div><!-- end side bar -->
+	  
+	  <div id="btm">
+	    <div id="tab-primary" class="item">
+		  <div class="new-label"><span>Primary</span></div>
+	    </div>
+	    <div id="tab-social">
+		  <div class="new-label"><span>Social</span></div>
+	    </div>
+	    <div id="tab-promo">
+		  <div class="new-label"><span>Promotional</span></div>
+	    </div>
+	    <div id="tab-plus">+</div>
+	    <div id="tab-spc"></div>
+	  </div>
+	  <div id="main-list"></div>
+	  
+	  <!-- <a href="">VISITED</a> -->
+	  
+    </div><!-- end main content -->
+  </div><!-- end row -->
+</div><!-- end container-fluid -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+<script src="static/moment.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" integrity="sha384-VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
+<script src="static/geddit.js"></script>
+</body>
+</html>

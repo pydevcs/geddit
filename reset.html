@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+<!-- this page is for deleting cookies set by authorization functions -->
+<a href="/geddit">GEDDIT</a>
+<script>
+function delCookies() {
+  document.cookie = "code" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+  document.cookie = "state" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+  document.cookie = "token" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+  document.cookie = "refresh" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+  console.log('removed cookies');
+}
+window.onload=delCookies();
+</script>
+</body>
+</html>
+
