@@ -301,30 +301,30 @@ $(document).on('click', '.vote', function(event) {
 	console.log(dir);
 	switch(cls) {
 	case "star vote":
-		if (dir == true || dir == false) {
+		if (dir == "true" || dir == "false") {
 			dir = 0;
 			$(event).attr("src","static/img/star.svg");
-			$(this).parent().attr("data-dir", null);
+			$(this).parent().attr("data-dir", "null");
 			console.log("unvote")
 		}
-		if (dir == null) {
+		if (dir == "null") {
 			dir = 1;
 			$(event).attr("src","static/img/upstar.svg");
-			$(this).parent().attr("data-dir", true);
+			$(this).parent().attr("data-dir", "true");
 			console.log("upvote")
 		}
 		break;
 	case "box vote":
-		if (dir == true || dir == false) {
+		if (dir == "true" || dir == "false") {
 			dir = 0;
 			$(event).attr("src","static/img/box.svg");
-			$(this).parent().attr("data-dir", null);
+			$(this).parent().attr("data-dir", "null");
 			console.log("unvote")
 		}
-		if (dir == null) {
+		if (dir == "null") {
 			dir = -1;
 			$(event).attr("src","static/img/downbox.svg");
-			$(this).parent().attr("data-dir", false);
+			$(this).parent().attr("data-dir", "false");
 			console.log("downvote")
 		}
 		break;
