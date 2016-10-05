@@ -176,11 +176,9 @@ function geddit(token, kind, endpoint) {
 	      console.log("Token Has Expired");
 	      token = getToken("");
 	      $.ajax(this);
-	      //return;
 	  }
     });
 }
-
 
 function jsonCallback(json, kind) {
 	switch(kind) {	
