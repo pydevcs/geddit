@@ -144,11 +144,11 @@ function getAuth() {
 				getToken(code);
 		}
 		else {
-			alert("State string does not match!");
+			console.log("State string does not match!");
 		}
     }
     else {
-	    alert("Access Code Error!");
+	    console.log("Access Code Error!");
 	}
 }
 
