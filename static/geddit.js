@@ -347,7 +347,7 @@ $(document).on('click', '.vote', function(event) {
 	      } 
       },
       error: function(error, textStatus, xhr) {
-	      console.log("UpVote Error: " + error);
+	      console.log("UpVote Error: " + textStatus);
 	      console.log(xhr.status);
 	  }
     });
