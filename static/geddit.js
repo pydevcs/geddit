@@ -123,7 +123,7 @@ function getToken(code) {
 	      }
 	      else {
 		      console.log("No Refresh Token");
-		      return token;
+		      //return token;
 	      }
 	  },
       error: function(error) {
@@ -186,7 +186,8 @@ function geddit(token, kind, endpoint) {
       success:function(data){ jsonCallback(data, kind); },
       error: function(error) {
 	      console.log("Token Has Expired");
-	      token = getToken("refresh");
+	      getToken("refresh");
+	      token = getCookie('token');
 	      $.ajax(this);
 	      return;
 	  }
