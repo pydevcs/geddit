@@ -303,7 +303,7 @@ $(document).on('click', '.vote', function(event) {
 			dir = 0;
 			console.log("unvote");
 		}
-		else {
+		if (dir == null) {
 			dir = 1;
 			console.log("upvote");
 		}
@@ -313,7 +313,7 @@ $(document).on('click', '.vote', function(event) {
 			dir = 0;
 			console.log("unvote");
 		}
-		else {
+		if (dir == null) {
 			dir = -1;
 			console.log("downvote");
 		}
