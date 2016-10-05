@@ -108,15 +108,11 @@ function getToken(code) {
       success: function(data) {
 	      var token = data.access_token;
           setCookie('token', token);
-          
-      	  console.log(data);
 	      console.log("Token " + token);
-	      
 	      var refresh_token = data.refresh_token;
 	      if (refresh_token  !== undefined) {
 	      	  console.log("Initial Authorization");
 		      setCookie('refresh', refresh_token);
-		      console.log("Refresh Token " + refresh_token);
 	      }
 	      else {
 	      	  console.log("Refresh Authorization");
