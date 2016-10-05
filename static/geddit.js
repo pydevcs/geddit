@@ -107,17 +107,23 @@ function getToken(code) {
       data: data,
       success: function(data) {
       	  console.log(data);
-	      var refresh_token = data.refresh_token;
-	      if (refresh_token != "") {
-		      setCookie('refresh', refresh_token);
-		      console.log("Refreshed Token\n");
-		      console.log(refresh_token);
+	      var token = data.access_token;
+	      if (token) {
+	          setCookie('token', token);
+		      console.log("Token " + token);
 		      return token;
 	      }
 	      else {
-	      	var token = data.access_token;
-		  	setCookie('token', token);	      
-		  	console.log(token);
+		      console.log("No Token\n");
+	      }
+	      var refresh_token = data.refresh_token;
+	      if (refresh_token) {
+		      setCookie('refresh', refresh_token);
+		      console.log("Refresh Token " + refresh_token);
+	      }
+	      else {
+		      console.log("No Refresh Token");
+		      //return token;
 	      }
 	  },
       error: function(error) {
