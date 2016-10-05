@@ -239,7 +239,7 @@ function jsonCallback(json, kind) {
 			$.each(json.data.children, function (i, ob) {
 				//var timeAgo = moment.unix(ob.data.created_utc).fromNow(false);   //false includes "ago"
 				var postdate = moment.unix(ob.data.created_utc).format("MMM D");
-				var post = "&lt;div class='mail-item' data-id='" + ob.data.name + "' data-dir='" + upDown(ob.data.likes) + "'&gt;" +
+				var post = "&lt;div class='mail-item' data-id='" + ob.data.name + "' data-dir='" + ob.data.likes + "'&gt;" +
 				mail_item + ob.data.permalink  + "'&gt;" + 
 				ob.data.subreddit + "&lt;/a&gt;&lt;div class='mail-info'&gt;&lt;a href='" + ob.data.url + "'&gt;" + 
 				ob.data.title + "&lt;/a&gt;&lt;/div&gt;&lt;div class='mail-date'&gt;" +
@@ -293,24 +293,19 @@ function vote(data_id, dir, objct) {
 //});
 
 
-
-function upDown(likes){
-	if (likes) {
-		return 1;
-	}
-	if (likes == false) {
-		return -1;		
-	}
-	if (likes == null) {
-		return 0;				
-	} 
-}
-
 $(document).on('click', '.vote', function(event) {
 	var token=getCookie("token");
 	var data_id = $(this).parent().attr("data-id");
 	var dir = $(this).parent().attr("data-dir");
 	var cls = $(this).attr("class");
+	if (cls == "star vote") {
+		if (dir || dir == false) { dir = 0; }
+		else { dir = 1; }
+	}
+	if (cls == "box vote") {
+		if (dir || dir == false) { dir = 0; }
+		else { dir = -1; }
+	}
     $.ajax({
       url: 'https://oauth.reddit.com/api/vote',
       beforeSend: function (request) {
@@ -322,22 +317,21 @@ $(document).on('click', '.vote', function(event) {
       dataType: 'json',
       success:function(){
 	      if (dir == 1) {
-	      	  $(event).attr("src","static/img/star.svg");
-	      	  $(event).data('dir', 0);		      
+	      	  $(event).attr("src","static/img/upstar.svg");
+	      	  $(event).data('dir', true);
 	      }
 	      if (dir == -1) {
-	      	  $(event).attr("src","static/img/box.svg");
-	      	  $(event).data('dir', 0);		      
+	      	  $(event).attr("src","static/img/downbox.svg");
+	      	  $(event).data('dir', false);
 	      }
 	      if (dir == 0) {
-		       if (cls == "star vote") {
-			       $(event).attr("src","static/img/upstar.svg");
-			       $(event).data('dir', 1);
-		       }
-		       else {
-			       $(event).attr("src","static/img/downbox.svg");
-			       $(event).data('dir', -1);
-		       }
+		      $(event).data('dir', null);
+		      if (cls == "star vote") {
+			      $(event).attr("src","static/img/star.svg");
+		      }
+		      else {
+			      $(event).attr("src","static/img/box.svg");
+		      }
 	      } 
       },
       error: function(error, textStatus, xhr) {
