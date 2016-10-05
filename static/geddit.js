@@ -83,6 +83,7 @@ function getCookie(cname) {
 function getToken(code) {
 	var data;
 	if (code == "refresh") {
+		console.log("Refreshing. . . ");
 		code = getCookie('refresh');
 		data = {
 	        "grant_type": "refresh_token",
@@ -91,6 +92,7 @@ function getToken(code) {
 	    };
 	}
 	else {
+		console.log("Initial Token Auth. . . ");
 		data = {
 	        "grant_type": "authorization_code",
 	        "code" : code,
@@ -137,6 +139,7 @@ function getAuth() {
 	var state = getUrlParameter("state");
     if (code !== undefined) {
 		setCookie("code", code);
+		console.log("Code: " + code);
 		if (state == getCookie("state")) {
 				getToken(code);
 		}
