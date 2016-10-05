@@ -321,7 +321,7 @@ $(document).on('click', '.vote', function(event) {
 			$(this).parent().attr("data-dir", null);
 			console.log("unvote")
 		}
-		if (dir == null {
+		if (dir == null) {
 			dir = -1;
 			$(event).attr("src","static/img/downbox.svg");
 			$(this).parent().attr("data-dir", false);
