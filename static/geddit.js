@@ -89,33 +89,22 @@ function getCookie(cname) {
 }
 
 function getToken(code) {
-    $.ajax({
-      url: 'https://ssl.reddit.com/api/v1/access_token',
-      beforeSend: function (request) {
-          request.setRequestHeader('Authorization', 'Basic ' + btoa('7NeqizMXmEZFKA:'));
-      },
-      type: 'POST',
-      dataType: 'json',
-      data: {
-	      "grant_type": "authorization_code",
-	      "code" : code,
-	      "redirect_uri": redirect_uri
-	  },
-      success: function(data) {
-	      var token = data.access_token;
-	      var refresh_token = data.refresh_token;
-	      console.log("Token: " + token);
-	      setCookie('token', token);	      
-	      setCookie('refresh', refresh_token);
-	  },
-      error: function(error) {
-	      console.log(error);
-	  }
-    });
-}
-
-function refresh() {
-	var refresh_token = getCookie('refresh');
+	var data;
+	if (code !== "") {
+		data = {
+	        "grant_type": "authorization_code",
+	        "code" : code,
+	        "redirect_uri": redirect_uri
+	    };	
+	}
+	else {
+		code = getCookie('refresh');
+		data = {
+	        "grant_type": "refresh_token",
+	        "refresh_token" : code,
+	        "redirect_uri": redirect_uri
+	    };
+	}
     $.ajax({
       url: 'https://ssl.reddit.com/api/v1/access_token',
       beforeSend: function (request) {
@@ -123,15 +112,16 @@ function refresh() {
       },
       type: 'POST',
       dataType: 'json',
-      data: {
-	      "grant_type": "refresh_token",
-	      "refresh_token" : refresh_token,
-	      "redirect_uri": redirect_uri
-	  },
+      data: data,
       success: function(data) {
-	      var new_token = data.access_token;
-	      console.log("New Token: " + new_token);
-		  setCookie('token', new_token);
+	      var token = data.access_token;
+	      setCookie('token', token);	      
+	      console.log("Token: " + token);
+	      var refresh_token = data.refresh_token;
+	      if (refresh_token) {
+		      setCookie('refresh', refresh_token);
+		      return token;
+	      }
 	  },
       error: function(error) {
 	      console.log(error);
@@ -165,7 +155,8 @@ function checkAuth(kind, permalink) {
 		$("#mid-box-rgt").data( "subreddit", permalink );
 		geddit(token, kind, permalink);
 		
-    } else {
+    }
+    else {
 	    var random_str = randStr();
 		setCookie("state", random_str);
 		var auth_url = "https://ssl.reddit.com/api/v1/authorize?client_id=" +
@@ -193,7 +184,8 @@ function geddit(token, kind, endpoint) {
       error: function(error) {
 	      console.log(error);
           if (this.retryLimit == 4) {
-	          refresh();
+	          token = getToken("");
+	          
           }
           this.retryLimit--;
           if (this.retryLimit) {
