@@ -299,12 +299,24 @@ $(document).on('click', '.vote', function(event) {
 	var dir = $(this).parent().attr("data-dir");
 	var cls = $(this).attr("class");
 	if (cls == "star vote") {
-		if (dir || dir == false) { dir = 0; }
-		else { dir = 1; }
+		if (dir || dir == false) {
+			dir = 0;
+			console.log("unvote");
+		}
+		else {
+			dir = 1;
+			console.log("upvote");
+		}
 	}
 	if (cls == "box vote") {
-		if (dir || dir == false) { dir = 0; }
-		else { dir = -1; }
+		if (dir || dir == false) {
+			dir = 0;
+			console.log("unvote");
+		}
+		else {
+			dir = -1;
+			console.log("downvote");
+		}
 	}
     $.ajax({
       url: 'https://oauth.reddit.com/api/vote',
