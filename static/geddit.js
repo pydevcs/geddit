@@ -300,7 +300,7 @@ $(document).on('click', '.vote', function(event) {
 	var cls = $(this).attr("class");
 	switch(cls) {
 	case "star vote":
-		if (dir === true || dir === false) {
+		if (dir == true || dir == false) {
 			dir = 0;
 			$(event).attr("src","static/img/star.svg");
 			$(event).parent().data('dir', null);
@@ -314,7 +314,7 @@ $(document).on('click', '.vote', function(event) {
 		}
 		break;
 	case "box vote":
-		if (dir === true || dir === false) {
+		if (dir == true || dir == false) {
 			dir = 0;
 			$(event).attr("src","static/img/box.svg");
 			$(event).parent().data('dir', null);
