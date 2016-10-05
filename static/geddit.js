@@ -82,18 +82,18 @@ function getCookie(cname) {
 
 function getToken(code) {
 	var data;
-	if (code != "") {
-		data = {
-	        "grant_type": "authorization_code",
-	        "code" : code,
-	        "redirect_uri": redirect_uri
-	    };	
-	}
-	else {
+	if (code == true) {
 		code = getCookie('refresh');
 		data = {
 	        "grant_type": "refresh_token",
 	        "refresh_token" : code,
+	        "redirect_uri": redirect_uri
+	    };
+	}
+	else {
+		data = {
+	        "grant_type": "authorization_code",
+	        "code" : code,
 	        "redirect_uri": redirect_uri
 	    };
 	}
@@ -108,13 +108,13 @@ function getToken(code) {
       success: function(data) {
 	      var token = data.access_token;
 	      setCookie('token', token);	      
+		  console.log(token);
 	      var refresh_token = data.refresh_token;
-	      if (refresh_token) {
+	      if (refresh_token != "") {
 		      setCookie('refresh', refresh_token);
 		      console.log("Refreshed Token\n");
 		      return token;
 	      }
-		  console.log(token);
 	  },
       error: function(error) {
 	      console.log("Access Token Error");
@@ -172,10 +172,11 @@ function geddit(token, kind, endpoint) {
       },
       type: 'GET',
       dataType: 'json',
+      retryLimit: 2,
       success:function(data){ jsonCallback(data, kind); },
       error: function(error) {
 	      console.log("Token Has Expired");
-	      token = getToken("");
+	      token = getToken(true);
 	      $.ajax(this);
 	      return;
 	  }
