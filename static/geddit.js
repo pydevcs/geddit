@@ -303,13 +303,13 @@ $(document).on('click', '.vote', function(event) {
 		if (dir === true || dir === false) {
 			dir = 0;
 			$(event).attr("src","static/img/star.svg");
-			$(event).data('dir', null);
+			$(event)parent().data('dir', null);
 			console.log("unvote")
 		}
 		else {
 			dir = 1;
 			$(event).attr("src","static/img/upstar.svg");
-			$(event).data('dir', true);
+			$(event)parent().data('dir', true);
 			console.log("upvote")
 		}
 		break;
@@ -317,13 +317,13 @@ $(document).on('click', '.vote', function(event) {
 		if (dir === true || dir === false) {
 			dir = 0;
 			$(event).attr("src","static/img/box.svg");
-			$(event).data('dir', null);
+			$(event)parent().data('dir', null);
 			console.log("unvote")
 		}
 		else {
 			dir = -1;
 			$(event).attr("src","static/img/downbox.svg");
-			$(event).data('dir', false);
+			$(event)parent().data('dir', false);
 			console.log("downvote")
 		}
 		break;
