@@ -3,6 +3,9 @@
 <body>
 <!-- this page is for deleting cookies set by authorization functions -->
 <a href="/geddit">GEDDIT</a>
+
+<h1 onclick="getToken('')">Refresh</h1>
+
 <script>
 function delCookies() {
   document.cookie = "code" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
@@ -11,7 +14,7 @@ function delCookies() {
   document.cookie = "refresh" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
   console.log('removed cookies');
 }
-window.onload=delCookies();
+//window.onload=delCookies();
 </script>
 </body>
 </html>
