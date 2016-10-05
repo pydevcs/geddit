@@ -82,7 +82,7 @@ function getCookie(cname) {
 
 function getToken(code) {
 	var data;
-	if (code == true) {
+	if (code == "refresh") {
 		code = getCookie('refresh');
 		data = {
 	        "grant_type": "refresh_token",
@@ -179,7 +179,7 @@ function geddit(token, kind, endpoint) {
       success:function(data){ jsonCallback(data, kind); },
       error: function(error) {
 	      console.log("Token Has Expired");
-	      token = getToken(true);
+	      token = getToken("refresh");
 	      $.ajax(this);
 	      return;
 	  }
