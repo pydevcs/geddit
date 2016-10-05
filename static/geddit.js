@@ -293,7 +293,7 @@ function vote(data_id, dir, objct) {
 //});
 
 
-$(document).on('click', '.vote', function(event) {
+$(document).on('click', '.vote', function() {
 	var token=getCookie("token");
 	var data_id = $(this).parent().attr("data-id");
 	var dir = $(this).parent().attr("data-dir");
@@ -301,29 +301,29 @@ $(document).on('click', '.vote', function(event) {
 	console.log(dir);
 	switch(cls) {
 	case "star vote":
-		if (dir == "true" || dir == "false") {
+		if (dir == "true") {
 			dir = 0;
-			$(event).attr("src","static/img/star.svg");
+			$(this).attr("src","static/img/star.svg");
 			$(this).parent().attr("data-dir", "null");
 			console.log("unvote")
 		}
-		if (dir == "null") {
+		if (dir == "null" || dir == "false") {
 			dir = 1;
-			$(event).attr("src","static/img/upstar.svg");
+			$(this).attr("src","static/img/upstar.svg");
 			$(this).parent().attr("data-dir", "true");
 			console.log("upvote")
 		}
 		break;
 	case "box vote":
-		if (dir == "true" || dir == "false") {
+		if (dir == "false") {
 			dir = 0;
-			$(event).attr("src","static/img/box.svg");
+			$(this).attr("src","static/img/box.svg");
 			$(this).parent().attr("data-dir", "null");
 			console.log("unvote")
 		}
-		if (dir == "null") {
+		if (dir == "null" || dir == "true") {
 			dir = -1;
-			$(event).attr("src","static/img/downbox.svg");
+			$(this).attr("src","static/img/downbox.svg");
 			$(this).parent().attr("data-dir", "false");
 			console.log("downvote")
 		}
