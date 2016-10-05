@@ -205,11 +205,6 @@ function geddit(token, kind, endpoint) {
 }
 
 
-var mail_item = "&lt;img class='box vote' src='static/img/box.svg' width='14px' height='14px'&gt;" +
-				 "&lt;img class='star vote' src='static/img/star.svg' width='14px' height='13px'&gt;" +
-				 "&lt;img class='imprtnt' src='static/img/imprtnt.svg' width='14px' height='11px'&gt;" +
-				 "&lt;a class='mail-title' href='https://www.reddit.com"; 
-
 function jsonCallback(json, kind) {
 	switch(kind) {	
 		case "name":
@@ -240,7 +235,11 @@ function jsonCallback(json, kind) {
 				//var timeAgo = moment.unix(ob.data.created_utc).fromNow(false);   //false includes "ago"
 				var postdate = moment.unix(ob.data.created_utc).format("MMM D");
 				var post = "&lt;div class='mail-item' data-id='" + ob.data.name + "' data-dir='" + ob.data.likes + "'&gt;" +
-				mail_item + ob.data.permalink  + "'&gt;" + 
+				"&lt;img class='box vote' src='" + box(ob.data.likes) + "' width='14px' height='14px'&gt;" +
+				"&lt;img class='star vote' src='" + star(ob.data.likes) + "' width='14px' height='13px'&gt;" +
+				"&lt;img class='imprtnt' src='static/img/imprtnt.svg' width='14px' height='11px'&gt;" +
+				"&lt;a class='mail-title' href='https://www.reddit.com" +
+				ob.data.permalink  + "'&gt;" + 
 				ob.data.subreddit + "&lt;/a&gt;&lt;div class='mail-info'&gt;&lt;a href='" + ob.data.url + "'&gt;" + 
 				ob.data.title + "&lt;/a&gt;&lt;/div&gt;&lt;div class='mail-date'&gt;" +
 				postdate + "&lt;/div&gt;&lt;/div&gt;";
@@ -255,43 +254,23 @@ function jsonCallback(json, kind) {
 	}
 }
 
-function vote(data_id, dir, objct) {
-	var token=getCookie("token");
-    $.ajax({
-      url: 'https://oauth.reddit.com/api/vote',
-      beforeSend: function (request) {
-          request.setRequestHeader("Authorization", "bearer " + token);
-          //request.setRequestHeader("User-Agent", "Geddit by u/pydevcs");
-      },
-      type: 'POST',
-      data: { id: data_id, dir: dir },
-      dataType: 'json',
-      success:function(){
-      	  if (dir == 1){
-	      	$(objct).attr("src","static/img/upstar.svg");	      	  
-      	  }
-      	  if (dir == -1){
-	      	$(objct).attr("src","static/img/downbox.svg");
-      	  }
-      	  if (dir != 0) {
-	      	$(objct).attr("data-dir", "0");
-      	  }
-      	  
-      	  $(objct).data('dir', null);
-      },
-      error: function(error, textStatus, xhr) {
-	      console.log("UpVote Error: " + error);
-	      console.log(xhr.status);
-	  }
-    });
+function star(likes) {
+	if (likes) {
+		return "static/img/upstar.svg";
+	}
+	else {
+		return "static/img/star.svg";	
+	}	
 }
 
-//$(document).on('click', '.vote', function(event) {
-//    var data_id = $(this).parent().attr("data-id");
-//    var dir = $(this).parent().attr("data-dir");
-//	vote(data_id, dir, this);
-//});
-
+function box(likes) {
+	if (likes == false) {
+		return "static/img/downbox.svg";
+	}
+	else {
+		return "static/img/box.svg";	
+	}	
+}
 
 $(document).on('click', '.vote', function() {
 	var token=getCookie("token");
