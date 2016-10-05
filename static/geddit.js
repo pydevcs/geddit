@@ -124,7 +124,7 @@ function getToken(code) {
 	      }
 	  },
       error: function(error) {
-	      console.log(error);
+	      console.log("Access Token Error");
 	  }
     });
 }
@@ -179,19 +179,12 @@ function geddit(token, kind, endpoint) {
       },
       type: 'GET',
       dataType: 'json',
-      retryLimit : 4,
       success:function(data){ jsonCallback(data, kind); },
       error: function(error) {
-	      console.log(error);
-          if (this.retryLimit == 4) {
-	          token = getToken("");
-	          
-          }
-          this.retryLimit--;
-          if (this.retryLimit) {
-              $.ajax(this)
-              return;
-          }
+	      console.log("Token Has Expired");
+	      token = getToken("");
+	      $.ajax(this);
+	      //return;
 	  }
     });
 }
