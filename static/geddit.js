@@ -298,6 +298,7 @@ $(document).on('click', '.vote', function(event) {
 	var data_id = $(this).parent().attr("data-id");
 	var dir = $(this).parent().attr("data-dir");
 	var cls = $(this).attr("class");
+	console.log(dir);
 	switch(cls) {
 	case "star vote":
 		if (dir == true || dir == false) {
