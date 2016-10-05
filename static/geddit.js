@@ -108,7 +108,7 @@ function getToken(code) {
       success: function(data) {
       	  console.log(data);
 	      var token = data.access_token;
-	      if (token != "") {
+	      if (token !== undefined) {
 	          setCookie('token', token);
 		      console.log("Token " + token);
 		      //return token;
@@ -117,7 +117,7 @@ function getToken(code) {
 		      console.log("No Token\n");
 	      }
 	      var refresh_token = data.refresh_token;
-	      if (refresh_token != "") {
+	      if (refresh_token  !== undefined) {
 		      setCookie('refresh', refresh_token);
 		      console.log("Refresh Token " + refresh_token);
 	      }
