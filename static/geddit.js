@@ -82,7 +82,7 @@ function getCookie(cname) {
 
 function getToken(code) {
 	var data;
-	if (code !== "") {
+	if (code != "") {
 		data = {
 	        "grant_type": "authorization_code",
 	        "code" : code,
@@ -177,6 +177,7 @@ function geddit(token, kind, endpoint) {
 	      console.log("Token Has Expired");
 	      token = getToken("");
 	      $.ajax(this);
+	      return;
 	  }
     });
 }
