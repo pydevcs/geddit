@@ -137,7 +137,7 @@ function getToken(code) {
 function getAuth() {
 	var code = getUrlParameter("code");
 	var state = getUrlParameter("state");
-    if (code !== undefined) {
+    if (code != "") {
 		setCookie("code", code);
 		console.log("Code: " + code);
 		if (state == getCookie("state")) {
