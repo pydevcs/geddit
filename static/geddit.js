@@ -297,6 +297,14 @@ $(document).on("click", ".mail-date", function(event) {
     console.log($(this).attr("class"));
 });
 
+$(document).on("click", ".tab", function(event) {
+    $(".tab").removeClass("active");
+    $(this).addClass("active");
+    
+    var current_sub = $("#mid-box-rgt").data( "subreddit");
+    console.log(current_sub);
+});
+
 $(function() {
     $("input.search").focus(function(){
         if (!$("input.search").val()) {
