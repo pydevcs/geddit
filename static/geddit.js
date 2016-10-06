@@ -141,7 +141,7 @@ function checkAuth(kind, permalink, after) {
     permalink += ".json?limit=50";
     if (after) {
         after = $("#mid-box-rgt").data("after");
-	    permaline += "&after=" + after;
+	    permalink += "&after=" + after;
     }
     if (token != "") {
         //geddit(token, "subreddits", "/subreddits/mine/subscriber?limit=100"); //subreddits
