@@ -340,7 +340,7 @@ $(function(){
         if (space || enter) {
             var sub_search = $("input.search").val();
             $("#mid-box-rgt").data( "subreddit", sub_search );
-            checkAuth("front", sub_search);
+            checkAuth("front", sub_search, false);
         }
     });
 });
