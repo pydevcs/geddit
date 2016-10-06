@@ -175,7 +175,7 @@ function geddit(token, kind, endpoint) {
       type: "GET",
       dataType: "json",
       tryCount: 0,
-      retryLimit: 5,
+      retryLimit: 3,
       success:function(data){ jsonCallback(data, kind); },
       error: function(xhr, textStatus, errorThrown) {
           this.tryCount++;
@@ -183,6 +183,7 @@ function geddit(token, kind, endpoint) {
 	          console.log("Token Has Expired");
 	          getToken("refresh");
 	          token = getCookie("token");
+	          console.log(token);
           }
           if (this.tryCount <= this.retryLimit) {
               $.ajax(this);
