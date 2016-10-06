@@ -177,7 +177,6 @@ function geddit(token, kind, endpoint) {
       retryCount: 0,
       retryLimit: 3,
       retryTimeout: 1000,
-      timeout: 1000,
       created : Date.now(),
       success:function(data){ jsonCallback(data, kind); },
       error: function(xhr, textStatus, errorThrown) {
