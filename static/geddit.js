@@ -310,7 +310,7 @@ $(document).on("click", ".tab", function() {
     console.log(current_sub);
 });
 
-$(document).on("click", "#mid-box-refresh", function() {
+$(document).on("click", "#refresh", function() {
     var sub_search = $("#mid-box-rgt").data( "subreddit");
     checkAuth("front", sub_search, false);
 });
