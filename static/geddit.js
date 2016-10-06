@@ -185,7 +185,6 @@ function geddit(token, kind, endpoint) {
 	      	  console.log("Token Has Expired");
 	      	  getToken("refresh");
 	      	  token = getCookie("token");
-	      	  console.log(token);
       	  }
 		  this.retryCount++;
 		  if (this.retryCount <= this.retryLimit && Date.now() - this.created <  this.retryTimeout) {
