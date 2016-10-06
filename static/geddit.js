@@ -136,21 +136,20 @@ function getAuth() {
     }
 }
 
-function checkAuth(permalink, after) {
-    var token=getCookie("token");
-    permalink += ".json?limit=50";
+function geddit(endpoint, after) {
+    var token=getCookie("token")
+    endpoint += ".json?limit=50";
     if (after) {
         after = $("#mid-box-rgt").data("after");
-	    permalink += "&after=" + after;
+	    endpoint += "&after=" + after;
     }
     if (token != "") {
-        //geddit(token, "subreddits", "/subreddits/mine/subscriber?limit=100"); //subreddits
-        //geddit(token, "name", "/api/v1/me"); //username
-        //geddit(token, 'front', "/?limit=50"); //front page
-        $("#mid-box-rgt").data( "subreddit", permalink );
-        geddit(permalink);
-        //getToken("refresh");
 
+        $("#mid-box-rgt").data( "subreddit", permalink );
+        var req = geddit(permalink);
+        if (req == "error") {
+			geddit(endpoint, after);
+        }
     }
     else {
         var random_str = randStr();
@@ -165,9 +164,6 @@ function checkAuth(permalink, after) {
         "&duration=permanent";
         window.location.assign(auth_url);
     }
-}
-
-function geddit(endpoint) {
     $.ajax({
       url: "https://oauth.reddit.com" + endpoint,
       beforeSend: function (request) {
@@ -179,6 +175,7 @@ function geddit(endpoint) {
       success:function(data){ jsonCallback(data); },
       error: function(xhr, textStatus, errorThrown) {
           console.log("Token Has Expired");
+          getToken("refresh");
           return "error";
       }
     });
@@ -286,7 +283,7 @@ $(document).on("click", ".tab", function() {
 
 $(document).on("click", "#refresh", function() {
     var sub_search = $("#mid-box-rgt").data( "subreddit");
-    checkAuth(sub_search, false);
+    geddit(sub_search, false);
 });
 
 $(function() {
@@ -300,7 +297,7 @@ $(function() {
 $(function() {
     $("#mid-box-rgt").click(function(){
         var subreddit = $("#mid-box-rgt").data("subreddit");
-        checkAuth(subreddit, true);
+        geddit(subreddit, true);
     });
 });
 
@@ -308,7 +305,7 @@ $(function() {
     $("#top-magnify").click(function(){
         var sub_search = $("input.search").val();
         $("#mid-box-rgt").data( "subreddit", sub_search );
-        checkAuth(sub_search, false);
+        geddit(sub_search, false);
     });
 });
 
@@ -319,7 +316,7 @@ $(function(){
         if (space || enter) {
             var sub_search = $("input.search").val();
             $("#mid-box-rgt").data( "subreddit", sub_search );
-            checkAuth(sub_search, false);
+            geddit(sub_search, false);
         }
     });
 });
