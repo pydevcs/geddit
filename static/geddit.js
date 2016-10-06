@@ -174,21 +174,21 @@ function geddit(token, kind, endpoint) {
       },
       type: "GET",
       dataType: "json",
-      tryCount: 0,
+      retryCount: 0,
       retryLimit: 3,
       retryTimeout: 1000,
       timeout: 1000,
       created : Date.now(),
       success:function(data){ jsonCallback(data, kind); },
       error: function(xhr, textStatus, errorThrown) {
-      	  if (tryCount == 0) {
+      	  if (this.retryCount == 0) {
 	      	  console.log("Token Has Expired");
 	      	  getToken("refresh");
 	      	  token = getCookie("token");
 	      	  console.log(token);
       	  }
-		  this.tryCount++;
-		  if (this.tryCount <= this.retryLimit && Date.now() - this.created <  this.retryTimeout) {
+		  this.retryCountr++;
+		  if (this.retryCount <= this.retryLimit && Date.now() - this.created <  this.retryTimeout) {
 		    console.log("Retrying");
 		    $.ajax(this);
 		    return;
