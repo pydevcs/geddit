@@ -136,19 +136,20 @@ function getAuth() {
     }
 }
 
-function geddit(endpoint, after) {
-    var token=getCookie("token")
-    var permalink = endpoint + ".json?limit=50";
+function checkAuth(kind, permalink, after) {
+    var token=getCookie("token");
+    permalink += ".json?limit=50";
     if (after) {
         after = $("#mid-box-rgt").data("after");
 	    permalink += "&after=" + after;
     }
     if (token != "") {
-        $("#mid-box-rgt").data( "subreddit", endpoint );
-        var req = geddit(permalink);
-        if (req == "error") {
-			geddit(endpoint, after);
-        }
+        //geddit(token, "subreddits", "/subreddits/mine/subscriber?limit=100"); //subreddits
+        //geddit(token, "name", "/api/v1/me"); //username
+        //geddit(token, 'front', "/?limit=50"); //front page
+        $("#mid-box-rgt").data( "subreddit", permalink );
+        geddit(token, kind, permalink);
+
     }
     else {
         var random_str = randStr();
@@ -163,45 +164,83 @@ function geddit(endpoint, after) {
         "&duration=permanent";
         window.location.assign(auth_url);
     }
+}
+
+function geddit(token, kind, endpoint) {
     $.ajax({
-      url: "https://oauth.reddit.com" + permalink,
+      url: "https://oauth.reddit.com" + endpoint,
       beforeSend: function (request) {
-          var token=getCookie("token");
           request.setRequestHeader("Authorization", "bearer " + token);
       },
       type: "GET",
       dataType: "json",
-      success:function(data){ jsonCallback(data); },
+      tryCount: 0,
+      retryLimit: 3,
+      retryTimeout: 1000,
+      timeout: 1000,
+      created : Date.now(),
+      success:function(data){ jsonCallback(data, kind); },
       error: function(xhr, textStatus, errorThrown) {
-          console.log("Token Has Expired");
-          getToken("refresh");
-          return "error";
+      	  if (this.retryCount == 0) {
+	      	  console.log("Token Has Expired");
+	      	  getToken("refresh");
+	      	  token = getCookie("token");
+	      	  console.log(token);
+      	  }
+		  this.retryCount++;
+		  if (this.tryCount <= this.retryLimit && Date.now() - this.created <  this.retryTimeout) {
+		    console.log("Retrying");
+		    $.ajax(this);
+		    return;
+		  }
       }
     });
 }
 
-function jsonCallback(json) {
-    console.log(json.data);
-    var after = json.data.after;
-    $("#mid-box-rgt").data( "after", after );
-    var main_list = "";
-    $.each(json.data.children, function (i, ob) {
-        //var timeAgo = moment.unix(ob.data.created_utc).fromNow(false);   //false includes "ago"
-        var postdate = moment.unix(ob.data.created_utc).format("MMM D");
-        var post = "&lt;div class='mail-item' data-id='" + ob.data.name + "' data-dir='" + ob.data.likes + "'&gt;" +
-        "&lt;img class='box vote' src='" + box(ob.data.likes) + "' width='14px' height='14px'&gt;" +
-        "&lt;img class='star vote' src='" + star(ob.data.likes) + "' width='14px' height='13px'&gt;" +
-        "&lt;img class='imprtnt' src='static/img/imprtnt.svg' width='14px' height='11px'&gt;" +
-        "&lt;a class='mail-title' href='https://www.reddit.com" +
-        ob.data.permalink  + "'&gt;" +
-        ob.data.subreddit + "&lt;/a&gt;&lt;div class='mail-info'&gt;&lt;a href='" + ob.data.url + "'&gt;" +
-        ob.data.title + "&lt;/a&gt;&lt;/div&gt;&lt;div class='mail-date'&gt;" +
-        postdate + "&lt;/div&gt;&lt;/div&gt;";
-        var rendered_link = $("<div />").html(post).text();
-        main_list += rendered_link;
-    });
-    $("#main-list").html(main_list);
-    $("#content").scrollTop(0);
+function jsonCallback(json, kind) {
+    switch(kind) {
+        case "name":
+            console.log(json);
+            console.log(json.name);
+            break;
+       case "subreddits":
+            console.log(json);
+            var after = json.data.after;
+            console.log(after);
+            $.each(json.data.children, function (i, ob) {
+                for (var key in ob.data) {
+                    if (ob.data.hasOwnProperty(key)) {
+                        if (key == "display_name") {
+                            $("ul#subs").append("<li>" + ob.data[key] + "</li>");
+                        }
+                    }
+                }
+            });
+            break;
+        case "front":
+            console.log(json.data);
+            var after = json.data.after;
+            $("#mid-box-rgt").data( "after", after );
+            var main_list = "";
+            $.each(json.data.children, function (i, ob) {
+                //var timeAgo = moment.unix(ob.data.created_utc).fromNow(false);   //false includes "ago"
+                var postdate = moment.unix(ob.data.created_utc).format("MMM D");
+                var post = "&lt;div class='mail-item' data-id='" + ob.data.name + "' data-dir='" + ob.data.likes + "'&gt;" +
+                "&lt;img class='box vote' src='" + box(ob.data.likes) + "' width='14px' height='14px'&gt;" +
+                "&lt;img class='star vote' src='" + star(ob.data.likes) + "' width='14px' height='13px'&gt;" +
+                "&lt;img class='imprtnt' src='static/img/imprtnt.svg' width='14px' height='11px'&gt;" +
+                "&lt;a class='mail-title' href='https://www.reddit.com" +
+                ob.data.permalink  + "'&gt;" +
+                ob.data.subreddit + "&lt;/a&gt;&lt;div class='mail-info'&gt;&lt;a href='" + ob.data.url + "'&gt;" +
+                ob.data.title + "&lt;/a&gt;&lt;/div&gt;&lt;div class='mail-date'&gt;" +
+                postdate + "&lt;/div&gt;&lt;/div&gt;";
+                var rendered_link = $("<div />").html(post).text();
+                main_list += rendered_link;
+            });
+            $("#main-list").html(main_list);
+            $("#content").scrollTop(0);
+            break;
+    }
 }
 
 function star(likes) {
@@ -282,7 +321,7 @@ $(document).on("click", ".tab", function() {
 
 $(document).on("click", "#refresh", function() {
     var sub_search = $("#mid-box-rgt").data( "subreddit");
-    geddit(sub_search, false);
+    checkAuth("front", sub_search, false);
 });
 
 $(function() {
@@ -296,7 +335,7 @@ $(function() {
 $(function() {
     $("#mid-box-rgt").click(function(){
         var subreddit = $("#mid-box-rgt").data("subreddit");
-        geddit(subreddit, true);
+        checkAuth("front", subreddit, true);
     });
 });
 
@@ -304,7 +343,7 @@ $(function() {
     $("#top-magnify").click(function(){
         var sub_search = $("input.search").val();
         $("#mid-box-rgt").data( "subreddit", sub_search );
-        geddit(sub_search, false);
+        checkAuth("front", sub_search, false);
     });
 });
 
@@ -315,7 +354,7 @@ $(function(){
         if (space || enter) {
             var sub_search = $("input.search").val();
             $("#mid-box-rgt").data( "subreddit", sub_search );
-            geddit(sub_search, false);
+            checkAuth("front", sub_search, false);
         }
     });
 });
