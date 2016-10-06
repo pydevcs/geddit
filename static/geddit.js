@@ -56,7 +56,7 @@ function getUrlParameter(sParam) {
 }
 
 function setCookie(cname, cvalue) {
-    var expiration = 30*24*60*60*1000;     //30 day expiration in ms;
+    var expiration = 30*24*60*60*1000; //30 day cookie expiration in ms;
     var d = new Date();
     d.setTime(d.getTime() + expiration);
     var expires = "expires=" + d.toGMTString();
@@ -282,7 +282,6 @@ $(document).on("click", ".vote", function() {
       url: "https://oauth.reddit.com/api/vote",
       beforeSend: function (request) {
           request.setRequestHeader("Authorization", "bearer " + token);
-          //request.setRequestHeader("User-Agent", "Geddit by u/pydevcs");
       },
       type: "POST",
       data: { id: data_id, dir: dir },
@@ -310,7 +309,7 @@ $(function() {
     $("#mid-box-rgt").click(function(){
         var after = $("#mid-box-rgt").data("after");
         var subreddit = $("#mid-box-rgt").data("subreddit");
-        checkAuth("front", subreddit + "&after=" + after); //front page
+        checkAuth("front", subreddit + "&after=" + after);
     });
 });
 
