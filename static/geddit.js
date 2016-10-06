@@ -138,14 +138,13 @@ function getAuth() {
 
 function geddit(endpoint, after) {
     var token=getCookie("token")
-    endpoint += ".json?limit=50";
+    var permalink = endpoint + ".json?limit=50";
     if (after) {
         after = $("#mid-box-rgt").data("after");
-	    endpoint += "&after=" + after;
+	    permalink += "&after=" + after;
     }
     if (token != "") {
-
-        $("#mid-box-rgt").data( "subreddit", permalink );
+        $("#mid-box-rgt").data( "subreddit", endpoint );
         var req = geddit(permalink);
         if (req == "error") {
 			geddit(endpoint, after);
@@ -165,7 +164,7 @@ function geddit(endpoint, after) {
         window.location.assign(auth_url);
     }
     $.ajax({
-      url: "https://oauth.reddit.com" + endpoint,
+      url: "https://oauth.reddit.com" + permalink,
       beforeSend: function (request) {
           var token=getCookie("token");
           request.setRequestHeader("Authorization", "bearer " + token);
