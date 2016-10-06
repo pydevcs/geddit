@@ -505,6 +505,7 @@ a:link, a:hover, a:visited {
 span#donate {
     font-size:10px;
     float:right;
+    margin-right: 25px;
 }
 
 
