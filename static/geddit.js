@@ -136,7 +136,7 @@ function getAuth() {
     }
 }
 
-function checkAuth(kind, permalink, after) {
+function checkAuth(permalink, after) {
     var token=getCookie("token");
     permalink += ".json?limit=50";
     if (after) {
@@ -148,7 +148,8 @@ function checkAuth(kind, permalink, after) {
         //geddit(token, "name", "/api/v1/me"); //username
         //geddit(token, 'front', "/?limit=50"); //front page
         $("#mid-box-rgt").data( "subreddit", permalink );
-        geddit(token, kind, permalink);
+        geddit(permalink);
+        //getToken("refresh");
 
     }
     else {
@@ -166,82 +167,45 @@ function checkAuth(kind, permalink, after) {
     }
 }
 
-function geddit(token, kind, endpoint) {
+function geddit(endpoint) {
     $.ajax({
       url: "https://oauth.reddit.com" + endpoint,
       beforeSend: function (request) {
+          var token=getCookie("token");
           request.setRequestHeader("Authorization", "bearer " + token);
       },
       type: "GET",
       dataType: "json",
-      retryCount: 0,
-      retryLimit: 3,
-      retryTimeout: 1000,
-      timeout: 1000,
-      created : Date.now(),
-      success:function(data){ jsonCallback(data, kind); },
+      success:function(data){ jsonCallback(data); },
       error: function(xhr, textStatus, errorThrown) {
-      	  if (this.retryCount == 0) {
-	      	  console.log("Token Has Expired");
-	      	  getToken("refresh");
-	      	  token = getCookie("token");
-	      	  console.log(token);
-      	  }
-		  this.retryCount++;
-		  if (this.retryCount <= this.retryLimit && Date.now() - this.created <  this.retryTimeout) {
-		    console.log("Retrying");
-		    $.ajax(this);
-		    //geddit(token, kind, endpoint)
-		    return;
-		  }
+          console.log("Token Has Expired");
+          return "error";
       }
     });
 }
 
-function jsonCallback(json, kind) {
-    switch(kind) {
-        case "name":
-            console.log(json);
-            console.log(json.name);
-            break;
-       case "subreddits":
-            console.log(json);
-            var after = json.data.after;
-            console.log(after);
-            $.each(json.data.children, function (i, ob) {
-                for (var key in ob.data) {
-                    if (ob.data.hasOwnProperty(key)) {
-                        if (key == "display_name") {
-                            $("ul#subs").append("<li>" + ob.data[key] + "</li>");
-                        }
-                    }
-                }
-            });
-            break;
-        case "front":
-            console.log(json.data);
-            var after = json.data.after;
-            $("#mid-box-rgt").data( "after", after );
-            var main_list = "";
-            $.each(json.data.children, function (i, ob) {
-                //var timeAgo = moment.unix(ob.data.created_utc).fromNow(false);   //false includes "ago"
-                var postdate = moment.unix(ob.data.created_utc).format("MMM D");
-                var post = "&lt;div class='mail-item' data-id='" + ob.data.name + "' data-dir='" + ob.data.likes + "'&gt;" +
-                "&lt;img class='box vote' src='" + box(ob.data.likes) + "' width='14px' height='14px'&gt;" +
-                "&lt;img class='star vote' src='" + star(ob.data.likes) + "' width='14px' height='13px'&gt;" +
-                "&lt;img class='imprtnt' src='static/img/imprtnt.svg' width='14px' height='11px'&gt;" +
-                "&lt;a class='mail-title' href='https://www.reddit.com" +
-                ob.data.permalink  + "'&gt;" +
-                ob.data.subreddit + "&lt;/a&gt;&lt;div class='mail-info'&gt;&lt;a href='" + ob.data.url + "'&gt;" +
-                ob.data.title + "&lt;/a&gt;&lt;/div&gt;&lt;div class='mail-date'&gt;" +
-                postdate + "&lt;/div&gt;&lt;/div&gt;";
-                var rendered_link = $("<div />").html(post).text();
-                main_list += rendered_link;
-            });
-            $("#main-list").html(main_list);
-            $("#content").scrollTop(0);
-            break;
-    }
+function jsonCallback(json) {
+    console.log(json.data);
+    var after = json.data.after;
+    $("#mid-box-rgt").data( "after", after );
+    var main_list = "";
+    $.each(json.data.children, function (i, ob) {
+        //var timeAgo = moment.unix(ob.data.created_utc).fromNow(false);   //false includes "ago"
+        var postdate = moment.unix(ob.data.created_utc).format("MMM D");
+        var post = "&lt;div class='mail-item' data-id='" + ob.data.name + "' data-dir='" + ob.data.likes + "'&gt;" +
+        "&lt;img class='box vote' src='" + box(ob.data.likes) + "' width='14px' height='14px'&gt;" +
+        "&lt;img class='star vote' src='" + star(ob.data.likes) + "' width='14px' height='13px'&gt;" +
+        "&lt;img class='imprtnt' src='static/img/imprtnt.svg' width='14px' height='11px'&gt;" +
+        "&lt;a class='mail-title' href='https://www.reddit.com" +
+        ob.data.permalink  + "'&gt;" +
+        ob.data.subreddit + "&lt;/a&gt;&lt;div class='mail-info'&gt;&lt;a href='" + ob.data.url + "'&gt;" +
+        ob.data.title + "&lt;/a&gt;&lt;/div&gt;&lt;div class='mail-date'&gt;" +
+        postdate + "&lt;/div&gt;&lt;/div&gt;";
+        var rendered_link = $("<div />").html(post).text();
+        main_list += rendered_link;
+    });
+    $("#main-list").html(main_list);
+    $("#content").scrollTop(0);
 }
 
 function star(likes) {
