@@ -187,7 +187,7 @@ function geddit(token, kind, endpoint) {
 	      	  token = getCookie("token");
 	      	  console.log(token);
       	  }
-		  this.retryCountr++;
+		  this.retryCount++;
 		  if (this.retryCount <= this.retryLimit && Date.now() - this.created <  this.retryTimeout) {
 		    console.log("Retrying");
 		    $.ajax(this);
