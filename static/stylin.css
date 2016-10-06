@@ -431,12 +431,14 @@ input.search:focus {
 	border-bottom: 1px solid #d7d7d7;
 
 }
-#main-list {
+#content {
     width: calc(100% - 202px);
     height: calc(100vh - 175px);
     /* overflow: auto; */
     overflow-y: scroll;
     float: left;
+}
+#main-list {
     margin-top: 8px;
 }
 .mail-item {
