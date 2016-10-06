@@ -227,7 +227,7 @@ function jsonCallback(json, kind) {
                 main_list += rendered_link;
             });
             $("#main-list").html(main_list);
-            $("#main-list").scrollTop(0);
+            $("#content").scrollTop(0);
             break;
     }
 }
