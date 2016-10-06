@@ -191,6 +191,7 @@ function geddit(token, kind, endpoint) {
 		  if (this.retryCount <= this.retryLimit && Date.now() - this.created <  this.retryTimeout) {
 		    console.log("Retrying");
 		    $.ajax(this);
+		    //geddit(token, kind, endpoint)
 		    return;
 		  }
       }
