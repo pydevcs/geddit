@@ -175,7 +175,7 @@ function geddit(token, kind, endpoint) {
       type: "GET",
       dataType: "json",
       tryCount: 0,
-      retryLimit: 3,
+      retryLimit: 5,
       success:function(data){ jsonCallback(data, kind); },
       error: function(xhr, textStatus, errorThrown) {
           this.tryCount++;
