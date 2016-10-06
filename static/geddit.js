@@ -341,3 +341,10 @@ $(function(){
         }
     });
 });
+
+$(function(){
+    $("#mid-box-refresh").keypress(function () {
+        var sub_search = $("#mid-box-rgt").data( "subreddit");
+        checkAuth("front", sub_search);
+    });
+});
