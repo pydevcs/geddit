@@ -305,9 +305,7 @@ $(document).on("click", ".mail-date", function(event) {
 $(document).on("click", ".tab", function() {
     $(".tab").removeClass("active");
     $(this).addClass("active");
-    
     var current_sub = $("#mid-box-rgt").data( "subreddit");
-    console.log(current_sub);
 });
 
 $(document).on("click", "#refresh", function() {
