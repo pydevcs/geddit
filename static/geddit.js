@@ -302,12 +302,17 @@ $(document).on("click", ".mail-date", function(event) {
     console.log($(this).attr("class"));
 });
 
-$(document).on("click", ".tab", function(event) {
+$(document).on("click", ".tab", function() {
     $(".tab").removeClass("active");
     $(this).addClass("active");
     
     var current_sub = $("#mid-box-rgt").data( "subreddit");
     console.log(current_sub);
+});
+
+$(document).on("click", "#mid-box-refresh", function() {
+    var sub_search = $("#mid-box-rgt").data( "subreddit");
+    checkAuth("front", sub_search, false);
 });
 
 $(function() {
@@ -342,12 +347,5 @@ $(function(){
             $("#mid-box-rgt").data( "subreddit", sub_search );
             checkAuth("front", sub_search, false);
         }
-    });
-});
-
-$(function(){
-    $("#mid-box-refresh").keypress(function () {
-        var sub_search = $("#mid-box-rgt").data( "subreddit");
-        checkAuth("front", sub_search, false);
     });
 });
