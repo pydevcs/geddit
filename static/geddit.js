@@ -138,6 +138,7 @@ function getAuth() {
 
 function checkAuth(kind, permalink) {
     var token=getCookie("token");
+    permalink += ".json?limit=50";
     if (token != "") {
         //geddit(token, "subreddits", "/subreddits/mine/subscriber?limit=100"); //subreddits
         //geddit(token, "name", "/api/v1/me"); //username
@@ -324,7 +325,6 @@ $(function() {
 $(function() {
     $("#top-magnify").click(function(){
         var sub_search = $("input.search").val();
-        sub_search += ".json?limit=50";
         $("#mid-box-rgt").data( "subreddit", sub_search );
         checkAuth("front", sub_search);
     });
@@ -336,7 +336,6 @@ $(function(){
         var enter = (e.keyCode == 13);
         if (space || enter) {
             var sub_search = $("input.search").val();
-            sub_search += ".json?limit=50";
             $("#mid-box-rgt").data( "subreddit", sub_search );
             checkAuth("front", sub_search);
         }

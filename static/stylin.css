@@ -433,7 +433,7 @@ input.search:focus {
 }
 #main-list {
     width: calc(100% - 202px);
-    height: calc(100vh - 175px);
+    /* height: calc(100vh - 175px); */
     overflow: auto;
 	float: left;
 	margin-top: 8px;
