@@ -177,6 +177,7 @@ function geddit(token, kind, endpoint) {
       retryCount: 0,
       retryLimit: 3,
       retryTimeout: 1000,
+      timeout: 1000,
       created : Date.now(),
       success:function(data){ jsonCallback(data, kind); },
       error: function(xhr, textStatus, errorThrown) {
@@ -184,12 +185,12 @@ function geddit(token, kind, endpoint) {
 	      	  console.log("Token Has Expired");
 	      	  getToken("refresh");
 	      	  token = getCookie("token");
+	      	  console.log(token);
       	  }
 		  this.retryCount++;
 		  if (this.retryCount <= this.retryLimit && Date.now() - this.created <  this.retryTimeout) {
 		    console.log("Retrying");
-		    //$.ajax(this);
-		    geddit(token, kind, endpoint);
+		    $.ajax(this);
 		    return;
 		  }
       }
