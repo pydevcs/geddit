@@ -434,8 +434,8 @@ input.search:focus {
 #content {
     width: calc(100% - 202px);
     height: calc(100vh - 175px);
-    /* overflow: auto; */
-    overflow-y: scroll;
+    overflow: auto;
+    /* overflow-y: scroll; */
     float: left;
 }
 #main-list {
