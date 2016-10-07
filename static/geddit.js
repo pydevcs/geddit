@@ -242,15 +242,8 @@ function box(likes) {
     }
 }
 
-function voteTest(obj) {
-	console.log(obj.attr("class"));
-}
-
-$(document).on("click", ".vote", function() {
-    voteTest($(this));
-    
+function voteTest(div) {
     var token=getCookie("token");
-    var div = $(this)
     var data_id = div.parent().attr("data-id");
     var dir = div.parent().attr("data-dir");
     var cls = div.attr("class");
@@ -314,6 +307,10 @@ $(document).on("click", ".vote", function() {
       console.log("Voting Error")
       //refresh(endpoint);
     });
+}
+
+$(document).on("click", ".vote", function() {
+    voteTest($(this));
 });
 
 
