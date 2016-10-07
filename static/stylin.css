@@ -430,6 +430,7 @@ input.search:focus {
 	float: left;
 	border-bottom: 1px solid #d7d7d7;
 	background-color: #fff;
+	overflow: hidden;
 
 }
 #content {
