@@ -128,11 +128,8 @@ function refresh(endpoint) {
       var token = auth_resp.access_token;
       setCookie("token", token);
       console.log("Token " + token);
-	})
-	.then(function() {
-	  geddit(endpoint);
+      geddit(token, endpoint);
 	});
-
 	
 	promise.fail(function() {
 	  console.log("Error Refreshing Token");
