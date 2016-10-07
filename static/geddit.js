@@ -294,6 +294,10 @@ $(document).on("click", ".mail-date", function(event) {
     console.log($(this).attr("class"));
 });
 
+$(document).on("click", ".mail-title", function(event) {
+    console.log($(this).text());
+});
+
 $(document).on("click", ".tab", function() {
     $(".tab").removeClass("active");
     $(this).addClass("active");
