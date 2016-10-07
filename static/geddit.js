@@ -211,12 +211,11 @@ function renderContent(json, endpoint) {
         var post = "&lt;div class='mail-item' data-id='" + ob.data.name + "' data-dir='" + ob.data.likes + "'&gt;" +
         "&lt;img class='box vote' src='" + box(ob.data.likes) + "' width='14px' height='14px'&gt;" +
         "&lt;img class='star vote' src='" + star(ob.data.likes) + "' width='14px' height='13px'&gt;" +
-        "&lt;a href='https://reddit.com" + ob.data.permalink + "'&gt;" +
-        "&lt;img class='imprtnt' src='static/img/imprtnt.svg' width='14px' height='11px'&gt;" + "&lt;/a&gt;" +
+        "&lt;img class='imprtnt' src='static/img/imprtnt.svg' width='14px' height='11px'&gt;" +
         "&lt;div class='mail-title' &gt;" +
         ob.data.subreddit + "&lt;/div&gt;&lt;div class='mail-info'&gt;&lt;a href='" + ob.data.url + "'&gt;" +
-        ob.data.title + "&lt;/a&gt;&lt;/div&gt;&lt;div class='mail-date'&gt;" +
-        postdate + "&lt;/div&gt;&lt;/div&gt;";
+        ob.data.title + "&lt;/a&gt;&lt;/div&gt;&lt;a class='mail-date' href='https://reddit.com'" + ob.data.permalink +"' &gt;" +
+        postdate + "&lt;/a&gt;&lt;/div&gt;";
         var rendered_link = $("<div />").html(post).text();
         main_list += rendered_link;
     });
@@ -289,20 +288,10 @@ $(document).on("click", ".vote", function() {
     });
 });
 
-
-$(document).on("click", ".mail-date", function(event) {
-	event.preventDefault();
-    console.log($(this).attr("class"));
-});
-
 $(document).on("click", ".mail-title", function(event) {
     var set_sub = "/r/" + $(this).text();
     setCookie("subreddit", set_sub);
     checkAuth(set_sub);
-});
-
-$(document).on("click", ".mail-item", function(event) {
-    console.log("Open in Reddit");
 });
 
 $(document).on("click", ".tab", function() {
