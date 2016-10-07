@@ -155,7 +155,10 @@ function getAuth() {
 
 function checkAuth(permalink) {
     var token=getCookie("token");
-    permalink += ".json?limit=50";
+    var str_tst = permalink.includes(".json?limit=50");
+    if (!str_tst) {
+	    permalink += ".json?limit=50";   
+    }
     if (token != "") {
         setCookie("subreddit", permalink);
         console.log(permalink);
