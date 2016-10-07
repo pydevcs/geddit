@@ -300,6 +300,10 @@ $(document).on("click", ".mail-title", function(event) {
     checkAuth(set_sub);
 });
 
+$(document).on("click", ".mail-item", function(event) {
+    console.log("Open in Reddit");
+});
+
 $(document).on("click", ".tab", function() {
     $(".tab").removeClass("active");
     $(this).addClass("active");
