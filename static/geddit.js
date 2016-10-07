@@ -111,7 +111,7 @@ function getToken(code) {
 function refresh(endpoint) {
     var code = getCookie("refresh");
     var promise = $.ajax({
-      url: endpoint,
+      url: "https://ssl.reddit.com/api/v1/access_token",
       beforeSend: function (request) {
           request.setRequestHeader("Authorization", "Basic " + btoa(client_id + ":"));
       },
