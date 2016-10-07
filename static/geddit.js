@@ -243,7 +243,7 @@ function box(likes) {
 }
 
 function voteTest(obj) {
-	console.log(obj.attr('class'));
+	console.log(obj);
 }
 
 $(document).on("click", ".vote", function() {
