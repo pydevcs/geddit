@@ -214,7 +214,7 @@ function renderContent(json, endpoint) {
         "&lt;img class='imprtnt' src='static/img/imprtnt.svg' width='14px' height='11px'&gt;" +
         "&lt;div class='mail-title' &gt;" +
         ob.data.subreddit + "&lt;/div&gt;&lt;div class='mail-info'&gt;&lt;a href='" + ob.data.url + "'&gt;" +
-        ob.data.title + "&lt;/a&gt;&lt;/div&gt;&lt;a class='mail-date' href='https://reddit.com'" + ob.data.permalink +"' &gt;" +
+        ob.data.title + "&lt;/a&gt;&lt;/div&gt;&lt;a class='mail-date' href='https://reddit.com" + ob.data.permalink +"' &gt;" +
         postdate + "&lt;/a&gt;&lt;/div&gt;";
         var rendered_link = $("<div />").html(post).text();
         main_list += rendered_link;
