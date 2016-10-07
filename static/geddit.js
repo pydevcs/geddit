@@ -204,6 +204,7 @@ function renderContent(json, endpoint) {
     var after_removed = endpoint.split("&after=");
     endpoint = after_removed[0] + "&after=" + after;
     setCookie("subreddit", endpoint);
+    console.log(endpoint);
     var main_list = "";
     $.each(json.data.children, function (i, ob) {
         //var timeAgo = moment.unix(ob.data.created_utc).fromNow(false);   //false includes "ago"
