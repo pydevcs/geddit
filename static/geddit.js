@@ -87,7 +87,7 @@ function getToken(code) {
           request.setRequestHeader("Authorization", "Basic " + btoa(client_id + ":"));
       },
       type: "POST",
-      dataType: "json"
+      dataType: "json",
       data: {
           "grant_type": "authorization_code",
           "code" : code,
@@ -116,7 +116,7 @@ function refresh(endpoint) {
           request.setRequestHeader("Authorization", "Basic " + btoa(client_id + ":"));
       },
       type: "POST",
-      dataType: "json"
+      dataType: "json",
       data: {
           "grant_type": "refresh_token",
           "refresh_token" : code,
