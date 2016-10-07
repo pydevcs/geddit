@@ -243,11 +243,11 @@ function box(likes) {
 }
 
 function voteTest(obj) {
-	console.log(obj);
+	console.log(obj.attr("class"));
 }
 
 $(document).on("click", ".vote", function() {
-    voteTest(this);
+    voteTest($(this));
     
     var token=getCookie("token");
     var div = $(this)
