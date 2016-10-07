@@ -312,7 +312,7 @@ input.search:focus {
     border-top:1px solid #e5e5e5;
 }
 #btm {
-    height:59px;
+    height:60px;
     width: calc(100% - 202px);
     float: left;
     padding-top:9px;
