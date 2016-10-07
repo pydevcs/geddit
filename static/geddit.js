@@ -199,7 +199,7 @@ function geddit(token, endpoint){
 }
 
 function renderContent(json, endpoint) {
-    //console.log(json.data);
+    console.log(json.data.children);
     var after = json.data.after;
     var after_removed = endpoint.split("&after=");
     endpoint = after_removed[0] + "&after=" + after;
