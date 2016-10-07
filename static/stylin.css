@@ -317,6 +317,7 @@ input.search:focus {
     float: left;
     padding-top:9px;
     margin-right: 15px;
+    margin-bottom:8px;
     border-bottom: 1px solid #d7d7d7;	
 }
 @media (max-width: 1024px) {
