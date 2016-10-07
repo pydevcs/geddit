@@ -244,49 +244,72 @@ function box(likes) {
 
 $(document).on("click", ".vote", function() {
     var token=getCookie("token");
-    var data_id = $(this).parent().attr("data-id");
-    var dir = $(this).parent().attr("data-dir");
-    var cls = $(this).attr("class");
+    var div = $(this)
+    var data_id = div.parent().attr("data-id");
+    var dir = div.parent().attr("data-dir");
+    var cls = div.attr("class");
     switch(cls) {
     case "star vote":
         if (dir == "true") {
             dir = 0;
-            $(this).attr("src","static/img/star.svg");
-            $(this).parent().attr("data-dir", "null");
         }
         if (dir == "null" || dir == "false") {
             dir = 1;
-            $(this).attr("src","static/img/upstar.svg");
-            $(this).siblings(".box").attr("src","static/img/box.svg");
-            $(this).parent().attr("data-dir", "true");
         }
         break;
     case "box vote":
         if (dir == "false") {
             dir = 0;
-            $(this).attr("src","static/img/box.svg");
-            $(this).parent().attr("data-dir", "null");
         }
         if (dir == "null" || dir == "true") {
             dir = -1;
-            $(this).attr("src","static/img/downbox.svg");
-            $(this).siblings(".star").attr("src","static/img/star.svg");
-            $(this).parent().attr("data-dir", "false");
         }
         break;
     }
-    $.ajax({
+
+    var promise = $.ajax({
       url: "https://oauth.reddit.com/api/vote",
       beforeSend: function (request) {
           request.setRequestHeader("Authorization", "bearer " + token);
       },
       type: "POST",
       data: { id: data_id, dir: dir },
-      dataType: "json",
-      error: function(error, textStatus, xhr) {
-          console.log("Voting Error");
-      }
+      dataType: "json"
     });
+
+    promise.done(function(json_data) {
+	    switch(cls) {
+	    case "star vote":
+	        if (dir == 0) {
+	            div.attr("src","static/img/star.svg");
+	            div.parent().attr("data-dir", "null");
+	        }
+	        if (dir == 1) {
+	            div.attr("src","static/img/upstar.svg");
+	            div.siblings(".box").attr("src","static/img/box.svg");
+	            div.parent().attr("data-dir", "true");
+	        }
+	        break;
+	    case "box vote":
+	        if (dir == 0) {
+	            div.attr("src","static/img/box.svg");
+	            div.parent().attr("data-dir", "null");
+	        }
+	        if (dir == -1) {
+	            div.attr("src","static/img/downbox.svg");
+	            div.siblings(".star").attr("src","static/img/star.svg");
+	            div.parent().attr("data-dir", "false");
+	        }
+	        break;
+	    }
+    });
+
+    promise.fail(function() {
+      console.log("Voting Error")
+      //refresh(endpoint);
+    });
+
+
 });
 
 
