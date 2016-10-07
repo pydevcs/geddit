@@ -94,18 +94,18 @@ function getToken(code) {
           "redirect_uri": redirect_uri
       }
     });
-    
-	promise.done(function(auth_resp) {
+
+    promise.done(function(auth_resp) {
       var token = auth_resp.access_token;
       setCookie("token", token);
       console.log("Token " + token);
       var refresh_token = auth_resp.refresh_token;
       setCookie("refresh", refresh_token);
-	});
-	
-	promise.fail(function() {
-	  console.log("Access Token Error");
-	});
+    });
+
+    promise.fail(function() {
+      console.log("Access Token Error");
+    });
 }
 
 function refresh(endpoint) {
@@ -123,17 +123,17 @@ function refresh(endpoint) {
           "redirect_uri": redirect_uri
       }
     });
-    
-	promise.done(function(auth_resp) {
+
+    promise.done(function(auth_resp) {
       var token = auth_resp.access_token;
       setCookie("token", token);
       console.log("Token " + token);
       geddit(token, endpoint);
-	});
-	
-	promise.fail(function() {
-	  console.log("Error Refreshing Token");
-	});
+    });
+
+    promise.fail(function() {
+      console.log("Error Refreshing Token");
+    });
 
 }
 
@@ -157,7 +157,7 @@ function checkAuth(permalink) {
     var token=getCookie("token");
     var str_tst = permalink.includes(".json?limit=50");
     if (!str_tst) {
-	    permalink += ".json?limit=50";   
+        permalink += ".json?limit=50";
     }
     if (token != "") {
         setCookie("subreddit", permalink);
@@ -188,15 +188,15 @@ function geddit(token, endpoint){
       type: "GET",
       dataType: "json"
     });
-    
-	promise.done(function(json_data) {
-	  renderContent(json_data, endpoint);
-	});
-	
-	promise.fail(function() {
-	  console.log("Token Expired")
-	  refresh(endpoint);
-	});
+
+    promise.done(function(json_data) {
+      renderContent(json_data, endpoint);
+    });
+
+    promise.fail(function() {
+      console.log("Token Expired")
+      refresh(endpoint);
+    });
 }
 
 function renderContent(json, endpoint) {
@@ -297,7 +297,7 @@ $(document).on("click", ".mail-date", function(event) {
 
 $(document).on("click", ".tab", function() {
     $(".tab").removeClass("active");
-    $(this).addClass("active");    
+    $(this).addClass("active");
 });
 
 $(document).on("click", "#refresh", function() {
