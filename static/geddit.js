@@ -93,6 +93,7 @@ function getToken(code) {
       },
       type: "POST",
       dataType: "json"
+      data: data
     });
     
 	promise.done(function(auth_resp) {
