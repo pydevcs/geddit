@@ -478,6 +478,7 @@ a.mail-item:visited {
 	width: 165px;
 	margin-top: 10px;
 	float: left;
+	cursor: pointer;
 }
 .mail-info {
     width: calc(100% - 390px);
