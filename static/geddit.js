@@ -301,6 +301,8 @@ $(document).on("click", ".tab", function() {
 
 $(document).on("click", "#refresh", function() {
     var subreddit = getCookie("subreddit");
+    subreddit = endpoint.split("&after=");
+    subreddit = subreddit[0] + "&after=" + after;
     checkAuth(subreddit);
 });
 
