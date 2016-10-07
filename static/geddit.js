@@ -199,7 +199,7 @@ function geddit(token, endpoint){
 }
 
 function renderContent(json, endpoint) {
-    console.log(json.data.children);
+    console.log(json.data);
     var after = json.data.after;
     var after_removed = endpoint.split("&after=");
     endpoint = after_removed[0] + "&after=" + after;
@@ -242,7 +242,13 @@ function box(likes) {
     }
 }
 
+function voteTest(obj) {
+	console.log(obj.attr('class'));
+}
+
 $(document).on("click", ".vote", function() {
+    voteTest(this);
+    
     var token=getCookie("token");
     var div = $(this)
     var data_id = div.parent().attr("data-id");
@@ -308,8 +314,6 @@ $(document).on("click", ".vote", function() {
       console.log("Voting Error")
       //refresh(endpoint);
     });
-
-
 });
 
 
