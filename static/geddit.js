@@ -198,8 +198,8 @@ function geddit(token, endpoint){
 function renderContent(json, endpoint) {
     console.log(json.data);
     var after = json.data.after;
-    endpoint = endpoint.split("&after=");
-    endpoint += "&after=" + after;
+    var after_removed = endpoint.split("&after=");
+    endpoint = after_removed[0] + "&after=" + after;
     setCookie("subreddit", endpoint);
     var main_list = "";
     $.each(json.data.children, function (i, ob) {
