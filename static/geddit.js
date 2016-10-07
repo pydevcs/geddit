@@ -165,9 +165,7 @@ function checkAuth(permalink, after) {
         //geddit(token, "name", "/api/v1/me"); //username
         //geddit(token, 'front', "/?limit=50"); //front page
         setCookie("subreddit", permalink);
-        console.log(permalink);
         geddit(token, permalink);
-
     }
     else {
         var random_str = randStr();
