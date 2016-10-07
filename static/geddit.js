@@ -181,7 +181,7 @@ function geddit(token, endpoint){
 	  renderContent(json_data);
 	});
 	
-	promise.fail(function() {
+	promise.fail(function(endpoint) {
 	  console.log("Token Expired")
 	  refresh(endpoint);
 	});
