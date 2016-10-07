@@ -211,7 +211,7 @@ function renderContent(json, endpoint) {
         var post = "&lt;div class='mail-item' data-id='" + ob.data.name + "' data-dir='" + ob.data.likes + "'&gt;" +
         "&lt;img class='box vote' src='" + box(ob.data.likes) + "' width='14px' height='14px'&gt;" +
         "&lt;img class='star vote' src='" + star(ob.data.likes) + "' width='14px' height='13px'&gt;" +
-        "&lt;a href='" + ob.data.permalink + "'&gt;" +
+        "&lt;a href='https://reddit.com" + ob.data.permalink + "'&gt;" +
         "&lt;img class='imprtnt' src='static/img/imprtnt.svg' width='14px' height='11px'&gt;" + "&lt;/a&gt;" +
         "&lt;div class='mail-title' &gt;" +
         ob.data.subreddit + "&lt;/div&gt;&lt;div class='mail-info'&gt;&lt;a href='" + ob.data.url + "'&gt;" +
