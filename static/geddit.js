@@ -81,22 +81,11 @@ function getCookie(cname) {
 }
 
 function getToken(code) {
-    var data;
-    if (code == "refresh") {
-        code = getCookie("refresh");
-        data = {
-            "grant_type": "refresh_token",
-            "refresh_token" : code,
-            "redirect_uri": redirect_uri
-        };
-    }
-    else {
-        data = {
-            "grant_type": "authorization_code",
-            "code" : code,
-            "redirect_uri": redirect_uri
-        };
-    }
+    var data = {
+        "grant_type": "authorization_code",
+        "code" : code,
+        "redirect_uri": redirect_uri
+    };
     var promise = $.ajax({
       url: "https://ssl.reddit.com/api/v1/access_token",
       beforeSend: function (request) {
@@ -111,9 +100,7 @@ function getToken(code) {
       setCookie("token", token);
       console.log("Token " + token);
       var refresh_token = auth_resp.refresh_token;
-      if (refresh_token  !== undefined) {
-          setCookie("refresh", refresh_token);
-      }
+      setCookie("refresh", refresh_token);
 	});
 	
 	promise.fail(function() {
