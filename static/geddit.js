@@ -291,6 +291,7 @@ $(document).on("click", ".vote", function() {
 
 
 $(document).on("click", ".mail-date", function(event) {
+	event.preventDefault();
     console.log($(this).attr("class"));
 });
 
