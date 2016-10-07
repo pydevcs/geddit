@@ -98,7 +98,7 @@ function getToken(code) {
         };
     }
     var promise = $.ajax({
-      url: endpoint,
+      url: "https://ssl.reddit.com/api/v1/access_token",
       beforeSend: function (request) {
           request.setRequestHeader("Authorization", "Basic " + btoa(client_id + ":"));
       },
@@ -181,7 +181,7 @@ function geddit(token, endpoint){
 	  renderContent(json_data);
 	});
 	
-	promise.fail(function(endpoint) {
+	promise.fail(function() {
 	  console.log("Token Expired")
 	  refresh(endpoint);
 	});
