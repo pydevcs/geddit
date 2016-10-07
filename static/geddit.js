@@ -288,6 +288,12 @@ $(document).on("click", ".vote", function() {
     });
 });
 
+
+$(document).on("click", ".imprtnt", function(event) {
+    console.log("Open iFrame");
+});
+
+
 $(document).on("click", ".mail-title", function(event) {
     var set_sub = "/r/" + $(this).text();
     setCookie("subreddit", set_sub);
