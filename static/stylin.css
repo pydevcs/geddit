@@ -437,8 +437,6 @@ input.search:focus {
     overflow: auto;
     /* overflow-y: scroll; */
     float: left;
-    border-top: 1px solid #d7d7d7;
-
 }
 #main-list {
     margin-top: 8px;
@@ -451,6 +449,9 @@ input.search:focus {
 	font-size: 10pt;
 	font-weight: bold;
 	display: block;
+}
+.mail-item:first-of-type {
+    border-top: 1px solid #d7d7d7;
 }
 .mail-item:hover {
 	background-color: RGBA(255, 86, 0, 0.1);
