@@ -81,11 +81,6 @@ function getCookie(cname) {
 }
 
 function getToken(code) {
-    var data = {
-        "grant_type": "authorization_code",
-        "code" : code,
-        "redirect_uri": redirect_uri
-    };
     var promise = $.ajax({
       url: "https://ssl.reddit.com/api/v1/access_token",
       beforeSend: function (request) {
@@ -93,7 +88,11 @@ function getToken(code) {
       },
       type: "POST",
       dataType: "json"
-      data: data
+      data: {
+          "grant_type": "authorization_code",
+          "code" : code,
+          "redirect_uri": redirect_uri
+      }
     });
     
 	promise.done(function(auth_resp) {
@@ -107,6 +106,38 @@ function getToken(code) {
 	promise.fail(function() {
 	  console.log("Access Token Error");
 	});
+}
+
+function refresh(endpoint) {
+    var code = getCookie("refresh");
+    var promise = $.ajax({
+      url: endpoint,
+      beforeSend: function (request) {
+          request.setRequestHeader("Authorization", "Basic " + btoa(client_id + ":"));
+      },
+      type: "POST",
+      dataType: "json"
+      data: {
+          "grant_type": "refresh_token",
+          "refresh_token" : code,
+          "redirect_uri": redirect_uri
+      }
+    });
+    
+	promise.done(function(auth_resp) {
+      var token = auth_resp.access_token;
+      setCookie("token", token);
+      console.log("Token " + token);
+	})
+	.then(function() {
+	  geddit(endpoint);
+	});
+
+	
+	promise.fail(function() {
+	  console.log("Error Refreshing Token");
+	});
+
 }
 
 function getAuth() {
@@ -173,38 +204,6 @@ function geddit(token, endpoint){
 	  console.log("Token Expired")
 	  refresh(endpoint);
 	});
-}
-
-function refresh(endpoint) {
-    var code = getCookie("refresh");
-    var data = {
-        "grant_type": "refresh_token",
-        "refresh_token" : code,
-        "redirect_uri": redirect_uri
-    };
-    var promise = $.ajax({
-      url: endpoint,
-      beforeSend: function (request) {
-          request.setRequestHeader("Authorization", "Basic " + btoa(client_id + ":"));
-      },
-      type: "POST",
-      dataType: "json"
-    });
-    
-	promise.done(function(auth_resp) {
-      var token = auth_resp.access_token;
-      setCookie("token", token);
-      console.log("Token " + token);
-	})
-	.then(function() {
-	  geddit(endpoint);
-	});
-
-	
-	promise.fail(function() {
-	  console.log("Error Refreshing Token");
-	});
-
 }
 
 function renderContent(json) {
