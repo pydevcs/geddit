@@ -295,7 +295,7 @@ $(document).on("click", ".mail-date", function(event) {
 });
 
 $(document).on("click", ".mail-title", function(event) {
-    var set_sub = "/" + $(this).text();
+    var set_sub = "/r/" + $(this).text();
     setCookie("subreddit", set_sub);
     checkAuth(set_sub);
 });
