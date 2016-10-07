@@ -153,17 +153,10 @@ function getAuth() {
     }
 }
 
-function checkAuth(permalink, after) {
+function checkAuth(permalink) {
     var token=getCookie("token");
     permalink += ".json?limit=50";
-    if (after) {
-        after = $("#mid-box-rgt").data("after");
-	    permalink += "&after=" + after;
-    }
     if (token != "") {
-        //geddit(token, "subreddits", "/subreddits/mine/subscriber?limit=100"); //subreddits
-        //geddit(token, "name", "/api/v1/me"); //username
-        //geddit(token, 'front', "/?limit=50"); //front page
         setCookie("subreddit", permalink);
         geddit(token, permalink);
     }
@@ -193,7 +186,7 @@ function geddit(token, endpoint){
     });
     
 	promise.done(function(json_data) {
-	  renderContent(json_data);
+	  renderContent(json_data, endpoint);
 	});
 	
 	promise.fail(function() {
@@ -202,10 +195,12 @@ function geddit(token, endpoint){
 	});
 }
 
-function renderContent(json) {
+function renderContent(json, endpoint) {
     console.log(json.data);
     var after = json.data.after;
-    $("#mid-box-rgt").data( "after", after );
+    endpoint = endpoint.split("&after=");
+    endpoint += "&after=" + after;
+    setCookie("subreddit", endpoint);
     var main_list = "";
     $.each(json.data.children, function (i, ob) {
         //var timeAgo = moment.unix(ob.data.created_utc).fromNow(false);   //false includes "ago"
@@ -302,8 +297,8 @@ $(document).on("click", ".tab", function() {
 });
 
 $(document).on("click", "#refresh", function() {
-    var sub_search = getCookie("subreddit");
-    checkAuth(sub_search, false);
+    var subreddit = getCookie("subreddit");
+    checkAuth(subreddit);
 });
 
 $(function() {
@@ -317,7 +312,7 @@ $(function() {
 $(function() {
     $("#mid-box-rgt").click(function(){
         var subreddit = getCookie("subreddit");
-        checkAuth(subreddit, true);
+        checkAuth(subreddit);
     });
 });
 
@@ -325,7 +320,7 @@ $(function() {
     $("#top-magnify").click(function(){
         var sub_search = $("input.search").val();
         setCookie("subreddit", sub_search);
-        checkAuth(sub_search, false);
+        checkAuth(sub_search);
     });
 });
 
@@ -336,7 +331,7 @@ $(function(){
         if (space || enter) {
             var sub_search = $("input.search").val();
             setCookie("subreddit", sub_search);
-            checkAuth(sub_search, false);
+            checkAuth(sub_search);
         }
     });
 });
