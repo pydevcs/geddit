@@ -161,7 +161,6 @@ function checkAuth(permalink) {
     }
     if (token != "") {
         setCookie("subreddit", permalink);
-        console.log(permalink);
         geddit(token, permalink);
     }
     else {
