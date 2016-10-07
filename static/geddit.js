@@ -137,7 +137,7 @@ function getAuth() {
     }
 }
 
-function checkAuth(kind, permalink, after) {
+function checkAuth(permalink, after) {
     var token=getCookie("token");
     permalink += ".json?limit=50";
     if (after) {
@@ -321,7 +321,7 @@ $(document).on("click", ".tab", function() {
 
 $(document).on("click", "#refresh", function() {
     var sub_search = $("#mid-box-rgt").data( "subreddit");
-    checkAuth("front", sub_search, false);
+    checkAuth(sub_search, false);
 });
 
 $(function() {
@@ -335,7 +335,7 @@ $(function() {
 $(function() {
     $("#mid-box-rgt").click(function(){
         var subreddit = $("#mid-box-rgt").data("subreddit");
-        checkAuth("front", subreddit, true);
+        checkAuth(subreddit, true);
     });
 });
 
@@ -343,7 +343,7 @@ $(function() {
     $("#top-magnify").click(function(){
         var sub_search = $("input.search").val();
         $("#mid-box-rgt").data( "subreddit", sub_search );
-        checkAuth("front", sub_search, false);
+        checkAuth(sub_search, false);
     });
 });
 
@@ -354,7 +354,7 @@ $(function(){
         if (space || enter) {
             var sub_search = $("input.search").val();
             $("#mid-box-rgt").data( "subreddit", sub_search );
-            checkAuth("front", sub_search, false);
+            checkAuth(sub_search, false);
         }
     });
 });
