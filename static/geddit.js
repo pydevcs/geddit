@@ -128,9 +128,7 @@ function refresh(endpoint) {
       var token = auth_resp.access_token;
       setCookie("token", token);
       console.log("Token " + token);
-	  geddit(token, endpoint);	      
-      }
-      
+      geddit(token, endpoint);
     });
 
     promise.fail(function() {
@@ -310,6 +308,8 @@ $(document).on("click", ".vote", function() {
       console.log("Voting Error")
       //refresh(endpoint);
     });
+
+
 });
 
 
