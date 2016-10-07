@@ -428,7 +428,7 @@ input.search:focus {
 	padding-top: 7px;
 	width:100%;
 	float: left;
-	border-bottom: 1px solid #d7d7d7;
+	/* border-bottom: 1px solid #d7d7d7; */
 
 }
 #content {
@@ -437,6 +437,8 @@ input.search:focus {
     overflow: auto;
     /* overflow-y: scroll; */
     float: left;
+    border-top: 1px solid #d7d7d7;
+
 }
 #main-list {
     margin-top: 8px;
