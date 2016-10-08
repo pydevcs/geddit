@@ -224,9 +224,10 @@ function renderContent(json, endpoint) {
         "&lt;img class='box vote' src='" + box(ob.data.likes) + "' width='14px' height='14px'&gt;" +
         "&lt;img class='star vote' src='" + star(ob.data.likes) + "' width='14px' height='13px'&gt;" +
         "&lt;img class='imprtnt' src='static/img/imprtnt.svg' width='14px' height='11px'&gt;" +
+        "&lt;a href='" + ob.data.url + "'&gt;" +
         "&lt;div class='mail-title' &gt;" +
-        ob.data.subreddit + "&lt;/div&gt;&lt;div class='mail-info'&gt;&lt;a href='" + ob.data.url + "'&gt;" +
-        ob.data.title + "&lt;/a&gt;&lt;/div&gt;" + 
+        ob.data.subreddit + "&lt;/div&gt;&lt;div class='mail-info'&gt;" +
+        ob.data.title + "&lt;/div&gt;&lt;/a&gt;" + 
         nsfwTag(ob.data.over_18) +
         "&lt;a class='mail-date' href='https://reddit.com" + ob.data.permalink +"' &gt;" +
         postdate + "&lt;/a&gt;&lt;/div&gt;";
