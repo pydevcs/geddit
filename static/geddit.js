@@ -173,9 +173,9 @@ function checkAuth(permalink) {
 	    if (code != undefined) {
 		    var state = getUrlParameter("state");
 	        if (state == getCookie("state")) {
-		        var onlyUrl = window.location.href.replace(window.location.search,'');
-		        //window.location.href =  window.location.href.split("?")[0]//"http://www.newurl.com";
-
+		        //var onlyUrl = window.location.href.replace(window.location.search,'');
+		        window.location.href =  window.location.href.split("?")[0];
+				console.log(window.location.href);
 	            getToken(code);
 	        }
 	        else {
