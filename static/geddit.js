@@ -332,6 +332,14 @@ $(document).on("click", "img#top-profile", function() {
     }
 });
 
+$(document).on("click", "#mid-box-gear", function() {
+    document.cookie = "state" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    document.cookie = "token" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    document.cookie = "refresh" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    document.cookie = "subreddit" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    console.log('Logged Out');
+});
+
 $(document).on("click", ".imprtnt", function(event) {
     console.log("Open iFrame");
 });
