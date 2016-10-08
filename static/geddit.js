@@ -168,7 +168,6 @@ function checkAuth(permalink) {
 	        else if (permalink[0] == "/") {
 		        url = "https://www.reddit.com" + permalink;
 	        }
-	        console.log(url);
             var promise = $.ajax({
                 url: url,
                 type: "GET",
