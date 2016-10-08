@@ -1,5 +1,5 @@
 "use strict";
-var redirect_uri = "https://pydevcs.github.io/geddit/auth.html";
+var redirect_uri = "https://pydevcs.github.io/geddit/";
 var client_id = "7NeqizMXmEZFKA";
 
 var more = "More<img src='static/img/lbl-arw-dwn.svg' width='7px' height='4px'>";
@@ -166,17 +166,22 @@ function checkAuth(permalink) {
         geddit(token, permalink);
     }
     else {
-        var random_str = randStr();
-        setCookie("state", random_str);
-        var auth_url = "https://ssl.reddit.com/api/v1/authorize?client_id=" +
-        client_id +
-        "&response_type=code&state=" +
-        random_str +
-        "&redirect_uri=" +
-        redirect_uri +
-        "&scope=edit history identity mysubreddits privatemessages read save submit subscribe vote" +
-        "&duration=permanent";
-        window.location.assign(auth_url);
+        if(document.location.search.length) {
+            // query string exists
+            getAuth();
+        } else {
+	        var random_str = randStr();
+	        setCookie("state", random_str);
+	        var auth_url = "https://ssl.reddit.com/api/v1/authorize?client_id=" +
+	        client_id +
+	        "&response_type=code&state=" +
+	        random_str +
+	        "&redirect_uri=" +
+	        redirect_uri +
+	        "&scope=edit history identity mysubreddits privatemessages read save submit subscribe vote" +
+	        "&duration=permanent";
+	        window.location.assign(auth_url);
+        }
     }
 }
 
