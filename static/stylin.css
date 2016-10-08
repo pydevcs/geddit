@@ -59,6 +59,7 @@ input.search:focus {
     margin-top:-1px;
     margin-right:14px;
     margin-left:19px;
+    cursor: pointer;
 }
 #top-notify {
 	float:right;
