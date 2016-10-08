@@ -75,6 +75,7 @@ input.search:focus {
 	margin-right:27px;
 	width:16px;
 	height:16px;
+	cursor: pointer;
 }
 #mid {
 	height:48px;
