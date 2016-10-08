@@ -100,7 +100,7 @@ function getToken(code) {
       console.log("Token " + token);
       var refresh_token = auth_resp.refresh_token;
       setCookie("refresh", refresh_token);
-      window.location.assign("https://pydevcs.github.io/geddit/");
+      //window.location.assign("https://pydevcs.github.io/geddit/");
     }).fail(function() {
       console.log("Access Token Error");
     });
