@@ -199,6 +199,7 @@ function geddit(token, endpoint){
       renderContent(json_data, endpoint);
     })
     .fail(function( jqXHR, textStatus, errorThrown) {
+	    console.log(jqXHR.statu);
         if (jqXHR.status == 404) {
             alert( "The page you requested does not exist" );
         }
