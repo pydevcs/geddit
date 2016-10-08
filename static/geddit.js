@@ -163,7 +163,7 @@ function checkAuth(permalink) {
         } else { //not logged in
 	        console.log(permalink);
 	        var url = getCookie("subreddit");
-	        if (!url) {
+	        if (!url || permalink == "/.json?limit=50") {
 		        url = "https://www.reddit.com/r/all.json?limit=50";
 	        }
             var promise = $.ajax({
