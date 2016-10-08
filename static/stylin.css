@@ -313,12 +313,13 @@ input.search:focus {
     border-top:1px solid #e5e5e5;
 }
 #btm {
-    height:60px;
+    height:51px;
     width: calc(100% - 202px);
     float: left;
     padding-top:9px;
     margin-right: 15px;
-    border-bottom: 1px solid #d7d7d7;
+    margin-bottom:8px;
+	border-bottom: 1px solid #d7d7d7;
 }
 @media (max-width: 1024px) {
     #btm {
@@ -424,9 +425,8 @@ input.search:focus {
     cursor: pointer;
 }
 #tab-spc {
-	height: 8px;
-	padding-top: 7px;
-	width:100%;
+	height: 1px;
+    width: calc(100% - 202px);
 	float: left;
 	border-bottom: 1px solid #d7d7d7;
 	background-color: #fff;
@@ -439,8 +439,6 @@ input.search:focus {
 }
 #main-list {
     margin-top: 8px;
-    float: left;
-
 }
 .mail-item {
 	height: 40px;
