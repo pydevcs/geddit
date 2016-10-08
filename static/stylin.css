@@ -433,9 +433,8 @@ input.search:focus {
 }
 #content {
     width: calc(100% - 202px);
-    height: calc(100vh - 175px);
+    height: calc(100vh - 108px);
     overflow: auto;
-    /* overflow-y: scroll; */
     float: left;
 }
 #main-list {
