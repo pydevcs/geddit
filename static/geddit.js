@@ -161,13 +161,17 @@ function checkAuth(permalink) {
                 }
             }
         } else { //not logged in
+	        var url = getCookie("subreddit");
+	        if (url == "") {
+		        url = "https://www.reddit.com/.json?limit=50";
+	        }
             var promise = $.ajax({
-                url: "https://www.reddit.com/.json?limit=50",
+                url: url,
                 type: "GET",
                 dataType: "json"
             })
             .done(function(json_data) {
-                renderContent(json_data, "/.json?limit=50");
+                renderContent(json_data, url);
             })
             //can possibly delete this . . ?
             .fail(function() {
