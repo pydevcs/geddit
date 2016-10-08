@@ -342,7 +342,7 @@ $(document).on("click", "#mid-box-gear", function() {
     document.cookie = "refresh" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = "subreddit" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     console.log('Logged Out');
-    window.location.assign(client_id);
+    window.location.assign(redirect_uri);
 });
 
 $(document).on("click", ".imprtnt", function(event) {
