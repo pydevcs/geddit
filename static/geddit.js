@@ -161,11 +161,11 @@ function checkAuth(permalink) {
                 }
             }
         } else { //not logged in
-	        console.log(permalink);
 	        var url = getCookie("subreddit");
 	        if (!url || permalink == "/.json?limit=50") {
 		        url = "https://www.reddit.com/r/all.json?limit=50";
 	        }
+	        console.log(url);
             var promise = $.ajax({
                 url: url,
                 type: "GET",
