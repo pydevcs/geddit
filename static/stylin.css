@@ -515,9 +515,11 @@ span#donate {
     -o-user-select: all;
     user-select: all;
 }
-
 span#donate::selection {
     background: RGBA(255, 86, 0, 0.1);
+}
+span#donate::-moz-selection {
+    background: RGBA(255, 86, 0, 0.1);	
 }
 
 /* FIX BORDER RADIUS 
