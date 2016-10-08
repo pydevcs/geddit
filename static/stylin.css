@@ -514,8 +514,13 @@ span#donate {
 }
 
 span#donate::-moz-selection, span#donate::selection {
-  color: gold;
-  background-color: RGBA(255, 86, 0, 0.1);
+    color: gold;
+    background-color: RGBA(255, 86, 0, 0.1);
+    -webkit-user-select: auto;
+    -khtml-user-select: auto;
+    -moz-user-select: auto;
+    -o-user-select: auto;
+    user-select: auto;
   
 }
 
