@@ -177,10 +177,17 @@ function checkAuth(permalink) {
             .done(function(json_data) {
                 renderContent(json_data, url);
             })
-            //can possibly delete this . . ?
-            .fail(function() {
-              alert("Error Connecting to Reddit");
+            .fail(function( jqXHR, textStatus, errorThrown) {
+	            console.log(jqXHR.statu);
+                if (jqXHR.status == 404) {
+                    alert( "The page you requested does not exist" );
+                }
+                else {
+                    console.log("Token Expired")
+                    refresh(endpoint);   
+                }
             });
+
             
         }
     }
@@ -208,7 +215,6 @@ function geddit(token, endpoint){
             refresh(endpoint);   
         }
     });
-
 }
 
 function renderContent(json, endpoint) {
