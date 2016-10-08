@@ -351,9 +351,8 @@ $(document).on("click", "#refresh", function() {
     var subreddit = getCookie("subreddit");
     subreddit = subreddit.split("&after=");
     subreddit = subreddit[0];
-    console.log("Subreddit " + subreddit)
     if (subreddit == "https://www.reddit.com/r/all.json?limit=50") {
-	    setCookie("subreddit");
+	    setCookie("subreddit", subreddit);
     }
     checkAuth(subreddit);
 });
