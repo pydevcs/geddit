@@ -173,6 +173,9 @@ function checkAuth(permalink) {
 	    if (code != undefined) {
 		    var state = getUrlParameter("state");
 	        if (state == getCookie("state")) {
+		        var onlyUrl = window.location.href.replace(window.location.search,'');
+		        //window.location.href =  window.location.href.split("?")[0]//"http://www.newurl.com";
+
 	            getToken(code);
 	        }
 	        else {
@@ -325,10 +328,16 @@ $(document).on("click", ".vote", function() {
 });
 
 
+
+
 $(document).on("click", ".imprtnt", function(event) {
     console.log("Open iFrame");
 });
 
+
+$(document).on("click", "img#top-profile", function() {
+    
+});
 
 $(document).on("click", ".mail-title", function(event) {
     var set_sub = "/r/" + $(this).text();
