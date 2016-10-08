@@ -212,6 +212,9 @@ function renderContent(json, endpoint) {
     setCookie("subreddit", endpoint);
     var main_list = "";
     $.each(json.data.children, function (i, ob) {
+	    if (ob.data.over_18) {
+		    return;
+	    }
         //var timeAgo = moment.unix(ob.data.created_utc).fromNow(false);   //false includes "ago"
         var postdate = moment.unix(ob.data.created_utc).format("MMM D");
         var post = "&lt;div class='mail-item' data-id='" + ob.data.name + "' data-dir='" + ob.data.likes + "'&gt;" +
