@@ -210,10 +210,11 @@ function renderContent(json, endpoint) {
     var after_removed = endpoint.split("&after=");
     endpoint = after_removed[0] + "&after=" + after;
     setCookie("subreddit", endpoint);
+    var NSFW = getCookie("NSFW");
     var main_list = "";
     $.each(json.data.children, function (i, ob) {
-	    if (ob.data.over_18) {
-		    return;
+        if (NSFW) {
+            if (ob.data.over_18) { return; }   
 	    }
         //var timeAgo = moment.unix(ob.data.created_utc).fromNow(false);   //false includes "ago"
         var postdate = moment.unix(ob.data.created_utc).format("MMM D");
@@ -339,11 +340,31 @@ $(document).on("click", "img#top-profile", function() {
     }
 });
 
+$(document).on("click", "img#top-apps", function() {
+    var NSFW = getCookie("NSFW");
+    if (NSFW) {
+        setCookie("NSFW", false);
+    } else {
+        setCookie("NSFW", true);
+    }
+    var subreddit = getCookie("subreddit");
+    subreddit = subreddit.split("&after=");
+    subreddit = subreddit[0];
+    if (subreddit == "https://www.reddit.com/r/all.json?limit=50") {
+	    setCookie("subreddit", subreddit);
+    }
+    checkAuth(subreddit);
+
+    //clean up above method
+	//window.location.assign(redirect_uri);
+});
+
 $(document).on("click", "#mid-box-gear", function() {
     document.cookie = "state" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = "token" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = "refresh" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = "subreddit" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    document.cookie = "NSFW" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     console.log('Logged Out');
     window.location.assign(redirect_uri);
 });
