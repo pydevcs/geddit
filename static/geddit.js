@@ -342,7 +342,7 @@ $(document).on("click", "img#top-profile", function() {
 
 $(document).on("click", "img#top-apps", function() {
     var NSFW = getCookie("NSFW");
-    if (NSFW) {
+    if (NSFW == true) {
         setCookie("NSFW", false);
     } else {
         setCookie("NSFW", true);
