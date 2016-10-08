@@ -305,11 +305,26 @@ $(document).on("click", ".vote", function() {
     vote($(this));
 });
 
+$(document).on("click", "img#top-profile", function() {
+    var token=getCookie("token");
+    if (token == "") {
+        var random_str = randStr();
+        setCookie("state", random_str);
+        var auth_url = "https://ssl.reddit.com/api/v1/authorize?client_id=" +
+        client_id +
+        "&response_type=code&state=" +
+        random_str +
+        "&redirect_uri=" +
+        redirect_uri +
+        "&scope=edit history identity mysubreddits privatemessages read save submit subscribe vote" +
+        "&duration=permanent";
+        window.location.assign(auth_url);
+    }
+});
 
 $(document).on("click", ".imprtnt", function(event) {
     console.log("Open iFrame");
 });
-
 
 $(document).on("click", ".mail-title", function(event) {
     var set_sub = "/r/" + $(this).text();
