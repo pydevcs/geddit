@@ -349,6 +349,9 @@ $(document).on("click", "#refresh", function() {
     subreddit = subreddit.split("&after=");
     subreddit = subreddit[0];
     console.log("Subreddit " + subreddit)
+    if (subreddit == "https://www.reddit.com/r/all.json?limit=50") {
+	    setCookie("subreddit");
+    }
     checkAuth(subreddit);
 });
 
