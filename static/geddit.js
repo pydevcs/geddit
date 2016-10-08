@@ -348,6 +348,7 @@ $(document).on("click", "#refresh", function() {
     var subreddit = getCookie("subreddit");
     subreddit = subreddit.split("&after=");
     subreddit = subreddit[0];
+    console.log("Subreddit " + subreddit)
     checkAuth(subreddit);
 });
 
