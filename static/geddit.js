@@ -136,23 +136,6 @@ function refresh(endpoint) {
     .fail(function() {
       console.log("Error Refreshing Token");
     });
-
-}
-
-function getAuth() {
-    var code = getUrlParameter("code");
-    var state = getUrlParameter("state");
-    if (code != "") {
-        if (state == getCookie("state")) {
-            getToken(code);
-        }
-        else {
-            console.log("State string does not match!");
-        }
-    }
-    else {
-        console.log("Access Code Error!");
-    }
 }
 
 function checkAuth(permalink) {
@@ -166,9 +149,17 @@ function checkAuth(permalink) {
         geddit(token, permalink);
     }
     else {
-        if(document.location.search.length) {
-            // query string exists
-            getAuth();
+        if(document.location.search.length) { // query string exists
+            var code = getUrlParameter("code");
+            var state = getUrlParameter("state");
+            if (code != "") {
+                if (state == getCookie("state")) {
+                    getToken(code);
+                }
+                else {
+                    console.log("State string does not match!");
+                }
+            }
         } else {
 	        var random_str = randStr();
 	        setCookie("state", random_str);
