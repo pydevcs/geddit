@@ -145,6 +145,7 @@ function checkAuth(permalink) {
         permalink += ".json?limit=50";
     }
     if (token != "") {
+	    $("img#top-profile").attr("title", "Logged In");
         setCookie("subreddit", permalink);
         geddit(token, permalink);
     }
