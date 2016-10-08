@@ -1,5 +1,5 @@
 "use strict";
-var redirect_uri = "https://pydevcs.github.io/geddit/auth.html";
+var redirect_uri = "https://pydevcs.github.io/geddit/";
 var client_id = "7NeqizMXmEZFKA";
 
 var more = "More<img src='static/img/lbl-arw-dwn.svg' width='7px' height='4px'>";
@@ -135,9 +135,10 @@ function refresh(endpoint) {
     .fail(function() {
       console.log("Error Refreshing Token");
     });
-
 }
 
+
+//delete
 function getAuth() {
     var code = getUrlParameter("code");
     var state = getUrlParameter("state");
@@ -153,6 +154,8 @@ function getAuth() {
         console.log("Access Code Error!");
     }
 }
+//end delete
+
 
 function checkAuth(permalink) {
     var token=getCookie("token");
@@ -165,17 +168,29 @@ function checkAuth(permalink) {
         geddit(token, permalink);
     }
     else {
-        var random_str = randStr();
-        setCookie("state", random_str);
-        var auth_url = "https://ssl.reddit.com/api/v1/authorize?client_id=" +
-        client_id +
-        "&response_type=code&state=" +
-        random_str +
-        "&redirect_uri=" +
-        redirect_uri +
-        "&scope=edit history identity mysubreddits privatemessages read save submit subscribe vote" +
-        "&duration=permanent";
-        window.location.assign(auth_url);
+	    var code = getUrlParameter("code");
+	    if (code != "") {
+		    var state = getUrlParameter("state");
+	        if (state == getCookie("state")) {
+	            getToken(code);
+	        }
+	        else {
+	            console.log("State string does not match!");
+	        }
+	    }
+	    else {
+	        var random_str = randStr();
+	        setCookie("state", random_str);
+	        var auth_url = "https://ssl.reddit.com/api/v1/authorize?client_id=" +
+	        client_id +
+	        "&response_type=code&state=" +
+	        random_str +
+	        "&redirect_uri=" +
+	        redirect_uri +
+	        "&scope=edit history identity mysubreddits privatemessages read save submit subscribe vote" +
+	        "&duration=permanent";
+	        window.location.assign(auth_url);
+	    }
     }
 }
 
