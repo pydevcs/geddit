@@ -252,7 +252,7 @@ function vote(div) {
     if (!token) {
 	    alert("You must be logged in to do that :]");
     }
-    break;
+    return;
     var data_id = div.parent().attr("data-id");
     var dir = div.parent().attr("data-dir");
     var cls = div.attr("class");
