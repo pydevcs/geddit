@@ -251,7 +251,7 @@ function vote(div) {
     var token=getCookie("token");
     if (!token) {
 	    alert("You must be logged in to do that :]");
-		return;
+        return;
     }
     var data_id = div.parent().attr("data-id");
     var dir = div.parent().attr("data-dir");
@@ -342,7 +342,7 @@ $(document).on("click", "#mid-box-gear", function() {
     document.cookie = "refresh" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = "subreddit" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     console.log('Logged Out');
-    window.location.assign(auth_url);
+    window.location.assign(client_id);
 });
 
 $(document).on("click", ".imprtnt", function(event) {
