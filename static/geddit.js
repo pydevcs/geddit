@@ -264,7 +264,6 @@ function voteTest(div) {
         }
         break;
     }
-
     var promise = $.ajax({
       url: "https://oauth.reddit.com/api/vote",
       beforeSend: function (request) {
@@ -273,9 +272,8 @@ function voteTest(div) {
       type: "POST",
       data: { id: data_id, dir: dir },
       dataType: "json"
-    });
-
-    promise.done(function(json_data) {
+    })
+    .done(function(json_data) {
 	    switch(cls) {
 	    case "star vote":
 	        if (dir == 0) {
@@ -300,9 +298,8 @@ function voteTest(div) {
 	        }
 	        break;
 	    }
-    });
-
-    promise.fail(function() {
+    })
+    .fail(function() {
       console.log("Voting Error")
       //refresh(endpoint);
     });
