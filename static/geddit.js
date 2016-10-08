@@ -169,7 +169,7 @@ function checkAuth(permalink) {
     }
     else {
 	    var code = getUrlParameter("code");
-	    if (code != "") {
+	    if (code != undefined) {
 		    var state = getUrlParameter("state");
 	        if (state == getCookie("state")) {
 	            getToken(code);
