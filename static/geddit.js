@@ -213,8 +213,10 @@ function renderContent(json, endpoint) {
     var NSFW = getCookie("NSFW");
     var main_list = "";
     $.each(json.data.children, function (i, ob) {
-        if (NSFW == true) {
-            if (ob.data.over_18) { return; }   
+        if (NSFW == "true") {
+            if (ob.data.over_18) {
+	            return;
+	        }   
 	    }
         //var timeAgo = moment.unix(ob.data.created_utc).fromNow(false);   //false includes "ago"
         var postdate = moment.unix(ob.data.created_utc).format("MMM D");
@@ -342,10 +344,10 @@ $(document).on("click", "img#top-profile", function() {
 
 $(document).on("click", "img#top-apps", function() {
     var NSFW = getCookie("NSFW");
-    if (NSFW == true) {
-        setCookie("NSFW", false);
+    if (NSFW == "true") {
+        setCookie("NSFW", "false");
     } else {
-        setCookie("NSFW", true);
+        setCookie("NSFW", "true");
     }
 	window.location.assign(redirect_uri);
 });
