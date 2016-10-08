@@ -509,7 +509,6 @@ span#donate {
     margin-top: 25px;
     margin-right: 20px;
 
-    background-color: RGBA(255, 86, 0, 0.1);
     -webkit-user-select: all;
     -khtml-user-select: all;
     -moz-user-select: all;
@@ -517,7 +516,7 @@ span#donate {
     user-select: all;
 }
 span#donate::-moz-selection, span#donate::selection {
-  
+      background-color: RGBA(255, 86, 0, 0.1);
 }
 
 /* FIX BORDER RADIUS 
