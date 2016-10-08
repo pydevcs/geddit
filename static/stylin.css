@@ -513,6 +513,13 @@ span#donate {
     margin-right: 20px;
 }
 
+span#donate::-moz-selection, span#donate::selection {
+  color: gold;
+  background-color: RGBA(255, 86, 0, 0.1);
+  
+}
+
+
 
 /* FIX BORDER RADIUS 
     -webkit-border-radius: 3px;
