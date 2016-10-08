@@ -198,10 +198,16 @@ function geddit(token, endpoint){
     .done(function(json_data) {
       renderContent(json_data, endpoint);
     })
-    .fail(function() {
-      console.log("Token Expired")
-      refresh(endpoint);
+    .fail(function( jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status == 404) {
+            alert( "The page you requested does not exist" );
+        }
+        else {
+            console.log("Token Expired")
+            refresh(endpoint);   
+        }
     });
+
 }
 
 function renderContent(json, endpoint) {
