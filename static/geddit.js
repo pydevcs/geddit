@@ -125,10 +125,15 @@ function refresh(endpoint) {
     });
 
     promise.done(function(auth_resp) {
+	  //move this into to the if loop below after test phase
       var token = auth_resp.access_token;
       setCookie("token", token);
       console.log("Token " + token);
-      geddit(token, endpoint);
+      if (typeof endpoint == "string") {
+	      geddit(token, endpoint);
+      } else {
+	      vote(endpoint);
+      }
     });
 
     promise.fail(function() {
@@ -186,13 +191,11 @@ function geddit(token, endpoint){
       },
       type: "GET",
       dataType: "json"
-    });
-
-    promise.done(function(json_data) {
+    })
+    .done(function(json_data) {
       renderContent(json_data, endpoint);
-    });
-
-    promise.fail(function() {
+    })
+    .fail(function() {
       console.log("Token Expired")
       refresh(endpoint);
     });
@@ -241,7 +244,7 @@ function box(likes) {
     }
 }
 
-function voteTest(div) {
+function vote(div) {
     var token=getCookie("token");
     var data_id = div.parent().attr("data-id");
     var dir = div.parent().attr("data-dir");
@@ -301,12 +304,12 @@ function voteTest(div) {
     })
     .fail(function() {
       console.log("Voting Error")
-      //refresh(endpoint);
+      refresh(div);
     });
 }
 
 $(document).on("click", ".vote", function() {
-    voteTest($(this));
+    vote($(this));
 });
 
 
