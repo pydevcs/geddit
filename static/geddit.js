@@ -251,8 +251,8 @@ function vote(div) {
     var token=getCookie("token");
     if (!token) {
 	    alert("You must be logged in to do that :]");
+		return;
     }
-    return;
     var data_id = div.parent().attr("data-id");
     var dir = div.parent().attr("data-dir");
     var cls = div.attr("class");
