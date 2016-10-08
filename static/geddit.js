@@ -93,17 +93,15 @@ function getToken(code) {
           "code" : code,
           "redirect_uri": redirect_uri
       }
-    });
-
-    promise.done(function(auth_resp) {
+    })
+    .done(function(auth_resp) {
       var token = auth_resp.access_token;
       setCookie("token", token);
       console.log("Token " + token);
       var refresh_token = auth_resp.refresh_token;
       setCookie("refresh", refresh_token);
-    });
-
-    promise.fail(function() {
+    })
+    .fail(function() {
       console.log("Access Token Error");
     });
 }
@@ -122,9 +120,8 @@ function refresh(endpoint) {
           "refresh_token" : code,
           "redirect_uri": redirect_uri
       }
-    });
-
-    promise.done(function(auth_resp) {
+    })
+    .done(function(auth_resp) {
 	  //move this into to the if loop below after test phase
       var token = auth_resp.access_token;
       setCookie("token", token);
@@ -134,9 +131,8 @@ function refresh(endpoint) {
       } else {
 	      vote(endpoint);
       }
-    });
-
-    promise.fail(function() {
+    })
+    .fail(function() {
       console.log("Error Refreshing Token");
     });
 
