@@ -165,6 +165,9 @@ function checkAuth(permalink) {
 	        if (!url || permalink == "/.json?limit=50") {
 		        url = "https://www.reddit.com/r/all.json?limit=50";
 	        }
+	        else if (permalink[0] == "/") {
+		        url = "https://www.reddit.com" + permalink;
+	        }
 	        console.log(url);
             var promise = $.ajax({
                 url: url,
@@ -356,17 +359,17 @@ $(document).on("click", "#refresh", function() {
 });
 
 $(function() {
-    $("input.search").focus(function(){
-        if (!$("input.search").val()) {
-            $("input.search").val("/r/");
-        }
+    $("#mid-box-rgt").click(function(){
+        var subreddit = getCookie("subreddit");
+        checkAuth(subreddit);
     });
 });
 
 $(function() {
-    $("#mid-box-rgt").click(function(){
-        var subreddit = getCookie("subreddit");
-        checkAuth(subreddit);
+    $("input.search").focus(function(){
+        if (!$("input.search").val()) {
+            $("input.search").val("/r/");
+        }
     });
 });
 
