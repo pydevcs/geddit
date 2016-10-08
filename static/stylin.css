@@ -318,7 +318,7 @@ input.search:focus {
     float: left;
     padding-top:9px;
     margin-right: 15px;
-    border-bottom: 1px solid #d7d7d7;	
+    border-bottom: 1px solid #d7d7d7;
 }
 @media (max-width: 1024px) {
     #btm {
@@ -439,6 +439,8 @@ input.search:focus {
 }
 #main-list {
     margin-top: 8px;
+    float: left;
+
 }
 .mail-item {
 	height: 40px;
