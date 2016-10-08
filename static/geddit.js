@@ -213,7 +213,7 @@ function renderContent(json, endpoint) {
     var NSFW = getCookie("NSFW");
     var main_list = "";
     $.each(json.data.children, function (i, ob) {
-        if (NSFW) {
+        if (NSFW == true) {
             if (ob.data.over_18) { return; }   
 	    }
         //var timeAgo = moment.unix(ob.data.created_utc).fromNow(false);   //false includes "ago"
