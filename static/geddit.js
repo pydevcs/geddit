@@ -239,7 +239,7 @@ function renderContent(json, endpoint) {
 
 function nsfwTag(filter) {
 	if (filter) {
-		return "<img class='attach' src='img/pprclp.svg' width='16px' height='8px'>";
+		return "<img class='attach' src='static/img/pprclp.svg' width='16px' height='8px'>";
 	}
 	else {
 		return "";
