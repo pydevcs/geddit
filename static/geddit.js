@@ -160,18 +160,20 @@ function checkAuth(permalink) {
                     console.log("State string does not match!");
                 }
             }
-        } else {
-	        var random_str = randStr();
-	        setCookie("state", random_str);
-	        var auth_url = "https://ssl.reddit.com/api/v1/authorize?client_id=" +
-	        client_id +
-	        "&response_type=code&state=" +
-	        random_str +
-	        "&redirect_uri=" +
-	        redirect_uri +
-	        "&scope=edit history identity mysubreddits privatemessages read save submit subscribe vote" +
-	        "&duration=permanent";
-	        window.location.assign(auth_url);
+        } else { //not logged in
+            var promise = $.ajax({
+                url: "https://www.reddit.com/.json?limit=50",
+                type: "GET",
+                dataType: "json"
+            })
+            .done(function(json_data) {
+                renderContent(json_data, "/.json?limit=50");
+            })
+            //can possibly delete this . . ?
+            .fail(function() {
+              alert("Error Connecting to Reddit");
+            });
+            
         }
     }
 }
