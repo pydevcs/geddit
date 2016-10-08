@@ -515,7 +515,7 @@ span#donate {
     -o-user-select: all;
     user-select: all;
 }
-span#donate ::-moz-selection, span#donate::selection {
+#donate::-moz-selection, #donate::selection {
       background: RGBA(255, 86, 0, 0.1);
 }
 
