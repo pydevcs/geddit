@@ -1,5 +1,5 @@
 "use strict";
-var redirect_uri = "https://pydevcs.github.io/geddit/auth/";
+var redirect_uri = "https://pydevcs.github.io/geddit/auth.html";
 var client_id = "7NeqizMXmEZFKA";
 
 var more = "More<img src='static/img/lbl-arw-dwn.svg' width='7px' height='4px'>";
