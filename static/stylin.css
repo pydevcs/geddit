@@ -357,7 +357,6 @@ input.search:focus {
 	border-left: none;
 	background-color: #fff;
 }
-
 /* add these styles dybamically */
 #tab-updates.tab.active {
 	border-top: 2px solid #e8b23f;
@@ -430,7 +429,6 @@ input.search:focus {
 	float: left;
 	border-bottom: 1px solid #d7d7d7;
 	background-color: #fff;
-
 }
 #content {
     width: calc(100% - 202px);
@@ -505,7 +503,6 @@ a:link, a:hover, a:visited {
 	text-decoration: none !important;
 	color: #000;
 }
-
 span#donate {
     font-size:10px;
     float:right;
