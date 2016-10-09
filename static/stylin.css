@@ -499,7 +499,7 @@ a.mail-item:visited {
 	/* margin-right: 20px; */
 	float: right;
 	text-align: right;
-	font-size: 10px;
+	font-size: 12px;
 }
 a:link, a:hover, a:visited {
 	text-decoration: none !important;
