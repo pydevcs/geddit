@@ -198,11 +198,6 @@ input.search:focus {
     /* position: relative; */
 }
 
-#test {
-    height: -webkit-calc(100% + 25px); 
-    height:    -moz-calc(100% + 25px); 
-    height:      -o-calc(100% + 25px);
-}
 #compose {
 	width: 115px;
 	height: 29px;
