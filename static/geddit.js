@@ -231,7 +231,7 @@ function renderContent(json, endpoint) {
 	    }
         //var timeAgo = moment.unix(ob.data.created_utc).fromNow(false);   //false includes "ago"
         //var postdate = moment.unix(ob.data.created_utc).format("MMM D");
-        var timeAgo = moment.utc(ob.data.created_utc);
+        var timeAgo = moment.unix(ob.data.created_utc);
         var localDate = moment(timeAgo).local().fromNow(false);
         var post = "&lt;div class='mail-item' data-id='" + ob.data.name + "' data-dir='" + ob.data.likes + "'&gt;" +
         "&lt;img class='box vote' src='" + box(ob.data.likes) + "' width='14px' height='14px'&gt;" +
