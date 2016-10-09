@@ -476,7 +476,7 @@ a.mail-item:visited {
 	cursor: pointer;
 }
 .mail-info {
-    width: calc(100% - 390px);
+    width: calc(100% - 380px);
 	margin-top: 10px;
 	margin-left: 25px;
 	float: left;
