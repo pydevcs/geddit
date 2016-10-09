@@ -495,7 +495,6 @@ a.mail-item:visited {
 	/* margin-right: 20px; */
 	float: right;
 	text-align: right;
-	letter-spacing: -1px;
 }
 a:link, a:hover, a:visited {
 	text-decoration: none !important;
