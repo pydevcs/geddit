@@ -176,7 +176,11 @@ function checkAuth(permalink) {
                 dataType: "json"
             })
             .done(function(json_data) {
-                renderContent(json_data, url);
+			    if (json_data.data.children.length == 0) {
+				    alert("This Subreddit Does Not Exist");
+			    } else {
+		            renderContent(json_data, url);		    
+			    }
             })
             .fail(function( jqXHR, textStatus, errorThrown) {
                 if (jqXHR.status == 404) {
