@@ -414,6 +414,7 @@ $(document).on("click", ".imprtnt", function(event) {
 
 $(document).on("click", ".mail-title", function(event) {
     var set_sub = "/r/" + $(this).text();
+    set_sub += ".json?limit=50";
     setCookie("subreddit", set_sub);
     checkAuth();
 });
