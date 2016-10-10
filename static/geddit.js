@@ -100,14 +100,6 @@ function getToken(code) {
       console.log("Token " + token);
       var refresh_token = auth_resp.refresh_token;
       setCookie("refresh", refresh_token);
-      var endpoint = getCookie("subreddit");
-      if (endpoint.includes("/r/all.json?limit=50")) {
-          endpoint = "/r.json?limit=50";
-          endpoint = endpoint.split("&after=");
-          endpoint = endpoint[0];
-          setCookie("subreddit", endpoint);
-
-      }
       //window.location.assign(redirect_uri);
       checkAuth();
     }).fail(function() {
@@ -184,7 +176,10 @@ function geddit(token){
 	    if (!token) {
             url = "https://www.reddit.com";
 	    } else {
-            url = "https://oauth.reddit.com";   
+            url = "https://oauth.reddit.com";
+            if (endpoint.includes("r/all.json?limit=50");) {
+			    endpoint = "/r.json?limit=50");
+            }
 	    }
     }
     setCookie("subreddit", endpoint);
@@ -437,8 +432,8 @@ $(document).on("click", ".tab", function() {
 $(document).on("click", "#refresh", function() {
     var subreddit = getCookie("subreddit");
     subreddit = subreddit.split("&after=");
-    subreddit = subreddit[0];
-    setCookie("subreddit", subreddit);
+    subreddit = subreddit[0]
+    setCookie("subreddit", subreddit)
     checkAuth();
 });
 
