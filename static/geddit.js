@@ -434,6 +434,9 @@ $(function() {
         if (!$("input.search").val()) {
             $("input.search").val("/r/");
         }
+        else {
+	        $("input.search").val("/r/");
+        }
     });
 });
 
