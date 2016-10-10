@@ -100,8 +100,8 @@ function getToken(code) {
       //console.log("Token " + token);
       var refresh_token = auth_resp.refresh_token;
       setCookie("refresh", refresh_token);
-      //window.location.assign(redirect_uri);
-      checkAuth();
+      //checkAuth();
+      window.location.assign(redirect_uri);
     }).fail(function() {
       console.log("Access Token Error");
     });
@@ -190,7 +190,7 @@ function geddit(token){
       beforeSend: function (request) {
           if (token) {
 	          request.setRequestHeader("Authorization", "bearer " + token);
-	          $("img#top-profile").attr("title", "Logged In");
+	          $("img#top-profile").attr("title", "Logged In"); //remove this
           }
       },
       type: "GET",
