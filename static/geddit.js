@@ -419,6 +419,7 @@ $(document).on("click", ".tab", function() {
 });
 
 $(document).on("click", "#refresh", function() {
+    setCookie("after", "");
     checkAuth();
 });
 
