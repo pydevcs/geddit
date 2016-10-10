@@ -208,7 +208,7 @@ function geddit(token, endpoint){
     })
     .done(function(json_data) {
 	    if (json_data.data.children.length == 0) {
-		    alert("Non-existent Subreddit");
+		    alert("This Subreddit Does Not Exist");
 	    } else {
             renderContent(json_data, endpoint);		    
 	    }
@@ -222,9 +222,9 @@ function geddit(token, endpoint){
             refresh(endpoint);   
         }
         else {
-	    console.log("geddit Error");
-	    console.log(textStatus);
-	    console.log(endpoint);
+        console.log("geddit Error");
+        console.log(errorThrown);
+        console.log(endpoint);
         }
     });
 }
