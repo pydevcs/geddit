@@ -167,21 +167,21 @@ function geddit(token){
     if (endpoint == "") {
         if (!token) {
             url = "https://www.reddit.com"
-	        endpoint = "/r/all";
+	        endpoint = "/r/all.json?limit=50";
         } else {
             url = "https://oauth.reddit.com"
-	        endpoint = "/"	        
+	        endpoint = "/.json?limit=50"	        
         }
     } else {
 	    if (!token) {
             url = "https://www.reddit.com";
+	    } else {
+            url = "https://oauth.reddit.com";   
 	    }
     }
     setCookie("subreddit", endpoint);
-    var str_tst = endpoint.includes(".json?limit=50");
-    if (!str_tst) {
-        endpoint += ".json?limit=50";
-    }
+    //var str_tst = endpoint.includes(".json?limit=50");
+    //if (!str_tst) { endpoint += ".json?limit=50"; }
     console.log(url + endpoint);
     var promise = $.ajax({
       url: url + endpoint,
@@ -474,8 +474,8 @@ function subSearch() {
         } else {
             $("input.search").val(""); 
         }
-        setCookie("subreddit", sub_search);
-        checkAuth(sub_search);   	    
+        setCookie("subreddit", sub_search + ".json?limit=50");
+        checkAuth();   	    
     }
 }
 
