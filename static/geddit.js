@@ -398,13 +398,13 @@ $(document).on("click", "img#top-apps", function() {
  });
 
 $(document).on("click", "#mid-box-gear", function() {
-    document.cookie = "state" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = "token" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = "refresh" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    document.cookie = "subreddit" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = "NSFW" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     console.log('Logged Out');
-    window.location.assign(redirect_uri);
+    $("img#top-profile").attr("title", "Log In");
+    checkAuth();
+    //window.location.assign(redirect_uri);
 });
 
 $(document).on("click", ".imprtnt", function(event) {
