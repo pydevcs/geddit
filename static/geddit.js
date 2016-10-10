@@ -220,9 +220,7 @@ function geddit(token){
 function renderContent(json, endpoint) {
     console.log(json.data);
     var after = json.data.after;
-    var after_removed = endpoint.split("&after=");
-    endpoint = after_removed[0] + "&after=" + after;
-    setCookie("subreddit", endpoint);
+	setCookie("after", after);
     var NSFW = getCookie("NSFW");
     var main_list = "";
     $.each(json.data.children, function (i, ob) {
@@ -392,7 +390,7 @@ $(document).on("click", "img#top-apps", function() {
     if (subreddit == "https://www.reddit.com/r/all.json?limit=50") {
 	    setCookie("subreddit", subreddit);
     }
-    checkAuth(subreddit);
+    checkAuth();
  });
 
 $(document).on("click", "#mid-box-gear", function() {
@@ -412,7 +410,7 @@ $(document).on("click", ".imprtnt", function(event) {
 $(document).on("click", ".mail-title", function(event) {
     var set_sub = "/r/" + $(this).text();
     setCookie("subreddit", set_sub);
-    checkAuth(set_sub);
+    checkAuth();
 });
 
 $(document).on("click", ".tab", function() {
@@ -421,19 +419,17 @@ $(document).on("click", ".tab", function() {
 });
 
 $(document).on("click", "#refresh", function() {
-    var subreddit = getCookie("subreddit");
-    subreddit = subreddit.split("&after=");
-    subreddit = subreddit[0];
-    if (subreddit == "https://www.reddit.com/r/all.json?limit=50") {
-	    setCookie("subreddit", subreddit);
-    }
-    checkAuth(subreddit);
+    checkAuth();
 });
 
 $(function() {
     $("#mid-box-rgt").click(function(){
         var subreddit = getCookie("subreddit");
-        checkAuth(subreddit);
+        var after = getCookie("after");
+        var after_removed = endpoint.split("&after=");
+        endpoint = after_removed[0] + "&after=" + after;
+        setCookie("subreddit", endpoint);
+        checkAuth();
     });
 });
 
@@ -490,6 +486,7 @@ $(document).on("click", "#delCookies", function(event) {
     document.cookie = "token" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = "refresh" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = "subreddit" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    document.cookie = "after" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     console.log('Reset Cookies');
 });
 
