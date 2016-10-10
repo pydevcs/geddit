@@ -403,7 +403,7 @@ $(document).on("click", "#mid-box-gear", function() {
     document.cookie = "token" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = "refresh" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = "NSFW" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    document.cookie = "subreddit" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    //document.cookie = "subreddit" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     console.log('Logged Out');
     $("img#top-profile").attr("title", "Log In");
     //setCookie("token", "");
