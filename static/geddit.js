@@ -478,7 +478,7 @@ $(function() {
 function subSearch() {
     var sub_search = $("input.search").val();
     $("input.search").off( "focusout" );
-    if (sub_search) {
+    if (sub_search || sub_search != "/r/") {
         if ($("input.search").is(":focus")) {
             $("input.search").val("/r/");
         } else {
