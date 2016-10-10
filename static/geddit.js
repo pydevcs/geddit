@@ -107,7 +107,7 @@ function getToken(code) {
     });
 }
 
-function refresh(endpoint) {
+function refresh(voteObj) {
     var code = getCookie("refresh");
     var promise = $.ajax({
       url: "https://ssl.reddit.com/api/v1/access_token",
@@ -127,10 +127,10 @@ function refresh(endpoint) {
       var token = auth_resp.access_token;
       setCookie("token", token);
       console.log("Token " + token);
-      if (typeof endpoint == "string") {
-	      geddit(token, endpoint);
+      if (!voteObj) {
+	      geddit(token);	      
       } else {
-	      vote(endpoint);
+	      vote(voteObj);
       }
     })
     .fail(function() {
@@ -138,22 +138,13 @@ function refresh(endpoint) {
     });
 }
 
-function checkAuth(permalink) {
+function checkAuth() {
     var token=getCookie("token");
-    if (permalink == "/") {
-        permalink = getCookie("subreddit");
-    }
-    var str_tst = permalink.includes(".json?limit=50");
-    if (!str_tst) {
-        permalink += ".json?limit=50";
-    }
     if (token != "") {
-	    $("img#top-profile").attr("title", "Logged In");
-        setCookie("subreddit", permalink);
-        geddit(token, permalink);
+        geddit(token);
     }
     else {
-        if(document.location.search.length) { // query string exists
+        if (document.location.search.length) { // query string exists
             var code = getUrlParameter("code");
             var state = getUrlParameter("state");
             if (code != "") {
@@ -164,51 +155,43 @@ function checkAuth(permalink) {
                     console.log("State string does not match!");
                 }
             }
-        } else { //not logged in
-	        var url = getCookie("subreddit");
-	        if (!url || permalink == "/.json?limit=50") {
-		        url = "https://www.reddit.com/r/all.json?limit=50";
-	        }
-	        else if (permalink[0] == "/") {
-		        url = "https://www.reddit.com" + permalink;
-	        }
-	        console.log("Not Logged In " + url)
-            var promise = $.ajax({
-                url: url,
-                type: "GET",
-                dataType: "json"
-            })
-            .done(function(json_data) {
-			    if (json_data.data.children.length == 0) {
-				    alert("This Subreddit Does Not Exist");
-			    } else {
-		            renderContent(json_data, url);		    
-			    }
-            })
-            .fail(function( jqXHR, textStatus, errorThrown) {
-                if (jqXHR.status == 404) {
-                    alert( "The page you requested does not exist" );
-                }
-                if (jqXHR.status == 401) {
-                    console.log("Token Expired")
-                    refresh(endpoint); 
-                }
-                else {
-	                console.log("checkAuth not logged in error");
-	                console.log(jqXHR.status);
-                    console.log(endpoint);
-                    //alert( "Something went wrong :/" );  
-                }
-            });
+        } else {
+            geddit(false);
         }
     }
 }
 
-function geddit(token, endpoint){
+function geddit(token){    
+    var endpoint = getCookie("subreddit");
+    var url;
+    if (endpoint == "") {
+        if (!token) {
+            url = "https://www.reddit.com"
+	        endpoint = "/r/all";
+        } else {
+            url = "https://oauth.reddit.com"
+	        endpoint = "/"	        
+        }
+    } else {
+	    if (!token) {
+            url = "https://www.reddit.com";
+	    }
+    }
+    setCookie("subreddit", endpoint);
+    var str_tst = endpoint.includes(".json?limit=50");
+    if (!str_tst) {
+        endpoint += ".json?limit=50";
+    }
     var promise = $.ajax({
       url: "https://oauth.reddit.com" + endpoint,
       beforeSend: function (request) {
-          request.setRequestHeader("Authorization", "bearer " + token);
+          if (token) {
+	          request.setRequestHeader("Authorization", "bearer " + token);
+	          $("img#top-profile").attr("title", "Logged In");
+	          console.log("Logged In")   
+          } else {
+	          console.log("Not Logged In")
+          }
       },
       type: "GET",
       dataType: "json"
@@ -226,7 +209,7 @@ function geddit(token, endpoint){
         }
         if (jqXHR.status == 401) {
             console.log("Token Expired")
-            refresh(endpoint);   
+            refresh(false);   
         }
         else {
         console.log("geddit Error");
@@ -306,7 +289,7 @@ function box(likes) {
 }
 
 function vote(div) {
-    var token=getCookie("token");
+    var token = getCookie("token");
     if (!token) {
 	    alert("You must be logged in to do that :]");
         return;
