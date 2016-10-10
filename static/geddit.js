@@ -357,7 +357,7 @@ $(document).on("click", ".vote", function() {
 });
 
 $(document).on("click", "a img#top-logo", function() {
-	setCookie("subreddit", "/.json?limit-50");
+	setCookie("subreddit", "/.json?limit=50");
 });
 
 $(document).on("click", "img#top-profile", function() {
