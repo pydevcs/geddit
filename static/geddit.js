@@ -178,7 +178,7 @@ function geddit(token){
         }
     } else {
 	    if (token && endpoint.includes("r/all.json?limit=50")) {
-	        endpoint = "/r.json?limit=50";
+	        endpoint = "/.json?limit=50";
 	    }
     }
     setCookie("subreddit", endpoint);
