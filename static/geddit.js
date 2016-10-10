@@ -499,3 +499,21 @@ function subSearch() {
         checkAuth(sub_search);   	    
     }
 }
+
+
+
+// remove test functions
+
+$(document).on("click", "#delCookies", function(event) {
+    document.cookie = "state" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    document.cookie = "token" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    document.cookie = "refresh" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    document.cookie = "subreddit" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    console.log('Reset Cookies');
+});
+
+$(document).on("click", "#testRefresh", function(event) {
+  setCookie("token", "blarb");
+  console.log('set test cookies');
+});
+// end remove test functions
