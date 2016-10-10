@@ -457,20 +457,7 @@ $(function() {
     });
 });
 
-$(function() {
-    $("input.search").focus(function(){
-        if (!$("input.search").val()) {
-            $("input.search").val("/r/");
-        }
-    });
 
-
-    $("input.search").focusout(function() {
-	    if ($("input.search").val() == "/r/") {
-            $("input.search").val("");	    
-	    }
-    })
-});
 
 $(function(){
     $(".srchbar").keypress(function (e) {
@@ -490,6 +477,7 @@ $(function() {
 
 function subSearch() {
     var sub_search = $("input.search").val();
+    $("input.search").off( "focusout" );
     if (sub_search) {
         if ($("input.search").is(":focus")) {
             $("input.search").val("/r/");
