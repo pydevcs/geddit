@@ -377,6 +377,10 @@ $(document).on("click", ".vote", function() {
     vote($(this));
 });
 
+$(document).on("cliick", "a img#top-logo", function() {
+	setCookie("subreddit", "/.json?limit-50");
+});
+
 $(document).on("click", "img#top-profile", function() {
     var token=getCookie("token");
     if (token == "") {
