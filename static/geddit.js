@@ -249,7 +249,7 @@ function renderContent(json, endpoint) {
 
 function selfTxt(post) {
     if (post != "") {
-        return "&lt;span&gt;" + span + "&lt;/span&gt;";  
+        return "&lt;span&gt;" + post + "&lt;/span&gt;";  
     } else {
 	    return post;
     }
