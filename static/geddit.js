@@ -181,9 +181,12 @@ function checkAuth(permalink) {
                 if (jqXHR.status == 404) {
                     alert( "The page you requested does not exist" );
                 }
-                else {
+                if (jqXHR.status == 401) {
                     console.log("Token Expired")
-                    refresh(endpoint);   
+                    refresh(endpoint); 
+                }
+                else {
+                    alert( "Something went wrong :/" );  
                 }
             });
         }
