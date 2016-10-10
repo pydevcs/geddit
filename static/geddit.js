@@ -360,6 +360,10 @@ $(document).on("click", "a img#top-logo", function() {
 	setCookie("subreddit", "/.json?limit=50");
 });
 
+$(document).on("click", "#inbox-txt", function() {
+	setCookie("subreddit", "/.json?limit=50");
+});
+
 $(document).on("click", "img#top-profile", function() {
     var token=getCookie("token");
     if (token == "") {
