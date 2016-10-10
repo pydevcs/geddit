@@ -476,7 +476,7 @@ $(function() {
 
 function subSearch() {
     var sub_search = $("input.search").val();
-    $("input.search").val("/r/");
+    $("input.search").val("");
     setCookie("subreddit", sub_search);
     checkAuth(sub_search);   
 }
