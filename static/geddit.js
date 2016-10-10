@@ -182,6 +182,7 @@ function geddit(token){
     if (!str_tst) {
         endpoint += ".json?limit=50";
     }
+    console.log(url + endpoint);
     var promise = $.ajax({
       url: url + endpoint,
       beforeSend: function (request) {
@@ -189,7 +190,6 @@ function geddit(token){
 	          request.setRequestHeader("Authorization", "bearer " + token);
 	          $("img#top-profile").attr("title", "Logged In");
           }
-          console.log(url + endpoint);
       },
       type: "GET",
       dataType: "json"
