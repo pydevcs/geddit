@@ -177,7 +177,7 @@ function geddit(token){
             url = "https://www.reddit.com";
 	    } else {
             url = "https://oauth.reddit.com";
-            if (endpoint.includes("r/all.json?limit=50");) {
+            if (endpoint.includes("r/all.json?limit=50")) {
 			    endpoint = "/r.json?limit=50");
             }
 	    }
