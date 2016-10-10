@@ -169,6 +169,7 @@ function checkAuth(permalink) {
 	        else if (permalink[0] == "/") {
 		        url = "https://www.reddit.com" + permalink;
 	        }
+	        console.log(url);
             var promise = $.ajax({
                 url: url,
                 type: "GET",
@@ -186,7 +187,10 @@ function checkAuth(permalink) {
                     refresh(endpoint); 
                 }
                 else {
-                    alert( "Something went wrong :/" );  
+	                console.log("checkAuth Error");
+	                console.log(jqXHR.status);
+                    console.log(endpoint);
+                    //alert( "Something went wrong :/" );  
                 }
             });
         }
@@ -209,9 +213,14 @@ function geddit(token, endpoint){
         if (jqXHR.status == 404) {
             alert( "The page you requested does not exist" );
         }
-        else {
+        if (jqXHR.status == 401) {
             console.log("Token Expired")
             refresh(endpoint);   
+        }
+        else {
+	    console.log("geddit Error");
+	    console.log(jqXHR.status);
+	    console.log(endpoint);
         }
     });
 }
