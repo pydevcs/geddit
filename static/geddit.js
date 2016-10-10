@@ -490,7 +490,7 @@ $(function() {
 
 function subSearch() {
     var sub_search = $("input.search").val();
-    if (!$("..").is(":focus")) {
+    if ($("input.search").is(":focus")) {
         $("input.search").val("/r/");
     } else {
         $("input.search").val(""); 
