@@ -409,8 +409,8 @@ $(document).on("click", "#mid-box-gear", function() {
     //setCookie("token", "");
     //setCookie("refresh", "");
     setCookie("subreddit", "/.json?limit=50");
-    checkAuth();
-    //window.location.assign(redirect_uri);
+    //checkAuth();
+    window.location.assign(redirect_uri);
 });
 
 $(document).on("click", ".imprtnt", function(event) {
