@@ -183,7 +183,7 @@ function geddit(token){
         endpoint += ".json?limit=50";
     }
     var promise = $.ajax({
-      url: "https://oauth.reddit.com" + endpoint,
+      url: url + endpoint,
       beforeSend: function (request) {
           if (token) {
 	          request.setRequestHeader("Authorization", "bearer " + token);
@@ -192,6 +192,7 @@ function geddit(token){
           } else {
 	          console.log("Not Logged In")
           }
+          console.log(url);
       },
       type: "GET",
       dataType: "json"
