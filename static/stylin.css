@@ -486,6 +486,7 @@ a.mail-item:visited {
 }
 .mail-info span {
 	color: #77777f;
+	font-weight: normal;
 }
 .attach {
 	float: left;
