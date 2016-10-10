@@ -140,6 +140,9 @@ function refresh(endpoint) {
 
 function checkAuth(permalink) {
     var token=getCookie("token");
+    if (permalink == "/") {
+        permalink = getCookie("subreddit");
+    }
     var str_tst = permalink.includes(".json?limit=50");
     if (!str_tst) {
         permalink += ".json?limit=50";
