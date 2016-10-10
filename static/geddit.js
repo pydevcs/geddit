@@ -207,7 +207,11 @@ function geddit(token, endpoint){
       dataType: "json"
     })
     .done(function(json_data) {
-      renderContent(json_data, endpoint);
+	    if (json_data.data.children.length == 0) {
+		    alert("Non-existent Subreddit");
+	    } else {
+            renderContent(json_data, endpoint);		    
+	    }
     })
     .fail(function( jqXHR, textStatus, errorThrown) {
         if (jqXHR.status == 404) {
@@ -452,14 +456,6 @@ $(function() {
     });
 });
 
-$(function() {
-    $("#top-magnify").click(function(){
-        var sub_search = $("input.search").val();
-        setCookie("subreddit", sub_search);
-        checkAuth(sub_search);
-    });
-});
-
 $(function(){
     $(".srchbar").keypress(function (e) {
         var space = (e.keyCode == 32);
@@ -469,5 +465,13 @@ $(function(){
             setCookie("subreddit", sub_search);
             checkAuth(sub_search);
         }
+    });
+});
+
+$(function() {
+    $("#top-magnify").click(function(){
+        var sub_search = $("input.search").val();
+        setCookie("subreddit", sub_search);
+        checkAuth(sub_search);
     });
 });
