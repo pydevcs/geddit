@@ -100,8 +100,12 @@ function getToken(code) {
       console.log("Token " + token);
       var refresh_token = auth_resp.refresh_token;
       setCookie("refresh", refresh_token);
-      window.location.assign(redirect_uri);
-      
+      var subreddit = getCookie("subreddit");
+      if (subreddit == "/r/all.json?limit=50") {
+	      setCookie("subreddit", "/r.json?limit=50");
+      }
+      //window.location.assign(redirect_uri);
+      checkAuth();
     }).fail(function() {
       console.log("Access Token Error");
     });
