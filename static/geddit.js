@@ -214,6 +214,7 @@ function geddit(token, endpoint){
 	    if (json_data.data.children.length == 0) {
 		    alert("This Subreddit Does Not Exist");
 	    } else {
+		    $("input.search").val("");
             renderContent(json_data, endpoint);		    
 	    }
     })
@@ -457,6 +458,7 @@ $(function() {
     });
 });
 
+
 $(function(){
     $(".srchbar").keypress(function (e) {
         var space = (e.keyCode == 32);
@@ -475,7 +477,7 @@ $(function() {
 
 function subSearch() {
     var sub_search = $("input.search").val();
-    $("input.search").val("");
+    $("input.search").val("/r/");
     setCookie("subreddit", sub_search);
     checkAuth(sub_search);   
 }
