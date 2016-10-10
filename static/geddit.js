@@ -449,14 +449,6 @@ $(function() {
     });
 });
 
-$(function() {
-    $("input.search").focus(function(){
-        if (!$("input.search").val()) {
-            $("input.search").val("/r/");
-        }
-    });
-});
-
 
 $(function() {
     $("input.search").focus(function(){
