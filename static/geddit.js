@@ -484,7 +484,7 @@ function subSearch() {
         } else {
             $("input.search").val(""); 
         }
-        setCookie("subreddit", sub_search);
-        checkAuth(sub_search);   	    
+    setCookie("subreddit", sub_search);
+    checkAuth(sub_search);   	    
     }
 }
