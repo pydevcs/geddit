@@ -188,9 +188,6 @@ function geddit(token){
           if (token) {
 	          request.setRequestHeader("Authorization", "bearer " + token);
 	          $("img#top-profile").attr("title", "Logged In");
-	          console.log("Logged In")   
-          } else {
-	          console.log("Not Logged In")
           }
           console.log(url);
       },
