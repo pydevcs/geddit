@@ -223,7 +223,7 @@ function geddit(token, endpoint){
         }
         else {
 	    console.log("geddit Error");
-	    console.log(textstatus);
+	    console.log(textStatus);
 	    console.log(endpoint);
         }
     });
