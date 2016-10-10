@@ -490,11 +490,13 @@ $(function() {
 
 function subSearch() {
     var sub_search = $("input.search").val();
-    if ($("input.search").is(":focus")) {
-        $("input.search").val("/r/");
-    } else {
-        $("input.search").val(""); 
+    if (sub_search) {
+        if ($("input.search").is(":focus")) {
+            $("input.search").val("/r/");
+        } else {
+            $("input.search").val(""); 
+        }
+        setCookie("subreddit", sub_search);
+        checkAuth(sub_search);   	    
     }
-    setCookie("subreddit", sub_search);
-    checkAuth(sub_search);   
 }
