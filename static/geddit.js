@@ -419,7 +419,10 @@ $(document).on("click", ".tab", function() {
 });
 
 $(document).on("click", "#refresh", function() {
-    setCookie("after", "");
+    var subreddit = getCookie("subreddit");
+    subreddit = subreddit.split("&after=");
+    subreddit = subreddit[0]
+    setCookie("subreddit", subreddit)
     checkAuth();
 });
 
