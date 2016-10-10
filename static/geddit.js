@@ -454,9 +454,6 @@ $(function() {
         if (!$("input.search").val()) {
             $("input.search").val("/r/");
         }
-        else {
-	        $("input.search").val("/r/");
-        }
     });
 });
 
@@ -465,17 +462,20 @@ $(function(){
         var space = (e.keyCode == 32);
         var enter = (e.keyCode == 13);
         if (space || enter) {
-            var sub_search = $("input.search").val();
-            setCookie("subreddit", sub_search);
-            checkAuth(sub_search);
+            subSearch();
         }
     });
 });
 
 $(function() {
     $("#top-magnify").click(function(){
-        var sub_search = $("input.search").val();
-        setCookie("subreddit", sub_search);
-        checkAuth(sub_search);
+        subSearch();
     });
 });
+
+function subSearch() {
+    var sub_search = $("input.search").val();
+    $("input.search").val("");
+    setCookie("subreddit", sub_search);
+    checkAuth(sub_search);   
+}
