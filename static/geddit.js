@@ -189,7 +189,7 @@ function geddit(token){
 	          request.setRequestHeader("Authorization", "bearer " + token);
 	          $("img#top-profile").attr("title", "Logged In");
           }
-          console.log(url);
+          console.log(url + endpoint);
       },
       type: "GET",
       dataType: "json"
