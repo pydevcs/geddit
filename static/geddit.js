@@ -425,10 +425,11 @@ $(document).on("click", "#refresh", function() {
 $(function() {
     $("#mid-box-rgt").click(function(){
         var subreddit = getCookie("subreddit");
+        subreddit += ".json?limit=50";
         var after = getCookie("after");
-        var after_removed = endpoint.split("&after=");
-        endpoint = after_removed[0] + "&after=" + after;
-        setCookie("subreddit", endpoint);
+        var after_removed = subreddit.split("&after=");
+        subreddit = after_removed[0] + "&after=" + after;
+        setCookie("subreddit", subreddit);
         checkAuth();
     });
 });
