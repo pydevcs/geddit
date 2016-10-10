@@ -214,7 +214,6 @@ function geddit(token, endpoint){
 	    if (json_data.data.children.length == 0) {
 		    alert("This Subreddit Does Not Exist");
 	    } else {
-		    $("input.search").val("");
             renderContent(json_data, endpoint);		    
 	    }
     })
