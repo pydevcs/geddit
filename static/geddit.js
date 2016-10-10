@@ -138,7 +138,7 @@ function refresh(endpoint) {
     });
 }
 
-	function checkAuth(permalink) {
+function checkAuth(permalink) {
     var token=getCookie("token");
     var str_tst = permalink.includes(".json?limit=50");
     if (!str_tst) {
@@ -186,8 +186,6 @@ function refresh(endpoint) {
                     refresh(endpoint);   
                 }
             });
-
-            
         }
     }
 }
@@ -229,10 +227,9 @@ function renderContent(json, endpoint) {
 	            return;
 	        }   
 	    }
-        //var timeAgo = moment.unix(ob.data.created_utc).fromNow(false);   //false includes "ago"
-        //var postdate = moment.unix(ob.data.created_utc).format("MMM D");
-        var timeAgo = moment.unix(ob.data.created_utc);
-        timeAgo = moment(timeAgo).local().fromNow(false); //get local time since posted
+        var postdate = moment.unix(ob.data.created_utc).format("MMM D");
+        //var timeAgo = moment.unix(ob.data.created_utc);
+        //timeAgo = moment(timeAgo).local().fromNow(false); //get local time since posted
         var post = "&lt;div class='mail-item' data-id='" + ob.data.name + "' data-dir='" + ob.data.likes + "'&gt;" +
         "&lt;img class='box vote' src='" + box(ob.data.likes) + "' width='14px' height='14px'&gt;" +
         "&lt;img class='star vote' src='" + star(ob.data.likes) + "' width='14px' height='13px'&gt;" +
@@ -242,7 +239,7 @@ function renderContent(json, endpoint) {
         ob.data.title + "&lt;/div&gt;&lt;/a&gt;" + 
         nsfwTag(ob.data.over_18) +
         "&lt;a class='mail-date' href='https://reddit.com" + ob.data.permalink +"' &gt;" +
-        timeAgo + "&lt;/a&gt;&lt;/div&gt;";
+        postdate + "&lt;/a&gt;&lt;/div&gt;";
         var rendered_link = $("<div />").html(post).text();
         main_list += rendered_link;
     });
@@ -252,7 +249,7 @@ function renderContent(json, endpoint) {
 
 function nsfwTag(filter) {
 	if (filter) {
-		return "&lt;img class='attach' src='static/img/pprclp.svg' width='16px' height='8px'&gt";
+		return "&lt;img class='attach' src='static/img/nsfw.svg' width='16px' height='8px'&gt";
 	}
 	else {
 		return "";
