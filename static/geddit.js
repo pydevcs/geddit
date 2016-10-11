@@ -247,7 +247,8 @@ function renderContent(json, endpoint) {
 function selfTxt(post) {
     if (post != "") {
 		//post = post.replace(/<\/?[^>]+(>|$)/g, "");
-		post = post.replace(/<\/?[^>]+>/gi, '')
+		post = post.replace(/<\/?[^>]+>/gi, '');
+		post = post.replace(/\n/ig, '');
 	    //post = post.replace("↵", "");
         return "&lt;span&gt; - " + post + "&lt;/span&gt;";  
     } else {
