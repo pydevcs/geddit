@@ -190,7 +190,7 @@ function geddit(token){
       dataType: "json"
     })
     .done(function(json_data) {
-        tabz(endpoint);
+        setTab(endpoint);
 	    if (json_data.data.children.length == 0) {
 		    alert("This Subreddit Does Not Exist");
 	    } else {
@@ -253,7 +253,7 @@ function selfTxt(post) {
     }
 }
 
-function tabz(endpoint) {
+function setTab(endpoint) {
     var tab = endpoint.split(".json?limit=50");
     var tabSplit = tab[0].split("/");
     var tabLen = tabSplit.length;
@@ -436,13 +436,19 @@ $(document).on("click", ".mail-title", function(event) {
 
 $(document).on("click", ".tab", function() {
     var endpoint = getCookie("subreddit");
-    endpoint = endpoint.split("&after=");
-    endpoint = endpoint[0];
-    var tabID = $(this).attr("id");
+	console.log(endpoint);
+    var tab = endpoint.split(".json?limit=50");
+    var tabSplit = tab[0].split("/");
+    var tabLen = tabSplit.length;
+    var tabID = tabSplit[tabLen - 1];
+    console.log(tabSplit);
+
+    tabID = $(this).attr("id");
     tabID.replace("tab-", "");
     endpoint += tabID;
-    setCookie("subreddit", endpoint)
-    checkAuth();
+    console.log(endpoint);
+    //setCookie("subreddit", endpoint)
+    //checkAuth();
 });
 
 $(document).on("click", "#refresh", function() {
