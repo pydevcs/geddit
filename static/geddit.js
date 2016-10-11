@@ -243,8 +243,11 @@ function renderContent(json, endpoint) {
     $("#content").scrollTop(0);
 }
 
+
 function selfTxt(post) {
     if (post != "") {
+	    post = post.replace("&lt;");
+	    post = post.replace("&gt;");
         return "&lt;span&gt; - " + post + "&lt;/span&gt;";  
     } else {
 	    return post;
