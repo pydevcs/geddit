@@ -409,9 +409,9 @@ $(document).on("click", "#mid-box-gear", function() {
     var endpoint = getCookie("subreddit");
     endpoint = endpoint.split("&after=");
     endpoint = endpoint[0];
-    console.log("Logg Out Endpoint: " + endpoint);
+    console.log("Log Out Endpoint: " + endpoint);
     setCookie("subreddit", endpoint);
-    //window.location.assign(redirect_uri);
+    window.location.assign(redirect_uri);
 });
 
 $(document).on("click", ".imprtnt", function(event) {
