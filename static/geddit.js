@@ -193,10 +193,13 @@ function geddit(token){
 	    switch (tabSplit) {
 	    case "hot":
 	        tabID = "#tab-primary";
+	        break;
 	    case "new":
 	        tabID = "#tab-social";
+	        break;
 	    case "top":
 	        tabID = "#tab-promo";
+	        break;
         }
     }
 	$(".tab").removeClass("active");
