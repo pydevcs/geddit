@@ -448,21 +448,8 @@ $(document).on("click", ".mail-title", function(event) {
 });
 
 $(document).on("click", ".tab", function() {
-    //$(".tab").removeClass("active");
-    //$(this).addClass("active");
-    var tabID = $(this).attr("id");
-    
-    var tab = getCookie("subreddit");
-    tab = tab.split(".json?limit=50");
-    tab = tab[0].split("/");    
-    var tabLen = tab.length;
-    
-    if (tab[tabLen - 1] == "") {
-	    console.log("None");    
-    }
-    else {
-	    console.log(tab[tabLen - 1]);    	    
-    }
+    var endpoint = getCookie("subreddit");
+    setTab(endpoint);
 });
 
 $(document).on("click", "#refresh", function() {
