@@ -246,9 +246,7 @@ function renderContent(json, endpoint) {
 
 function selfTxt(post) {
     if (post != "") {
-        var enc = encodeURI(post);
-        var dec = decodeURI(enc)
-
+		post = post.replace(/<\/?[^>]+(>|$)/g, "");
 	    //post = post.replace("↵", "");
         return "&lt;span&gt; - " + post + "&lt;/span&gt;";  
     } else {
