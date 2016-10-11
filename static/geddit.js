@@ -399,11 +399,10 @@ $(document).on("click", "#mid-box-gear", function() {
 
     console.log('Logged Out');
     $("img#top-profile").attr("title", "Log In");    
-    var endpoint = getCookie("subreddit");
-    endpoint = endpoint.split("&after=");
-    endpoint = endpoint[0];
-    console.log("Log Out Endpoint: " + endpoint);
-    setCookie("subreddit", endpoint);
+    //var endpoint = getCookie("subreddit");
+    //endpoint = endpoint.split("&after=");
+    //endpoint = endpoint[0];
+    //setCookie("subreddit", endpoint);
     window.location.assign(redirect_uri);
 });
 
