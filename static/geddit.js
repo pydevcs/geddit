@@ -442,7 +442,7 @@ $(document).on("click", ".mail-title", function(event) {
 $(document).on("click", ".tab", function() {
     //$(".tab").removeClass("active");
     //$(this).addClass("active");
-    var tabID = %(this).attr("id");
+    var tabID = $(this).attr("id");
     
     var tab = getCookie("subreddit");
     tab = tab.split(".json?limit=50");
