@@ -104,11 +104,9 @@ function getToken(code) {
       if (endpoint.includes("r/all.json?limit=50")) {
 	      endpoint = "/.json?limit=50";
 	      
-      } else {
-          endpoint = endpoint.split("&after=");
-          endpoint = endpoint[0];
-          setCookie("subreddit", endpoint);
       }
+      endpoint = endpoint.split("&after=");
+      endpoint = endpoint[0];
       setCookie("subreddit", endpoint);
       //window.location.assign(redirect_uri);
     }).fail(function() {
