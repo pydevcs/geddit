@@ -179,6 +179,7 @@ function geddit(token){
     }
     //console.log(endpoint);
     //setTab(endpoint);
+    tabz(endpoint);
     var promise = $.ajax({
       url: url + endpoint,
       beforeSend: function (request) {
