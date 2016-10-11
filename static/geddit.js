@@ -435,18 +435,20 @@ $(document).on("click", ".mail-title", function(event) {
 });
 
 $(document).on("click", ".tab", function() {
-    var endpoint = getCookie("subreddit");
-	console.log(endpoint);
-    var tab = endpoint.split(".json?limit=50");
-    var tabSplit = tab[0].split("/");
-    var tabLen = tabSplit.length;
-    var tabID = tabSplit[tabLen - 1];
-    console.log(tabSplit);
-
     tabID = $(this).attr("id");
     tabID = tabID.replace("tab-", "");
-    endpoint += tabID;
-    console.log(endpoint);
+    
+    var endpoint = getCookie("subreddit");
+	console.log(endpoint);
+	
+    var tab = endpoint.split(".json?limit=50");
+    console.log(tab);
+    var tabSplit = tab[0].split("/");
+    console.log(tabSplit);
+    
+    //var tabLen = tabSplit.length;
+    //var tabID = tabSplit[tabLen - 1];
+
     //setCookie("subreddit", endpoint)
     //checkAuth();
 });
