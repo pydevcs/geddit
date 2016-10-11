@@ -249,7 +249,7 @@ function selfTxt(post) {
 	    post = post.replace("&lt;", "");
 	    post = post.replace("&gt;", "");
 	    post = post.replace("↵", "");
-	    //console.log(post);
+	    console.log(post);
         return "&lt;span&gt; - " + post + "&lt;/span&gt;";  
     } else {
 	    return post;
