@@ -258,7 +258,7 @@ function setTab(endpoint) {
     var tabSplit = tab[0].split("/");
     var tabLen = tabSplit.length;
     var tabID = tabSplit[tabLen - 1];
-    console.log(tabSplit);
+    //console.log(tabSplit);
     switch (tabID) {
     default:
         tabID = "#tab-hot";
