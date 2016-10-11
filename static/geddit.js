@@ -188,6 +188,7 @@ function geddit(token){
     }
     if (tabLen == 4) {
 	    tabSplit = tabSplit[3];
+	    console.log(tabSplit);
 	    switch (tabSplit) {
 	    case "hot":
 	        tabID = "tab-primary";
