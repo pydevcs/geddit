@@ -108,7 +108,7 @@ function getToken(code) {
       endpoint = endpoint.split("&after=");
       endpoint = endpoint[0];
       setCookie("subreddit", endpoint);
-      //window.location.assign(redirect_uri);
+      window.location.assign(redirect_uri);
     }).fail(function() {
       console.log("Access Token Error");
     });
