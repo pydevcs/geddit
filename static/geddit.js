@@ -444,7 +444,7 @@ $(document).on("click", ".tab", function() {
     console.log(tabSplit);
 
     tabID = $(this).attr("id");
-    tabID.replace("tab-", "");
+    tabID = tabID.replace("tab-", "");
     endpoint += tabID;
     console.log(endpoint);
     //setCookie("subreddit", endpoint)
