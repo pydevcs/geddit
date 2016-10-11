@@ -283,7 +283,6 @@ function setTab(endpoint) {
 }
 
 function tabz(endpoint) {
-    console.log("Endpoint " + endpoint);
     var tab = endpoint.split(".json?limit=50");
     var tabSplit = tab[0].split("/");
     var tabLen = tabSplit.length;
@@ -292,7 +291,8 @@ function tabz(endpoint) {
 	    tabID = "hot";
     }
     console.log(tabID);
-
+	$(".tab").removeClass("active");
+    $(tabID).addClass("active");
 }
 
 function nsfwTag(filter) {
