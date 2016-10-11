@@ -449,7 +449,7 @@ $(document).on("click", ".mail-title", function(event) {
 
 $(document).on("click", ".tab", function() {
     var endpoint = getCookie("subreddit");
-    setTab(endpoint);
+    tabz(endpoint);
 });
 
 $(document).on("click", "#refresh", function() {
