@@ -177,7 +177,7 @@ function geddit(token){
 	    url = "https://oauth.reddit.com";
 	    //if (endpoint == "") { endpoint = "/.json?limit=50"; }
     }
-    console.log("Geddit " + url + endpoint);
+    console.log(endpoint.split("/"));
     var promise = $.ajax({
       url: url + endpoint,
       beforeSend: function (request) {
@@ -207,7 +207,6 @@ function geddit(token){
         else {
         console.log("geddit Error");
         console.log(errorThrown);
-        console.log(endpoint);
         }
     });
 }
@@ -384,10 +383,6 @@ $(document).on("click", "img#top-apps", function() {
     } else {
         setCookie("NSFW", "true");
     }
-    //var subreddit = getCookie("subreddit");
-    //subreddit = subreddit.split("&after=");
-    //subreddit = subreddit[0];
-    //if (subreddit == "https://www.reddit.com/r/all.json?limit=50") { setCookie("subreddit", subreddit); }
     checkAuth();
  });
 
