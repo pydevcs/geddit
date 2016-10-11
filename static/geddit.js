@@ -181,6 +181,7 @@ function geddit(token){
     var tab = endpoint.split(".json?limit=50");
     tab = tab[0].split("/");
     console.log(tab);
+    console.log(tab.length);
     var promise = $.ajax({
       url: url + endpoint,
       beforeSend: function (request) {
