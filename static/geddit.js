@@ -167,9 +167,8 @@ function geddit(token){
     var url;
     if (!token) {
 	    url = "https://www.reddit.com";
-	    if (endpoint == "") {
-		    endpoint = "/r/all.json?limit=50";
-	    }
+	    //if (endpoint == "") { endpoint = "/r/all.json?limit=50"; }
+	    if (!endpoint) { endpoint = "/r/all.json?limit=50"; }
     } else {
 	    url = "https://oauth.reddit.com";
 	    //if (endpoint == "") { endpoint = "/.json?limit=50"; }
@@ -213,7 +212,7 @@ function geddit(token){
 }
 
 function renderContent(json, endpoint) {
-    console.log(json.data);
+    //console.log(json.data);
     var after = json.data.after;
 	setCookie("after", after);
     var NSFW = getCookie("NSFW");
