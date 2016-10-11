@@ -100,7 +100,7 @@ function getToken(code) {
       var refresh_token = auth_resp.refresh_token;
       setCookie("refresh", refresh_token);
       var endpoint = getCookie("subreddit");
-      console.log("gettoken" + endpoint);
+      console.log("gettoken " + endpoint);
       if (endpoint.includes("r/all.json?limit=50")) {
 	      endpoint = "/.json?limit=50";
 	      
@@ -179,7 +179,7 @@ function geddit(token){
 	    url = "https://oauth.reddit.com";
 	    //if (endpoint == "") { endpoint = "/.json?limit=50"; }
     }
-    console.log(url + endpoint);
+    console.log("Geddit " + url + endpoint);
     var promise = $.ajax({
       url: url + endpoint,
       beforeSend: function (request) {
