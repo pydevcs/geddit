@@ -181,6 +181,7 @@ function geddit(token){
     var tab = endpoint.split(".json?limit=50");
     var tabSplit = tab[0].split("/");
     console.log(tab);
+    console.log(tabSplit);
     var tabLen = tabSplit.length;
     var tabID;
     if (tabLen == 2 || tabLen == 3){
