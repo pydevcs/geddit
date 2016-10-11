@@ -178,7 +178,7 @@ function geddit(token){
 	    //if (endpoint == "") { endpoint = "/.json?limit=50"; }
     }
     var tab = endpoint.split(".json?limit=50");
-    tab = tab.split("/");
+    //tab = tab.split("/");
     console.log(tab);
     var promise = $.ajax({
       url: url + endpoint,
