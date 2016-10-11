@@ -334,21 +334,21 @@ input.search:focus {
 	border-left: none;
 }
 
-#hot.tab.active {
+#tab-primary.tab.active {
 	border-top: 2px solid #737373;
 	border-right: 1px solid #d7d7d7;
 	border-bottom: 1px solid #fff;
 	border-left: 1px solid #d7d7d7;
 	background-color: #fff;
 }
-#new.tab.active {
+#tab-social.tab.active {
 	border-top: 2px solid #4c88e3;
 	border-right: 1px solid #d7d7d7;
 	border-bottom: 1px solid #fff;
 	border-left: none;
 	background-color: #fff;
 }
-#top.tab.active {
+#tab-promo.tab.active {
 	border-top: 2px solid #23a667;
 	border-right: 1px solid #d7d7d7;
 	border-bottom: 1px solid #fff;
@@ -377,34 +377,34 @@ input.search:focus {
     font-size: 14px;
     white-space: nowrap;
 }
-#hot .new-label span{
+#tab-primary .new-label span{
   position: relative;
   content: 'Primary';
 }
-#hot:hover .new-label span{
+#tab-primary:hover .new-label span{
   display: none;
 }
-#hot:hover .new-label:after{
+#tab-primary:hover .new-label:after{
   content: 'Hot';
 }
-#new .new-label span{
+#tab-social .new-label span{
   position: relative;
   content: 'Social';
 }
-#new:hover .new-label span{
+#tab-social:hover .new-label span{
   display: none;
 }
-#new:hover .new-label:after{
+#tab-social:hover .new-label:after{
   content: 'New';
 }
-#top .new-label span{
+#tab-promo .new-label span{
   position: relative;
   content: 'Promotional';
 }
-#top:hover .new-label span{
+#tab-promo:hover .new-label span{
   display: none;
 }
-#top:hover .new-label:after{
+#tab-promo:hover .new-label:after{
   content: 'Top';
 }
 /* END change text on hover */

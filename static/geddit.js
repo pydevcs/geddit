@@ -261,20 +261,20 @@ function setTab(endpoint) {
     var tabLen = tabSplit.length;
     var tabID;
     if (tabLen == 2 || tabLen == 3){
-	    tabID = "#hot";
+	    tabID = "#tab-primary";
     }
     if (tabLen == 4) {
 	    tabSplit = tabSplit[tabLen - 1];
 	    console.log(tabSplit);
 	    switch (tabSplit) {
 	    case "hot":
-	        tabID = "#hot";
+	        tabID = "#tab-primary";
 	        break;
 	    case "new":
-	        tabID = "#new";
+	        tabID = "#tab-social";
 	        break;
 	    case "top":
-	        tabID = "#top";
+	        tabID = "#tab-promo";
 	        break;
         }
     }
