@@ -181,7 +181,22 @@ function geddit(token){
     var tab = endpoint.split(".json?limit=50");
     tab = tab[0].split("/");
     console.log(tab);
-    console.log(tab.length);
+    var tabLen = tab.length;
+    var tabID;
+    if (tabLen == 2 || tabLen == 3){
+	    tabID = "tab-primary";
+    }
+    if (tabLen == 4){
+	    switch tab[4]:
+	    case "hot":
+	        tabID = "tab-primary";
+	    case "new":
+	        tabID = "tab-social";
+	    case "top":
+	        tabID = "tab-promo";
+    }
+	$(".tab").removeClass("active");
+    $(tabID).addClass("active");
     var promise = $.ajax({
       url: url + endpoint,
       beforeSend: function (request) {
