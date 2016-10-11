@@ -178,32 +178,7 @@ function geddit(token){
 	    //if (endpoint == "") { endpoint = "/.json?limit=50"; }
     }
     console.log(endpoint);
-    var tab = endpoint.split(".json?limit=50");
-    var tabSplit = tab[0].split("/");
-    console.log(tab);
-    console.log(tabSplit);
-    var tabLen = tabSplit.length;
-    var tabID;
-    if (tabLen == 2 || tabLen == 3){
-	    tabID = "#tab-primary";
-    }
-    if (tabLen == 4) {
-	    tabSplit = tabSplit[3];
-	    console.log(tabSplit);
-	    switch (tabSplit) {
-	    case "hot":
-	        tabID = "#tab-primary";
-	        break;
-	    case "new":
-	        tabID = "#tab-social";
-	        break;
-	    case "top":
-	        tabID = "#tab-promo";
-	        break;
-        }
-    }
-	$(".tab").removeClass("active");
-    $(tabID).addClass("active");
+    setTab(endpoint);
     var promise = $.ajax({
       url: url + endpoint,
       beforeSend: function (request) {
@@ -276,6 +251,35 @@ function selfTxt(post) {
     } else {
 	    return post;
     }
+}
+
+function setTab(endpoint) {
+    var tab = endpoint.split(".json?limit=50");
+    var tabSplit = tab[0].split("/");
+    console.log(tab);
+    console.log(tabSplit);
+    var tabLen = tabSplit.length;
+    var tabID;
+    if (tabLen == 2 || tabLen == 3){
+	    tabID = "#tab-primary";
+    }
+    if (tabLen == 4) {
+	    tabSplit = tabSplit[3];
+	    console.log(tabSplit);
+	    switch (tabSplit) {
+	    case "hot":
+	        tabID = "#tab-primary";
+	        break;
+	    case "new":
+	        tabID = "#tab-social";
+	        break;
+	    case "top":
+	        tabID = "#tab-promo";
+	        break;
+        }
+    }
+	$(".tab").removeClass("active");
+    $(tabID).addClass("active");
 }
 
 function nsfwTag(filter) {
