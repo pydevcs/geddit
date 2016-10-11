@@ -155,16 +155,13 @@ function checkAuth() {
                     console.log("State string does not match!");
                 }
             }
-        } else {
-            geddit(false);
-        }
+        } else { geddit(false); }
     }
 }
 
 function geddit(token){    
     var endpoint = getCookie("subreddit");
     var url;
-    
     if (!token) {
 	    url = "https://www.reddit.com";
     } else {
@@ -404,12 +401,17 @@ $(document).on("click", "#mid-box-gear", function() {
     document.cookie = "refresh" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = "NSFW" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     //document.cookie = "subreddit" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    console.log('Logged Out');
-    $("img#top-profile").attr("title", "Log In");
     //setCookie("token", "");
     //setCookie("refresh", "");
-    //setCookie("subreddit", "/.json?limit=50");
-    window.location.assign(redirect_uri);
+
+    console.log('Logged Out');
+    $("img#top-profile").attr("title", "Log In");    
+    var endpoint = getCookie("subreddit");
+    endpoint = endpoint.split("&after=");
+    endpoint = endpoint[0];
+    console.log("Logg Out Endpoint: " + endpoint);
+    setCookie("subreddit", endpoint);
+    //window.location.assign(redirect_uri);
 });
 
 $(document).on("click", ".imprtnt", function(event) {
@@ -426,6 +428,7 @@ $(document).on("click", ".mail-title", function(event) {
 $(document).on("click", ".tab", function() {
     $(".tab").removeClass("active");
     $(this).addClass("active");
+    alert($(this).attr('id'));
 });
 
 $(document).on("click", "#refresh", function() {
