@@ -286,9 +286,10 @@ function tabz(endpoint) {
     console.log("Endpoint " + endpoint);
     var tab = endpoint.split(".json?limit=50");
     var tabSplit = tab[0].split("/");
-    var tabLen = tab.length;
-    console.log(tab);
-    console.log(tabSplit);
+    var tabLen = tabSplit.length;
+    var tabID = tabSplit[tabLen - 1];
+    console.log(tabID);
+
 }
 
 function nsfwTag(filter) {
