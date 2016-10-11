@@ -442,7 +442,7 @@ $(function() {
         var after = getCookie("after");
         //var after_removed = subreddit.split("&after=");
         //subreddit = after_removed[0] + "&after=" + after;
-        setCookie("subreddit", subreddit + after);
+        setCookie("subreddit", subreddit + "&after=" + after);
         checkAuth();
     });
 });
