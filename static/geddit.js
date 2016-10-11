@@ -97,10 +97,13 @@ function getToken(code) {
     .done(function(auth_resp) {
       var token = auth_resp.access_token;
       setCookie("token", token);
-      //console.log("Token " + token);
       var refresh_token = auth_resp.refresh_token;
       setCookie("refresh", refresh_token);
-      //checkAuth();
+      var endpoint = getCookie("subreddit");
+      if (endpoint.includes("r/all.json?limit=50")) {
+	      endpoint = "/.json?limit=50";
+	      setCookie("subreddit", endpoint);
+      }
       window.location.assign(redirect_uri);
     }).fail(function() {
       console.log("Access Token Error");
@@ -164,19 +167,12 @@ function geddit(token){
     var url;
     if (!token) {
 	    url = "https://www.reddit.com";
+	    if (endpoint == "") {
+		    endpoint = "/r/all.json?limit=50";
+	    }
     } else {
 	    url = "https://oauth.reddit.com";
-    }
-    if (endpoint == "") {
-        if (!token) {
-	        endpoint = "/r/all.json?limit=50";
-        } else {
-	        endpoint = "/.json?limit=50";
-        }
-    } else {
-	    if (token && endpoint.includes("r/all.json?limit=50")) {
-	        endpoint = "/.json?limit=50";
-	    }
+	    //if (endpoint == "") { endpoint = "/.json?limit=50"; }
     }
     setCookie("subreddit", endpoint);
     //var str_tst = endpoint.includes(".json?limit=50");
