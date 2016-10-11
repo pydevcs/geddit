@@ -173,9 +173,10 @@ function geddit(token){
 	    url = "https://oauth.reddit.com";
 	    //if (endpoint == "") { endpoint = "/.json?limit=50"; }
     }
+    console.log("Pre-after" + endpoint);
+    endpoint = endpoint.split("&after=");
+    endpoint = endpoint[0];
     setCookie("subreddit", endpoint);
-    //var str_tst = endpoint.includes(".json?limit=50");
-    //if (!str_tst) { endpoint += ".json?limit=50"; }
     console.log(url + endpoint);
     var promise = $.ajax({
       url: url + endpoint,
