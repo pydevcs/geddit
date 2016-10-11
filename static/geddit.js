@@ -187,7 +187,7 @@ function geddit(token){
 	    tabID = "tab-primary";
     }
     if (tabLen == 4){
-	    switch tab[4]:
+	    switch tab[3]:
 	    case "hot":
 	        tabID = "tab-primary";
 	    case "new":
