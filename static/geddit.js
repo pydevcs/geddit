@@ -100,11 +100,17 @@ function getToken(code) {
       var refresh_token = auth_resp.refresh_token;
       setCookie("refresh", refresh_token);
       var endpoint = getCookie("subreddit");
+      console.log(endpoint);
       if (endpoint.includes("r/all.json?limit=50")) {
 	      endpoint = "/.json?limit=50";
-	      setCookie("subreddit", endpoint);
+	      
+      } else {
+          //endpoint = endpoint.split("&after=");
+          //endpoint = endpoint[0];
+          //setCookie("subreddit", endpoint);
       }
-      window.location.assign(redirect_uri);
+      setCookie("subreddit", endpoint);
+      //window.location.assign(redirect_uri);
     }).fail(function() {
       console.log("Access Token Error");
     });
