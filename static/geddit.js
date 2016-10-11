@@ -293,7 +293,7 @@ function tabz(endpoint) {
     }
     console.log(tabID);
 	$(".tab").removeClass("active");
-    $(tabID).addClass("active");
+    $("#tab-" + tabID).addClass("active");
 }
 
 function nsfwTag(filter) {
