@@ -289,12 +289,22 @@ function tabz(endpoint) {
     var tabLen = tabSplit.length;
     var tabID = tabSplit[tabLen - 1];
     console.log(tabSplit);
-    if (tabID == "") {
-	    tabID = "hot";
+    switch (tabID) {
+    default:
+        tabID = "#tab-hot";
+        break;
+    case "hot":
+        tabID = "#tab-hot";
+        break;
+    case "new":
+        tabID = "#tab-new";
+        break;
+    case "top":
+        tabID = "#tab-top";
+        break;
     }
-    console.log(tabID);
 	$(".tab").removeClass("active");
-    $("#tab-" + tabID).addClass("active");
+    $(tabID).addClass("active");
 }
 
 function nsfwTag(filter) {
