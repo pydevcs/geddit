@@ -187,7 +187,7 @@ function geddit(token){
 	    tabID = "tab-primary";
     }
     if (tabLen == 4){
-	    switch tab[3]:
+	    switch (tab[3]):
 	    case "hot":
 	        tabID = "tab-primary";
 	    case "new":
@@ -431,7 +431,6 @@ $(document).on("click", ".mail-title", function(event) {
 $(document).on("click", ".tab", function() {
     $(".tab").removeClass("active");
     $(this).addClass("active");
-    alert($(this).attr('id'));
 });
 
 $(document).on("click", "#refresh", function() {
