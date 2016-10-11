@@ -232,7 +232,7 @@ function renderContent(json, endpoint) {
         "&lt;img class='imprtnt' src='static/img/imprtnt.svg' width='14px' height='11px'&gt;" +
         "&lt;div class='mail-title' &gt;" +
         ob.data.subreddit + "&lt;/div&gt;&lt;a href='" + ob.data.url + "'&gt;&lt;div class='mail-info'&gt;" +
-        ob.data.title + selfTxt(ob.data.selftext_html) + "&lt;/div&gt;&lt;/a&gt;" + 
+        ob.data.title  + "&lt;/div&gt;&lt;/a&gt;" + 
         nsfwTag(ob.data.over_18) +
         "&lt;a class='mail-date' href='https://reddit.com" + ob.data.permalink +"' &gt;" +
         postdate + "&lt;/a&gt;&lt;/div&gt;";
@@ -246,10 +246,6 @@ function renderContent(json, endpoint) {
 
 function selfTxt(post) {
     if (post != "") {
-		//post = post.replace(/<\/?[^>]+(>|$)/g, "");
-		post = post.replace(/<\/?[^>]+>/gi, '');
-		post = post.replace(/\n/ig, '');
-	    //post = post.replace("↵", "");
         return "&lt;span&gt; - " + post + "&lt;/span&gt;";  
     } else {
 	    return post;
