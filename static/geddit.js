@@ -184,18 +184,18 @@ function geddit(token){
     var tabLen = tabSplit.length;
     var tabID;
     if (tabLen == 2 || tabLen == 3){
-	    tabID = "tab-primary";
+	    tabID = "#tab-primary";
     }
     if (tabLen == 4) {
 	    tabSplit = tabSplit[3];
 	    console.log(tabSplit);
 	    switch (tabSplit) {
 	    case "hot":
-	        tabID = "tab-primary";
+	        tabID = "#tab-primary";
 	    case "new":
-	        tabID = "tab-social";
+	        tabID = "#tab-social";
 	    case "top":
-	        tabID = "tab-promo";
+	        tabID = "#tab-promo";
         }
     }
 	$(".tab").removeClass("active");
