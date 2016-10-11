@@ -179,15 +179,16 @@ function geddit(token){
     }
     console.log(endpoint);
     var tab = endpoint.split(".json?limit=50");
-    tab = tab[0].split("/");
+    var tabSplit = tab[0].split("/");
     console.log(tab);
-    var tabLen = tab.length;
+    var tabLen = tabSplit.length;
     var tabID;
     if (tabLen == 2 || tabLen == 3){
 	    tabID = "tab-primary";
     }
-    if (tabLen == 4){
-	    switch (tab[3]):
+    if (tabLen == 4) {
+	    tabSplit = tabSplit[3];
+	    switch tabSplit:
 	    case "hot":
 	        tabID = "tab-primary";
 	    case "new":
