@@ -282,6 +282,14 @@ function setTab(endpoint) {
     $(tabID).addClass("active");
 }
 
+function tabz(endpoint) {
+    console.log("Endpoint " + endpoint);
+    var tab = endpoint.split(".json?limit=50");
+    var tabSplit = tab[0].split("/");
+    console.log(tab);
+    console.log(tabSplit);
+}
+
 function nsfwTag(filter) {
 	if (filter) {
 		return "&lt;img class='attach' src='static/img/nsfw.svg' width='16px' height='8px'&gt";
