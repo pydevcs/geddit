@@ -188,13 +188,14 @@ function geddit(token){
     }
     if (tabLen == 4) {
 	    tabSplit = tabSplit[3];
-	    switch tabSplit:
+	    switch tabSplit {
 	    case "hot":
 	        tabID = "tab-primary";
 	    case "new":
 	        tabID = "tab-social";
 	    case "top":
 	        tabID = "tab-promo";
+        }
     }
 	$(".tab").removeClass("active");
     $(tabID).addClass("active");
