@@ -173,10 +173,6 @@ function geddit(token){
 	    url = "https://oauth.reddit.com";
 	    //if (endpoint == "") { endpoint = "/.json?limit=50"; }
     }
-    console.log("Pre-after" + endpoint);
-    endpoint = endpoint.split("&after=");
-    endpoint = endpoint[0];
-    setCookie("subreddit", endpoint);
     console.log(url + endpoint);
     var promise = $.ajax({
       url: url + endpoint,
@@ -190,6 +186,10 @@ function geddit(token){
       dataType: "json"
     })
     .done(function(json_data) {
+        endpoint = endpoint.split("&after=");
+        endpoint = endpoint[0];
+        setCookie("subreddit", endpoint);
+
 	    if (json_data.data.children.length == 0) {
 		    alert("This Subreddit Does Not Exist");
 	    } else {
