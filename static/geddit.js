@@ -435,7 +435,7 @@ $(document).on("click", ".mail-title", function(event) {
 });
 
 $(document).on("click", ".tab", function() {
-    tabID = $(this).attr("id");
+    var tabID = $(this).attr("id");
     tabID = tabID.replace("tab-", "");
     
     var endpoint = getCookie("subreddit");
