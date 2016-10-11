@@ -247,8 +247,10 @@ function renderContent(json, endpoint) {
 function selfTxt(post) {
     if (post != "") {
 
-        post = post.replace("&lt;", "<", "")
-                   .replace("&gt;", ">", "");
+
+        var enc = encodeURI(post);
+        var dec = decodeURI(enc)
+
 	    //post = post.replace("↵", "");
 	    console.log(post);
         return "&lt;span&gt; - " + post + "&lt;/span&gt;";  
