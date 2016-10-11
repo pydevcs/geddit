@@ -439,9 +439,9 @@ $(function() {
     $("#mid-box-rgt").click(function(){
         var subreddit = getCookie("subreddit");
         var after = getCookie("after");
-        var after_removed = subreddit.split("&after=");
-        subreddit = after_removed[0] + "&after=" + after;
-        setCookie("subreddit", subreddit);
+        //var after_removed = subreddit.split("&after=");
+        //subreddit = after_removed[0] + "&after=" + after;
+        //setCookie("subreddit", subreddit);
         checkAuth();
     });
 });
