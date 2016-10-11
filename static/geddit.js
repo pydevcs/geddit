@@ -392,6 +392,10 @@ $(document).on("click", "#mid-box-gear", function() {
     document.cookie = "refresh" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = "NSFW" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     $("img#top-profile").attr("title", "Log In");    
+    var endpoint = getCookie("subreddit");
+    endpoint = endpoint.split("&after=");
+    endpoint = endpoint[0];
+    setCookie("subreddit", endpoint);
     window.location.assign(redirect_uri);
 });
 
@@ -413,10 +417,10 @@ $(document).on("click", ".tab", function() {
 });
 
 $(document).on("click", "#refresh", function() {
-    var subreddit = getCookie("subreddit");
-    subreddit = subreddit.split("&after=");
-    subreddit = subreddit[0]
-    setCookie("subreddit", subreddit)
+    var endpoint = getCookie("subreddit");
+    endpoint = endpoint.split("&after=");
+    endpoint = endpoint[0];
+    setCookie("subreddit", endpoint)
     checkAuth();
 });
 
