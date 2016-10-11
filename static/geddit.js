@@ -264,7 +264,7 @@ function setTab(endpoint) {
 	    tabID = "#tab-primary";
     }
     if (tabLen == 4) {
-	    tabSplit = tabSplit[3];
+	    tabSplit = tabSplit[tabLen - 1];
 	    console.log(tabSplit);
 	    switch (tabSplit) {
 	    case "hot":
