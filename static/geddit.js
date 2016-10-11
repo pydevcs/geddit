@@ -288,6 +288,9 @@ function tabz(endpoint) {
     var tabSplit = tab[0].split("/");
     var tabLen = tabSplit.length;
     var tabID = tabSplit[tabLen - 1];
+    if (tabID == "") {
+	    tabID = "hot";
+    }
     console.log(tabID);
 
 }
