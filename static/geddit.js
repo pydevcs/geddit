@@ -444,10 +444,10 @@ $(document).on("click", ".tab", function() {
     var tabSplit = tab[0].split("/");
     var tabLen = tabSplit.length;
     console.log(tabSplit);
-    console.log(tabSplit[tabLen - 1]);
+    var tab_ID = tabSplit[tabLen - 1];
+    if (!tab_ID) { tab_ID = "hot"} 
+    console.log(tab_ID);
     
-    //var tabID = tabSplit[tabLen - 1];
-
     //setCookie("subreddit", endpoint)
     //checkAuth();
 });
