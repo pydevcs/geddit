@@ -171,8 +171,7 @@ function geddit(token){
     var url;
     if (!token) {
 	    url = "https://www.reddit.com";
-	    //if (endpoint == "") { endpoint = "/r/all.json?limit=50"; }
-	    if (!endpoint) { endpoint = "/r/all.json?limit=50"; }
+	    if (endpoint = "") { endpoint = "/r/all.json?limit=50"; }
     } else {
 	    url = "https://oauth.reddit.com";
 	    //if (endpoint == "") { endpoint = "/.json?limit=50"; }
