@@ -100,10 +100,8 @@ function getToken(code) {
       var refresh_token = auth_resp.refresh_token;
       setCookie("refresh", refresh_token);
       var endpoint = getCookie("subreddit");
-      console.log("gettoken " + endpoint);
       if (endpoint.includes("r/all.json?limit=50")) {
-	      endpoint = "/.json?limit=50";
-	      
+	      endpoint = "/.json?limit=50";   
       }
       endpoint = endpoint.split("&after=");
       endpoint = endpoint[0];
@@ -410,6 +408,7 @@ $(document).on("click", "img#top-apps", function() {
     checkAuth();
  });
 
+//log out function
 $(document).on("click", "#mid-box-gear", function() {
     document.cookie = "token" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = "refresh" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
@@ -443,9 +442,10 @@ $(document).on("click", ".tab", function() {
     var tab = endpoint.split(".json?limit=50");
     console.log(tab);
     var tabSplit = tab[0].split("/");
+    var tabLen = tabSplit.length;
     console.log(tabSplit);
+    console.log(tabSplit[tabLen - 1]);
     
-    //var tabLen = tabSplit.length;
     //var tabID = tabSplit[tabLen - 1];
 
     //setCookie("subreddit", endpoint)
