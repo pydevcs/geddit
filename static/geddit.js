@@ -445,7 +445,7 @@ $(document).on("click", ".tab", function() {
     var tabLen = tabSplit.length;
     console.log(tabSplit);
     var tab_ID = tabSplit[tabLen - 1];
-    if (!tab_ID) { tab_ID = "hot"} 
+    if (tab_ID != "top" || tab_ID != "new") { tab_ID = "hot"} 
     console.log(tab_ID);
     
     //setCookie("subreddit", endpoint)
