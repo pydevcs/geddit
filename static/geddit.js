@@ -377,12 +377,21 @@ $(document).on("click", ".vote", function() {
 });
 
 $(document).on("click", "a img#top-logo", function() {
-	setCookie("subreddit", "/.json?limit=50");
+	frontPage();
 });
 
 $(document).on("click", "#inbox-txt", function() {
-	setCookie("subreddit", "/.json?limit=50");
+	frontPage();
 });
+
+function frontPage() {
+	var token = getCookie("token");
+	if (!token) {
+        setCookie("subreddit", "/all.json?limit=50");
+	} else {
+        setCookie("subreddit", "/.json?limit=50");		
+	}
+}
 
 $(document).on("click", "img#top-profile", function() {
     var token=getCookie("token");
