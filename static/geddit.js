@@ -169,7 +169,10 @@ function geddit(token){
     var url;
     if (!token) {
 	    url = "https://www.reddit.com";
-	    if (endpoint == false || endpoint == "") { endpoint = "/r/all.json?limit=50"; }
+	    if (endpoint == false || endpoint == "") {
+	        endpoint = "/r/all.json?limit=50";
+	        setCookie("subreddit", endpoint);
+	    }
     } else {
 	    url = "https://oauth.reddit.com";
 	    //if (endpoint == "") { endpoint = "/.json?limit=50"; }
