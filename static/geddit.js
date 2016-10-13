@@ -447,17 +447,15 @@ $(document).on("click", ".mail-title", function(event) {
 $(document).on("click", ".tab", function() {
     var tabID = $(this).attr("id");
     tabID = tabID.replace("tab-", "");
+    console.log(tabID);
     var endpoint = getCookie("subreddit");
 	console.log(endpoint);
     var tab = endpoint.split(".json?limit=50");
-    console.log(tab);
     var tabSplit = tab[0].split("/");
     var tabLen = tabSplit.length;
     console.log(tabSplit);
     var tab_ID = tabSplit[tabLen - 1];
     if (tab_ID != "top" && tab_ID != "new") { tab_ID = "hot"} 
-    console.log(tab_ID);
-    
     if (tabLen == 2) { //logged in front page
 	    endpoint = "/" + tabID + ".json?limit=50"; 
     }
