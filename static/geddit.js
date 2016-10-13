@@ -169,7 +169,7 @@ function geddit(token){
     var url;
     if (!token) {
 	    url = "https://www.reddit.com";
-	    if (endpoint == false || endpoint == "") {
+	    if (!endpoint || endpoint == "") {
 	        endpoint = "/r/all.json?limit=50";
 	        setCookie("subreddit", endpoint);
 	    }
