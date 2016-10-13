@@ -167,7 +167,7 @@ function checkAuth() {
 function geddit(token){    
     var endpoint = getCookie("subreddit");
     var url;
-    if (!token) {
+    if (token == false) {
 	    url = "https://www.reddit.com";
 	    if (!endpoint) { endpoint = "/r/all.json?limit=50"; }
     } else {
@@ -447,6 +447,11 @@ $(document).on("click", ".tab", function() {
     var tab_ID = tabSplit[tabLen - 1];
     if (tab_ID != "top" && tab_ID != "new") { tab_ID = "hot"} 
     console.log(tab_ID);
+    
+    if (tabLen == 2) {
+	    endpoint = "/" + tab[0] + "/" 
+    }
+    
     
     //setCookie("subreddit", endpoint)
     //checkAuth();
