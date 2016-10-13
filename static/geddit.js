@@ -462,7 +462,7 @@ $(document).on("click", ".tab", function() {
 	    endpoint = "/" + tabID + ".json?limit=50"; 
     }
     if (tabLen >= 3) {
-	    endpoint = "/" + tab[2] + "/" + tabID + ".json?limit=50";
+	    endpoint = "/" + tabSplit[2] + "/" + tabID + ".json?limit=50";
     }
     setCookie("subreddit", endpoint)
     checkAuth();
