@@ -447,13 +447,12 @@ $(document).on("click", ".mail-title", function(event) {
 $(document).on("click", ".tab", function() {
     var tabID = $(this).attr("id");
     tabID = tabID.replace("tab-", "");
-    console.log(tabID);
     var endpoint = getCookie("subreddit");
-	console.log(endpoint);
+	//console.log(endpoint);
     var tab = endpoint.split(".json?limit=50");
     var tabSplit = tab[0].split("/");
     var tabLen = tabSplit.length;
-    console.log(tabSplit);
+    //console.log(tabSplit);
     var tab_ID = tabSplit[tabLen - 1];
     if (tab_ID != "top" && tab_ID != "new") { tab_ID = "hot"} 
     if (tabLen == 2) { //logged in front page
@@ -530,7 +529,6 @@ function subSearch() {
         checkAuth();   	    
     }
 }
-
 
 
 // remove test functions
