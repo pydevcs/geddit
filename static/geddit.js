@@ -167,9 +167,9 @@ function checkAuth() {
 function geddit(token){    
     var endpoint = getCookie("subreddit");
     var url;
-    if (token == false) {
+    if (!token) {
 	    url = "https://www.reddit.com";
-	    if (!endpoint) { endpoint = "/r/all.json?limit=50"; }
+	    if (endpoint == false) { endpoint = "/r/all.json?limit=50"; }
     } else {
 	    url = "https://oauth.reddit.com";
 	    //if (endpoint == "") { endpoint = "/.json?limit=50"; }
