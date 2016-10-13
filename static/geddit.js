@@ -387,7 +387,7 @@ $(document).on("click", "#inbox-txt", function() {
 function frontPage() {
 	var token = getCookie("token");
 	if (!token) {
-        setCookie("subreddit", "/all.json?limit=50");
+        setCookie("subreddit", "/r/all.json?limit=50");
 	} else {
         setCookie("subreddit", "/.json?limit=50");		
 	}
