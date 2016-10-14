@@ -394,6 +394,7 @@ function frontPage() {
 	} else {
         setCookie("subreddit", "/.json?limit=50");		
 	}
+	setCookie("count", 0);
 }
 
 $(document).on("click", "img#top-profile", function() {
@@ -480,9 +481,12 @@ $(function() {
     $("#mid-box-rgt").click(function(){
         var endpoint = getCookie("subreddit");
         var after = getCookie("after");
-
+        var count = getCookie("count");
+        console.log("Count " + count);
+        setCookie("count", count + 50);
+        count = "&count=" + count;
         endpoint = endpoint.split("&after=");
-        endpoint = endpoint[0] + "&after=" + after + "&count=50";
+        endpoint = endpoint[0] + "&after=" + after + count;
 
         setCookie("subreddit", endpoint);
         checkAuth();
@@ -493,8 +497,15 @@ $(function() {
     $("#mid-box-lft").click(function(){
         var endpoint = getCookie("subreddit");
         var before = getCookie("before");
+        before = "&before=" + before;
+        
+        var count = getCookie("count");
+        console.log("Count " + count);
+        setCookie("count", count - 50);
+        count = "&count=" + count;
+        
         endpoint = endpoint.split("&after=");
-        endpoint = endpoint[0] + "&after=" + after;
+        endpoint = endpoint[0] + before + count;
 
         setCookie("subreddit", endpoint);
         checkAuth();
@@ -555,6 +566,7 @@ $(document).on("click", "#delCookies", function(event) {
     document.cookie = "subreddit" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = "after" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = "before" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    document.cookie = "count" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     console.log('Reset Cookies');
 });
 
