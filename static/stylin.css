@@ -326,6 +326,9 @@ input.search:focus {
     padding-top:7px;
     float: left;
 }
+.drp-txt:hover {
+	cursor: pointer;
+}
 #more img, #less img {
 	margin-left: 3px;
 	margin-top: 13px;
