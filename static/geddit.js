@@ -481,7 +481,7 @@ $(function() {
         var after = getCookie("after");
 
         endpoint = endpoint.split("&after=");
-        endpoint = endpoint[0] + "&after=" + after;
+        endpoint = endpoint[0] + "&after=" + after + "&count=50";
 
         setCookie("subreddit", endpoint);
         checkAuth();
