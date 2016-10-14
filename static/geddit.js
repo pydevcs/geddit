@@ -378,7 +378,7 @@ $(document).on("click", "a img#top-logo", function() {
 	frontPage();
 });
 
-$(document).on("click", "#inbox-txt", function() {
+$(document).on("click", "#inbox", function() {
 	frontPage();
 });
 
