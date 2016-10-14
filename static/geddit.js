@@ -2,12 +2,10 @@
 var redirect_uri = "https://pydevcs.github.io/geddit/";
 var client_id = "7NeqizMXmEZFKA";
 
-var more = "More<img src='static/img/lbl-arw-dwn.svg' width='7px' height='4px'>";
-var less = "Less<img src='static/img/lbl-arw-up.svg' width='7px' height='4px'>";
-
 $(function() {
-    $("#more").click(function () {
-        ($("#more").html() === less) ? $("#more").html(more) : $("#more").html(less);
+    $(".drp-txt").click(function () {
+        $("#less").toggle();
+        $("#more").toggle();
         $("#side-bar-more").slideToggle(50);
     });
 });

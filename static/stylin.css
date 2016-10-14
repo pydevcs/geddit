@@ -31,6 +31,7 @@ body{
 	margin-top: 117px;
 	width: 202px;
 	height:100%;
+	position: relative;
 }
 /* end additions */
 
@@ -310,11 +311,19 @@ input.search:focus {
 	font-size: 10pt;
 	float: left;
 }
-#more-txt {
+#less {
+	width: 154px;
+	height: 28px;
+	padding-left: 18px;
+	font-size: 10pt;
+	float: left;
+	display: none;	
+}
+.drp-txt span {
     padding-top:7px;
     float: left;
 }
-#more img {
+#more img, #less img {
 	margin-left: 3px;
 	margin-top: 13px;
 }
@@ -329,7 +338,7 @@ input.search:focus {
 
 #side-bar-more {
 	width: 202px;
-	/* display: none; */
+	display: none;
 	/* float: left; */
 }
 .lbl-mng {
