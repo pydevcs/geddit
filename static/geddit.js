@@ -482,8 +482,13 @@ $(function() {
         var endpoint = getCookie("subreddit");
         var after = getCookie("after");
         var count = getCookie("count");
+        if (count == "") {
+	        count = 0;
+        }
+        count = parseInt(count) + 50;
         console.log("Count " + count);
-        setCookie("count",  parseInt(count) + 50);
+
+        setCookie("count",  count);
         count = "&count=" + count;
         endpoint = endpoint.split("&after=");
         endpoint = endpoint[0] + "&after=" + after + count;
