@@ -217,6 +217,7 @@ function renderContent(json, endpoint) {
 	var before = json.data.before;
 	if (before) {
 		setCookie("before", before);
+		console.log(before);
 	} 
     var NSFW = getCookie("NSFW");
     var main_list = "";
