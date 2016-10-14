@@ -215,7 +215,7 @@ function renderContent(json, endpoint) {
     var after = json.data.after;
 	setCookie("after", after);
 	var before = json.data.before;
-	if (before) {
+	if (before != "") {
 		setCookie("before", before);
 		console.log(before);
 	} 
