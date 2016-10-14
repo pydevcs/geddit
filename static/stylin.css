@@ -293,6 +293,7 @@ input.search:focus {
 }
 .label:hover, #inbox:hover, .lbl-arw:hover {
 	background-color: #eeeeee;
+	cursor: pointer;
 }
 .more-spc {
 	width: 155px;
