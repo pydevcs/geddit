@@ -394,7 +394,7 @@ function frontPage() {
 	} else {
         setCookie("subreddit", "/.json?limit=50");		
 	}
-	setCookie("count", 0);
+	setCookie("count", 50);
 }
 
 $(document).on("click", "img#top-profile", function() {
