@@ -36,26 +36,24 @@ body{
 /* end additions */
 
 
-
 #top {
     /* height:44px; */
     height: 59px;
     background-color:#f1f1f1;
-    /* padding-top:15px; */
     border-bottom: 1px solid #e5e5e5;
 }
 #top-logo {
     width: 143px;
     height: 57px;
     margin-left:30px;
-    margin-right:81px;
+    margin-right:29px;
     margin-top: 1px;
     float:left;
-    text-align: center;
 }
 #top-logo img {
     max-width: 100%;
     height: auto;
+    margin-top: 11px;
 }
 #top-arrow {
 	float:left;
