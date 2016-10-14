@@ -374,7 +374,7 @@ $(document).on("click", ".vote", function() {
     vote($(this));
 });
 
-$(document).on("click", "a img#top-logo", function() {
+$(document).on("click", "#top-logo img", function() {
 	frontPage();
 });
 
