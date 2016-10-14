@@ -529,13 +529,13 @@ a.mail-item:visited {
 }
 .mail-title {
 	width: 165px;
-	margin-top: 10px;
+	margin-top: 12px;
 	float: left;
 	cursor: pointer;
 }
 .mail-info {
     width: calc(100% - 390px);
-	margin-top: 10px;
+	margin-top: 12px;
 	margin-left: 25px;
 	float: left;
 	text-overflow: clip;
@@ -553,7 +553,7 @@ a.mail-item:visited {
 	margin-top: 16px;
 }
 .mail-date {
-	margin-top:10px;
+	margin-top:12px;
 	/* margin-right: 20px; */
 	margin-right: 10px;
 	float: right;
