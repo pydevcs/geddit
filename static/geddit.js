@@ -394,7 +394,7 @@ function frontPage() {
 	} else {
         setCookie("subreddit", "/.json?limit=50");		
 	}
-	setCookie("count", 50);
+	setCookie("count", 0);
 }
 
 $(document).on("click", "img#top-profile", function() {
@@ -503,12 +503,17 @@ $(function() {
         var endpoint = getCookie("subreddit");
         var before = getCookie("before");
         before = "&before=" + before;
-        
+
         var count = getCookie("count");
+        if (count == "") {
+	        count = 0;
+        }
+        count = parseInt(count) - 50;
         console.log("Count " + count);
-        setCookie("count", parseInt(count) - 50);
+
+        setCookie("count",  count);
         count = "&count=" + count;
-        
+
         endpoint = endpoint.split("&after=");
         endpoint = endpoint[0] + before + count;
 
