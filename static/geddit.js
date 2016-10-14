@@ -483,7 +483,7 @@ $(function() {
         var after = getCookie("after");
         var count = getCookie("count");
         console.log("Count " + count);
-        setCookie("count", count + 50);
+        setCookie("count",  parseInt(count) + 50);
         count = "&count=" + count;
         endpoint = endpoint.split("&after=");
         endpoint = endpoint[0] + "&after=" + after + count;
@@ -501,7 +501,7 @@ $(function() {
         
         var count = getCookie("count");
         console.log("Count " + count);
-        setCookie("count", count - 50);
+        setCookie("count", parseInt(count) - 50);
         count = "&count=" + count;
         
         endpoint = endpoint.split("&after=");
