@@ -329,7 +329,7 @@ input.search:focus {
 
 #side-bar-more {
 	width: 202px;
-	display: none;
+	/* display: none; */
 	/* float: left; */
 }
 .lbl-mng {
