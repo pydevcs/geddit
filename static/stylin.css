@@ -250,6 +250,8 @@ input.search:focus {
 	float: left;
 }
 #inbox {
+	width: 154px;
+	height: 21px;
     float: left;
 	padding-left: 18px;
 	padding-top: 7px;
@@ -289,7 +291,7 @@ input.search:focus {
 .lbl-spc {
 	margin-bottom: 6px;
 }
-.label:hover, #inbox-txt:hover, .lbl-arw:hover {
+.label:hover, #inbox:hover, .lbl-arw:hover {
 	background-color: #eeeeee;
 }
 .more-spc {
