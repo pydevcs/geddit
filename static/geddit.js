@@ -211,9 +211,13 @@ function geddit(token){
 }
 
 function renderContent(json, endpoint) {
-    //console.log(json.data);
+    console.log(json.data);
     var after = json.data.after;
 	setCookie("after", after);
+	var before = json.data.before;
+	if (before) {
+		setCookie("before", before);
+	} 
     var NSFW = getCookie("NSFW");
     var main_list = "";
     $.each(json.data.children, function (i, ob) {
@@ -484,6 +488,18 @@ $(function() {
     });
 });
 
+$(function() {
+    $("#mid-box-lft").click(function(){
+        var endpoint = getCookie("subreddit");
+        var before = getCookie("before");
+        endpoint = endpoint.split("&after=");
+        endpoint = endpoint[0] + "&after=" + after;
+
+        setCookie("subreddit", endpoint);
+        checkAuth();
+    });
+});
+
 
 $(function() {
     $("input.search").focus(function(){
@@ -537,6 +553,7 @@ $(document).on("click", "#delCookies", function(event) {
     document.cookie = "refresh" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = "subreddit" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = "after" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    document.cookie = "before" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     console.log('Reset Cookies');
 });
 
