@@ -220,7 +220,6 @@ function renderContent(json, endpoint) {
 		console.log("Before " + before);
 	} else {
 		setCookie("count", 0);
-		console.log("Starting Count");		
 	}
     var NSFW = getCookie("NSFW");
     var main_list = "";
@@ -484,22 +483,16 @@ $(document).on("click", "#refresh", function() {
 $(function() {
     $("#mid-box-rgt").click(function(){
         var endpoint = getCookie("subreddit");
-        var after = getCookie("after");
-        console.log("After " + after);
-        
+        var after = getCookie("after");        
         var count = parseInt(getCookie("count"));
         count += 50;
-        console.log("Count " + count);
         setCookie("count",  count);
-
         if (endpoint.includes("&before=")) {
 	         endpoint = endpoint.split("&before=");    
         } else {
 	        endpoint = endpoint.split("&after=");    
         }
-        console.log(endpoint);
         endpoint = endpoint[0] + "&after=" + after + "&count=" + count;
-
         setCookie("subreddit", endpoint);
         checkAuth();
     });
@@ -509,16 +502,13 @@ $(function() {
     $("#mid-box-lft").click(function(){
         var endpoint = getCookie("subreddit");
         var count = parseInt(getCookie("count"));
-        
         if (endpoint.includes("&before=")) {
 	         endpoint = endpoint.split("&before=");    
         } else {
 	        endpoint = endpoint.split("&after=");    
         }
-
         if (count !== 0) {
 	        count -= 50;
-	        console.log("Count " + count);
 	        setCookie("count",  count);
 	        var before = getCookie("before");
             before = "&before=" + before;
@@ -530,7 +520,6 @@ $(function() {
         checkAuth();
     });
 });
-
 
 $(function() {
     $("input.search").focus(function(){
