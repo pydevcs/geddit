@@ -211,7 +211,7 @@ function geddit(token){
 }
 
 function renderContent(json, endpoint) {
-    console.log(json.data);
+    //console.log(json.data);
     var after = json.data.after;
 	setCookie("after", after);
 	var before = json.data.before;
@@ -488,12 +488,14 @@ $(function() {
         if (count == "") {
 	        count = 0;
         }
-        count = parseInt(count) + 50;
+        count = parseInt(count);
+        count += 50;
         console.log("Count " + count);
-
         setCookie("count",  count);
         count = "&count=" + count;
+
         endpoint = endpoint.split("&after=");
+        console.log(endpoint);
         endpoint = endpoint[0] + "&after=" + after + count;
 
         setCookie("subreddit", endpoint);
@@ -507,11 +509,20 @@ $(function() {
         var before = getCookie("before");
         before = "&before=" + before;
 
-        var count = getCookie("count");
+        var count = parseInt(getCookie("count"));
         if (count == "") {
 	        count = 0;
         }
-        count = parseInt(count) - 50;
+        if (count == 50) {
+	        var endpoint = getCookie("subreddit");
+	        endpoint = endpoint.split("&after=");
+	        endpoint = endpoint[0];
+	        setCookie("subreddit", endpoint)
+	        checkAuth();
+        }
+
+
+        count = count - 50;
         console.log("Count " + count);
 
         setCookie("count",  count);
