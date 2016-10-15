@@ -167,13 +167,13 @@ function geddit(token){
     var url;
     if (!token) {
 	    url = "https://www.reddit.com";
-	    if (!endpoint || endpoint == "") {
+	    if (!endpoint || 0 === endpoint.length) {
 	        endpoint = "/r/all.json?limit=50";
 	        setCookie("subreddit", endpoint);
 	    }
     } else {
 	    url = "https://oauth.reddit.com";
-	    //if (endpoint == "") { endpoint = "/.json?limit=50"; }
+	    //if (0 === endpoint.length) { endpoint = "/.json?limit=50"; }
     }
     console.log(endpoint);
     var promise = $.ajax({
@@ -215,10 +215,13 @@ function renderContent(json, endpoint) {
     var after = json.data.after;
 	setCookie("after", after);
 	var before = json.data.before;
+	setCookie("before", before);
 	if (before != null) {
-		setCookie("before", before);
 		console.log("Before " + before);
-	} 
+	} else {
+		setCookie("count", 0);
+		console.log("Starting Count");		
+	}
     var NSFW = getCookie("NSFW");
     var main_list = "";
     $.each(json.data.children, function (i, ob) {
@@ -399,7 +402,7 @@ function frontPage() {
 
 $(document).on("click", "img#top-profile", function() {
     var token=getCookie("token");
-    if (token == "") {
+    if (0 === token.length) {
         var random_str = randStr();
         setCookie("state", random_str);
         var auth_url = "https://ssl.reddit.com/api/v1/authorize?client_id=" +
@@ -484,19 +487,14 @@ $(function() {
         var after = getCookie("after");
         console.log("After " + after);
         
-        var count = getCookie("count");
-        if (count == "") {
-	        count = 0;
-        }
-        count = parseInt(count);
+        var count = parseInt(getCookie("count"));
         count += 50;
         console.log("Count " + count);
         setCookie("count",  count);
-        count = "&count=" + count;
 
         endpoint = endpoint.split("&after=");
         console.log(endpoint);
-        endpoint = endpoint[0] + "&after=" + after + count;
+        endpoint = endpoint[0] + "&after=" + after + "&count=" + count;
 
         setCookie("subreddit", endpoint);
         checkAuth();
@@ -510,29 +508,22 @@ $(function() {
         before = "&before=" + before;
 
         var count = parseInt(getCookie("count"));
-        if (count == "") {
-	        count = 0;
-        }
-        if (count == 50) {
+        count -= 50;
+        console.log("Count " + count);
+        setCookie("count",  count);
+
+        if (count == 0) {
 	        var endpoint = getCookie("subreddit");
 	        endpoint = endpoint.split("&after=");
 	        endpoint = endpoint[0];
 	        setCookie("subreddit", endpoint)
 	        checkAuth();
+        } else {
+            endpoint = endpoint.split("&after=");
+            endpoint = endpoint[0] + before + "&count=" + count;
+            setCookie("subreddit", endpoint);
+            checkAuth();
         }
-
-
-        count = count - 50;
-        console.log("Count " + count);
-
-        setCookie("count",  count);
-        count = "&count=" + count;
-
-        endpoint = endpoint.split("&after=");
-        endpoint = endpoint[0] + before + count;
-
-        setCookie("subreddit", endpoint);
-        checkAuth();
     });
 });
 
