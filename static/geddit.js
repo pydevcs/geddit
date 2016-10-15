@@ -190,7 +190,7 @@ function geddit(token){
     .done(function(json_data) {
         setTab(endpoint);
 	    if (json_data.data.children.length == 0) {
-		    alert("This Subreddit Does Not Exist");
+		    alert("The Page You Requested Does Not Exist");
 	    } else {
             renderContent(json_data, endpoint);		    
 	    }
