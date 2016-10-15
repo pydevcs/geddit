@@ -522,14 +522,14 @@ $(function() {
 	        endpoint = endpoint.split("&after=");    
         }
 
-        if (count == 50) {
-	        endpoint = endpoint[0];
-	        setCookie("subreddit", endpoint)
-	        checkAuth();
-        } else {
+        if (count !== 0) {
             endpoint = endpoint[0] + before + "&count=" + count;
             setCookie("subreddit", endpoint);
             checkAuth();
+        } else {
+	        endpoint = endpoint[0];
+	        setCookie("subreddit", endpoint)
+	        checkAuth();
         }
     });
 });
