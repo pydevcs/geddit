@@ -180,19 +180,6 @@ input.search:focus {
 	font-weight: bold;
 	float: left;
 }
-#mid-box-lft {
-	float: right;
-	margin-top: 9px;
-	width:34px;
-	height: 27px;
-	background-color: #f4f4f4;
-	border: 1px solid #d9d9d9;
-	border-radius: 4px 0px 0px 4px;
-}
-#mid-box-lft svg {
-	margin-left: 13px;
-	margin-top: 7px;
-}
 #mid-box-rgt {
 	float: right;
 	margin-top: 9px;
@@ -209,6 +196,28 @@ input.search:focus {
 #mid-box-rgt svg {
 	margin-left: 14px;
 	margin-top: 7px;
+}
+.after-arw {
+	fill: #707172;
+}
+#mid-box-lft {
+	float: right;
+	margin-top: 9px;
+	width:34px;
+	height: 27px;
+	background-color: #f4f4f4;
+	border: 1px solid #d9d9d9;
+	border-radius: 4px 0px 0px 4px;
+}
+#mid-box-lft svg {
+	margin-left: 13px;
+	margin-top: 7px;
+}
+.before-arw {
+	fill: #A3A4A4;
+}
+.before-arw-prev {
+	fill: #707172;
 }
 #mid-box-gear {
 	float: right;

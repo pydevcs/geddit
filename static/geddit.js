@@ -486,6 +486,9 @@ $(function() {
         var after = getCookie("after");        
         var count = parseInt(getCookie("count"));
         count += 50;
+        if (count === 50) {
+	        $('.before-arw').removeClass('before-arw').addClass('before-arw-prev');
+        }
         setCookie("count",  count);
         if (endpoint.includes("&before=")) {
 	         endpoint = endpoint.split("&before=");    
@@ -514,6 +517,7 @@ $(function() {
             before = "&before=" + before;
             endpoint = endpoint[0] + before + "&count=" + count;
         } else {
+	        $('.before-arw-prev').removeClass('before-arw-prev').addClass('before-arw');
 	        endpoint = endpoint[0];
         }
         setCookie("subreddit", endpoint);
