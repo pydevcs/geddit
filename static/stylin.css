@@ -229,8 +229,10 @@ input.search:focus {
 	border-radius: 4px;
 	border: 1px solid #d9d9d9;
 }
-#mid-box-gear:hover, .mid-box:hover, #mid-box-lft:hover, #mid-box-rgt:hover {
-	cursor: pointer;
+#mid-box-gear:hover, .mid-box:hover, #mid-box-rgt:hover {
+    border-color: #c6c6c6 !important;
+}
+.before-lft:hover {
     border-color: #c6c6c6 !important;
 }
 #gear {

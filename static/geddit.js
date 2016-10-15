@@ -488,6 +488,7 @@ $(function() {
         count += 50;
         if (count === 50) {
 	        $('.before-arw').removeClass('before-arw').addClass('before-arw-prev');
+	        $('#mid-box-lft').addClass('before-lft');
         }
         setCookie("count",  count);
         if (endpoint.includes("&before=")) {
@@ -518,6 +519,7 @@ $(function() {
             endpoint = endpoint[0] + before + "&count=" + count;
         } else {
 	        $('.before-arw-prev').removeClass('before-arw-prev').addClass('before-arw');
+	        $('#mid-box-lft').removeClass('before-lft');
 	        endpoint = endpoint[0];
         }
         setCookie("subreddit", endpoint);
