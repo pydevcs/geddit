@@ -419,7 +419,9 @@ input.search:focus {
 	font-size: 14px;
 	border-left: none;
 }
-
+.tab:hover {
+	cursor:pointer;
+}
 #tab-hot.tab.active {
 	border-top: 2px solid #737373;
 	border-right: 1px solid #d7d7d7;
