@@ -181,7 +181,7 @@ function geddit(token){
       beforeSend: function (request) {
           if (token) {
 	          request.setRequestHeader("Authorization", "bearer " + token);
-	          $("img#top-profile").attr("title", "Logged In"); //remove this
+	          // fix this with tooltips !! $("svg#top-profile").attr("title", "Logged In");
           }
       },
       type: "GET",
@@ -381,7 +381,7 @@ $(document).on("click", ".vote", function() {
     vote($(this));
 });
 
-$(document).on("click", "#top-logo img", function() {
+$(document).on("click", "#top-logo svg", function() {
 	frontPage();
 });
 
@@ -398,7 +398,7 @@ function frontPage() {
 	}
 }
 
-$(document).on("click", "img#top-profile", function() {
+$(document).on("click", "svg#top-profile", function() {
     var token=getCookie("token");
     if (0 === token.length) {
         var random_str = randStr();
@@ -415,7 +415,7 @@ $(document).on("click", "img#top-profile", function() {
     }
 });
 
-$(document).on("click", "img#top-apps", function() {
+$(document).on("click", "svg#top-apps", function() {
     var NSFW = getCookie("NSFW");
     if (NSFW == "true") {
         setCookie("NSFW", "false");
@@ -430,7 +430,7 @@ $(document).on("click", "#mid-box-gear", function() {
     document.cookie = "token" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = "refresh" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = "NSFW" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    $("img#top-profile").attr("title", "Log In");    
+    // fix this with tool tips!! $("svg#top-profile").attr("title", "Log In");    
     var endpoint = getCookie("subreddit");
     endpoint = endpoint.split("&after=");
     endpoint = endpoint[0];
