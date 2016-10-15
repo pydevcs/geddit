@@ -1,4 +1,3 @@
-/* additions */
 html, body {
     height: 100%;
     overflow: hidden;
@@ -7,6 +6,9 @@ body{
     margin:0px;
 	background-color: #fff;
 	font-family: arial, helvetica, sans-serif;
+}
+* { /* remove input focus highlighting */
+	outline: none;
 }
 #fixed-cont {
     width:100%;
@@ -33,8 +35,6 @@ body{
 	height:100%;
 	position: relative;
 }
-/* end additions */
-
 
 #top {
     /* height:44px; */
