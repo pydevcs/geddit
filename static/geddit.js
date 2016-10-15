@@ -482,6 +482,8 @@ $(function() {
     $("#mid-box-rgt").click(function(){
         var endpoint = getCookie("subreddit");
         var after = getCookie("after");
+        console.log("After " + after);
+        
         var count = getCookie("count");
         if (count == "") {
 	        count = 0;
