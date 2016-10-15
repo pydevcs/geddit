@@ -50,7 +50,7 @@ body{
     margin-top: 1px;
     float:left;
 }
-#top-logo img {
+#top-logo a svg {
     max-width: 100%;
     height: auto;
     margin-top: 11px;
@@ -64,7 +64,7 @@ body{
 	border-bottom: 1px solid #cdcdcd;
 	margin-top: 15px;
 }
-#top-arrow img {
+#top-arrow svg {
     margin-top: 12px;
     margin-right: 6px;
 }
@@ -98,7 +98,7 @@ input.search:focus {
 	padding-top: 8px;
 	margin-top: 15px;
 }
-#top-magnify img {
+#top-magnify svg {
 	margin:0 auto;
 	display:block;
 }
@@ -135,14 +135,13 @@ input.search:focus {
 	color: #d9453d;
 	margin-left: 32px;
 	margin-top: 11px;
-	margin-right: 8px;
 	float: left;
 	font-size: 19px;
 	width: 47px;
 }
 #mid-arrow {
     margin-top:11px;
-    margin-right: 108px;
+    margin-right: 116px;
     float: left;
 }
 .mid-box {
@@ -190,7 +189,7 @@ input.search:focus {
 	border: 1px solid #d9d9d9;
 	border-radius: 4px 0px 0px 4px;
 }
-#mid-box-lft img {
+#mid-box-lft svg {
 	margin-left: 13px;
 	margin-top: 7px;
 }
@@ -207,7 +206,7 @@ input.search:focus {
 	border-radius: 0px 4px 4px 0px;
     border-left: none;
 }
-#mid-box-rgt img {
+#mid-box-rgt svg {
 	margin-left: 14px;
 	margin-top: 7px;
 }
@@ -295,7 +294,7 @@ input.search:focus {
 	font-size: 10pt;
 	float: left;
 }
-.lbl-arw img {
+.lbl-arw svg {
 	margin-right: 7px;
 	margin-top: 4px;
 	float: left;
@@ -341,12 +340,12 @@ input.search:focus {
 .drp-txt:hover, #compose:hover {
 	cursor: pointer;
 }
-#more img, #less img {
+#more svg, #less svg {
 	margin-left: 3px;
 	margin-top: 13px;
 }
 
-.no-select {
+.no-select, svg {
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
