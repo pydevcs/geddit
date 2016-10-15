@@ -502,7 +502,7 @@ $(function() {
 
 $(function() {
     $("#mid-box-lft").click(function(){
-	    if ($(this).hasClass("before-lft");) {
+	    if ($(this).hasClass("before-lft")) {
 		    return;
 	    }
         var endpoint = getCookie("subreddit");
