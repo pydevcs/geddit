@@ -508,14 +508,8 @@ $(function() {
 $(function() {
     $("#mid-box-lft").click(function(){
         var endpoint = getCookie("subreddit");
-        var before = getCookie("before");
-        before = "&before=" + before;
-
         var count = parseInt(getCookie("count"));
-        count -= 50;
-        console.log("Count " + count);
-        setCookie("count",  count);
-
+        
         if (endpoint.includes("&before=")) {
 	         endpoint = endpoint.split("&before=");    
         } else {
@@ -523,14 +517,17 @@ $(function() {
         }
 
         if (count !== 0) {
+	        count -= 50;
+	        console.log("Count " + count);
+	        setCookie("count",  count);
+	        var before = getCookie("before");
+            before = "&before=" + before;
             endpoint = endpoint[0] + before + "&count=" + count;
-            setCookie("subreddit", endpoint);
-            checkAuth();
         } else {
 	        endpoint = endpoint[0];
-	        setCookie("subreddit", endpoint)
-	        checkAuth();
         }
+        setCookie("subreddit", endpoint);
+        checkAuth();
     });
 });
 
