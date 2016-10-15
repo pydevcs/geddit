@@ -516,14 +516,17 @@ $(function() {
         console.log("Count " + count);
         setCookie("count",  count);
 
-        if (count == 0) {
-	        var endpoint = getCookie("subreddit");
-	        endpoint = endpoint.split("&after=");
+        if (endpoint.includes("&before=")) {
+	         endpoint = endpoint.split("&before=");    
+        } else {
+	        endpoint = endpoint.split("&after=");    
+        }
+
+        if (count == 50) {
 	        endpoint = endpoint[0];
 	        setCookie("subreddit", endpoint)
 	        checkAuth();
         } else {
-            endpoint = endpoint.split("&after=");
             endpoint = endpoint[0] + before + "&count=" + count;
             setCookie("subreddit", endpoint);
             checkAuth();
