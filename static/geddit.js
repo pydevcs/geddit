@@ -492,7 +492,11 @@ $(function() {
         console.log("Count " + count);
         setCookie("count",  count);
 
-        endpoint = endpoint.split("&after=");
+        if (endpoint.includes("&before=")) {
+	         endpoint = endpoint.split("&before=");    
+        } else {
+	        endpoint = endpoint.split("&after=");    
+        }
         console.log(endpoint);
         endpoint = endpoint[0] + "&after=" + after + "&count=" + count;
 
