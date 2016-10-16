@@ -396,6 +396,8 @@ function frontPage() {
 	} else {
         setCookie("subreddit", "/.json?limit=50");		
 	}
+    $('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
+	$('#mid-box-lft').removeClass('before-lft');
 }
 
 $(document).on("click", "svg#top-profile", function() {
@@ -485,7 +487,7 @@ $(function() {
         var count = parseInt(getCookie("count"));
         count += 50;
         if (count === 50) {
-	        $('.before-arw').removeClass('before-arw').addClass('before-arw-prev');
+	        $('#before-arw').removeClass('before-arw').addClass('before-arw-prev');
 	        $('#mid-box-lft').addClass('before-lft');
         }
         setCookie("count",  count);
@@ -519,7 +521,7 @@ $(function() {
             before = "&before=" + before;
             endpoint = endpoint[0] + before + "&count=" + count;
         } else {
-	        $('.before-arw-prev').removeClass('before-arw-prev').addClass('before-arw');
+	        $('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
 	        $('#mid-box-lft').removeClass('before-lft');
 	        endpoint = endpoint[0];
         }
