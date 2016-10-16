@@ -488,7 +488,7 @@ $(function() {
         count += 50;
         if (count === 50) {
 	        $('#before-arw').removeClass('before-arw').addClass('before-arw-prev');
-	        $('#mid-box-lft').addClass('before-lft');
+	        $('#mid-box-lft').removeClass('before-lft');
         }
         setCookie("count",  count);
         if (endpoint.includes("&before=")) {
@@ -516,7 +516,7 @@ $(function() {
         }
         if (count === 50) {
 	        $('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
-	        $('#mid-box-lft').removeClass('before-lft');
+	        $('#mid-box-lft').assClass('before-lft');
         }
         if (count !== 0) {
 	        count -= 50;
