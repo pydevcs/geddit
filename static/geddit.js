@@ -468,6 +468,8 @@ $(document).on("click", ".tab", function() {
     if (tabLen >= 3) {
 	    endpoint = "/r/" + tabSplit[2] + "/" + tabID + ".json?limit=50";
     }
+    $('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
+	$('#mid-box-lft').removeClass('before-lft').addClass('before-lft');
     setCookie("subreddit", endpoint)
     checkAuth();
 });
