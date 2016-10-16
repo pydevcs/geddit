@@ -522,7 +522,7 @@ $(function() {
             endpoint = endpoint[0] + before + "&count=" + count;
         } else {
 	        $('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
-	        $('#mid-box-lft').assClass('before-lft');
+	        $('#mid-box-lft').addClass('before-lft');
 	        endpoint = endpoint[0];
         }
         setCookie("subreddit", endpoint);
