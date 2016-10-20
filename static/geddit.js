@@ -479,6 +479,8 @@ $(document).on("click", "#refresh", function() {
     endpoint = endpoint.split("&after=");
     endpoint = endpoint[0];
     setCookie("subreddit", endpoint)
+    $('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
+	$('#mid-box-lft').addClass('before-lft');
     checkAuth();
 });
 
