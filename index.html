@@ -17,9 +17,9 @@
 </script>
 </head>
 <body onload="checkAuth()">
-<div id="fixed-cont">
-    <div id="topbar">
-	    <div id="top"><!-- top bar -->
+<div id="fixed-cont"><!-- fixed cont -->
+    <div id="topbar"><!-- topbar -->
+	    <div id="top"><!-- top -->
 		  <div id="top-logo">
 			  <a href="/geddit/" class="no-select" tabindex="-1">
 				<svg xmlns="http://www.w3.org/2000/svg" width="91px" height="31px" viewBox="0 0 91 31" >
@@ -107,14 +107,25 @@
             <rect x="5.92" y="6" fill="#6D6D6D" width="4" height="4"/>
             <rect x="11.84" y="6" fill="#6D6D6D" width="4" height="4"/>
           </svg>
-	    </div><!-- end top bar -->
-	    <div class="no-select" id="mid"><!-- mid bar -->
+	    </div><!-- end top -->
+	    <div class="no-select" id="mid"><!-- mid -->
 		  <div id="mid-title">Mail</div>
 		  <div id="mid-arrow">
               <svg xmlns="http://www.w3.org/2000/svg" width="7" height="4" viewBox="0 0 7 4">
                 <polygon points="7 0 3.5 4 0 0 " fill="#D9453D"/
               </svg>
 		  </div>
+
+	      <div id="top-menu" style="display:none;"><!-- #### post view menu bar #### -->
+	        <div class="post-box post-box-main">⏎</div>
+	        <div class="post-box post-box-lft"></div>
+	        <div class="post-box" id="post-box-mid"></div>
+	        <div class="post-box post-box-rgt"></div>
+	        <div class="post-box post-box-lft"></div>
+	        <div class="post-box post-box-rgt"></div>
+	        <div class="post-box post-box-main"></div>
+	      </div><!-- #### end post view menu bar #### -->
+
 		  <div class="mid-box">
 	          <div id="mid-box-sqr"></div>
 	          <svg class="mid-box-arw" xmlns="http://www.w3.org/2000/svg" width="7" height="4" viewBox="0 0 7 4">
@@ -150,9 +161,9 @@
 		      <polygon id="before-arw" class="before-arw" points="0 6.5 6.5 0 8 1.5 2.9 6.5 8 11.5 6.5 13 " />
 		    </svg>
 		  </div>
-		  <div id="mid-box-qty">1<span>--</span>50 <span>of</span> 1,000</div>
-	    </div><!-- end mid bar -->
-    </div>
+		  <div id="mid-box-qty">1<span>–</span>50 <span>of</span> 1,000</div>
+	    </div><!-- end mid  -->
+    </div><!-- end topbar -->
     <div id="content" class="no-select">
 	  <div id="btm">
 	    <div id="tab-hot" class="tab active">
@@ -167,11 +178,62 @@
 	    <div id="tab-plus">+</div>
 	  </div>
 	  <div id="tab-spc"></div>
-	  <div id="main-list"></div>
-	  <span id="donate">1GEdDit6WoXGDVW7EZNEese9A2xNZ1km99</span>
+	  <div id="main-list"></div>	 
+	  
+	  <div id="contain" style="display:none;"><!-- #### start comment view #### -->
+	    <div class="subject">
+	      <div class="sub-title">Post Title</div>
+	      <div class="ylw-box"></div>
+	      <div class="inbox-box">Inbox&nbsp;&nbsp;&nbsp;&nbsp;x</div>
+	    </div>
+	    <div class="post-header">
+		  <div class="contact-img"></div>
+		  <div class="post-name">
+			Subreddit<span>&nbsp;&lt;Plurwolf7&gt;</span>
+		    <div class="post-to">
+		      <span>to me</span>
+		      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+		        <path d="M11 1v10H1V1H11M11.3 0H0.7c-0.4 0-0.7 0.3-0.7 0.7V11.3c0 0.4 0.3 0.7 0.7 0.7h10.6c0.4 0 0.7-0.3 0.7-0.7V0.7C12 0.3 11.7 0 11.3 0L11.3 0z" fill="#CECDCD"/>
+		        <polygon points="9.5 5 6 9 2.5 5 " fill="#676767"/>
+		      </svg>
+		    </div>
+		  </div>
+		  <div class="post-info-rgt">
+		    <div class="post-time">2:30 PM (0 Minutes Ago)</div>
+	        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13">
+	          <polygon points="8.6 5.7 7 1.9 5.4 5.7 1.9 5.7 4.4 8.1 3.8 11.6 7 10 10.2 11.6 9.6 8.1 12.1 5.7 " fill="#FFF"/>
+	          <path d="M9.1 4.9L7 0 4.9 4.9 0 4.9l3.6 3.4L2.7 13 7 10.8 11.3 13l-0.8-4.7L14 4.9 9.1 4.9zM10.2 11.6L7 10l-3.2 1.7 0.6-3.6L1.9 5.7l3.5 0L7 1.9l1.6 3.8 3.5 0L9.6 8.1 10.2 11.6z" fill="#C6C6C6"/>
+	        </svg>
+		    <div class="post-box-right"></div>
+		  </div>
+		  <div class="post-self-text">
+		    Okay, so.
+		    <br><br>
+		    I'm at my cousins birthday party (who is fairly young) and im at the ripe age of 20, so where at parties, im in the awkward stages 
+		    of wanting to have fun with the kids but also want to hang out with the adults.
+		    <br><br>
+		    It came out that i was a Vegan and all i got was shit... but from the adults, bacon this, bacon that.. "HEY DO YOU WANT A SLICE OF 
+		    PIZZA?!?!? HAHAHA HOWS THAT SANDWICH?!" "do you know what MY child says about people who dont eat meat?! they die!" (like.. ok Patricia, 
+		    you JUST got out of the hospital for Fatty Liver Disease, have another slice of that fucking pizza).
+		    <br><br>
+	        But...The kids were so fascinated by it and asked me sooo many good questions, like: "What about milk? can you have yogurt?", "how do 
+	        you get your protein" etc..  just simple questions, but they were genuinely curious and asked "deep questions" for their age,  it was 
+	        truly amazing. These are profound, important questions that just bubble right out of them.
+		    <br><br>
+	        I just found it profoundly odd that, here are these kids, acting 20x more mature than their parents, asking such curious questions, 
+	        attempting to grasp the vegan lifestyle. yet, you go to the adults and there\'s none of that. Something terrible has happened between 
+	        those ages, and its really sad.
+		  </div>
+		  <div class="post-reply">
+			  <div class="contact-img"></div>
+			  <div class="comment-reply">Click here to <u>Reply</u> or <u>Forward</u></div>
+		  </div>
+	    </div>
+	  </div><!-- #### end comment view #### -->
 
-    </div>
-</div>
+	  <span id="donate">1GEdDit6WoXGDVW7EZNEese9A2xNZ1km99</span>
+    </div><!-- end content -->
+</div><!-- end fixed cont -->
  
 <div id="sidebar" class="no-select"><!-- side bar -->
   <div id="compose">COMPOSE</div>

@@ -10,6 +10,166 @@ body{
 * { /* remove input focus highlighting */
 	outline: none;
 }
+
+/* #### comment view #### */
+#contain {
+	width: calc(100% - 220px);
+}
+#top-menu {
+    height:38px;
+    width:100%;
+    border-bottom: 1px solid #e5e5e5;
+    padding-top: 9px;
+}
+.post-box {
+	float: left;
+	width: 70px;
+	height: 27px;
+	background-color: #f3f3f3;
+	text-align: center;
+}
+.post-box-main {
+    border-radius: 2px;
+	border: 1px solid #d9d9d9;
+	margin-right: 16px;	
+}
+.post-box-lft {
+	margin-right: 0px;
+	border: 1px solid #d9d9d9;
+	border-radius: 2px 0px 0px 2px;
+}
+.post-box-rgt {
+	margin-right: 16px;
+	border-top: 1px solid #d9d9d9;
+	border-right: 1px solid #d9d9d9;
+	border-bottom: 1px solid #d9d9d9;
+	border-left: none;
+	border-radius: 0px 2px 2px 0px;
+}
+#post-box-mid {
+	margin-right: 0px;
+	border-top: 1px solid #d9d9d9;
+	border-right: 1px solid #d9d9d9;
+	border-bottom: 1px solid #d9d9d9;
+	border-left: none;
+}
+.subject {
+    height:46px;
+    border-bottom: 1px solid #d8d8d8;
+    margin-right: 38px;
+}
+.sub-title {
+    margin-top: 12px;
+    margin-left: 8px;
+    margin-right: 23px;
+	font-weight: 500;
+	font-size: 18px;
+	float: left;
+}
+.ylw-box {
+	width: 14px;
+	height: 11px;
+    margin-top: 17px;
+    margin-right: 22px;
+	background-color: #fed676;
+	float:left;
+}
+.inbox-box {
+	width: 56px;
+	height: 16px;
+	padding-top: 3px;
+	margin-top: 15px;
+	background-color: #dddddd;
+	float: left;
+	font-size: 11px;
+	text-align: center;
+}
+.post-header {
+	height: 46px;
+	width: 100%;
+	clear: both;
+}
+.contact-img {
+	width: 30px;
+	height: 30px;
+	margin-left: 9px;
+	margin-top: 12px;
+	margin-right:12px;
+	background-color: #f5f5f5;
+	border: 1px solid #e5e5e5;
+	float: left;
+}
+.post-name {
+	float:left;
+	font-weight: bold;
+	margin-top: 15px;
+	font-size: 12px;
+}
+.post-name span {
+	font-weight: normal;
+	color: #555555;
+}
+.post-to span {
+	color: #7f7777;
+	font-weight: normal;
+	margin-top: 4px;
+	margin-right: 6px;
+	float: left;
+}
+.post-to svg {
+	margin-top: 6px;
+	float: left;
+}
+.post-info-rgt {
+	float: right;
+}
+.post-info-rgt svg {
+    float: left;
+    margin-top: 12px;
+    margin-right: 7px;    
+}
+.post-time {
+	margin-top:12px;
+	margin-right: 8px;
+	float:left;
+	font-size: 12px;
+}
+.post-box-right {
+	float: left;
+	width: 70px;
+	height: 27px;
+	background-color: #f3f3f3;
+	text-align: center;
+    border-radius: 2px;
+	border: 1px solid #d9d9d9;
+	margin-right: 38px;
+	margin-top: 6px;
+}
+.post-self-text {
+	clear: both;
+	padding: 30px 16px 41px 54px; 
+	border-bottom: 1px solid #d8d8d8;
+	font-size: 14px;
+	margin-right: 38px;
+}
+.post-reply {
+	clear: both;
+}
+.comment-reply {
+	margin-right:38px;
+	border: 1px solid #c0c0c0;
+	height: 72px;
+	float:left;
+	width: calc(100% - 119px);
+	margin-top: 12px;
+	padding: 10px 13px 10px 13px;
+	color: #999999;
+	font-size: 14px;
+}
+/* #### comment view #### */
+
+
+
 #fixed-cont {
     width:100%;
     position:fixed;
@@ -94,7 +254,7 @@ input.search:focus {
 	width:60px;
 	height:22px;
 	background-color:#4988ef;
-	border-radius: 0px 4px 4px 0px;
+	border-radius: 0px 2px 2px 0px;
 	padding-top: 8px;
 	margin-top: 15px;
 }
@@ -190,7 +350,7 @@ input.search:focus {
 	border-top: 1px solid #d9d9d9;
 	border-right: 1px solid #d9d9d9;
 	border-bottom: 1px solid #d9d9d9;
-	border-radius: 0px 4px 4px 0px;
+	border-radius: 0px 2px 2px 0px;
     border-left: none;
 }
 #mid-box-rgt svg {
@@ -207,7 +367,7 @@ input.search:focus {
 	height: 27px;
 	background-color: #f4f4f4;
 	border: 1px solid #d9d9d9;
-	border-radius: 4px 0px 0px 4px;
+	border-radius: 2px 0px 0px 2px;
 }
 #mid-box-lft svg {
 	margin-left: 13px;
@@ -226,7 +386,7 @@ input.search:focus {
 	width:70px;
 	height: 27px;
 	background-color: #f4f4f4;
-	border-radius: 4px;
+	border-radius: 2px;
 	border: 1px solid #d9d9d9;
 }
 #mid-box-gear:hover, .mid-box:hover, #mid-box-rgt:hover {
@@ -592,6 +752,7 @@ span#donate {
     margin-top: 25px;
     margin-right: 20px;
     margin-bottom: 25px;
+    clear: both;
 
     -webkit-user-select: all;
     -khtml-user-select: all;
