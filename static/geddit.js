@@ -526,7 +526,7 @@ $(function() {
             endpoint = endpoint[0] + before + "&count=" + count;
             
             console.log(count);
-            if (count === 50) {
+            if (count === 0) {
 	            $('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
 	            $('#mid-box-lft').addClass('before-lft');
             }
