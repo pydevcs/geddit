@@ -489,7 +489,6 @@ $(function() {
         var endpoint = getCookie("subreddit");
         var after = getCookie("after");        
         var count = parseInt(getCookie("count"));
-        console.log(count);
         count += 50;
         if (count === 50) {
 	        $('#before-arw').removeClass('before-arw').addClass('before-arw-prev');
@@ -519,13 +518,8 @@ $(function() {
         } else {
 	        endpoint = endpoint.split("&after=");    
         }
-        console.log(count);
-        if (count === 50) {
-	        $('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
-	        $('#mid-box-lft').addClass('before-lft');
-        }
         //if (count !== 0) {
-	    if (count > 50 0) {
+	    if (count > 50) {
 	        count -= 50;
 	        setCookie("count",  count);
 	        var before = getCookie("before");
@@ -533,6 +527,8 @@ $(function() {
             endpoint = endpoint[0] + before + "&count=" + count;
         } else {
 	        endpoint = endpoint[0];
+	        $('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
+	        $('#mid-box-lft').addClass('before-lft');
         }
         setCookie("subreddit", endpoint);
         checkAuth();
