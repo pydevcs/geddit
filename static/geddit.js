@@ -211,7 +211,7 @@ function geddit(token){
 }
 
 function renderContent(json, endpoint) {
-    console.log(json.data);
+    //console.log(json.data);
     var after = json.data.after;
 	setCookie("after", after);
 	var before = json.data.before;
