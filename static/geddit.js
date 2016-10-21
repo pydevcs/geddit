@@ -489,12 +489,12 @@ $(function() {
         var endpoint = getCookie("subreddit");
         var after = getCookie("after");        
         var count = parseInt(getCookie("count"));
+        console.log(count);
         count += 50;
         if (count === 50) {
 	        $('#before-arw').removeClass('before-arw').addClass('before-arw-prev');
 	        $('#mid-box-lft').removeClass('before-lft');
         }
-        console.log(count);
         setCookie("count",  count);
         if (endpoint.includes("&before=")) {
 	         endpoint = endpoint.split("&before=");    
