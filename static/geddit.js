@@ -524,7 +524,8 @@ $(function() {
 	        $('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
 	        $('#mid-box-lft').addClass('before-lft');
         }
-        if (count !== 0) {
+        //if (count !== 0) {
+	    if (count > 50 0) {
 	        count -= 50;
 	        setCookie("count",  count);
 	        var before = getCookie("before");
