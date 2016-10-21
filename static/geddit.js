@@ -494,6 +494,7 @@ $(function() {
 	        $('#before-arw').removeClass('before-arw').addClass('before-arw-prev');
 	        $('#mid-box-lft').removeClass('before-lft');
         }
+        console.log(count);
         setCookie("count",  count);
         if (endpoint.includes("&before=")) {
 	         endpoint = endpoint.split("&before=");    
