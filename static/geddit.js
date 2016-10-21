@@ -518,6 +518,7 @@ $(function() {
         } else {
 	        endpoint = endpoint.split("&after=");    
         }
+        console.log(count);
         if (count === 50) {
 	        $('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
 	        $('#mid-box-lft').addClass('before-lft');
