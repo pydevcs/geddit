@@ -524,7 +524,8 @@ $(function() {
 	        var before = getCookie("before");
             before = "&before=" + before;
             endpoint = endpoint[0] + before + "&count=" + count;
-
+            
+            console.log(count);
             if (count === 50) {
 	            $('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
 	            $('#mid-box-lft').addClass('before-lft');
