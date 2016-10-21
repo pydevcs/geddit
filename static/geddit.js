@@ -518,19 +518,16 @@ $(function() {
         } else {
 	        endpoint = endpoint.split("&after=");    
         }
+        if (count === 50) {
+	        $('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
+	        $('#mid-box-lft').addClass('before-lft');
+        }
         if (count !== 0) {
 	        count -= 50;
 	        setCookie("count",  count);
 	        var before = getCookie("before");
             before = "&before=" + before;
             endpoint = endpoint[0] + before + "&count=" + count;
-            
-            console.log(count);
-            if (count === 0) {
-	            $('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
-	            $('#mid-box-lft').addClass('before-lft');
-            }
-
         } else {
 	        endpoint = endpoint[0];
         }
