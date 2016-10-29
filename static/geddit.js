@@ -419,42 +419,36 @@ function vote(div) {
       dataType: "json"
     })
     .done(function(json_data) {
-	    var new_svg = document.createElement('svg');
 	    switch(cls) {
 	    case "star vote":
 	        if (dir == 0) {
 	            //div.attr("src","static/img/star.svg");
-	            new_svg.innerHTML = star_svg;
+	            div.innerHTML = star_svg;
 	            div.parent().attr("data-dir", "null");
 	        }
 	        if (dir == 1) {
 	            //div.attr("src","static/img/upstar.svg");
-	            new_svg.innerHTML = upstar_svg;
+	            div.innerHTML = upstar_svg;
 	            //div.siblings(".box").attr("src","static/img/box.svg");
-	            var reset_svg = document.createElement('svg');
-	            reset_svg.innerHTML = box_svg;
-	            div.siblings(".box").replaceWith(reset_svg);
+	            div.siblings(".box").innerHTML(box_svg);
 	            div.parent().attr("data-dir", "true");
 	        }
 	        break;
 	    case "box vote":
 	        if (dir == 0) {
 	            //div.attr("src","static/img/box.svg");
-	            new_svg.innerHTML = box_svg;
+	            div.innerHTML = box_svg;
 	            div.parent().attr("data-dir", "null");
 	        }
 	        if (dir == -1) {
 	            //div.attr("src","static/img/downbox.svg");
-	            new_svg.innerHTML = downbox_svg;
+	            div.innerHTML = downbox_svg;
 	            //div.siblings(".star").attr("src","static/img/star.svg");
-	            var reset_svg = document.createElement('svg');
-	            reset_svg.innerHTML = star_svg;
-	            div.siblings(".box").replaceWith(reset_svg);
+	            div.siblings(".box").innerHTML(box_svg);
 	            div.parent().attr("data-dir", "false");
 	        }
 	        break;
 	    }
-	    div.replaceWith(new_svg);
     })
     .fail(function() {
       console.log("Voting Error")
