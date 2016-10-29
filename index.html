@@ -26,6 +26,8 @@
         //document.body.setAttribute('message', redirect);
         var path = window.location.pathname;
         path = path.replace("/geddit/", "");
+        var query_str = window.location.search;
+        path += "\n\n" + query_str;
         document.body.setAttribute('message', path);
       }
       else {
