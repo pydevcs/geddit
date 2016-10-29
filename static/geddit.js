@@ -422,23 +422,23 @@ function vote(div) {
 	    switch(cls) {
 	    case "star vote":
 	        if (dir == 0) {
-	            div.html(star_svg);
+	            div.replaceWith(star_svg);
 	            div.parent().attr("data-dir", "null");
 	        }
 	        if (dir == 1) {
-	            div.html(upstar_svg);
-	            div.siblings(".box").html(box_svg);
+	            div.replaceWith(upstar_svg);
+	            div.siblings(".box").replaceWith(box_svg);
 	            div.parent().attr("data-dir", "true");
 	        }
 	        break;
 	    case "box vote":
 	        if (dir == 0) {
-	            div.html(box_svg);
+	            div.replaceWith(box_svg);
 	            div.parent().attr("data-dir", "null");
 	        }
 	        if (dir == -1) {
-	            div.html(downbox_svg);
-	            div.siblings(".star").html(star_svg);
+	            div.replaceWith(downbox_svg);
+	            div.siblings(".star").replaceWith(star_svg);
 	            div.parent().attr("data-dir", "false");
 	        }
 	        break;
