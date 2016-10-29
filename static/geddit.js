@@ -57,7 +57,7 @@ var box_svg = '&lt;svg class="box vote" xmlns="http://www.w3.org/2000/svg" width
               '&lt;path d="M0 13h13V0H0V13zM1 1h11v11H1V1z" fill="#C6C6C5"/&gt;&lt;/svg&gt;';
 
 var downbox_svg = '&lt;svg class="box vote" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13"&gt;&lt;rect x="1" ' +
-                  'y="1" width="11" height="11" fill="#FFF"/><path d="M0 13h13V0H0V13zM1 1h11v11H1V1z" fill="#C6C6C5"/&gt;' +
+                  'y="1" width="11" height="11" fill="#FFF"/&gt;&lt;path d="M0 13h13V0H0V13zM1 1h11v11H1V1z" fill="#C6C6C5"/&gt;' +
                   '&lt;path d="M13 0.7c0 0 0 0 0 0 -0.7 0.4-1.4 0.9-2.1 1.4C8.9 3.6 7.1 5.3 5.4 7.2 4.5 6.4 3.5 5.7 2.5 4.9 ' +
                   '2.1 5.2 1.6 5.6 1.2 5.9c1.7 1.7 3.4 3.4 5.1 5.2 0.5-1.2 1.2-2.4 1.9-3.5 0.8-1.3 1.7-2.5 2.6-3.6C11.5 3.2 12.2 2.4 13 1.7V0.7z" fill="#66665F"/&gt;&lt;/svg&gt;';
 
