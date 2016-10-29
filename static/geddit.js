@@ -392,10 +392,10 @@ function nsfwTag(filter) {
 
 function star(likes) {
     if (likes) {
-         return "&lt;div class='star vote' &gt;" + upstar_svg + "&lt;/div&gt;";
+         return "<div class='star vote' >" + upstar_svg + "</div>";
     }
     else {
-         return "&lt;div class='star vote' &gt;" + star_svg + "&lt;/div&gt;";
+         return "<div class='star vote' >" + star_svg + "</div>";
     }
 }
 
