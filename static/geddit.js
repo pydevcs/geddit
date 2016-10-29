@@ -419,10 +419,12 @@ function vote(div) {
       dataType: "json"
     })
     .done(function(json_data) {
+	    var parser = new DOMParser();
 	    switch(cls) {
 	    case "star vote":
 	        if (dir == 0) {
-		        div.empty().append(unescape(star_svg));
+                var svg = parser.parseFromString(star_svg, "image/svg+xml");
+		        div.empty().append(svg.documentElement);
 	            div.parent().attr("data-dir", "null");
 	        }
 	        if (dir == 1) {
