@@ -430,7 +430,7 @@ function vote(div) {
 	            //div.attr("src","static/img/upstar.svg");
 	            div.replaceWith(upstar_svg);
 	            //div.siblings(".box").attr("src","static/img/box.svg");
-	            div.siblinks(".box").replaceWith(box_svg);
+	            div.siblings(".box").replaceWith(box_svg);
 	            div.parent().attr("data-dir", "true");
 	        }
 	        break;
