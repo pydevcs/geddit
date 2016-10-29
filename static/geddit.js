@@ -2,6 +2,44 @@
 var redirect_uri = "https://pydevcs.github.io/geddit/";
 var client_id = "7NeqizMXmEZFKA";
 
+
+//routing function
+(function(){
+  var redirect = sessionStorage.redirect;
+  delete sessionStorage.redirect;
+  if (redirect && redirect != location.href) {
+    history.replaceState(null, null, redirect);
+    //document.body.setAttribute('message', redirect);
+    var path = window.location.pathname;
+    path = path.split("/");
+    console.log(path[3]);
+    if (path.length > 4) {
+        console.log(path[4]);
+    }
+    //path = path.replace("/geddit/", "");
+    var queryStr = window.location.search;	
+    if (queryStr) {
+        queryStr = queryStr.substring(1);
+	    var params = {}, queries, temp, i, l;
+	    // Split into key/value pairs
+	    queries = queryStr.split("&");
+	    // Convert the array of strings into an object
+	    for ( i = 0, l = queries.length; i < l; i++ ) {
+	        temp = queries[i].split('=');
+	        params[temp[0]] = temp[1];
+	    }
+	    console.log( params );	        
+    }
+    //document.body.setAttribute('message', path[3]);
+  }
+  else {
+    //document.body.setAttribute('message', 'r/all');
+    console.log("r/all");
+  }
+})();
+
+
+
 $(function() {
     $(".drp-txt").click(function () {
         $("#less").toggle();
