@@ -25,7 +25,7 @@
         history.replaceState(null, null, redirect);
         //document.body.setAttribute('message', redirect);
         var path = window.location.pathname;
-        path = path.replace("/geddit", "");
+        path = path.replace("/geddit/", "");
         document.body.setAttribute('message', path);
       }
       else {
