@@ -419,29 +419,27 @@ function vote(div) {
       dataType: "json"
     })
     .done(function(json_data) {
-	    var parser = new DOMParser();
 	    switch(cls) {
 	    case "star vote":
 	        if (dir == 0) {
-                var svg = parser.parseFromString(star_svg, "image/svg+xml");
-		        div.empty().append(svg.documentElement);
+		        div.empty().append('div').html(star_svg);
 	            div.parent().attr("data-dir", "null");
 	        }
 	        if (dir == 1) {
-	            div.empty().append(unescape(upstar_svg));
-	            div.siblings(".box").empty().append(unescape(box_svg));
+	            div.empty().append('div').html(upstar_svg);
+	            div.siblings(".box").empty().append('div').html(box_svg);
 	            div.parent().attr("data-dir", "true");
 	        }
 	        break;
 	    case "box vote":
 	        if (dir == 0) {
-	            div.empty().append(unescape(box_svg));
+	            div.empty().append('div').html(box_svg);
 	            div.parent().attr("data-dir", "null");
 	        }
 	        if (dir == -1) {
-	            div.empty().append(unescape(downbox_svg));
+	            div.empty().append('div').html(downbox_svg);
 	            //div.nextSibling.empty().append(star_svg);
-	            div.siblings(".star").empty().append(unescape(star_svg));
+	            div.siblings(".star").empty().append('div').html(star_svg);
 	            div.parent().attr("data-dir", "false");
 	        }
 	        break;
