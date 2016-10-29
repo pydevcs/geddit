@@ -27,7 +27,6 @@
         //document.body.setAttribute('message', redirect);
         var path = window.location.pathname;
         path = path.split("/");
-        console.log(path.length);
         console.log(path[3]);
         if (path.length > 4) {
 	        console.log(path[4]);
@@ -46,7 +45,7 @@
 		    }
 		    console.log( params );	        
         }
-        document.body.setAttribute('message', path);
+        document.body.setAttribute('message', path[3]);
       }
       else {
         document.body.setAttribute('message', 'r/all');
