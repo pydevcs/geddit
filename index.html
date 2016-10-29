@@ -18,6 +18,7 @@
 <body>
 
   <script>
+	//example URL https://www.reddit.com/?count=25&after=t3_59wklv
     (function(){
       var redirect = sessionStorage.redirect;
       delete sessionStorage.redirect;
@@ -26,8 +27,16 @@
         //document.body.setAttribute('message', redirect);
         var path = window.location.pathname;
         path = path.replace("/geddit/", "");
-        var query_str = window.location.search;
-        path += "\n\n" + query_str;
+        var queryStr = window.location.search;
+	    var params = {}, queries, temp, i, l;
+	    // Split into key/value pairs
+	    queries = queryStr.split("&amp;");
+	    // Convert the array of strings into an object
+	    for ( i = 0, l = queries.length; i < l; i++ ) {
+	        temp = queries[i].split('=');
+	        params[temp[0]] = temp[1];
+	    }
+	    console.log( params );
         document.body.setAttribute('message', path);
       }
       else {
