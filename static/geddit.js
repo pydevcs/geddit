@@ -401,10 +401,10 @@ function star(likes) {
 
 function box(likes) {
     if (likes == false) {
-        return "&lt;div class='box vote' &gt;" + downbox_svg + "&lt;/div&gt;";
+        return "<div class='box vote' >" + downbox_svg + "</div>";
     }
     else {
-        return "&lt;div class='box vote' &gt;" + box_svg + "&lt;/div&gt;";
+        return "<div class='box vote' >" + box_svg + "</div>";
     }
 }
 
