@@ -423,28 +423,28 @@ function vote(div) {
 	    case "star vote":
 	        if (dir == 0) {
 	            //div.attr("src","static/img/star.svg");
-	            div.innerHTML(star_svg);
+	            div.html(star_svg);
 	            div.parent().attr("data-dir", "null");
 	        }
 	        if (dir == 1) {
 	            //div.attr("src","static/img/upstar.svg");
-	            div.innerHTML(upstar_svg);
+	            div.html(upstar_svg);
 	            //div.siblings(".box").attr("src","static/img/box.svg");
-	            div.siblings(".box").innerHTML(box_svg);
+	            div.siblings(".box").html(box_svg);
 	            div.parent().attr("data-dir", "true");
 	        }
 	        break;
 	    case "box vote":
 	        if (dir == 0) {
 	            //div.attr("src","static/img/box.svg");
-	            div.innerHTML(box_svg);
+	            div.html(box_svg);
 	            div.parent().attr("data-dir", "null");
 	        }
 	        if (dir == -1) {
 	            //div.attr("src","static/img/downbox.svg");
-	            div.innerHTML(downbox_svg);
+	            div.html(downbox_svg);
 	            //div.siblings(".star").attr("src","static/img/star.svg");
-	            div.siblings(".start").innerHTML(star_svg);
+	            div.siblings(".start").html(star_svg);
 	            div.parent().attr("data-dir", "false");
 	        }
 	        break;
