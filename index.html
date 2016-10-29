@@ -28,8 +28,10 @@
         var path = window.location.pathname;
         path = path.split("/");
         console.log(path.length);
-        console.log(path[2]);
         console.log(path[3]);
+        if (path.length > 4) {
+	        console.log(path[4]);
+        }
         //path = path.replace("/geddit/", "");
         var queryStr = window.location.search;	
         if (queryStr) {
