@@ -23,10 +23,12 @@
       delete sessionStorage.redirect;
       if (redirect && redirect != location.href) {
         history.replaceState(null, null, redirect);
-        document.body.setAttribute('message', 'This page was redirected by 404.html, from the route: ' + redirect);
+        //document.body.setAttribute('message', redirect);
+        document.body.setAttribute('message', location.pathname);
+        //window.location.pathname
       }
       else {
-        document.body.setAttribute('message', 'This page was loaded directly from the index.html file');
+        document.body.setAttribute('message', 'r/all');
       }
     })();
   </script>
