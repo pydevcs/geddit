@@ -24,8 +24,9 @@
       if (redirect && redirect != location.href) {
         history.replaceState(null, null, redirect);
         //document.body.setAttribute('message', redirect);
-        document.body.setAttribute('message', location.pathname);
-        //window.location.pathname
+        var path = window.location.pathname;
+        path = path.replace("/geddit", "");
+        document.body.setAttribute('message', path);
       }
       else {
         document.body.setAttribute('message', 'r/all');
