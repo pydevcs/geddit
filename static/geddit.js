@@ -438,7 +438,7 @@ function vote(div) {
 	        }
 	        if (dir == -1) {
 	            div.innerHTML = downbox_svg;
-	            div.siblings(".star").innerHTML = box_svg;
+	            div.siblings(".star").innerHTML = star_svg;
 	            div.parent().attr("data-dir", "false");
 	        }
 	        break;
