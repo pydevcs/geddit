@@ -75,6 +75,32 @@ var upstar_svg = "&lt;svg xmlns='http://www.w3.org/2000/svg' width='14' height='
                  "&lt;path d='M9.1 4.9L7 0 4.9 4.9 0 4.9l3.6 3.4L2.7 13 7 10.8 11.3 13l-0.8-4.7L14 4.9 9.1 4.9zM10.2 " +
                  "11.6L7 10l-3.2 1.7 0.6-3.6L1.9 5.7l3.5 0L7 1.9l1.6 3.8 3.5 0L9.6 8.1 10.2 11.6z' fill='#C6C6C6'/&gt;&lt;/svg&gt;";
 
+
+
+
+
+var box_svg = "<svg xmlns='http://www.w3.org/2000/svg' width='13' height='13' viewBox='0 0 13 13'>" +
+              "<rect x='1' y='1' width='11' height='11' fill='#FFF'/>" +
+              "<path d='M0 13h13V0H0V13zM1 1h11v11H1V1z' fill='#C6C6C5'/></svg>";
+
+var downbox_svg = "<svg xmlns='http://www.w3.org/2000/svg' width='13' height='13' viewBox='0 0 13 13'>" +
+                  "<rect x='1' y='1' width='11' height='11' fill='#FFF'/><path d='M0 13h13V0H0V13zM1 1h11v11H1V1z' fill='#C6C6C5'/>" +
+                  "<path d='M13 0.7c0 0 0 0 0 0 -0.7 0.4-1.4 0.9-2.1 1.4C8.9 3.6 7.1 5.3 5.4 7.2 4.5 6.4 3.5 5.7 2.5 4.9 " +
+                  "2.1 5.2 1.6 5.6 1.2 5.9c1.7 1.7 3.4 3.4 5.1 5.2 0.5-1.2 1.2-2.4 1.9-3.5 0.8-1.3 1.7-2.5 2.6-3.6C11.5 3.2 12.2 2.4 13 1.7V0.7z' fill='#66665F'/></svg>";
+
+var star_svg = "<svg xmlns='http://www.w3.org/2000/svg' width='14' height='13' viewBox='0 0 14 13'>" +
+               "<polygon points='8.6 5.7 7 1.9 5.4 5.7 1.9 5.7 4.4 8.1 3.8 11.6 7 10 10.2 11.6 9.6 8.1 12.1 5.7 ' fill='#FFF'/>" +
+               "<path d='M9.1 4.9L7 0 4.9 4.9 0 4.9l3.6 3.4L2.7 13 7 10.8 11.3 13l-0.8-4.7L14 4.9 9.1 4.9zM10.2 " +
+               "11.6L7 10l-3.2 1.7 0.6-3.6L1.9 5.7l3.5 0L7 1.9l1.6 3.8 3.5 0L9.6 8.1 10.2 11.6z' fill='#C6C6C6'/></svg>";
+
+var upstar_svg = "<svg xmlns='http://www.w3.org/2000/svg' width='14' height='13' viewBox='0 0 14 13'>" +
+                 "<polygon points='8.6 5.7 7 1.9 5.4 5.7 1.9 5.7 4.4 8.1 3.8 11.6 7 10 10.2 11.6 9.6 8.1 12.1 5.7 ' fill='#FED675'/>" +
+                 "<path d='M9.1 4.9L7 0 4.9 4.9 0 4.9l3.6 3.4L2.7 13 7 10.8 11.3 13l-0.8-4.7L14 4.9 9.1 4.9zM10.2 " +
+                 "11.6L7 10l-3.2 1.7 0.6-3.6L1.9 5.7l3.5 0L7 1.9l1.6 3.8 3.5 0L9.6 8.1 10.2 11.6z' fill='#C6C6C6'/></svg>";
+
+
+
+
 $(function() {
     $(".drp-txt").click(function () {
         $("#less").toggle();
