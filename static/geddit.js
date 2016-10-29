@@ -518,7 +518,6 @@ $(function() {
         } else {
 	        endpoint = endpoint.split("&after=");    
         }
-        //if (count !== 0) {
 	    if (count > 50) {
 	        count -= 50;
 	        setCookie("count",  count);
