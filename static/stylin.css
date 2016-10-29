@@ -692,7 +692,7 @@ input.search:focus {
 a.mail-item:visited {
 	background-color: #f5f5f5;
 }
-.box {
+svg.box {
 	margin-left: 11px;
 	margin-right: 11px;
 	margin-top: 12px;
@@ -700,14 +700,14 @@ a.mail-item:visited {
 	/* width: 11px;
 	height: 11px; */
 }
-.star {
+svg.star {
 	margin-right: 12px;	
 	margin-top: 12px;
 	float: left;
 	/* width: 14px;
 	height: 13px; */
 }
-.imprtnt {
+svg.imprtnt {
 	margin-right: 17px;
 	margin-top: 14px;
 	float: left;
