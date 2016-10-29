@@ -697,15 +697,15 @@ a.mail-item:visited {
 	margin-right: 11px;
 	margin-top: 12px;
 	float: left;
-	/* width: 11px;
-	height: 11px; */
+	width: 11px;
+	height: 11px;
 }
 .star {
 	margin-right: 12px;	
 	margin-top: 12px;
 	float: left;
-	/* width: 14px;
-	height: 13px; */
+	width: 14px;
+	height: 13px;
 }
 .imprtnt {
 	margin-right: 17px;
