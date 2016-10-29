@@ -366,19 +366,19 @@ function nsfwTag(filter) {
 
 function star(likes) {
     if (likes) {
-         return "&lt;div class='star vote' %gt;" + upstar_svg + "&lt;/div&gt;";
+         return "&lt;div class='star vote' &gt;" + upstar_svg + "&lt;/div&gt;";
     }
     else {
-         return "&lt;div class='star vote' %gt;" + star_svg + "&lt;/div&gt;";
+         return "&lt;div class='star vote' &gt;" + star_svg + "&lt;/div&gt;";
     }
 }
 
 function box(likes) {
     if (likes == false) {
-        return "&lt;div class='box vote' %gt;" + downbox_svg + "&lt;/div&gt;";
+        return "&lt;div class='box vote' &gt;" + downbox_svg + "&lt;/div&gt;";
     }
     else {
-        return "&lt;div class='box vote' %gt;" + box_svg + "&lt;/div&gt;";
+        return "&lt;div class='box vote' &gt;" + box_svg + "&lt;/div&gt;";
     }
 }
 
