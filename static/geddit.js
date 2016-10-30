@@ -197,11 +197,10 @@ function refresh(voteObj) {
 
 function checkAuth() {
     var token = localStorage.token;
-    if (!token) {
+    if (token) {
         geddit(token);
     }
     else {
-	    
         if (document.location.search.length) { // query string exists
             var code = getUrlParameter("code");
             var state = getUrlParameter("state");
