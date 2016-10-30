@@ -138,7 +138,7 @@ function getToken(code, endpoint) {
     });
 }
 
-function refresh(voteObj) {
+function refresh(voteObj, endpoint) {
     var code = localStorage.refresh;
     var promise = $.ajax({
       url: "https://ssl.reddit.com/api/v1/access_token",
@@ -158,7 +158,7 @@ function refresh(voteObj) {
       localStorage.token = token;
       console.log("Token " + token);
       if (!voteObj) {
-	      geddit(token);	      
+	      geddit(token, endpoint);	      
       } else {
 	      vote(voteObj);
       }
@@ -229,7 +229,7 @@ function geddit(token, endpoint){
         }
         if (jqXHR.status == 401) {
             console.log("Token Expired")
-            refresh(false);   
+            refresh(false, endpoint);   
         }
         else {
         console.log("geddit Error");
