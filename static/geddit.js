@@ -12,7 +12,11 @@ var client_id = "7NeqizMXmEZFKA";
     var path = window.location.pathname;
     path = path.split("/");
     console.log(path);
-    endpoint = path[3];
+    if (path[2] == "r") {
+	    endpoint = path[3];
+    } else {
+	    alert("something went wrong");
+    }
     if (path.length == 3) {
         console.log("Pathname is too short, 404 message");
     }
