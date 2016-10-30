@@ -507,7 +507,7 @@ function frontPage() {
 $(document).on("click", "svg#top-profile", function() {
     //var token=getCookie("token");
     var token = localStorage.token;
-    if (0 === token.length) {
+    if (!token) {
         var random_str = randStr();
         sessionStorage.state = random_str;
         var auth_url = "https://ssl.reddit.com/api/v1/authorize?client_id=" +
