@@ -15,11 +15,11 @@ var client_id = "7NeqizMXmEZFKA";
     if (path.length == 3) {
         console.log("Pathname is too short, 404 message");
     }
-    if (path.length == 5) {
-        console.log(path[4]);
-    }
     if (path.length > 5 && path[5] != "") {
         console.log("Pathname is too long, 404 message");
+    }
+    if (path.length == 5) {
+        console.log(path[4]);
     }
     var queryStr = window.location.search;	
     if (queryStr) {
@@ -205,7 +205,8 @@ function checkAuth() {
             var code = getUrlParameter("code");
             var state = getUrlParameter("state");
             if (code != "") {
-                if (state == getCookie("state")) {
+                //if (state == getCookie("state")) {
+                if (state == sessionStorage.state) {
                     getToken(code);
                 }
                 else {
@@ -503,7 +504,8 @@ $(document).on("click", "svg#top-profile", function() {
     var token=getCookie("token");
     if (0 === token.length) {
         var random_str = randStr();
-        setCookie("state", random_str);
+        //setCookie("state", random_str);
+        sessionStorage.state = random_str;
         var auth_url = "https://ssl.reddit.com/api/v1/authorize?client_id=" +
         client_id +
         "&response_type=code&state=" +
@@ -679,6 +681,8 @@ function subSearch() {
 
 // remove test functions
 $(document).on("click", "#delCookies", function(event) {
+	sessionStorage.removeItem("state");
+	
     document.cookie = "state" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = "token" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = "refresh" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
