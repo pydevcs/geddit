@@ -437,17 +437,17 @@ function vote(div) {
 	    case "star vote":
 	        if (dir == 0) {
 		        //star
-		        div.children("svg").eq(1).removeClass("svghide");
-		        div.children("svg").eq(0).addClass("svghide");
+		        div.children("svg").eq(0).removeClass("svghide");
+		        div.children("svg").eq(1).addClass("svghide");
 	            div.parent().attr("data-dir", "null");
 	        }
 	        if (dir == 1) {
 		        //upstar
-		        div.children("svg").eq(0).removeClass("svghide");
-		        div.children("svg").eq(1).addClass("svghide");
+		        div.children("svg").eq(1).removeClass("svghide");
+		        div.children("svg").eq(0).addClass("svghide");
 	            //box
-		        div.siblings(".box").children("svg").eq(1).removeClass("svghide");
-		        div.siblings(".box").children("svg").eq(0).addClass("svghide");		        
+		        div.siblings(".box").children("svg").eq(0).removeClass("svghide");
+		        div.siblings(".box").children("svg").eq(1).addClass("svghide");		        
 	            div.parent().attr("data-dir", "true");
 	        }
 	        break;
