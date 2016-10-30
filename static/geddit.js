@@ -436,23 +436,35 @@ function vote(div) {
 	    switch(cls) {
 	    case "star vote":
 	        if (dir == 0) {
-		        div.children("svg").toggle();
+		        //star
+		        div.children("svg").eq(1).removeClass("svghide");
+		        div.children("svg").eq(0).addClass("svghide");
 	            div.parent().attr("data-dir", "null");
 	        }
 	        if (dir == 1) {
-	            div.children("svg").toggle();
-	            div.siblings(".box").children("svg").toggle();
+		        //upstar
+		        div.children("svg").eq(0).removeClass("svghide");
+		        div.children("svg").eq(1).addClass("svghide");
+	            //box
+		        div.siblings(".box").children("svg").eq(1).removeClass("svghide");
+		        div.siblings(".box").children("svg").eq(0).addClass("svghide");		        
 	            div.parent().attr("data-dir", "true");
 	        }
 	        break;
 	    case "box vote":
 	        if (dir == 0) {
-	            div.children("svg").toggle();
+		        //box
+		        div.children("svg").eq(1).removeClass("svghide");
+		        div.children("svg").eq(0).addClass("svghide");		        
 	            div.parent().attr("data-dir", "null");
 	        }
 	        if (dir == -1) {
-	            div.children("svg").toggle();
-	            div.siblings(".box").children("svg").toggle();
+		        //downbox
+		        div.children("svg").eq(0).removeClass("svghide");
+		        div.children("svg").eq(1).addClass("svghide");
+	            //star
+		        div.siblings(".box").children("svg").eq(1).removeClass("svghide");
+		        div.siblings(".box").children("svg").eq(0).addClass("svghide");
 	            div.parent().attr("data-dir", "false");
 	        }
 	        break;
