@@ -207,6 +207,7 @@ function checkAuth() {
             if (code != "") {
                 //if (state == getCookie("state")) {
                 if (state == sessionStorage.state) {
+	                console.log("Logged in");
                     getToken(code);
                 }
                 else {
