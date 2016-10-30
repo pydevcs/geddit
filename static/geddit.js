@@ -37,7 +37,6 @@ var client_id = "7NeqizMXmEZFKA";
   }
   else {
     console.log("r/all");
-    console.log(sessionStorage.state);
   }
 })();
 
@@ -150,7 +149,8 @@ function getToken(code) {
     })
     .done(function(auth_resp) {
       var token = auth_resp.access_token;
-      setCookie("token", token);
+      //setCookie("token", token);
+      localStorage.token = token;
       var refresh_token = auth_resp.refresh_token;
       setCookie("refresh", refresh_token);
       var endpoint = getCookie("subreddit");
@@ -183,7 +183,8 @@ function refresh(voteObj) {
     })
     .done(function(auth_resp) {
       var token = auth_resp.access_token;
-      setCookie("token", token);
+      //setCookie("token", token);
+      localStorage.token = token;
       console.log("Token " + token);
       if (!voteObj) {
 	      geddit(token);	      
@@ -197,7 +198,8 @@ function refresh(voteObj) {
 }
 
 function checkAuth() {
-    var token=getCookie("token");
+    //var token=getCookie("token");
+    var token = localStorage.token;
     if (token != "") {
         geddit(token);
     }
@@ -206,7 +208,6 @@ function checkAuth() {
             var code = getUrlParameter("code");
             var state = getUrlParameter("state");
             if (code != "") {
-                //if (state == getCookie("state")) {
                 if (state == sessionStorage.state) {
                     getToken(code);
                 }
@@ -399,7 +400,8 @@ function box(likes) {
 }
 
 function vote(div) {
-    var token = getCookie("token");
+    //var token = getCookie("token");
+    var token = localStorage.token;
     if (!token) {
 	    alert("You must be logged in to do that :]");
         return;
@@ -491,7 +493,8 @@ $(document).on("click", "#inbox", function() {
 });
 
 function frontPage() {
-	var token = getCookie("token");
+	//var token = getCookie("token");
+	var token = localStorage.token;
 	if (!token) {
         setCookie("subreddit", "/r/all.json?limit=50");
 	} else {
@@ -502,10 +505,10 @@ function frontPage() {
 }
 
 $(document).on("click", "svg#top-profile", function() {
-    var token=getCookie("token");
+    //var token=getCookie("token");
+    var token = localStorage.token;
     if (0 === token.length) {
         var random_str = randStr();
-        //setCookie("state", random_str);
         sessionStorage.state = random_str;
         var auth_url = "https://ssl.reddit.com/api/v1/authorize?client_id=" +
         client_id +
@@ -695,7 +698,8 @@ $(document).on("click", "#delCookies", function(event) {
 });
 
 $(document).on("click", "#testRefresh", function(event) {
-  setCookie("token", "blarb");
+  //setCookie("token", "blarb");
+  localStorage.token = "blarb";
   console.log('set test cookies');
 });
 // end remove test functions
