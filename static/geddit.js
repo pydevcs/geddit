@@ -195,7 +195,6 @@ function geddit(token, endpoint){
 	    url = "https://www.reddit.com";
 	    if (endpoint == "/") {
 	        endpoint = "/r/all.json?limit=50";
-	        sessionStorage.subreddit = endpoint;
 	    }
     } else {
 	    url = "https://oauth.reddit.com";
@@ -447,7 +446,7 @@ function vote(div) {
     })
     .fail(function() {
       console.log("Voting Error")
-      refresh(div);
+      refresh(div, "");
     });
 }
 
@@ -455,13 +454,13 @@ $(document).on("click", ".vote", function() {
     vote($(this));
 });
 
-$(document).on("click", "#top-logo svg", function() {
-	frontPage();
-});
+//$(document).on("click", "#top-logo svg", function() {
+//	frontPage();
+//});
 
-$(document).on("click", "#inbox", function() {
-	frontPage();
-});
+//$(document).on("click", "#inbox", function() {
+//	frontPage();
+//});
 
 function frontPage() {
 	var token = localStorage.token;
