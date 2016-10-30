@@ -37,6 +37,7 @@ var client_id = "7NeqizMXmEZFKA";
   }
   else {
     console.log("r/all");
+    console.log(sessionStorage.state);
   }
 })();
 
@@ -207,7 +208,6 @@ function checkAuth() {
             if (code != "") {
                 //if (state == getCookie("state")) {
                 if (state == sessionStorage.state) {
-	                console.log("Logged in");
                     getToken(code);
                 }
                 else {
