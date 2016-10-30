@@ -454,8 +454,8 @@ function vote(div) {
 	    case "box vote":
 	        if (dir == 0) {
 		        //box
-		        div.children("svg").eq(1).removeClass("svghide");
-		        div.children("svg").eq(0).addClass("svghide");		        
+		        div.children("svg").eq(0).removeClass("svghide");
+		        div.children("svg").eq(1).addClass("svghide");		        
 	            div.parent().attr("data-dir", "null");
 	        }
 	        if (dir == -1) {
