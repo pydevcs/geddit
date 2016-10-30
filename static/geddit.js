@@ -195,12 +195,12 @@ function geddit(token, endpoint){
 	    url = "https://www.reddit.com";
 	    if (endpoint == "/") {
 	        endpoint = "/r/all.json?limit=50";
+	    } else {
+		    endpoint += ".json?limit=50";
 	    }
     } else {
 	    url = "https://oauth.reddit.com";
-	    if (endpoint == "/") {
-		    endpoint = "/.json?limit=50";
-	    }
+	    endpoint += ".json?limit=50";
     }
     //console.log(endpoint);
     var promise = $.ajax({
