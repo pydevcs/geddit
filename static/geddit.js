@@ -2,21 +2,25 @@
 var redirect_uri = "https://pydevcs.github.io/geddit/";
 var client_id = "7NeqizMXmEZFKA";
 
-
 //routing function
 (function(){
   var redirect = sessionStorage.redirect;
   delete sessionStorage.redirect;
   if (redirect && redirect != location.href) {
     history.replaceState(null, null, redirect);
-    //document.body.setAttribute('message', redirect);
     var path = window.location.pathname;
     path = path.split("/");
+    console.log(path);
     console.log(path[3]);
-    if (path.length > 4) {
+    if (path.length == 3) {
+        console.log("Pathname is too short, 404 message");
+    }
+    if (path.length == 5) {
         console.log(path[4]);
     }
-    //path = path.replace("/geddit/", "");
+    if (path.length > 5) {
+        console.log("Pathname is too long, 404 message");
+    }
     var queryStr = window.location.search;	
     if (queryStr) {
         queryStr = queryStr.substring(1);
@@ -28,12 +32,10 @@ var client_id = "7NeqizMXmEZFKA";
 	        temp = queries[i].split('=');
 	        params[temp[0]] = temp[1];
 	    }
-	    console.log( params );	        
+	    console.log(params);	        
     }
-    //document.body.setAttribute('message', path[3]);
   }
   else {
-    //document.body.setAttribute('message', 'r/all');
     console.log("r/all");
   }
 })();
@@ -179,7 +181,6 @@ function refresh(voteObj) {
       }
     })
     .done(function(auth_resp) {
-	  //move this into to the if loop below after test phase
       var token = auth_resp.access_token;
       setCookie("token", token);
       console.log("Token " + token);
@@ -226,7 +227,6 @@ function geddit(token){
 	    }
     } else {
 	    url = "https://oauth.reddit.com";
-	    //if (0 === endpoint.length) { endpoint = "/.json?limit=50"; }
     }
     console.log(endpoint);
     var promise = $.ajax({
@@ -678,7 +678,6 @@ function subSearch() {
 
 
 // remove test functions
-
 $(document).on("click", "#delCookies", function(event) {
     document.cookie = "state" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = "token" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
