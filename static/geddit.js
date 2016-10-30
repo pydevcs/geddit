@@ -13,7 +13,7 @@ var client_id = "7NeqizMXmEZFKA";
     path = path.split("/");
     console.log(path);
     if (path[2] == "r") {
-	    endpoint = "/r/" + path[3] + ".json?limit=50";
+	    endpoint = "/r/" + path[3];
     } else {
 	    alert("something went wrong");
     }
