@@ -24,7 +24,7 @@ var client_id = "7NeqizMXmEZFKA";
         console.log("Pathname is too long, 404 message");
     }
     if (path.length == 5) {
-	    endpoint += path[4];
+	    endpoint += "/" + path[4];
     }
     var queryStr = window.location.search;	
     if (queryStr) {
