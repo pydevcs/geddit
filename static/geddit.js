@@ -228,7 +228,7 @@ function geddit(token){
     } else {
 	    url = "https://oauth.reddit.com";
     }
-    console.log(endpoint);
+    //console.log(endpoint);
     var promise = $.ajax({
       url: url + endpoint,
       beforeSend: function (request) {
