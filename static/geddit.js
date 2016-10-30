@@ -454,25 +454,6 @@ $(document).on("click", ".vote", function() {
     vote($(this));
 });
 
-//$(document).on("click", "#top-logo svg", function() {
-//	frontPage();
-//});
-
-//$(document).on("click", "#inbox", function() {
-//	frontPage();
-//});
-
-function frontPage() {
-	var token = localStorage.token;
-	if (!token) {
-        sessionStorage.subreddit = "/r/all.json?limit=50";
-	} else {
-        sessionStorage.subreddit = "/.json?limit=50";	
-	}
-    $('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
-	$('#mid-box-lft').removeClass('before-lft');
-}
-
 $(document).on("click", "svg#top-profile", function() {
     var token = localStorage.token;
     if (!token) {
