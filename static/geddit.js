@@ -446,8 +446,8 @@ function vote(div) {
 		        div.children("svg").eq(1).removeClass("svghide");
 		        div.children("svg").eq(0).addClass("svghide");
 	            //box
-		        div.siblings(".box").children("svg").eq(1).removeClass("svghide");
-		        div.siblings(".box").children("svg").eq(0).addClass("svghide");		        
+		        div.siblings(".box").children("svg").eq(0).removeClass("svghide");
+		        div.siblings(".box").children("svg").eq(1).addClass("svghide");		        
 	            div.parent().attr("data-dir", "true");
 	        }
 	        break;
