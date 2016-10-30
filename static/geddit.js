@@ -43,6 +43,7 @@ var client_id = "7NeqizMXmEZFKA";
   else {
     endpoint = "/";
   }
+  console.log(endpoint);
   checkAuth(endpoint);
 })();
 
