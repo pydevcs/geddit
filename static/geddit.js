@@ -497,7 +497,7 @@ $(document).on("click", "svg#top-apps", function() {
     } else {
         localStorage.nsfw = "true";
     }
-    checkauth(window.location.pathname);
+    checkAuth(window.location.pathname);
  });
 
 //log out function
