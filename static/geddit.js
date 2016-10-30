@@ -108,30 +108,6 @@ function getUrlParameter(sParam) {
     }
 }
 
-function setCookie(cname, cvalue) {
-    var expiration = 30*24*60*60*1000; //30 day cookie expiration in ms;
-    var d = new Date();
-    d.setTime(d.getTime() + expiration);
-    var expires = "expires=" + d.toGMTString();
-    document.cookie = cname + "=" + cvalue + "; " + expires;
-}
-
-function getCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(";");
-    for(var i=0; i<ca.length; i++) {
-        var c = ca[i];
-        //check for and truncate empty space
-        while (c.charAt(0)==" ") {
-            c = c.substring(1);
-        }
-        //is cname cookie string at first index positon?
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
 
 function getToken(code) {
     var promise = $.ajax({
@@ -265,13 +241,13 @@ function geddit(token){
 function renderContent(json, endpoint) {
     //console.log(json.data);
     var after = json.data.after;
-	setCookie("after", after);
+	sessionStorage.after = after;
 	var before = json.data.before;
-	setCookie("before", before);
+	sessionStorage.before = before;
 	if (before != null) {
 		console.log("Before " + before);
 	} else {
-		setCookie("count", 0);
+		sessionStorage.count = 0;
 	}
     var NSFW = localStorage.nsfw;
     var main_list = "";
@@ -528,10 +504,8 @@ $(document).on("click", "svg#top-apps", function() {
 //log out function
 $(document).on("click", "#mid-box-gear", function() {
 	localStorage.removeItem("token");
+	localStorage.removeItem("refresh");
 	
-    document.cookie = "token" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    document.cookie = "refresh" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    document.cookie = "NSFW" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     // fix this with tool tips!! $("svg#top-profile").attr("title", "Log In");    
     var endpoint = sessionStorage.subreddit;
     endpoint = endpoint.split("&after=");
@@ -587,14 +561,14 @@ $(document).on("click", "#refresh", function() {
 $(function() {
     $("#mid-box-rgt").click(function(){
         var endpoint = sessionStorage.subreddit;
-        var after = getCookie("after");        
-        var count = parseInt(getCookie("count"));
+        var after = sessionStorage.after;      
+        var count = parseInt(sessionStorage.count);
         count += 50;
         if (count === 50) {
 	        $('#before-arw').removeClass('before-arw').addClass('before-arw-prev');
 	        $('#mid-box-lft').removeClass('before-lft');
         }
-        setCookie("count",  count);
+        sessionStorage.count = count;
         if (endpoint.includes("&before=")) {
 	         endpoint = endpoint.split("&before=");    
         } else {
@@ -612,7 +586,7 @@ $(function() {
 		    return;
 	    }
         var endpoint = sessionStorage.subreddit;
-        var count = parseInt(getCookie("count"));
+        var count = parseInt(sessionStorage.count);
         if (endpoint.includes("&before=")) {
 	         endpoint = endpoint.split("&before=");    
         } else {
@@ -620,8 +594,8 @@ $(function() {
         }
 	    if (count > 50) {
 	        count -= 50;
-	        setCookie("count",  count);
-	        var before = getCookie("before");
+	        sessionStorage.count = count;
+	        var before = sessionStorage.before;
             before = "&before=" + before;
             endpoint = endpoint[0] + before + "&count=" + count;
         } else {
@@ -685,18 +659,18 @@ $(document).on("click", "#delCookies", function(event) {
 	localStorage.removeItem("nsfw");
 	localStorage.removeItem("token");
 	
-    document.cookie = "state" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    document.cookie = "token" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    document.cookie = "refresh" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    document.cookie = "subreddit" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    document.cookie = "after" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    document.cookie = "before" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    document.cookie = "count" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    console.log('Reset Cookies');
+    //document.cookie = "state" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    //document.cookie = "token" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    //document.cookie = "refresh" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    //document.cookie = "subreddit" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    //document.cookie = "after" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    //document.cookie = "before" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    //document.cookie = "count" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    console.log('Reset Local Storage Data');
 });
 
 $(document).on("click", "#testRefresh", function(event) {
   localStorage.token = "blarb";
-  console.log('set test cookies');
+  console.log('set test token');
 });
 // end remove test functions
