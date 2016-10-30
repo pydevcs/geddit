@@ -149,17 +149,18 @@ function getToken(code) {
     })
     .done(function(auth_resp) {
       var token = auth_resp.access_token;
-      //setCookie("token", token);
       localStorage.token = token;
-      var refresh_token = auth_resp.refresh_token;
-      setCookie("refresh", refresh_token);
-      var endpoint = getCookie("subreddit");
+      //setCookie("refresh", auth_resp.refresh_token);
+      localStorage.refresh = auth_resp.refresh_token;
+      //var endpoint = getCookie("subreddit");
+      var endpoint = sessionStorage.subreddit;
       if (endpoint.includes("r/all.json?limit=50")) {
 	      endpoint = "/.json?limit=50";   
       }
       endpoint = endpoint.split("&after=");
       endpoint = endpoint[0];
-      setCookie("subreddit", endpoint);
+      //setCookie("subreddit", endpoint);
+      sessionStorage.subreddit = endpoint;
       window.location.assign(redirect_uri);
     }).fail(function() {
       console.log("Access Token Error");
@@ -167,7 +168,8 @@ function getToken(code) {
 }
 
 function refresh(voteObj) {
-    var code = getCookie("refresh");
+    //var code = getCookie("refresh");
+    var code = localStorage.refresh;
     var promise = $.ajax({
       url: "https://ssl.reddit.com/api/v1/access_token",
       beforeSend: function (request) {
@@ -183,7 +185,6 @@ function refresh(voteObj) {
     })
     .done(function(auth_resp) {
       var token = auth_resp.access_token;
-      //setCookie("token", token);
       localStorage.token = token;
       console.log("Token " + token);
       if (!voteObj) {
@@ -198,7 +199,6 @@ function refresh(voteObj) {
 }
 
 function checkAuth() {
-    //var token=getCookie("token");
     var token = localStorage.token;
     if (token != "") {
         geddit(token);
@@ -220,13 +220,15 @@ function checkAuth() {
 }
 
 function geddit(token){    
-    var endpoint = getCookie("subreddit");
+    //var endpoint = getCookie("subreddit");
+    var endpoint = sessionStorage.subreddit;
     var url;
     if (!token) {
 	    url = "https://www.reddit.com";
 	    if (!endpoint || 0 === endpoint.length) {
 	        endpoint = "/r/all.json?limit=50";
-	        setCookie("subreddit", endpoint);
+	        //setCookie("subreddit", endpoint);
+	        sessionStorage.subreddit = endpoint;
 	    }
     } else {
 	    url = "https://oauth.reddit.com";
@@ -277,7 +279,8 @@ function renderContent(json, endpoint) {
 	} else {
 		setCookie("count", 0);
 	}
-    var NSFW = getCookie("NSFW");
+    //var NSFW = getCookie("NSFW");
+    var NSFW = localStorage.nsfw;
     var main_list = "";
     $.each(json.data.children, function (i, ob) {
         if (NSFW == "true") {
@@ -496,9 +499,11 @@ function frontPage() {
 	//var token = getCookie("token");
 	var token = localStorage.token;
 	if (!token) {
-        setCookie("subreddit", "/r/all.json?limit=50");
+        //setCookie("subreddit", "/r/all.json?limit=50");
+        sessionStorage.subreddit = "/r/all.json?limit=50";
 	} else {
-        setCookie("subreddit", "/.json?limit=50");		
+        //setCookie("subreddit", "/.json?limit=50");
+        sessionStorage.subreddit = "/.json?limit=50";	
 	}
     $('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
 	$('#mid-box-lft').removeClass('before-lft');
@@ -523,11 +528,14 @@ $(document).on("click", "svg#top-profile", function() {
 });
 
 $(document).on("click", "svg#top-apps", function() {
-    var NSFW = getCookie("NSFW");
+    //var NSFW = getCookie("NSFW");
+    var NSFW = localStorage.nsfw;
     if (NSFW == "true") {
-        setCookie("NSFW", "false");
+        //setCookie("NSFW", "false");
+        localStorage.nsfw = "false";
     } else {
-        setCookie("NSFW", "true");
+        //setCookie("NSFW", "true");
+        localStorage.nsfw = "true";
     }
     checkAuth();
  });
@@ -540,10 +548,12 @@ $(document).on("click", "#mid-box-gear", function() {
     document.cookie = "refresh" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = "NSFW" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     // fix this with tool tips!! $("svg#top-profile").attr("title", "Log In");    
-    var endpoint = getCookie("subreddit");
+    //var endpoint = getCookie("subreddit");
+    var endpoint = sessionStorage.subreddit;
     endpoint = endpoint.split("&after=");
     endpoint = endpoint[0];
-    setCookie("subreddit", endpoint);
+    //setCookie("subreddit", endpoint);
+    sessionStorage.subreddit = endpoint;
     window.location.assign(redirect_uri);
 });
 
@@ -554,14 +564,16 @@ $(document).on("click", ".imprtnt", function(event) {
 $(document).on("click", ".mail-title", function(event) {
     var set_sub = "/r/" + $(this).text();
     set_sub += ".json?limit=50";
-    setCookie("subreddit", set_sub);
+    //setCookie("subreddit", set_sub);
+    sessionStorage.subreddit = set_sub;
     checkAuth();
 });
 
 $(document).on("click", ".tab", function() {
     var tabID = $(this).attr("id");
     tabID = tabID.replace("tab-", "");
-    var endpoint = getCookie("subreddit");
+    //var endpoint = getCookie("subreddit");
+    var endpoint = sessionStorage.subreddit;
 	//console.log(endpoint);
     var tab = endpoint.split(".json?limit=50");
     var tabSplit = tab[0].split("/");
@@ -577,15 +589,18 @@ $(document).on("click", ".tab", function() {
     }
     $('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
 	$('#mid-box-lft').removeClass('before-lft').addClass('before-lft');
-    setCookie("subreddit", endpoint)
+    //setCookie("subreddit", endpoint)
+    sessionStorage.subreddit = endpoint;
     checkAuth();
 });
 
 $(document).on("click", "#refresh", function() {
-    var endpoint = getCookie("subreddit");
+    //var endpoint = getCookie("subreddit");
+    var endpoint = sessionStorage.subreddit;
     endpoint = endpoint.split("&after=");
     endpoint = endpoint[0];
-    setCookie("subreddit", endpoint)
+    //setCookie("subreddit", endpoint)
+    sessionStorage.subreddit = endpoint;
     $('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
 	$('#mid-box-lft').addClass('before-lft');
     checkAuth();
@@ -593,7 +608,8 @@ $(document).on("click", "#refresh", function() {
 
 $(function() {
     $("#mid-box-rgt").click(function(){
-        var endpoint = getCookie("subreddit");
+        //var endpoint = getCookie("subreddit");
+        var endpoint = sessionStorage.subreddit;
         var after = getCookie("after");        
         var count = parseInt(getCookie("count"));
         count += 50;
@@ -608,7 +624,8 @@ $(function() {
 	        endpoint = endpoint.split("&after=");    
         }
         endpoint = endpoint[0] + "&after=" + after + "&count=" + count;
-        setCookie("subreddit", endpoint);
+        //setCookie("subreddit", endpoint);
+        sessionStorage.subreddit = endpoint;
         checkAuth();
     });
 });
@@ -618,7 +635,8 @@ $(function() {
 	    if ($(this).hasClass("before-lft")) {
 		    return;
 	    }
-        var endpoint = getCookie("subreddit");
+        //var endpoint = getCookie("subreddit");
+        var endpoint = sessionStorage.subreddit;
         var count = parseInt(getCookie("count"));
         if (endpoint.includes("&before=")) {
 	         endpoint = endpoint.split("&before=");    
@@ -636,7 +654,8 @@ $(function() {
 	        $('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
 	        $('#mid-box-lft').addClass('before-lft');
         }
-        setCookie("subreddit", endpoint);
+        //setCookie("subreddit", endpoint);
+        sessionStorage.subreddit = endpoint;
         checkAuth();
     });
 });
@@ -679,7 +698,8 @@ function subSearch() {
         } else {
             $("input.search").val(""); 
         }
-        setCookie("subreddit", sub_search + ".json?limit=50");
+        //setCookie("subreddit", sub_search + ".json?limit=50");
+        sessionStorage.subreddit = sub_search + ".json?limit=50";
         checkAuth();   	    
     }
 }
@@ -688,6 +708,8 @@ function subSearch() {
 // remove test functions
 $(document).on("click", "#delCookies", function(event) {
 	sessionStorage.removeItem("state");
+	sessionStorage.removeItem("subreddit");
+	localStorage.removeItem("nsfw");
 	
     document.cookie = "state" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = "token" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
@@ -700,7 +722,6 @@ $(document).on("click", "#delCookies", function(event) {
 });
 
 $(document).on("click", "#testRefresh", function(event) {
-  //setCookie("token", "blarb");
   localStorage.token = "blarb";
   console.log('set test cookies');
 });
