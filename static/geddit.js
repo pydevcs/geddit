@@ -534,6 +534,8 @@ $(document).on("click", "svg#top-apps", function() {
 
 //log out function
 $(document).on("click", "#mid-box-gear", function() {
+	localStorage.removeItem("token");
+	
     document.cookie = "token" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = "refresh" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = "NSFW" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
