@@ -13,7 +13,7 @@ var client_id = "7NeqizMXmEZFKA";
     path = path.split("/");
     console.log(path);
     if (path[2] == "r") {
-	    endpoint = path[3];
+	    endpoint = "/r/" + path[3];
     } else {
 	    alert("something went wrong");
     }
