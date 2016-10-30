@@ -158,6 +158,7 @@ function getToken(code) {
       endpoint = endpoint.split("&after=");
       endpoint = endpoint[0];
       sessionStorage.subreddit = endpoint;
+      console.log("Logged in");
       window.location.assign(redirect_uri);
     }).fail(function() {
       console.log("Access Token Error");
