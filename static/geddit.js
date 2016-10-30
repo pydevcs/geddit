@@ -158,7 +158,6 @@ function getToken(code) {
       endpoint = endpoint.split("&after=");
       endpoint = endpoint[0];
       sessionStorage.subreddit = endpoint;
-      console.log("Logged in");
       window.location.assign(redirect_uri);
     }).fail(function() {
       console.log("Access Token Error");
@@ -684,6 +683,7 @@ $(document).on("click", "#delCookies", function(event) {
 	sessionStorage.removeItem("state");
 	sessionStorage.removeItem("subreddit");
 	localStorage.removeItem("nsfw");
+	localStorage.removeItem("token");
 	
     document.cookie = "state" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = "token" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
