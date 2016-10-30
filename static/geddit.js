@@ -4,6 +4,7 @@ var client_id = "7NeqizMXmEZFKA";
 
 //routing function
 (function(){
+  var endpoint;
   var redirect = sessionStorage.redirect;
   delete sessionStorage.redirect;
   if (redirect && redirect != location.href) {
@@ -11,7 +12,7 @@ var client_id = "7NeqizMXmEZFKA";
     var path = window.location.pathname;
     path = path.split("/");
     console.log(path);
-    console.log(path[3]);
+    endpoint = path[3];
     if (path.length == 3) {
         console.log("Pathname is too short, 404 message");
     }
@@ -19,7 +20,7 @@ var client_id = "7NeqizMXmEZFKA";
         console.log("Pathname is too long, 404 message");
     }
     if (path.length == 5) {
-        console.log(path[4]);
+	    endpoint += path[4];
     }
     var queryStr = window.location.search;	
     if (queryStr) {
@@ -36,8 +37,9 @@ var client_id = "7NeqizMXmEZFKA";
     }
   }
   else {
-    console.log("r/all");
+    endpoint = "/";
   }
+  checkAuth(endpoint);
 })();
 
 var nsfw_svg = "&lt;svg class='attach' xmlns='http://www.w3.org/2000/svg' width='16' height='8' viewBox='0 0 16 8'&gt;" +
@@ -109,7 +111,7 @@ function getUrlParameter(sParam) {
 }
 
 
-function getToken(code) {
+function getToken(code, endpoint) {
     var promise = $.ajax({
       url: "https://ssl.reddit.com/api/v1/access_token",
       beforeSend: function (request) {
@@ -124,16 +126,8 @@ function getToken(code) {
       }
     })
     .done(function(auth_resp) {
-      var token = auth_resp.access_token;
-      localStorage.token = token;
+      localStorage.token = auth_resp.access_token;
       localStorage.refresh = auth_resp.refresh_token;
-      var endpoint = sessionStorage.subreddit;
-      if (endpoint.includes("r/all.json?limit=50")) {
-	      endpoint = "/.json?limit=50";   
-      }
-      endpoint = endpoint.split("&after=");
-      endpoint = endpoint[0];
-      sessionStorage.subreddit = endpoint;
       window.location.assign(redirect_uri);
     }).fail(function() {
       console.log("Access Token Error");
@@ -170,10 +164,10 @@ function refresh(voteObj) {
     });
 }
 
-function checkAuth() {
+function checkAuth(endpoint) {
     var token = localStorage.token;
     if (token) {
-        geddit(token);
+        geddit(token, endpoint);
     }
     else {
         if (document.location.search.length) { // query string exists
@@ -181,27 +175,29 @@ function checkAuth() {
             var state = getUrlParameter("state");
             if (code != "") {
                 if (state == sessionStorage.state) {
-                    getToken(code);
+                    getToken(code, endpoint);
                 }
                 else {
                     console.log("State string does not match!");
                 }
             }
-        } else { geddit(false); }
+        } else { geddit(false, endpoint); }
     }
 }
 
-function geddit(token){    
-    var endpoint = sessionStorage.subreddit;
+function geddit(token, endpoint){    
     var url;
     if (!token) {
 	    url = "https://www.reddit.com";
-	    if (!endpoint || 0 === endpoint.length) {
+	    if (endpoint == "/") {
 	        endpoint = "/r/all.json?limit=50";
 	        sessionStorage.subreddit = endpoint;
 	    }
     } else {
 	    url = "https://oauth.reddit.com";
+	    if (endpoint == "/") {
+		    endpoint = "/.json?limit=50";
+	    }
     }
     //console.log(endpoint);
     var promise = $.ajax({
