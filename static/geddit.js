@@ -557,7 +557,6 @@ $(function() {
     $("#mid-box-rgt").click(function(){
         var endpoint = sessionStorage.endpoint;
         var after = sessionStorage.after;      
-        var count = sessionStorage.count;
         var count = parseInt(sessionStorage.count);
         if (count === 50) {
 	        $('#before-arw').removeClass('before-arw').addClass('before-arw-prev');
@@ -586,7 +585,7 @@ $(function() {
         } else {
 	        endpoint = endpoint.split("&after=");    
         }
-	    if (count > 50) {
+	    if (count !== 50) {
 	        count -= 50;
 	        sessionStorage.count = count;
 	        var before = sessionStorage.before;
