@@ -204,6 +204,7 @@ function checkAuth(endpoint) {
 
 function geddit(token, endpoint){
     console.log(endpoint);
+    console.log(token);
     var url;
     if (token == false) {
 	    url = "https://www.reddit.com";
