@@ -206,7 +206,7 @@ function geddit(token, endpoint){
     console.log(endpoint);
     console.log(token);
     var url;
-    if (token === undefined) {
+    if (token === undefined || token == "undefined") {
 	    url = "https://www.reddit.com";
 	    if (endpoint.substring(0, 5) == ("/.json")) {
 		    endpoing.replace("/.json", "/r/all.json");
