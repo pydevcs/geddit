@@ -579,22 +579,22 @@ $(function() {
 		//    return;
 	    //}
         var endpoint = sessionStorage.endpoint;
-        var count = parseInt(sessionStorage.count);
         if (endpoint.includes("&before=")) {
 	         endpoint = endpoint.split("&before=");    
         } else {
 	        endpoint = endpoint.split("&after=");    
         }
-	    if (count !== 50) {
-	        count -= 50;
-	        sessionStorage.count = count;
-	        var before = sessionStorage.before;
-            before = "&before=" + before;
-            endpoint = endpoint[0] + before + "&count=" + count;
-        } else {
+        var count = parseInt(sessionStorage.count);
+        count -= 50;
+        sessionStorage.count = count;
+	    if (count <= 50) {
 	        endpoint = endpoint[0];
 	        //$('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
 	        //$('#mid-box-lft').addClass('before-lft');
+        } else {
+	        var before = sessionStorage.before;
+            before = "&before=" + before;
+            endpoint = endpoint[0] + before + "&count=" + count;
         }
         checkAuth(endpoint);
     });
