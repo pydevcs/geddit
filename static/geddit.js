@@ -198,7 +198,7 @@ function checkAuth(endpoint) {
                 }
             }
         }
-        geddit(false, endpoint);
+        geddit(undefined, endpoint);
     }
 }
 
@@ -206,7 +206,7 @@ function geddit(token, endpoint){
     console.log(endpoint);
     console.log(token);
     var url;
-    if (token == false) {
+    if (token === undefined) {
 	    url = "https://www.reddit.com";
 	    if (endpoint.substring(0, 5) == ("/.json")) {
 		    endpoing.replace("/.json", "/r/all.json");
