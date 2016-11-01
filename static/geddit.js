@@ -255,8 +255,8 @@ function renderContent(json, endpoint) {
     console.log("After: " + after);
 	sessionStorage.after = after;
 	var before = json.data.before;
-    console.log("Before: " + before);
 	sessionStorage.before = before;
+	sessionStorage.endpoint = endpoint;
 	if (before != null) {
 		console.log("Before " + before);
 	} else {
@@ -558,7 +558,7 @@ $(document).on("click", "#refresh", function() {
 
 $(function() {
     $("#mid-box-rgt").click(function(){
-        var endpoint = sessionStorage.subreddit;
+        var endpoint = sessionStorage.endpoint;
         var after = sessionStorage.after;      
         var count = parseInt(sessionStorage.count);
         count += 50;
