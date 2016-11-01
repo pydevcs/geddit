@@ -257,7 +257,7 @@ function renderContent(json, endpoint) {
 	if (before != null) {
 		console.log("Before " + before);
 	} else {
-		sessionStorage.count = 0;
+		sessionStorage.count = 50;
 	}
     var NSFW = localStorage.nsfw;
     var main_list = "";
@@ -559,10 +559,11 @@ $(function() {
         var after = sessionStorage.after;      
         var count = sessionStorage.count;
         var count = parseInt(sessionStorage.count);
-		sessionStorage.count =  count + 50;
         if (count === 50) {
 	        $('#before-arw').removeClass('before-arw').addClass('before-arw-prev');
 	        $('#mid-box-lft').removeClass('before-lft');
+        } else {
+	        sessionStorage.count =  count + 50;
         }
         if (endpoint.includes("&before=")) {
 	         endpoint = endpoint.split("&before=");    
