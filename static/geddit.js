@@ -191,8 +191,8 @@ function checkAuth(endpoint) {
                 else {
                     console.log("State string does not match!");
                 }
-            }
-        } else { geddit(false, endpoint); }
+            } else { geddit(false, endpoint); }
+        }
     }
 }
 
