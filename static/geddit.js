@@ -3,7 +3,7 @@ var redirect_uri = "https://pydevcs.github.io/geddit/";
 var client_id = "7NeqizMXmEZFKA";
 
 //routing function
-(function(){
+(function gedd(){
   var endpoint;
   var redirect = sessionStorage.redirect;
   delete sessionStorage.redirect;
@@ -11,7 +11,6 @@ var client_id = "7NeqizMXmEZFKA";
     history.replaceState(null, null, redirect);
     var path = window.location.pathname;
     path = path.split("/");
-    console.log(path);
     if (path[2] == "r") {
 	    endpoint = "/r/" + path[3];
     } else {
@@ -42,16 +41,7 @@ var client_id = "7NeqizMXmEZFKA";
 	      temp = queries[i].split('=');
 	      params[temp[0]] = temp[1];
 	  }
-	  console.log(params);  
-	  if ("after" in params) {
-	      endpoint += "&after=" + params.after;
-	  }
-	  if ("before" in params) {
-	      endpoint += "&before=" + params.before;
-	  }
-	  if ("count" in params) {
-	      endpoint += "&count=" + params.count;
-	  }
+	  console.log(params);
   }
   checkAuth(endpoint);
 })();
@@ -542,13 +532,9 @@ $(document).on("click", ".tab", function() {
 });
 
 $(document).on("click", "#refresh", function() {
-    var endpoint = sessionStorage.subreddit;
-    endpoint = endpoint.split("&after=");
-    endpoint = endpoint[0];
-    sessionStorage.subreddit = endpoint;
     $('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
 	$('#mid-box-lft').addClass('before-lft');
-    checkAuth();
+    gedd();
 });
 
 $(function() {
