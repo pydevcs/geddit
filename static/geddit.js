@@ -187,12 +187,15 @@ function checkAuth(endpoint) {
             if (code != "") {
                 if (state == sessionStorage.state) {
                     getToken(code, endpoint);
+                    return;
                 }
                 else {
                     console.log("State string does not match!");
+                    return;
                 }
-            } else { geddit(false, endpoint); }
+            }
         }
+        geddit(false, endpoint);
     }
 }
 
