@@ -491,7 +491,7 @@ $(document).on("click", "svg#top-apps", function() {
     } else {
         localStorage.nsfw = "true";
     }
-    checkAuth(window.location.pathname.replace("/geddit", ""));
+    checkAuth(sessionStorage.endpoint);
  });
 
 //log out function
