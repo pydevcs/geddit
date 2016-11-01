@@ -259,7 +259,8 @@ function renderContent(json, endpoint) {
 	sessionStorage.endpoint = endpoint;
 	if (before != null) {
 		console.log("Before " + before);
-		sessionStorage.count += 50;
+		var count = parseInt(sessionStorage.count);
+		sessionStorage.count =  count + 50;
 	} else {
 		sessionStorage.count = 50;
 	}
@@ -561,21 +562,16 @@ $(function() {
     $("#mid-box-rgt").click(function(){
         var endpoint = sessionStorage.endpoint;
         var after = sessionStorage.after;      
-        var count = parseInt(sessionStorage.count);
-        //count += 50;
+        var count = sessionStorage.count;
         //if (count === 50) {
 	    //    $('#before-arw').removeClass('before-arw').addClass('before-arw-prev');
 	    //    $('#mid-box-lft').removeClass('before-lft');
         //}
-        var count = sessionStorage.count;
-        //if (endpoint.includes("&before=")) {
-	    //     endpoint = endpoint.split("&before=");    
-        //} else {
-	    //    endpoint = endpoint.split("&after=");    
-        //}
-        
-        endpoint = endpoint.split("&after=");
-        
+        if (endpoint.includes("&before=")) {
+	         endpoint = endpoint.split("&before=");    
+        } else {
+	        endpoint = endpoint.split("&after=");    
+        }
         endpoint = endpoint[0] + "&after=" + after + "&count=" + count;
         checkAuth(endpoint);
     });
