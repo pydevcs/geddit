@@ -562,8 +562,6 @@ $(function() {
         if (count === 50) {
 	        $('#before-arw').removeClass('before-arw').addClass('before-arw-prev');
 	        $('#mid-box-lft').removeClass('before-lft');
-        } else {
-	        sessionStorage.count =  count + 50;
         }
         if (endpoint.includes("&before=")) {
 	         endpoint = endpoint.split("&before=");    
@@ -571,6 +569,7 @@ $(function() {
 	        endpoint = endpoint.split("&after=");    
         }
         endpoint = endpoint[0] + "&after=" + after + "&count=" + count;
+        sessionStorage.count =  count + 50;
         checkAuth(endpoint);
     });
 });
