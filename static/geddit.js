@@ -492,11 +492,15 @@ $(document).on("click", "#mid-box-gear", function() {
 	localStorage.removeItem("token");
 	localStorage.removeItem("refresh");
 	
-    // fix this with tool tips!! $("svg#top-profile").attr("title", "Log In");    
-    var endpoint = sessionStorage.subreddit;
-    endpoint = endpoint.split("&after=");
-    endpoint = endpoint[0];
-    sessionStorage.subreddit = endpoint;
+    // fix this with tool tips!! $("svg#top-profile").attr("title", "Log In");
+    
+    //refactor
+    //var endpoint = sessionStorage.subreddit;
+    //endpoint = endpoint.split("&after=");
+    //endpoint = endpoint[0];
+    //sessionStorage.subreddit = endpoint;
+    //end refactor
+    
     window.location.assign(redirect_uri);
 });
 
