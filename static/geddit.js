@@ -42,12 +42,15 @@ var client_id = "7NeqizMXmEZFKA";
 	      temp = queries[i].split('=');
 	      params[temp[0]] = temp[1];
 	  }
-	  console.log(params);
-	  if ("count" in params) {
-	      endpoint += "&count=" + params.count;
-	  }   
+	  console.log(params);  
+	  if ("after" in params) {
+	      endpoint += "&after=" + params.after;
+	  }
 	  if ("before" in params) {
 	      endpoint += "&before=" + params.before;
+	  }
+	  if ("count" in params) {
+	      endpoint += "&count=" + params.count;
 	  }
   }
   checkAuth(endpoint);
