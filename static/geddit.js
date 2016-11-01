@@ -26,25 +26,29 @@ var client_id = "7NeqizMXmEZFKA";
     if (path.length == 5) {
 	    endpoint += "/" + path[4];
     }
-    var queryStr = window.location.search;	
-    if (queryStr) {
-        queryStr = queryStr.substring(1);
-	    var params = {}, queries, temp, i, l;
-	    // Split into key/value pairs
-	    queries = queryStr.split("&");
-	    // Convert the array of strings into an object
-	    for ( i = 0, l = queries.length; i < l; i++ ) {
-	        temp = queries[i].split('=');
-	        params[temp[0]] = temp[1];
-	    }
-	    console.log(params);
-	    if ("before" in params) {
-		    console.log(params.before);
-	    }        
-    }
   }
   else {
     endpoint = "/";
+  }
+  endpoint += ".json?limit=50";
+  var queryStr = window.location.search;	
+  if (queryStr) {
+      queryStr = queryStr.substring(1);
+	  var params = {}, queries, temp, i, l;
+	  // Split into key/value pairs
+	  queries = queryStr.split("&");
+	  // Convert the array of strings into an object
+	  for ( i = 0, l = queries.length; i < l; i++ ) {
+	      temp = queries[i].split('=');
+	      params[temp[0]] = temp[1];
+	  }
+	  console.log(params);
+	  if ("count" in params) {
+	      endpoint += "&count=" + params.count;
+	  }   
+	  if ("before" in params) {
+	      endpoint += "&before=" + params.before;
+	  }
   }
   console.log(endpoint);
   checkAuth(endpoint);
@@ -197,14 +201,13 @@ function geddit(token, endpoint){
     var url;
     if (!token) {
 	    url = "https://www.reddit.com";
-	    if (endpoint == "/") {
-	        endpoint = "/r/all.json?limit=50";
+	    if (endpoint.subtring(0, 5) == ("/.json")) {
+		    endpoing.replace("/.json", "/r/all.json");
 	    } else {
 		    endpoint += ".json?limit=50";
 	    }
     } else {
 	    url = "https://oauth.reddit.com";
-	    endpoint += ".json?limit=50";
     }
     //console.log(endpoint);
     var promise = $.ajax({
