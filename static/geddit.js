@@ -252,7 +252,6 @@ function geddit(token, endpoint){
 function renderContent(json, endpoint) {
     //console.log(json.data);
     var after = json.data.after;
-    console.log("After: " + after);
 	sessionStorage.after = after;
 	var before = json.data.before;
 	sessionStorage.before = before;
