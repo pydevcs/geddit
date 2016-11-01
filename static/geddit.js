@@ -256,10 +256,8 @@ function renderContent(json, endpoint) {
 	sessionStorage.endpoint = endpoint;
 	if (before != null) {
 		console.log("Before " + before);
-		var count = parseInt(sessionStorage.count);
-		sessionStorage.count =  count + 50;
 	} else {
-		sessionStorage.count = 50;
+		sessionStorage.count = 0;
 	}
     var NSFW = localStorage.nsfw;
     var main_list = "";
@@ -560,10 +558,12 @@ $(function() {
         var endpoint = sessionStorage.endpoint;
         var after = sessionStorage.after;      
         var count = sessionStorage.count;
-        //if (count === 50) {
-	    //    $('#before-arw').removeClass('before-arw').addClass('before-arw-prev');
-	    //    $('#mid-box-lft').removeClass('before-lft');
-        //}
+        var count = parseInt(sessionStorage.count);
+		sessionStorage.count =  count + 50;
+        if (count === 50) {
+	        $('#before-arw').removeClass('before-arw').addClass('before-arw-prev');
+	        $('#mid-box-lft').removeClass('before-lft');
+        }
         if (endpoint.includes("&before=")) {
 	         endpoint = endpoint.split("&before=");    
         } else {
