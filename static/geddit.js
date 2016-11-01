@@ -523,8 +523,7 @@ $(document).on("click", ".mail-title", function(event) {
 $(document).on("click", ".tab", function() {
     var tabID = $(this).attr("id");
     tabID = tabID.replace("tab-", "");
-    var endpoint = sessionStorage.subreddit;
-	//console.log(endpoint);
+    var endpoint = sessionStorage.endpoint;
     var tab = endpoint.split(".json?limit=50");
     var tabSplit = tab[0].split("/");
     var tabLen = tabSplit.length;
@@ -532,15 +531,15 @@ $(document).on("click", ".tab", function() {
     var tab_ID = tabSplit[tabLen - 1];
     if (tab_ID != "top" && tab_ID != "new") { tab_ID = "hot"} 
     if (tabLen == 2) { //logged in front page
-	    endpoint = "/" + tabID + ".json?limit=50"; 
+	    endpoint = "/" + tabID; 
     }
     if (tabLen >= 3) {
-	    endpoint = "/r/" + tabSplit[2] + "/" + tabID + ".json?limit=50";
+	    endpoint = "/r/" + tabSplit[2] + "/" + tabID;
     }
     $('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
 	$('#mid-box-lft').removeClass('before-lft').addClass('before-lft');
-    sessionStorage.subreddit = endpoint;
-    checkAuth();
+    sessionStorage.endpoint = endpoint;
+    checkAuth(endpoint);
 });
 
 $(document).on("click", "#refresh", function() {
