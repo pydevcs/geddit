@@ -3,7 +3,7 @@ var redirect_uri = "https://pydevcs.github.io/geddit/";
 var client_id = "7NeqizMXmEZFKA";
 
 //routing function
-(function gedd(){
+(function(){
   var endpoint;
   var redirect = sessionStorage.redirect;
   delete sessionStorage.redirect;
@@ -30,6 +30,7 @@ var client_id = "7NeqizMXmEZFKA";
     endpoint = "/";
   }
   endpoint += ".json?limit=50";
+
   var queryStr = window.location.search;	
   if (queryStr) {
       queryStr = queryStr.substring(1);
@@ -43,6 +44,7 @@ var client_id = "7NeqizMXmEZFKA";
 	  }
 	  console.log(params);
   }
+
   checkAuth(endpoint);
 })();
 
@@ -534,7 +536,26 @@ $(document).on("click", ".tab", function() {
 $(document).on("click", "#refresh", function() {
     $('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
 	$('#mid-box-lft').addClass('before-lft');
-    gedd();
+
+    var path = window.location.pathname;
+    var endpoint;
+    path = path.split("/");
+    if (path[2] == "r") {
+	    endpoint = "/r/" + path[3];
+    } else {
+	    alert("something went wrong");
+    }
+    if (path.length == 3) {
+        console.log("Pathname is too short, 404 message");
+    }
+    if (path.length > 5 && path[5] != "") {
+        console.log("Pathname is too long, 404 message");
+    }
+    if (path.length == 5) {
+	    endpoint += "/" + path[4];
+    }
+    endpoint += ".json?limit=50";
+    checkAuth(endpoint);
 });
 
 $(function() {
