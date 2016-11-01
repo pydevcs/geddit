@@ -196,7 +196,8 @@ function checkAuth(endpoint) {
     }
 }
 
-function geddit(token, endpoint){    
+function geddit(token, endpoint){
+    console.log(endpoint);
     var url;
     if (!token) {
 	    url = "https://www.reddit.com";
@@ -206,7 +207,7 @@ function geddit(token, endpoint){
     } else {
 	    url = "https://oauth.reddit.com";
     }
-    console.log(endpoint);
+    console.log("Post endpoint: " + endpoint);
     var promise = $.ajax({
       url: url + endpoint,
       beforeSend: function (request) {
