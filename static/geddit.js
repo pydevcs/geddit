@@ -200,7 +200,7 @@ function geddit(token, endpoint){
     var url;
     if (!token) {
 	    url = "https://www.reddit.com";
-	    if (endpoint.subtring(0, 5) == ("/.json")) {
+	    if (endpoint.substring(0, 5) == ("/.json")) {
 		    endpoing.replace("/.json", "/r/all.json");
 	    } else {
 		    endpoint += ".json?limit=50";
