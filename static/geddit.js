@@ -50,7 +50,6 @@ var client_id = "7NeqizMXmEZFKA";
 	      endpoint += "&before=" + params.before;
 	  }
   }
-  console.log(endpoint);
   checkAuth(endpoint);
 })();
 
@@ -209,7 +208,7 @@ function geddit(token, endpoint){
     } else {
 	    url = "https://oauth.reddit.com";
     }
-    //console.log(endpoint);
+    console.log(endpoint);
     var promise = $.ajax({
       url: url + endpoint,
       beforeSend: function (request) {
