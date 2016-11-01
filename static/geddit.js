@@ -568,7 +568,9 @@ $(function() {
 	        endpoint = endpoint.split("&after=");    
         }
         endpoint = endpoint[0] + "&after=" + after + "&count=" + count;
-        sessionStorage.count =  count + 50;
+        count += 50;
+        sessionStorage.count =  count;
+        console.log("Count: " + count);
         checkAuth(endpoint);
     });
 });
