@@ -576,10 +576,10 @@ $(function() {
 
 $(function() {
     $("#mid-box-lft").click(function(){
-	    if ($(this).hasClass("before-lft")) {
-		    return;
-	    }
-        var endpoint = sessionStorage.subreddit;
+	    //if ($(this).hasClass("before-lft")) {
+		//    return;
+	    //}
+        var endpoint = sessionStorage.endpoint;
         var count = parseInt(sessionStorage.count);
         if (endpoint.includes("&before=")) {
 	         endpoint = endpoint.split("&before=");    
@@ -594,11 +594,10 @@ $(function() {
             endpoint = endpoint[0] + before + "&count=" + count;
         } else {
 	        endpoint = endpoint[0];
-	        $('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
-	        $('#mid-box-lft').addClass('before-lft');
+	        //$('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
+	        //$('#mid-box-lft').addClass('before-lft');
         }
-        sessionStorage.subreddit = endpoint;
-        checkAuth();
+        checkAuth(endpoint);
     });
 });
 
