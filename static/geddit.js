@@ -202,7 +202,7 @@ function checkAuth(endpoint) {
 function geddit(token, endpoint){
     console.log(endpoint);
     var url;
-    if (token === false) {
+    if (token == false) {
 	    url = "https://www.reddit.com";
 	    if (endpoint.substring(0, 5) == ("/.json")) {
 		    endpoing.replace("/.json", "/r/all.json");
