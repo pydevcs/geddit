@@ -37,7 +37,10 @@ var client_id = "7NeqizMXmEZFKA";
 	        temp = queries[i].split('=');
 	        params[temp[0]] = temp[1];
 	    }
-	    console.log(params);	        
+	    console.log(params);
+	    if ("before" in params) {
+		    console.log(params.before);
+	    }        
     }
   }
   else {
