@@ -594,8 +594,8 @@ $(function() {
         } else {
 	        var before = sessionStorage.before;
             before = "&before=" + before;
-            endpoint = endpoint[0] + before + "&count=" + count;
             count -= 50;
+            endpoint = endpoint[0] + before + "&count=" + count;
             sessionStorage.count = count;
         }
         checkAuth(endpoint);
