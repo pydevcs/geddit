@@ -202,8 +202,6 @@ function geddit(token, endpoint){
 	    url = "https://www.reddit.com";
 	    if (endpoint.substring(0, 5) == ("/.json")) {
 		    endpoing.replace("/.json", "/r/all.json");
-	    } else {
-		    endpoint += ".json?limit=50";
 	    }
     } else {
 	    url = "https://oauth.reddit.com";
