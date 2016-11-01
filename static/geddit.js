@@ -587,8 +587,6 @@ $(function() {
 	        endpoint = endpoint.split("&after=");    
         }
         var count = parseInt(sessionStorage.count);
-        count -= 50;
-        sessionStorage.count = count;
 	    if (count <= 50) {
 	        endpoint = endpoint[0];
 	        //$('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
@@ -597,6 +595,8 @@ $(function() {
 	        var before = sessionStorage.before;
             before = "&before=" + before;
             endpoint = endpoint[0] + before + "&count=" + count;
+            count -= 50;
+            sessionStorage.count = count;
         }
         checkAuth(endpoint);
     });
