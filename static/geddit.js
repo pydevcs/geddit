@@ -251,7 +251,7 @@ function geddit(token, endpoint){
 }
 
 function renderContent(json, endpoint) {
-	if (!$(element).is(":visible"); ) {
+	if (!$(element).is(":visible") ) {
 		$("div#contain").hide();
 		$("div#btm").show();
 		$("div#main-list").show();
