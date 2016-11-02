@@ -11,7 +11,7 @@ var client_id = "7NeqizMXmEZFKA";
     history.replaceState(null, null, redirect);
     var path = window.location.pathname;
     path = path.split("/");
-    console.log(path);
+    //console.log(path);
     if (path[2] == "r") {
 	    endpoint = "/r/" + path[3];
     } else if (path[2] == "hot" || path[2] == "new" || path[2] == "top") {
