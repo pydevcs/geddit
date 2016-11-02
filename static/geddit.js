@@ -244,10 +244,10 @@ function renderContent(json, endpoint) {
 	sessionStorage.endpoint = endpoint;
 	if (before != null) {
 		console.log("Before " + before);
-		$('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
-	    $('#mid-box-lft').removeClass('before-lft').addClass('before-lft');
 	} else {
 		sessionStorage.count = 0;
+		$('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
+	    $('#mid-box-lft').removeClass('before-lft').addClass('before-lft');
 	}
     var NSFW = localStorage.nsfw;
     var main_list = "";
