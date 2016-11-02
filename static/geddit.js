@@ -518,7 +518,7 @@ $(document).on("click", "svg#top-profile", function() {
 
 
 $(document).on("click", "svg#top-notify", function() {
-    checkAuth("me");
+    console.log("Read Inbox");
 });
 
 
