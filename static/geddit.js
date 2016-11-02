@@ -510,6 +510,12 @@ $(document).on("click", "svg#top-profile", function() {
     }
 });
 
+
+$(document).on("click", "svg#top-notify", function() {
+    checkAuth("me");
+});
+
+
 $(document).on("click", "svg#top-apps", function() {
     var NSFW = localStorage.nsfw;
     if (NSFW == "true") {
