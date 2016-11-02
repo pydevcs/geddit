@@ -12,13 +12,13 @@ var client_id = "7NeqizMXmEZFKA";
     var path = window.location.pathname;
     path = path.split("/");
     //console.log(path);
-    if (path[2] != "") {
-	    var modifier = path[2];
+    if (path[2].toLowerCase() == "r") {
+	    endpoint = "/r/" + path[3];
+    }
+    if (path[4] != "") {
+	    var modifier = path[4];
 	    modifier = modifier.toLowerCase();
 	    switch (modifier) {
-		case "r":
-		    endpoint = "/r/" + path[3];
-		    break;
 		case "hot":
 		    endpoint = "/" + path[2];
 		    break;
