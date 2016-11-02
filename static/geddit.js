@@ -44,7 +44,6 @@ var refresh = false;
 	                      $("div#main-list").hide();
 		                  $("div#btm").hide();
 		                  $("div#contain").show();
-		                  return;
                       } else {
 	                      alert("That page does not exist");
                       }                    
