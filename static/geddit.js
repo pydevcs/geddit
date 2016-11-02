@@ -16,9 +16,11 @@ window.onpopstate = function(event) {
       } catch (e) {
           Storage.prototype._setItem = Storage.prototype.setItem;
           Storage.prototype.setItem = function() {};
-          alert('Your web browser does not support storing settings locally. In Safari, the most common cause of this is using "Private Browsing Mode". Some settings may not save or some features may not work properly for you.');
+          alert('This site uses LocalStorage and cannot be used in Safari Private Browsing Mode. Try Chrome! ;]');
+          break;
       }
   }
+  console.log("Nothing to see here");
   var redirect = sessionStorage.redirect;
   delete sessionStorage.redirect;
   refresh = true;
