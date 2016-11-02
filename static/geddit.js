@@ -543,7 +543,7 @@ $(document).on("click", "#refresh", function() {
 	    alert("something went wrong");
     }
     if (path.length == 3) {
-        console.log("Pathname is too short, 404 message");
+        endpoint = "/";
     }
     if (path.length > 5 && path[5] != "") {
         console.log("Pathname is too long, 404 message");
