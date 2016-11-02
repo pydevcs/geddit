@@ -265,6 +265,7 @@ function profile(token) {
          document.getElementById("username").innerHTML = json_data.name;
          if (json_data.has_mail) {
              document.getElementById("has-mail").style.fill = "D9453D";
+             document.getElementById("inbox-count").innerHTML = " (" + json_data.inbox_count + ")";
          }
     })
     .fail(function( jqXHR, textStatus, errorThrown) {
