@@ -184,7 +184,11 @@ function refresh(voteObj, endpoint) {
 function checkAuth(endpoint) {
     var token = localStorage.token;
     if (token) {
-        geddit(token, endpoint);
+        if (endpoint == "me") {
+	        profile(token);
+        } else {
+	        geddit(token, endpoint);   
+        }
     }
     else {
         if (document.location.search.length) { // query string exists
@@ -245,6 +249,24 @@ function geddit(token, endpoint){
         }
     });
 }
+
+function profile(token) {
+    var promise = $.ajax({
+      url: "https://oauth.reddit.com/api/v1/me",
+      beforeSend: function (request) {
+          request.setRequestHeader("Authorization", "bearer " + token);
+      },
+      type: "GET",
+      dataType: "json"
+    })
+    .done(function(json_data) {
+         console.log(json_data);
+    })
+    .fail(function( jqXHR, textStatus, errorThrown) {
+        console.log("Profile Error");
+    });
+}
+
 
 function renderContent(json, endpoint) {
 	if (!$("div#contain").is(":visible") ) {
