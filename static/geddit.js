@@ -4,7 +4,7 @@ var client_id = "7NeqizMXmEZFKA";
 
 //routing function
 (function(){
-  var endpoint;
+  var endpoint = "/";
   var redirect = sessionStorage.redirect;
   delete sessionStorage.redirect;
   if (redirect && redirect != location.href) {
@@ -20,12 +20,12 @@ var client_id = "7NeqizMXmEZFKA";
               if (r > -1) {
                   if (a === 0) {
                       if (path.length >= 4) {
-	                      endpoint = "/r/" + path[3];
+	                      endpoint += "r/" + path[3];
                       } else {
 	                      alert("That page does not exist");
                       }
                   } else {
-                      endpoint = "/" + paths[r];
+                      endpoint += paths[r];
                   }
               } else {
                   alert("That page does not exist");
@@ -56,8 +56,6 @@ var client_id = "7NeqizMXmEZFKA";
               }            
           }
       }
-  } else {
-      endpoint = "/";
   }
   endpoint += ".json?limit=50";
   checkAuth(endpoint);
