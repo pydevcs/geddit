@@ -13,7 +13,6 @@ var client_id = "7NeqizMXmEZFKA";
       path = path.split("/");
       console.log(path);
       var paths = ["r", "hot", "new", "top"];
-
       if (path.length >= 3) {
           if (typeof path[2] !== 'undefined') {
               var r = paths.indexOf(path[2].toLowerCase());
@@ -32,7 +31,6 @@ var client_id = "7NeqizMXmEZFKA";
               }
           }	    
       }
-
       if (path.length >= 5) {
           if (typeof path[4] !== 'undefined') {
               paths[0] = "comments";
