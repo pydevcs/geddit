@@ -3,6 +3,10 @@ var redirect_uri = "https://pydevcs.github.io/geddit/";
 var client_id = "7NeqizMXmEZFKA";
 var refresh = false;
 
+window.onpopstate = function(event) {
+  console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
+};
+
 //routing function
 (function(){
   var redirect = sessionStorage.redirect;
