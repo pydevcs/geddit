@@ -590,8 +590,8 @@ $(function() {
         var count = parseInt(sessionStorage.count);
 	    if (count <= 50) {
 	        endpoint = endpoint[0];
-	        $('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
-	        $('#mid-box-lft').addClass('before-lft');
+	        //$('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
+	        //$('#mid-box-lft').addClass('before-lft');
         } else {
 	        var before = sessionStorage.before;
             before = "&before=" + before;
