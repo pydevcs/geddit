@@ -33,9 +33,6 @@ var client_id = "7NeqizMXmEZFKA";
 		    $("div#main-list").hide();
 		    $("div#contain").show();
 		    break;
-		default:
-		    alert("Page Not Found");
-		    break;
 	    }
     }
     if (path.length == 5) {
