@@ -14,6 +14,7 @@ body{
 /* #### comment view #### */
 #contain {
 	width: calc(100% - 220px);
+	display: none;
 }
 #top-menu {
     height:38px;
