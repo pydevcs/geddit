@@ -537,19 +537,18 @@ $(document).on("click", "#refresh", function() {
     var endpoint;
     path = path.split("/");
     console.log(path);
-    if (path[2] == "r") {
-	    endpoint = "/r/" + path[3];
-    } else {
-	    alert("something went wrong");
-    }
     if (path.length == 3) {
         endpoint = "/";
-    }
-    if (path.length > 5 && path[5] != "") {
-        console.log("Pathname is too long, 404 message");
-    }
-    if (path.length == 5) {
-	    endpoint += "/" + path[4];
+    } else {
+        if (path[2] == "r") {
+	        endpoint = "/r/" + path[3];
+        }
+        if (path.length > 5 && path[5] != "") {
+            console.log("Pathname is too long, 404 message");
+        }
+        if (path.length == 5) {
+	        endpoint += "/" + path[4];
+        }	    
     }
     endpoint += ".json?limit=50";
     checkAuth(endpoint);
