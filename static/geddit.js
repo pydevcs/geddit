@@ -13,7 +13,9 @@ var client_id = "7NeqizMXmEZFKA";
     path = path.split("/");
     //console.log(path);
     if (path[2] != "") {
-	    switch (path[2]) {
+	    var modifier = path[2];
+	    modifier = modifier.toLowerCase();
+	    switch (modifier) {
 		case "r":
 		    endpoint = "/r/" + path[3];
 		    break;
@@ -27,8 +29,9 @@ var client_id = "7NeqizMXmEZFKA";
 		    endpoint = "/" + path[2];
 		    break;
 		case "comments":
+		    console.log("Comment View");
 		    $("div#main-list").hide();
-		     $("div#contain").show();
+		    $("div#contain").show();
 		    break;
 		default:
 		    alert("Page Not Found");
