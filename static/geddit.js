@@ -529,9 +529,7 @@ $(document).on("click", ".tab", function() {
 	    endpoint = "/r/" + tabSplit[2] + "/" + tabID;
     }
     history.replaceState(null, null, "/geddit" + endpoint);
-    endpoint += ".json?limit=50";    
-    //$('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
-	//$('#mid-box-lft').removeClass('before-lft').addClass('before-lft');
+    endpoint += ".json?limit=50";
     checkAuth(endpoint);
 });
 
@@ -639,15 +637,7 @@ $(function() {
 
 function subSearch() {
     var sub_search = $("input.search").val();
-    if (sub_search && sub_search != "/r/") {
-        if ($("input.search").is(":focus")) {
-            $("input.search").val("/r/");
-        } else {
-            $("input.search").val(""); 
-        }
-        sessionStorage.subreddit = sub_search + ".json?limit=50";
-        checkAuth();   	    
-    }
+    console.log(sub_search);
 }
 
 
