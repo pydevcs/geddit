@@ -214,6 +214,7 @@ function checkAuth(endpoint) {
 }
 
 function geddit(token, endpoint){
+    history.pushState(null, null, "/geddit" + endpoint);
     var url;
     if (token === undefined || token == "undefined") {
 	    url = "https://www.reddit.com";
@@ -560,7 +561,6 @@ $(document).on("click", ".imprtnt", function(event) {
 
 $(document).on("click", ".mail-title", function(event) {
     var endpoint = "/r/" + $(this).text();
-    history.pushState(null, null, "/geddit" + endpoint);
     endpoint += ".json?limit=50";
     checkAuth(endpoint);
 });
@@ -580,7 +580,6 @@ $(document).on("click", ".tab", function() {
     if (tabLen >= 3) {
 	    endpoint = "/r/" + tabSplit[2] + "/" + tabID;
     }
-    history.pushState(null, null, "/geddit" + endpoint);
     endpoint += ".json?limit=50";
     checkAuth(endpoint);
 });
