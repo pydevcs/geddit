@@ -17,7 +17,7 @@ var client_id = "7NeqizMXmEZFKA";
       if (path.length >= 3) {
           if (typeof path[2] !== 'undefined') {
               var r = paths.indexOf(path[2].toLowerCase());
-              if (a > -1) {
+              if (r > -1) {
                   if (a === 0) {
                       if (path.length >= 4) {
 	                      endpoint = "/r/" + path[3];
