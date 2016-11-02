@@ -13,7 +13,6 @@ var refresh = false;
       history.replaceState(null, null, redirect);
       var path = window.location.pathname;
       path = path.split("/");
-      console.log(path);
       var paths = ["r", "hot", "new", "top"];
       if (path.length >= 3) {
           if (typeof path[2] !== 'undefined') {
@@ -45,6 +44,7 @@ var refresh = false;
 	                      $("div#main-list").hide();
 		                  $("div#btm").hide();
 		                  $("div#contain").show();
+		                  return;
                       } else {
 	                      alert("That page does not exist");
                       }                    
