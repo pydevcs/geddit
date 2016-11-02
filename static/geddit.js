@@ -561,11 +561,10 @@ $(function() {
         var count = parseInt(sessionStorage.count);
         count += 50;
         sessionStorage.count =  count;
-        console.log("Count: " + count);
-        //if (count === 50) {
-	    //    $('#before-arw').removeClass('before-arw').addClass('before-arw-prev');
-	    //    $('#mid-box-lft').removeClass('before-lft');
-        //}
+        if (count === 50) {
+	        $('#before-arw').removeClass('before-arw').addClass('before-arw-prev');
+	        $('#mid-box-lft').removeClass('before-lft');
+        }
         if (endpoint.includes("&before=")) {
 	         endpoint = endpoint.split("&before=");    
         } else {
