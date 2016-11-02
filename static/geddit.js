@@ -13,8 +13,10 @@ var client_id = "7NeqizMXmEZFKA";
     path = path.split("/");
     if (path[2] == "r") {
 	    endpoint = "/r/" + path[3];
+    } else if (path[2] == "hot" || path[2] == "new" || path[2] == "top") {
+	    endpoint = "/" + path[2];
     } else {
-	    alert("something went wrong");
+	    alert("Please correct URL");
     }
     if (path.length == 3) {
         console.log("Pathname is too short, 404 message");
