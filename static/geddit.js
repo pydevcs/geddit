@@ -35,7 +35,7 @@ var client_id = "7NeqizMXmEZFKA";
 
       if (path.length >= 5) {
           if (typeof path[4] !== 'undefined') {
-              var paths[0] = "comments";
+              paths[0] = "comments";
               var modifier = paths.indexOf(path[4].toLowerCase());
             
               if (modifier > -1) {
