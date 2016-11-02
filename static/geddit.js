@@ -502,7 +502,9 @@ $(document).on("click", ".imprtnt", function(event) {
 });
 
 $(document).on("click", ".mail-title", function(event) {
-    var endpoint = "/r/" + $(this).text() + ".json?limit=50";
+    var endpoint = "/r/" + $(this).text();
+    history.replaceState(null, null, "/geddit/" + endpoint);
+    endpoint += ".json?limit=50";
     checkAuth(endpoint);
 });
 
