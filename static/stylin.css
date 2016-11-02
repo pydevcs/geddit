@@ -287,6 +287,12 @@ input.search:focus {
 	cursor: pointer;
 	margin-top: 22px;
 }
+#username {
+    float:right;
+    margin-top:21px;
+    margin-right:20px;
+    font-size:15px;
+}
 
 #mid {
 	height:47px;

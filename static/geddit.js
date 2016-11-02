@@ -261,6 +261,10 @@ function profile(token) {
     })
     .done(function(json_data) {
          console.log(json_data);
+         document.getElementById("demo").innerHTML = json_data.name;
+         if (json_data.has_mail) {
+             document.getElementById("has-mail").style.fill = "D9453D";
+         }
     })
     .fail(function( jqXHR, textStatus, errorThrown) {
         console.log("Profile Error");
