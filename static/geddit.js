@@ -27,8 +27,8 @@ var client_id = "7NeqizMXmEZFKA";
 		    endpoint = "/" + path[2];
 		    break;
 		case "comments":
-		    $("#main-list").toggle();
-		     $("#contain").toggle();
+		    $("div#main-list").hide();
+		     $("div#contain").show();
 		    break;
 		default:
 		    alert("Page Not Found");
