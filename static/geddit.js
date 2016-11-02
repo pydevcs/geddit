@@ -249,6 +249,10 @@ function geddit(token, endpoint){
 }
 
 function renderContent(json, endpoint) {
+	if (!$(element).is(":visible"); ) {
+		$("div#contain").hide();
+		$("div#main-list").show();
+	}
     //console.log(json.data);
     var after = json.data.after;
 	sessionStorage.after = after;
