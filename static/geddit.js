@@ -182,13 +182,12 @@ function checkAuth(endpoint) {
             if (code != "") {
                 if (state == sessionStorage.state) {
                     getToken(code, endpoint);
-                    return;
                 }
                 else {
                     console.log("State string does not match!");
-                    return;
                 }
             }
+            return;
         }
         geddit(undefined, endpoint);
     }
@@ -198,9 +197,6 @@ function geddit(token, endpoint){
     var url;
     if (token === undefined || token == "undefined") {
 	    url = "https://www.reddit.com";
-	    if (endpoint.substring(0, 5) == ("/.json")) {
-		    endpoing.replace("/.json", "/r/all.json");
-	    }
     } else {
 	    url = "https://oauth.reddit.com";
     }
@@ -540,6 +536,7 @@ $(document).on("click", "#refresh", function() {
     var path = window.location.pathname;
     var endpoint;
     path = path.split("/");
+    console.log(path);
     if (path[2] == "r") {
 	    endpoint = "/r/" + path[3];
     } else {
