@@ -12,7 +12,9 @@ var client_id = "7NeqizMXmEZFKA";
     var path = window.location.pathname;
     path = path.split("/");
     //console.log(path);
-    if (path[2].toLowerCase() == "r") {
+    var r = path[2];
+    r = r.toLowerCase();
+    if (r == "r") {
 	    endpoint = "/r/" + path[3];
     }
     if (path[4] != "") {
@@ -29,7 +31,6 @@ var client_id = "7NeqizMXmEZFKA";
 		    endpoint = "/" + path[2];
 		    break;
 		case "comments":
-		    console.log("Comment View");
 		    $("div#main-list").hide();
 		    $("div#btm").show();
 		    $("div#contain").show();
