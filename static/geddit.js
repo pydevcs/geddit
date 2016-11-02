@@ -19,6 +19,12 @@ var client_id = "7NeqizMXmEZFKA";
     } else {
 	    alert("Please correct URL");
     }
+    if (path[2] == "comments") {
+	    if (path.length <= 7 && path >= 6) {
+            $("#main-list").toggle();
+            $("#contain").toggle();
+	    }
+    }
     if (path.length == 3) {
         console.log("Pathname is too short, 404 message");
     }
