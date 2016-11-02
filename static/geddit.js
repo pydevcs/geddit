@@ -556,7 +556,7 @@ $(document).on("click", ".imprtnt", function(event) {
 
 $(document).on("click", ".mail-title", function(event) {
     var endpoint = "/r/" + $(this).text();
-    history.replaceState(null, null, "/geddit" + endpoint);
+    history.pushState(null, null, "/geddit" + endpoint);
     endpoint += ".json?limit=50";
     checkAuth(endpoint);
 });
@@ -576,7 +576,7 @@ $(document).on("click", ".tab", function() {
     if (tabLen >= 3) {
 	    endpoint = "/r/" + tabSplit[2] + "/" + tabID;
     }
-    history.replaceState(null, null, "/geddit" + endpoint);
+    history.pushState(null, null, "/geddit" + endpoint);
     endpoint += ".json?limit=50";
     checkAuth(endpoint);
 });
