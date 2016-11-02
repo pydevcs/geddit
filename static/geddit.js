@@ -31,6 +31,7 @@ var client_id = "7NeqizMXmEZFKA";
 		case "comments":
 		    console.log("Comment View");
 		    $("div#main-list").hide();
+		    $("div#btm").show();
 		    $("div#contain").show();
 		    break;
 	    }
@@ -251,6 +252,7 @@ function geddit(token, endpoint){
 function renderContent(json, endpoint) {
 	if (!$(element).is(":visible"); ) {
 		$("div#contain").hide();
+		$("div#btm").show();
 		$("div#main-list").show();
 	}
     //console.log(json.data);
