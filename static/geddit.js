@@ -521,11 +521,13 @@ $(document).on("click", ".tab", function() {
     var tab_ID = tabSplit[tabLen - 1];
     if (tab_ID != "top" && tab_ID != "new") { tab_ID = "hot"} 
     if (tabLen == 2) { //logged in front page
-	    endpoint = "/" + tabID + ".json?limit=50"; 
+	    endpoint = "/" + tabID; 
     }
     if (tabLen >= 3) {
-	    endpoint = "/r/" + tabSplit[2] + "/" + tabID + ".json?limit=50";
+	    endpoint = "/r/" + tabSplit[2] + "/" + tabID;
     }
+    history.replaceState(null, null, "/geddit" + endpoint);
+    endpoint += ".json?limit=50";    
     $('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
 	$('#mid-box-lft').removeClass('before-lft').addClass('before-lft');
     checkAuth(endpoint);
