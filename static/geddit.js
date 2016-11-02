@@ -20,14 +20,8 @@ var client_id = "7NeqizMXmEZFKA";
     var modifier = path[4];
     if (typeof modifier !== 'undefined') {
 	    switch ( modifier.toLowerCase()) {
-		case "hot":
-		    endpoint = "/" + path[2];
-		    break;
-		case "new":
-		    endpoint = "/" + path[2];
-		    break;
-		case "top":
-		    endpoint = "/" + path[2];
+		default:
+		    endpoint += "/" + modifier;
 		    break;
 		case "comments":
 		    $("div#main-list").hide();
