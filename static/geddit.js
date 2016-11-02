@@ -214,7 +214,7 @@ function checkAuth(endpoint) {
 }
 
 function geddit(token, endpoint){
-    history.replacestate(null, null, "/geddit" + endpoint.replace(".json?limt=50", ""));
+    history.replaceState(null, null, "/geddit" + endpoint.replace(".json?limt=50", ""));
     var url;
     if (token === undefined || token == "undefined") {
 	    url = "https://www.reddit.com";
