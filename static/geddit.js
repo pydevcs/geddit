@@ -4,9 +4,9 @@ var client_id = "7NeqizMXmEZFKA";
 
 //routing function
 (function(){
-  var endpoint = "/";
   var redirect = sessionStorage.redirect;
   delete sessionStorage.redirect;
+  var endpoint = "/";
   if (redirect && redirect != location.href) {
       history.replaceState(null, null, redirect);
       var path = window.location.pathname;
