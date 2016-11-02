@@ -575,9 +575,9 @@ $(function() {
 
 $(function() {
     $("#mid-box-lft").click(function(){
-	    //if ($(this).hasClass("before-lft")) {
-		//    return;
-	    //}
+	    if ($(this).hasClass("before-lft")) {
+		    return;
+	    }
         var endpoint = sessionStorage.endpoint;
         if (endpoint.includes("&before=")) {
 	         endpoint = endpoint.split("&before=");    
@@ -587,8 +587,8 @@ $(function() {
         var count = parseInt(sessionStorage.count);
 	    if (count <= 50) {
 	        endpoint = endpoint[0];
-	        //$('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
-	        //$('#mid-box-lft').addClass('before-lft');
+	        $('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
+	        $('#mid-box-lft').addClass('before-lft');
         } else {
 	        var before = sessionStorage.before;
             before = "&before=" + before;
