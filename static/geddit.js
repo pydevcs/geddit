@@ -8,51 +8,58 @@ var client_id = "7NeqizMXmEZFKA";
   var redirect = sessionStorage.redirect;
   delete sessionStorage.redirect;
   if (redirect && redirect != location.href) {
-    history.replaceState(null, null, redirect);
-    var path = window.location.pathname;
-    path = path.split("/");
-    //console.log(path);
-    var r = path[2];
-    r = r.toLowerCase();
-    if (r == "r") {
-	    endpoint = "/r/" + path[3];
-    }
-    var modifier = path[4];
-    if (typeof modifier !== 'undefined') {
-	    switch ( modifier.toLowerCase()) {
-		default:
-		    endpoint += "/" + modifier;
-		    break;
-		case "comments":
-		    $("div#main-list").hide();
-		    $("div#btm").hide();
-		    $("div#contain").show();
-		    break;
-	    }
-    }
-    if (path.length == 5) {
-	    endpoint += "/" + path[4];
-    }
-  }
-  else {
-    endpoint = "/";
+      history.replaceState(null, null, redirect);
+      var path = window.location.pathname;
+      path = path.split("/");
+      console.log(path);
+      var paths = ["r", "hot", "new", "top"];
+
+      if (path.length >= 3) {
+          if (typeof path[2] !== 'undefined') {
+              var r = paths.indexOf(path[2].toLowerCase());
+              if (a > -1) {
+                  if (a === 0) {
+                      if (path.length >= 4) {
+	                      endpoint = "/r/" + path[3];
+                      } else {
+	                      alert("That page does not exist");
+                      }
+                  } else {
+                      endpoint = "/" + paths[r];
+                  }
+              } else {
+                  alert("That page does not exist");
+              }
+          }	    
+      }
+
+      if (path.length >= 5) {
+          if (typeof path[4] !== 'undefined') {
+              var paths[0] = "comments";
+              var modifier = paths.indexOf(path[4].toLowerCase());
+            
+              if (modifier > -1) {
+                  if (modifier === 0) {
+                      if (path.length >= 6) {
+	                      endpoint += "/comments/" + path[5];
+	                      $("div#main-list").hide();
+		                  $("div#btm").hide();
+		                  $("div#contain").show();
+                      } else {
+	                      alert("That page does not exist");
+                      }                    
+                  } else {
+                      endpoint += "/" + paths[modifier];
+                  }
+              } else {
+                  alert("That page does not exist");
+              }            
+          }
+      }
+  } else {
+      endpoint = "/";
   }
   endpoint += ".json?limit=50";
-
-  var queryStr = window.location.search;	
-  if (queryStr) {
-      queryStr = queryStr.substring(1);
-	  var params = {}, queries, temp, i, l;
-	  // Split into key/value pairs
-	  queries = queryStr.split("&");
-	  // Convert the array of strings into an object
-	  for ( i = 0, l = queries.length; i < l; i++ ) {
-	      temp = queries[i].split('=');
-	      params[temp[0]] = temp[1];
-	  }
-	  console.log(params);
-  }
-
   checkAuth(endpoint);
 })();
 
