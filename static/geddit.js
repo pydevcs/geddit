@@ -25,12 +25,6 @@ var client_id = "7NeqizMXmEZFKA";
             $("#contain").toggle();
 	    }
     }
-    if (path.length == 3) {
-        console.log("Pathname is too short, 404 message");
-    }
-    if (path.length > 5 && path[5] != "") {
-        console.log("Pathname is too long, 404 message");
-    }
     if (path.length == 5) {
 	    endpoint += "/" + path[4];
     }
