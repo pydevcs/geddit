@@ -12,17 +12,27 @@ var client_id = "7NeqizMXmEZFKA";
     var path = window.location.pathname;
     path = path.split("/");
     //console.log(path);
-    if (path[2] == "r") {
-	    endpoint = "/r/" + path[3];
-    } else if (path[2] == "hot" || path[2] == "new" || path[2] == "top") {
-	    endpoint = "/" + path[2];
-    } else {
-	    alert("Please correct URL");
-    }
-    if (path[2] == "comments") {
-	    if (path.length <= 7 && path >= 6) {
-            $("#main-list").toggle();
-            $("#contain").toggle();
+    if (path[2] != "") {
+	    switch (path[2]) {
+		case "r":
+		    endpoint = "/r/" + path[3];
+		    break;
+		case "hot":
+		    endpoint = "/" + path[2];
+		    break;
+		case "new":
+		    endpoint = "/" + path[2];
+		    break;
+		case "top":
+		    endpoint = "/" + path[2];
+		    break;
+		case "comments":
+		    $("#main-list").toggle();
+		     $("#contain").toggle();
+		    break;
+		default:
+		    alert("Page Not Found");
+		    break;
 	    }
     }
     if (path.length == 5) {
