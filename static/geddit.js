@@ -605,19 +605,6 @@ $(function() {
     });
 });
 
-$(function() {
-    $("input.search").focus(function(){
-        if (!$("input.search").val()) {
-            $("input.search").val("/r/");
-        }
-    });
-
-    $("input.search").focusout(function() {
-	    if ($("input.search").val() == "/r/") {
-            $("input.search").val("");	    
-	    }
-    })
-});
 
 $(function(){
     $(".srchbar").keypress(function (e) {
