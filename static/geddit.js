@@ -1,11 +1,13 @@
 "use strict";
 var redirect_uri = "https://pydevcs.github.io/geddit/";
 var client_id = "7NeqizMXmEZFKA";
+var refresh = false;
 
 //routing function
 (function(){
   var redirect = sessionStorage.redirect;
   delete sessionStorage.redirect;
+  refresh = true;
   var endpoint = "/";
   if (redirect && redirect != location.href) {
       history.replaceState(null, null, redirect);
@@ -184,11 +186,11 @@ function refresh(voteObj, endpoint) {
 function checkAuth(endpoint) {
     var token = localStorage.token;
     if (token) {
-        if (endpoint == "me") {
-	        profile(token);
-        } else {
-	        geddit(token, endpoint);   
+        if (refresh) {
+            refresh = false;
+	        profile(token);    
         }
+        geddit(token, endpoint);
     }
     else {
         if (document.location.search.length) { // query string exists
@@ -565,10 +567,9 @@ $(document).on("click", ".tab", function() {
     var tab = endpoint.split(".json?limit=50");
     var tabSplit = tab[0].split("/");
     var tabLen = tabSplit.length;
-    //console.log(tabSplit);
     var tab_ID = tabSplit[tabLen - 1];
     if (tab_ID != "top" && tab_ID != "new") { tab_ID = "hot"} 
-    if (tabLen == 2) { //logged in front page
+    if (tabLen == 2) {
 	    endpoint = "/" + tabID; 
     }
     if (tabLen >= 3) {
