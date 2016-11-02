@@ -503,7 +503,7 @@ $(document).on("click", ".imprtnt", function(event) {
 
 $(document).on("click", ".mail-title", function(event) {
     var endpoint = "/r/" + $(this).text();
-    history.replaceState(null, null, "/geddit/" + endpoint);
+    history.replaceState(null, null, "/geddit" + endpoint);
     endpoint += ".json?limit=50";
     checkAuth(endpoint);
 });
@@ -536,7 +536,6 @@ $(document).on("click", "#refresh", function() {
     var path = window.location.pathname;
     var endpoint;
     path = path.split("/");
-    console.log(path);
     if (path.length == 3) {
         endpoint = "/";
     } else {
