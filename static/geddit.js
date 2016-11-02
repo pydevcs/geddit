@@ -32,7 +32,7 @@ var client_id = "7NeqizMXmEZFKA";
 		    break;
 		case "comments":
 		    $("div#main-list").hide();
-		    $("div#btm").show();
+		    $("div#btm").hide();
 		    $("div#contain").show();
 		    break;
 	    }
