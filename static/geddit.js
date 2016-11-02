@@ -261,7 +261,6 @@ function profile(token) {
       dataType: "json"
     })
     .done(function(json_data) {
-         console.log(json_data);
          document.getElementById("username").innerHTML = json_data.name;
          if (json_data.has_mail) {
              document.getElementById("has-mail").style.fill = "D9453D";
@@ -272,7 +271,6 @@ function profile(token) {
         console.log("Profile Error");
     });
 }
-
 
 function renderContent(json, endpoint) {
 	if (!$("div#contain").is(":visible") ) {
@@ -521,6 +519,9 @@ $(document).on("click", "svg#top-notify", function() {
     console.log("Read Inbox");
 });
 
+$(document).on("click", "div#inbox", function() {
+    console.log("Read Inbox");
+});
 
 $(document).on("click", "svg#top-apps", function() {
     var NSFW = localStorage.nsfw;
