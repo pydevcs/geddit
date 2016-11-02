@@ -528,8 +528,8 @@ $(document).on("click", ".tab", function() {
     }
     history.replaceState(null, null, "/geddit" + endpoint);
     endpoint += ".json?limit=50";    
-    $('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
-	$('#mid-box-lft').removeClass('before-lft').addClass('before-lft');
+    //$('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
+	//$('#mid-box-lft').removeClass('before-lft').addClass('before-lft');
     checkAuth(endpoint);
 });
 
