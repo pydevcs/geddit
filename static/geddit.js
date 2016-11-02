@@ -18,7 +18,7 @@ var client_id = "7NeqizMXmEZFKA";
 	    endpoint = "/r/" + path[3];
     }
     var modifier = path[4];
-    if (typeof modifier === 'undefined') {
+    if (typeof modifier !== 'undefined') {
 	    switch ( modifier.toLowerCase()) {
 		case "hot":
 		    endpoint = "/" + path[2];
