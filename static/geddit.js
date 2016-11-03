@@ -230,6 +230,7 @@ function checkAuth(endpoint) {
 }
 
 function geddit(token, endpoint){
+    var back = "/geddit" + endpoint.replace(".json?limit=50", "");
     console.log("Back " + back);
     history.pushState({previous: "/geddit" + endpoint}, null, back);
     var url;
