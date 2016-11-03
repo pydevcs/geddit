@@ -8,7 +8,7 @@ window.addEventListener('popstate', function(event) {
 //    if (event.state == null) {
 //	    return;
 //    }
-    var previous = document.location.href;
+    var previous = document.location.pathname;
     previous = previous.replace("/geddit", "");
     checkAuth(previous);
 });
