@@ -632,7 +632,7 @@ $(function() {
         var count = parseInt(sessionStorage.count);
         count += 50;
         sessionStorage.count =  count;
-        console.log(count	);
+        console.log("After Count " + count);
         document.getElementById("mid-box-qty").innerHTML = count + 1 + "<span>–</span>" + (count + 50) + " <span>of</span> 1,000";
         if (count === 50) {
 	        $('#before-arw').removeClass('before-arw').addClass('before-arw-prev');
@@ -669,6 +669,7 @@ $(function() {
             before = "&before=" + before;
             count -= 50;
             console.log("Before Count " + count);
+            document.getElementById("mid-box-qty").innerHTML = count + 1 + "<span>–</span>" + (count + 50) + " <span>of</span> 1,000";
             //document.getElementById("mid-box-qty").innerHTML = count - 49 + "<span>–</span>" + count + " <span>of</span> 1,000";
             endpoint = endpoint[0] + before + "&count=" + count;
             sessionStorage.count = count;
