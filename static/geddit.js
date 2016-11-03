@@ -4,10 +4,7 @@ var client_id = "7NeqizMXmEZFKA";
 var get_user = false;
 
 window.addEventListener('popstate', function(event) {
-   console.log("location: " + document.location.href + ", state: " + JSON.stringify(event.state));
-//    if (event.state == null) {
-//	    return;
-//    }
+   //console.log("location: " + document.location.href + ", state: " + JSON.stringify(event.state));
     var previous = document.location.pathname;
     previous = previous.replace("/geddit", "");
     previous += ".json?limit=50";
@@ -232,9 +229,6 @@ function checkAuth(endpoint) {
 }
 
 function geddit(token, endpoint){
-    //var back = "/geddit" + endpoint.replace(".json?limit=50", "");
-    //console.log("Back " + back);
-    //history.pushState({previous: endpoint}, null, back);
     var url;
     if (token === undefined || token == "undefined") {
 	    url = "https://www.reddit.com";
@@ -313,6 +307,7 @@ function renderContent(json, endpoint) {
 		console.log("Before " + before);
 	} else {
 		sessionStorage.count = 0;
+		document.getElementById("mid-box-qty").innerHTML = "1<span>–</span>50 <span>of</span> 1,000";
 		$('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
 	    $('#mid-box-lft').removeClass('before-lft').addClass('before-lft');
 	}
@@ -637,6 +632,7 @@ $(function() {
         var count = parseInt(sessionStorage.count);
         count += 50;
         sessionStorage.count =  count;
+        document.getElementById("mid-box-qty").innerHTML = count - 49 + "<span>–</span>" + count + " <span>of</span> 1,000";
         if (count === 50) {
 	        $('#before-arw').removeClass('before-arw').addClass('before-arw-prev');
 	        $('#mid-box-lft').removeClass('before-lft');
