@@ -232,7 +232,7 @@ function checkAuth(endpoint) {
 function geddit(token, endpoint){
     var back = "/geddit" + endpoint.replace(".json?limit=50", "");
     console.log("Back " + back);
-    history.pushState({previous: "/geddit" + endpoint}, null, back);
+    history.pushState({previous: endpoint}, null, back);
     var url;
     if (token === undefined || token == "undefined") {
 	    url = "https://www.reddit.com";
