@@ -16,8 +16,8 @@ window.onpopstate = function(event) {
       } catch (e) {
           Storage.prototype._setItem = Storage.prototype.setItem;
           Storage.prototype.setItem = function() {};
-          alert('This site uses LocalStorage and cannot be used in Safari Private Browsing Mode. Try Chrome! ;]');
-          break;
+          alert("This site uses LocalStorage and cannot be used in Safari Private Browsing Mode. Try Chrome! ;]");
+          return;
       }
   }
   console.log("Nothing to see here");
