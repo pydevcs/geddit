@@ -3,6 +3,16 @@ var redirect_uri = "https://pydevcs.github.io/geddit/";
 var client_id = "7NeqizMXmEZFKA";
 var get_user = false;
 
+window.addEventListener('popstate', function(event) {
+   console.log("location: " + document.location.href + ", state: " + JSON.stringify(event.state));
+//    if (event.state == null) {
+//	    return;
+//    }
+    var previous = document.location.href;
+    previous = previous.replace("/geddit", "");
+    checkAuth(previous);
+});
+
 //routing function
 (function(){
   if (typeof localStorage === 'object') {
@@ -221,6 +231,9 @@ function checkAuth(endpoint) {
 }
 
 function geddit(token, endpoint){
+    //var back = "/geddit" + endpoint.replace(".json?limit=50", "");
+    //console.log("Back " + back);
+    //history.pushState({previous: endpoint}, null, back);
     var url;
     if (token === undefined || token == "undefined") {
 	    url = "https://www.reddit.com";
