@@ -303,6 +303,7 @@ function renderContent(json, endpoint) {
 	var before = json.data.before;
 	sessionStorage.before = before;
 	sessionStorage.endpoint = endpoint;
+	console.log("Before: " + before);
 	if (before == null) {
 		sessionStorage.count = 0;
 		document.getElementById("mid-box-qty").innerHTML = "1<span>–</span>50 <span>of</span> 1,000";
