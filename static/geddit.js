@@ -307,8 +307,8 @@ function renderContent(json, endpoint) {
 	if (before == null) {
 		sessionStorage.count = 50;
 		document.getElementById("mid-box-qty").innerHTML = "1<span>–</span>50 <span>of</span> 1,000";
-		$('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
-	    $('#mid-box-lft').removeClass('before-lft').addClass('before-lft');
+		//$('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
+	    //$('#mid-box-lft').removeClass('before-lft').addClass('before-lft');
 	}
 	var count = parseInt(sessionStorage.count);
 	console.log("Count: " + count);
