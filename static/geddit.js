@@ -1,7 +1,7 @@
 "use strict";
 var redirect_uri = "https://pydevcs.github.io/geddit/";
 var client_id = "7NeqizMXmEZFKA";
-var refresh = false;
+var get_user = false;
 
 window.addEventListener("popstate", function(e) {
     var back = location.pathname;
@@ -25,7 +25,7 @@ window.addEventListener("popstate", function(e) {
   }
   var redirect = sessionStorage.redirect;
   delete sessionStorage.redirect;
-  refresh = true;
+  get_user = true;
   var endpoint = "/";
   if (redirect && redirect != location.href) {
       history.replaceState(null, null, redirect);
@@ -203,8 +203,8 @@ function refresh(voteObj, endpoint) {
 function checkAuth(endpoint) {
     var token = localStorage.token;
     if (token) {
-        if (refresh) {
-            refresh = false;
+        if (get_user) {
+            get_user = false;
 	        profile(token);    
         }
         geddit(token, endpoint);
