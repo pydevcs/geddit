@@ -11,7 +11,7 @@ var get_user = false;
 //});
 
 window.onpopstate = function(event) {
-  alert("location: " + document.location + ", state: " + JSON.stringify(event.state));
+  console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
 };
 
 //routing function
