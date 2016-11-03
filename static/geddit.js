@@ -633,7 +633,7 @@ $(function() {
         count += 50;
         sessionStorage.count =  count;
         console.log(count	);
-        document.getElementById("mid-box-qty").innerHTML = count + 1 + "<span>–</span>" + count + 50 + " <span>of</span> 1,000";
+        document.getElementById("mid-box-qty").innerHTML = count + 1 + "<span>–</span>" + (count + 50) + " <span>of</span> 1,000";
         if (count === 50) {
 	        $('#before-arw').removeClass('before-arw').addClass('before-arw-prev');
 	        $('#mid-box-lft').removeClass('before-lft');
