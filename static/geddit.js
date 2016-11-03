@@ -311,6 +311,8 @@ function renderContent(json, endpoint) {
 		$('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
 	    $('#mid-box-lft').removeClass('before-lft').addClass('before-lft');
 	}
+	var count = parseInt(sessionStorage.count);
+	document.getElementById("mid-box-qty").innerHTML = count + 1 + "<span>–</span>" + (count + 50) + " <span>of</span> 1,000";
     var NSFW = localStorage.nsfw;
     var main_list = "";
     $.each(json.data.children, function (i, ob) {
@@ -632,8 +634,7 @@ $(function() {
         var count = parseInt(sessionStorage.count);
         count += 50;
         sessionStorage.count =  count;
-        console.log("After Count " + count);
-        document.getElementById("mid-box-qty").innerHTML = count + 1 + "<span>–</span>" + (count + 50) + " <span>of</span> 1,000";
+        //document.getElementById("mid-box-qty").innerHTML = count + 1 + "<span>–</span>" + (count + 50) + " <span>of</span> 1,000";
         if (count === 50) {
 	        $('#before-arw').removeClass('before-arw').addClass('before-arw-prev');
 	        $('#mid-box-lft').removeClass('before-lft');
@@ -668,8 +669,7 @@ $(function() {
 	        var before = sessionStorage.before;
             before = "&before=" + before;
             count -= 50;
-            console.log("Before Count " + count);
-            document.getElementById("mid-box-qty").innerHTML = count + 1 + "<span>–</span>" + (count + 50) + " <span>of</span> 1,000";
+            //document.getElementById("mid-box-qty").innerHTML = count + 1 + "<span>–</span>" + (count + 50) + " <span>of</span> 1,000";
             //document.getElementById("mid-box-qty").innerHTML = count - 49 + "<span>–</span>" + count + " <span>of</span> 1,000";
             endpoint = endpoint[0] + before + "&count=" + count;
             sessionStorage.count = count;
