@@ -598,6 +598,7 @@ $(document).on("click", ".tab", function() {
     if (tabLen >= 3) {
 	    endpoint = "/r/" + tabSplit[2] + "/" + tabID;
     }
+    history.pushState(null, null, "/geddit" + endpoint);
     endpoint += ".json?limit=50";
     checkAuth(endpoint);
 });
