@@ -306,7 +306,8 @@ function renderContent(json, endpoint) {
 	console.log("Before: " + before);
 	if (before == null) {
 		sessionStorage.count = 50;
-		document.getElementById("mid-box-qty").innerHTML = "1<span>–</span>50 <span>of</span> 1,000";
+		//document.getElementById("mid-box-qty").innerHTML = "1<span>–</span>50 <span>of</span> 1,000";
+		
 		//$('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
 	    //$('#mid-box-lft').removeClass('before-lft').addClass('before-lft');
 	}
@@ -636,10 +637,10 @@ $(function() {
         var endpoint = sessionStorage.endpoint;
         var after = sessionStorage.after;      
         var count = parseInt(sessionStorage.count);
-        if (count === 0) {
-	        $('#before-arw').removeClass('before-arw').addClass('before-arw-prev');
-	        $('#mid-box-lft').removeClass('before-lft');
-        }
+        //if (count === 0) {
+	    //    $('#before-arw').removeClass('before-arw').addClass('before-arw-prev');
+	    //    $('#mid-box-lft').removeClass('before-lft');
+        //}
         if (endpoint.includes("&before=")) {
 	         endpoint = endpoint.split("&before=");    
         } else {
