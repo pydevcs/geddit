@@ -14,8 +14,7 @@ var get_user = false;
 window.addEventListener('popstate', function(event) {
    console.log("location: " + document.location.href + ", state: " + JSON.stringify(event.state));
 
-    updateContent(event.state);
-    if (event.stat == null) {
+    if (event.state == null) {
 	    return;
     }
     //checkAuth();
