@@ -303,9 +303,7 @@ function renderContent(json, endpoint) {
 	var before = json.data.before;
 	sessionStorage.before = before;
 	sessionStorage.endpoint = endpoint;
-	if (before != null) {
-		console.log("Before " + before);
-	} else {
+	if (before == null) {
 		sessionStorage.count = 0;
 		document.getElementById("mid-box-qty").innerHTML = "1<span>–</span>50 <span>of</span> 1,000";
 		$('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
@@ -669,8 +667,6 @@ $(function() {
 	        var before = sessionStorage.before;
             before = "&before=" + before;
             count -= 50;
-            //document.getElementById("mid-box-qty").innerHTML = count + 1 + "<span>–</span>" + (count + 50) + " <span>of</span> 1,000";
-            //document.getElementById("mid-box-qty").innerHTML = count - 49 + "<span>–</span>" + count + " <span>of</span> 1,000";
             endpoint = endpoint[0] + before + "&count=" + count;
             sessionStorage.count = count;
         }
