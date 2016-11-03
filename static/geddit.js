@@ -5,7 +5,9 @@ var refresh = false;
 
 window.onpopstate = function(event) {
   //console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
-  checkAuth(document.location.replace("/geddit", ""));
+  var back = document.location;
+  back.replace("/geddit", "");
+  checkAuth(back);
 };
 
 //routing function
