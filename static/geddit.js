@@ -5,7 +5,7 @@ var refresh = false;
 
 window.addEventListener("popstate", function(e) {
     var back = location.pathname;
-    back.replace("/geddit", "");
+    back = back.replace("/geddit", "");
     console.log("Previous: " + back);
     checkAuth(back);
 });
