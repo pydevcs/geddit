@@ -9,9 +9,7 @@ window.addEventListener('popstate', function(event) {
     if (event.state == null) {
 	    return;
     }
-    var previous = document.location.href;
-    previous.replace("https://pydevcs.github.io", ""); 
-    checkAuth(previous + ".json?limit=50");
+    checkAuth(event.state.previous);
 });
 
 //routing function
@@ -232,11 +230,8 @@ function checkAuth(endpoint) {
 }
 
 function geddit(token, endpoint){
-    var back = "/geddit" + endpoint.replace(".json?limit=50", "");
     console.log("Back " + back);
-    if (back != window.location.pathname) {
-        history.pushState(null, null, back);	    
-    }
+    history.pushState({previous: "/geddit" + endpoint}, null, back);
     var url;
     if (token === undefined || token == "undefined") {
 	    url = "https://www.reddit.com";
