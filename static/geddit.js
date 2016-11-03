@@ -668,7 +668,8 @@ $(function() {
 	        var before = sessionStorage.before;
             before = "&before=" + before;
             count -= 50;
-            document.getElementById("mid-box-qty").innerHTML = count - 49 + "<span>–</span>" + count + " <span>of</span> 1,000";
+            console.log("Before Count " + count);
+            //document.getElementById("mid-box-qty").innerHTML = count - 49 + "<span>–</span>" + count + " <span>of</span> 1,000";
             endpoint = endpoint[0] + before + "&count=" + count;
             sessionStorage.count = count;
         }
