@@ -3,13 +3,12 @@ var redirect_uri = "https://pydevcs.github.io/geddit/";
 var client_id = "7NeqizMXmEZFKA";
 var refresh = false;
 
-window.onpopstate = function(event) {
-  //console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
-  var back = document.location;
-  back.replace("/geddit", "");
-  console.log("Back: " + back);
-  //checkAuth(back);
-};
+window.addEventListener("popstate", function(e) {
+    var back = location.pathname;
+    back.replace("/geddit", "");
+    console.log("Previous: " + back);
+    checkAuth(back);
+});
 
 //routing function
 (function(){
