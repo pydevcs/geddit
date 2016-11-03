@@ -10,6 +10,7 @@ window.addEventListener('popstate', function(event) {
 //    }
     var previous = document.location.pathname;
     previous = previous.replace("/geddit", "");
+    previous += ".json?limit=50";
     checkAuth(previous);
 });
 
