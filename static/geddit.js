@@ -666,7 +666,7 @@ $(function() {
         var count = parseInt(sessionStorage.count);
         count -= 50;
         sessionStorage.count = count;
-	    if (count <= 0) {
+	    if (count == 0) {
 	        endpoint = endpoint[0];
 	        //$('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
 	        //$('#mid-box-lft').addClass('before-lft');
