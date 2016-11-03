@@ -3,12 +3,16 @@ var redirect_uri = "https://pydevcs.github.io/geddit/";
 var client_id = "7NeqizMXmEZFKA";
 var get_user = false;
 
-window.addEventListener("popstate", function(e) {
-    var back = location.pathname;
-    back = back.replace("/geddit", "");
-    console.log("Previous: " + back);
-    checkAuth(back + ".json?limit=50");
-});
+//window.addEventListener("popstate", function(e) {
+//    var back = location.pathname;
+//    back = back.replace("/geddit", "");
+//    console.log("Previous: " + back);
+//    checkAuth(back + ".json?limit=50");
+//});
+
+window.onpopstate = function(event) {
+  alert("location: " + document.location + ", state: " + JSON.stringify(event.state));
+};
 
 //routing function
 (function(){
