@@ -7,7 +7,8 @@ window.onpopstate = function(event) {
   //console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
   var back = document.location;
   back.replace("/geddit", "");
-  checkAuth(back);
+  console.log("Back: " + back);
+  //checkAuth(back);
 };
 
 //routing function
