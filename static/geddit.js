@@ -305,14 +305,18 @@ function renderContent(json, endpoint) {
 	sessionStorage.endpoint = endpoint;
 	console.log("Before: " + before);
 	if (before == null) {
-		sessionStorage.count = 0;
+		sessionStorage.count = 50;
 		document.getElementById("mid-box-qty").innerHTML = "1<span>–</span>50 <span>of</span> 1,000";
 		$('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
 	    $('#mid-box-lft').removeClass('before-lft').addClass('before-lft');
 	}
 	var count = parseInt(sessionStorage.count);
 	console.log("Count: " + count);
-	document.getElementById("mid-box-qty").innerHTML = count + 1 + "<span>–</span>" + (count + 50) + " <span>of</span> 1,000";
+	if (count <== 50) {
+		document.getElementById("mid-box-qty").innerHTML = count - 49 + "<span>–</span>" + count + " <span>of</span> 1,000";
+	} else {
+	    document.getElementById("mid-box-qty").innerHTML = count + 1 + "<span>–</span>" + (count + 50) + " <span>of</span> 1,000";		
+	}
     var NSFW = localStorage.nsfw;
     var main_list = "";
     $.each(json.data.children, function (i, ob) {
