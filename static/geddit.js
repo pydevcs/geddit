@@ -7,7 +7,7 @@ window.addEventListener("popstate", function(e) {
     var back = location.pathname;
     back = back.replace("/geddit", "");
     console.log("Previous: " + back);
-    checkAuth(back);
+    checkAuth(back + ".json?limit=50");
 });
 
 //routing function
