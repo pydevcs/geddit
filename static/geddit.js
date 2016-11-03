@@ -309,7 +309,7 @@ function renderContent(json, endpoint) {
 		$('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
 	    $('#mid-box-lft').removeClass('before-lft').addClass('before-lft');
 	}
-	var count = parseInt(sessionStorage.count);
+	var count = parseInt(sessionStorage.count) || 0;
 	document.getElementById("mid-box-qty").innerHTML = count + 1 + "<span>–</span>" + (count + 50) + " <span>of</span> 1,000";
     var NSFW = localStorage.nsfw;
     var main_list = "";
@@ -659,16 +659,18 @@ $(function() {
 	        endpoint = endpoint.split("&after=");    
         }
         var count = parseInt(sessionStorage.count);
-	    if (count <= 50) {
+        count -= 50;
+        sessionStorage.count = count;
+	    if (count <= 0) {
 	        endpoint = endpoint[0];
 	        //$('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
 	        //$('#mid-box-lft').addClass('before-lft');
         } else {
 	        var before = sessionStorage.before;
             before = "&before=" + before;
-            count -= 50;
+            //count -= 50;
+            //sessionStorage.count = count;
             endpoint = endpoint[0] + before + "&count=" + count;
-            sessionStorage.count = count;
         }
         checkAuth(endpoint);
     });
