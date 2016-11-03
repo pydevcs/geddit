@@ -309,7 +309,8 @@ function renderContent(json, endpoint) {
 		$('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
 	    $('#mid-box-lft').removeClass('before-lft').addClass('before-lft');
 	}
-	var count = parseInt(sessionStorage.count) || 0;
+	var count = parseInt(sessionStorage.count);
+	console.log("Count: " + count);
 	document.getElementById("mid-box-qty").innerHTML = count + 1 + "<span>–</span>" + (count + 50) + " <span>of</span> 1,000";
     var NSFW = localStorage.nsfw;
     var main_list = "";
