@@ -4,7 +4,8 @@ var client_id = "7NeqizMXmEZFKA";
 var refresh = false;
 
 window.onpopstate = function(event) {
-  console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
+  //console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
+  checkAuth(document.location.replace("/geddit", ""));
 };
 
 //routing function
@@ -20,7 +21,6 @@ window.onpopstate = function(event) {
           return;
       }
   }
-  console.log("Nothing to see here");
   var redirect = sessionStorage.redirect;
   delete sessionStorage.redirect;
   refresh = true;
