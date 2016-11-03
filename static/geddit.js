@@ -9,7 +9,9 @@ window.addEventListener('popstate', function(event) {
     if (event.state == null) {
 	    return;
     }
-    checkAuth(document.location.href);
+    var previous = document.location.href;
+    previous.replace("https://pydevcs.github.io", ""); 
+    checkAuth(previous + ".json?limit=50");
 });
 
 //routing function
