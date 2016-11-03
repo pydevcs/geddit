@@ -10,9 +10,16 @@ var get_user = false;
 //    checkAuth(back + ".json?limit=50");
 //});
 
-window.onpopstate = function(event) {
-  console.log("location: " + document.location.href + ", state: " + JSON.stringify(event.state));
-};
+
+window.addEventListener('popstate', function(event) {
+   console.log("location: " + document.location.href + ", state: " + JSON.stringify(event.state));
+
+    updateContent(event.state);
+    if (event.stat == null) {
+	    return;
+    }
+    //checkAuth();
+});
 
 //routing function
 (function(){
@@ -232,7 +239,9 @@ function checkAuth(endpoint) {
 }
 
 function geddit(token, endpoint){
-    history.replaceState(null, null, document.location.href);
+    var back = "/geddit" + endpoint.replace(".json?limit=50", "");
+    console.log("Back " + back);
+    history.pushState(null, null, back);
     var url;
     if (token === undefined || token == "undefined") {
 	    url = "https://www.reddit.com";
