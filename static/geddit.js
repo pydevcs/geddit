@@ -576,12 +576,14 @@ $(document).on("click", ".imprtnt", function(event) {
     console.log("Open iFrame");
 });
 
-$(document).on("click", ".mail-title", function(event) {
-    var endpoint = "/r/" + $(this).text();
-    history.pushState(null, null, "/geddit" + endpoint);
-    endpoint += ".json?limit=50";
-    checkAuth(endpoint);
-});
+//subreddit function
+//$(document).on("click", ".mail-title", function(event) {
+//    var endpoint = "/r/" + $(this).text();
+//    history.pushState(null, null, "/geddit" + endpoint);
+//    endpoint += ".json?limit=50";
+//    checkAuth(endpoint);
+//});
+//end subreddit function
 
 $(document).on("click", ".tab", function() {
     var tabID = $(this).attr("id");
