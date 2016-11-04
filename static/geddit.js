@@ -305,7 +305,7 @@ function renderContent(json, endpoint) {
 	sessionStorage.endpoint = endpoint;
 	console.log("Before: " + before);
 	if (before == null) {
-		sessionStorage.count = 50;
+		sessionStorage.count = 0;		
 		//document.getElementById("mid-box-qty").innerHTML = "1<span>–</span>50 <span>of</span> 1,000";
 		
 		//$('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
@@ -347,9 +347,7 @@ function renderContent(json, endpoint) {
 
 
 function timeAgo(utc_time) {
-    //var postdate = moment.unix(ob.data.created_utc).format("MMM D");
-    //var timeAgo = moment.unix(ob.data.created_utc);
-    //timeAgo = moment(timeAgo).local().fromNow(false); //get local time since posted
+    //var postdate = moment.unix(ob.data.created_utc).format("MMM D"); //normal date
     var time_ago = moment.unix(utc_time);
     time_ago = moment(time_ago).local().fromNow(false); //get local time since posted
     if (time_ago.includes("seconds")) {
@@ -647,6 +645,12 @@ $(function() {
         var endpoint = sessionStorage.endpoint;
         var after = sessionStorage.after;      
         var count = parseInt(sessionStorage.count);
+
+        count += 50;
+        sessionStorage.count = count;
+        console.log(count);
+        document.getElementById("mid-box-qty").innerHTML = count + 1 + "<span>-</span>" + (count + 50) +  " <span>of</span> 1,000";
+
         //if (count === 0) {
 	    //    $('#before-arw').removeClass('before-arw').addClass('before-arw-prev');
 	    //    $('#mid-box-lft').removeClass('before-lft');
@@ -657,26 +661,33 @@ $(function() {
 	        endpoint = endpoint.split("&after=");    
         }
         endpoint = endpoint[0] + "&after=" + after + "&count=" + count;
-        count += 50;
-        sessionStorage.count =  count;
         checkAuth(endpoint);
     });
 });
 
 $(function() {
     $("#mid-box-lft").click(function(){
-	    if ($(this).hasClass("before-lft")) {
-		    return;
-	    }
+	    //if ($(this).hasClass("before-lft")) {
+		//    return;
+	    //}
+        var count = parseInt(sessionStorage.count);
+        if (count > 0) {
+            count -= 50;
+            sessionStorage.count = count;
+            if (count >= 50) {
+	            //document.getElementById("mid-box-qty").innerHTML = count - 49 + "<span>–</span>" + (count) +  " <span>of</span> 1,000";
+	            document.getElementById("mid-box-qty").innerHTML = count + 1 + "<span>-</span>" + (count + 50) +  " <span>of</span> 1,000";
+            } else {
+	            document.getElementById("mid-box-qty").innerHTML = "1<span>-</span>50 <span>of</span> 1,000";
+	            //count = 0; ???
+            }
+        }
         var endpoint = sessionStorage.endpoint;
         if (endpoint.includes("&before=")) {
 	         endpoint = endpoint.split("&before=");    
         } else {
 	        endpoint = endpoint.split("&after=");    
         }
-        var count = parseInt(sessionStorage.count);
-        count -= 50;
-        sessionStorage.count = count;
 	    if (count == 0) {
 	        endpoint = endpoint[0];
 	        //$('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
