@@ -365,7 +365,7 @@ function timeAgo(utc_time) {
         time_ago = time_ago.replace("hours", "h");
     }
     if (time_ago.includes("hour")) {
-        time_ago = time_ago.replace("hour", "h");
+        time_ago = time_ago.replace(" hour", "h");
     }
     if (time_ago.includes("days")) {
         time_ago = time_ago.replace("days", "d");
