@@ -576,15 +576,6 @@ $(document).on("click", ".imprtnt", function(event) {
     console.log("Open iFrame");
 });
 
-//subreddit function
-//$(document).on("click", ".mail-title", function(event) {
-//    var endpoint = "/r/" + $(this).text();
-//    history.pushState(null, null, "/geddit" + endpoint);
-//    endpoint += ".json?limit=50";
-//    checkAuth(endpoint);
-//});
-//end subreddit function
-
 $(document).on("click", ".tab", function() {
     var tabID = $(this).attr("id");
     tabID = tabID.replace("tab-", "");
@@ -724,3 +715,21 @@ $(document).on("click", "#testRefresh", function(event) {
   console.log('set test token');
 });
 // end remove test functions
+
+
+// ######deprecated######
+
+
+
+//subreddit function
+//$(document).on("click", ".mail-title", function(event) {
+//    var endpoint = "/r/" + $(this).text();
+//    history.pushState(null, null, "/geddit" + endpoint);
+//    endpoint += ".json?limit=50";
+//    checkAuth(endpoint);
+//});
+//end subreddit function
+
+
+
+//######end deprecated######
