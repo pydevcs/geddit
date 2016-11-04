@@ -727,8 +727,9 @@ $(function() {
 function subSearch() {
     var sub_search = $("input.search").val();
     if (sub_search != "" || sub_search != "/r/") {
+        $("input.search").val("");
 	    sub_search += ".json?limit=50";
-        checkAuth(sub_search);   
+        checkAuth(sub_search); 
     }
 }
 
