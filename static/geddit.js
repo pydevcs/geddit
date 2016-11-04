@@ -697,12 +697,12 @@ $(function() {
 $(function() {
     $("input.search").focus(function(){
         if (!$("input.search").val()) {
-            $("input.search").val("/r/");
+            $("input.search").val("r/");
         }
     });
 
     $("input.search").focusout(function() {
-	    if ($("input.search").val() == "/r/") {
+	    if ($("input.search").val() == "r/") {
             $("input.search").val("");	    
 	    }
     })
@@ -726,10 +726,9 @@ $(function() {
 
 function subSearch() {
     var sub_search = $("input.search").val();
-    if (sub_search != "" || sub_search != "/r/") {
+    if (sub_search != "" || sub_search != "r/") {
         $("input.search").val("");
-	    sub_search += ".json?limit=50";
-        checkAuth(sub_search); 
+        window.location.assign(redirect_uri + sub_search);
     }
 }
 
