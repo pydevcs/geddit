@@ -334,7 +334,9 @@ function renderContent(json, endpoint) {
         star(ob.data.likes) +
         imprtnt_svg +
         "&lt;div class='mail-title' &gt;" +
-        ob.data.subreddit + "&lt;/div&gt;&lt;a href='" + ob.data.url + "'&gt;&lt;div class='mail-info'&gt;" +
+        "&lt;a href='/geddit/" + ob.data.subreddit + "'&gt;" +
+        ob.data.subreddit + "&lt;/a&gt;" + 
+        "&lt;/div&gt;&lt;a href='" + ob.data.url + "'&gt;&lt;div class='mail-info'&gt;" +
         ob.data.title  + "&lt;/div&gt;&lt;/a&gt;" + 
         nsfwTag(ob.data.over_18) +
         "&lt;a class='mail-date' href='https://reddit.com" + ob.data.permalink +"' &gt;" +
@@ -564,15 +566,8 @@ $(document).on("click", "svg#top-apps", function() {
 $(document).on("click", "#mid-box-gear", function() {
 	localStorage.removeItem("token");
 	localStorage.removeItem("refresh");
-	
+		
     // fix this with tool tips!! $("svg#top-profile").attr("title", "Log In");
-    
-    //refactor
-    //var endpoint = sessionStorage.subreddit;
-    //endpoint = endpoint.split("&after=");
-    //endpoint = endpoint[0];
-    //sessionStorage.subreddit = endpoint;
-    //end refactor
     
     window.location.assign(redirect_uri);
 });
