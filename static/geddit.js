@@ -304,14 +304,18 @@ function renderContent(json, endpoint) {
 	sessionStorage.before = before;
 	sessionStorage.endpoint = endpoint;
 	console.log("Before: " + before);
+	var count = parseInt(sessionStorage.count);
 	if (before == null) {
-		sessionStorage.count = 0;		
+	    count = 50;
+		sessionStorage.count = count;		
 		//document.getElementById("mid-box-qty").innerHTML = "1<span>–</span>50 <span>of</span> 1,000";
 		
 		//$('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
 	    //$('#mid-box-lft').removeClass('before-lft').addClass('before-lft');
 	}
-	var count = parseInt(sessionStorage.count);
+	if (!count) {
+		count = 0;
+	}
 	console.log("Count: " + count);
 	if (count > 0) {
 		document.getElementById("mid-box-qty").innerHTML = count - 49 + "<span>–</span>" + count + " <span>of</span> 1,000";
