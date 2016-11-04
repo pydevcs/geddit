@@ -649,10 +649,9 @@ $(function() {
         var endpoint = sessionStorage.endpoint;
         var after = sessionStorage.after;      
         var count = parseInt(sessionStorage.count);
-
         count += 50;
         sessionStorage.count = count;
-
+        console.log("After Count " + count);
         //if (count === 0) {
 	    //    $('#before-arw').removeClass('before-arw').addClass('before-arw-prev');
 	    //    $('#mid-box-lft').removeClass('before-lft');
@@ -677,6 +676,7 @@ $(function() {
             count -= 50;
             sessionStorage.count = count;
         }
+        console.log("Before Count " + count);
         var endpoint = sessionStorage.endpoint;
         if (endpoint.includes("&before=")) {
 	         endpoint = endpoint.split("&before=");    
