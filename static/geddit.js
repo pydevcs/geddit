@@ -353,7 +353,7 @@ function timeAgo(utc_time) {
     var time_ago = moment.unix(utc_time);
     time_ago = moment(time_ago).local().fromNow(false); //get local time since posted
     if (time_ago.includes("seconds")) {
-        time_ago = time_ago.replace("seconds", "sec");
+        time_ago = time_ago.replace("a few seconds", "seconds");
     }
     if (time_ago.includes("minutes")) {
         time_ago = time_ago.replace("minutes", "min");
