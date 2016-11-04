@@ -319,6 +319,14 @@ function renderContent(json, endpoint) {
 	} else {
 	    document.getElementById("mid-box-qty").innerHTML = count + 1 + "<span>–</span>" + (count + 50) + " <span>of</span> 1,000";		
 	}
+	if (count <= 50) {
+	    $('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
+	    $('#mid-box-lft').addClass('before-lft');
+
+	} else {
+	    $('#before-arw').removeClass('before-arw').addClass('before-arw-prev');
+	    $('#mid-box-lft').removeClass('before-lft');
+	}
     var NSFW = localStorage.nsfw;
     var main_list = "";
     $.each(json.data.children, function (i, ob) {
@@ -665,9 +673,9 @@ $(function() {
 
 $(function() {
     $("#mid-box-lft").click(function(){
-	    //if ($(this).hasClass("before-lft")) {
-		//    return;
-	    //}
+	    if ($(this).hasClass("before-lft")) {
+		    return;
+	    }
         var count = parseInt(sessionStorage.count);
         if (count > 0) {
             count -= 50;
@@ -687,8 +695,6 @@ $(function() {
         } else {
 	        var before = sessionStorage.before;
             before = "&before=" + before;
-            //count -= 50;
-            //sessionStorage.count = count;
             endpoint = endpoint[0] + before + "&count=" + count;
         }
         checkAuth(endpoint);
