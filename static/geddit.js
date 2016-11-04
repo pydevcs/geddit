@@ -652,8 +652,6 @@ $(function() {
 
         count += 50;
         sessionStorage.count = count;
-        console.log(count);
-        document.getElementById("mid-box-qty").innerHTML = count + 1 + "<span>–</span>" + (count + 50) +  " <span>of</span> 1,000";
 
         //if (count === 0) {
 	    //    $('#before-arw').removeClass('before-arw').addClass('before-arw-prev');
@@ -678,13 +676,6 @@ $(function() {
         if (count > 0) {
             count -= 50;
             sessionStorage.count = count;
-            if (count >= 50) {
-	            //document.getElementById("mid-box-qty").innerHTML = count - 49 + "<span>–</span>" + (count) +  " <span>of</span> 1,000";
-	            document.getElementById("mid-box-qty").innerHTML = count + 1 + "<span>–</span>" + (count + 50) +  " <span>of</span> 1,000";
-            } else {
-	            document.getElementById("mid-box-qty").innerHTML = "1<span>–</span>50 <span>of</span> 1,000";
-	            //count = 0; ???
-            }
         }
         var endpoint = sessionStorage.endpoint;
         if (endpoint.includes("&before=")) {
