@@ -334,7 +334,7 @@ function renderContent(json, endpoint) {
         star(ob.data.likes) +
         imprtnt_svg +
         "&lt;div class='mail-title' &gt;" +
-        "&lt;a href='/geddit/" + ob.data.subreddit + "'&gt;" +
+        "&lt;a href='/geddit/r/" + ob.data.subreddit + "'&gt;" +
         ob.data.subreddit + "&lt;/a&gt;" + 
         "&lt;/div&gt;&lt;a href='" + ob.data.url + "'&gt;&lt;div class='mail-info'&gt;" +
         ob.data.title  + "&lt;/div&gt;&lt;/a&gt;" + 
