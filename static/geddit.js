@@ -353,37 +353,37 @@ function timeAgo(utc_time) {
     var time_ago = moment.unix(utc_time);
     time_ago = moment(time_ago).local().fromNow(false); //get local time since posted
     if (time_ago.includes("seconds")) {
-        time_ago = time_ago.replace(" seconds", "sec");
-    }
-    if (time_ago.includes("minute")) {
-        time_ago = time_ago.replace(" minute", "min");
+        time_ago = time_ago.replace("seconds", "sec");
     }
     if (time_ago.includes("minutes")) {
-        time_ago = time_ago.replace(" minutes", "min");
+        time_ago = time_ago.replace("minutes", "min");
     }
-    if (time_ago.includes("hour")) {
-        time_ago = time_ago.replace(" hour", "h");
+    if (time_ago.includes("minute")) {
+        time_ago = time_ago.replace("minute", "min");
     }
     if (time_ago.includes("hours")) {
-        time_ago = time_ago.replace(" hours", "h");
+        time_ago = time_ago.replace("hours", "h");
     }
-    if (time_ago.includes("day")) {
-        time_ago = time_ago.replace(" day", "d");
+    if (time_ago.includes("hour")) {
+        time_ago = time_ago.replace("hour", "h");
     }
     if (time_ago.includes("days")) {
-        time_ago = time_ago.replace(" days", "d");
+        time_ago = time_ago.replace("days", "d");
     }
-    if (time_ago.includes("month")) {
-        time_ago = time_ago.replace(" month", "mon");
+    if (time_ago.includes("day")) {
+        time_ago = time_ago.replace("day", "d");
     }
     if (time_ago.includes("months")) {
-        time_ago = time_ago.replace(" months", "mon");
+        time_ago = time_ago.replace("months", "mon");
     }
-    if (time_ago.includes("year")) {
-        time_ago = time_ago.replace(" year", "y");
+    if (time_ago.includes("month")) {
+        time_ago = time_ago.replace("month", "mon");
     }
     if (time_ago.includes("years")) {
-        time_ago = time_ago.replace(" years", "y");
+        time_ago = time_ago.replace("years", "y");
+    }
+    if (time_ago.includes("year")) {
+        time_ago = time_ago.replace("year", "y");
     }
     return time_ago;
 }
