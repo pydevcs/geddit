@@ -326,9 +326,9 @@ function renderContent(json, endpoint) {
 	            return;
 	        }   
 	    }
-        var postdate = moment.unix(ob.data.created_utc).format("MMM D");
-        //var timeAgo = moment.unix(ob.data.created_utc);
-        //timeAgo = moment(timeAgo).local().fromNow(false); //get local time since posted
+        //var postdate = moment.unix(ob.data.created_utc).format("MMM D");
+        var timeAgo = moment.unix(ob.data.created_utc);
+        timeAgo = moment(timeAgo).local().fromNow(false); //get local time since posted
         var post = "&lt;div class='mail-item' data-id='" + ob.data.name + "' data-dir='" + ob.data.likes + "'&gt;" +
         box(ob.data.likes) +
         star(ob.data.likes) +
@@ -338,7 +338,7 @@ function renderContent(json, endpoint) {
         ob.data.title  + "&lt;/div&gt;&lt;/a&gt;" + 
         nsfwTag(ob.data.over_18) +
         "&lt;a class='mail-date' href='https://reddit.com" + ob.data.permalink +"' &gt;" +
-        postdate + "&lt;/a&gt;&lt;/div&gt;";
+        timeAgo + "&lt;/a&gt;&lt;/div&gt;";
         var rendered_link = $("<div />").html(post).text();
         main_list += rendered_link;
     });
