@@ -307,16 +307,13 @@ function renderContent(json, endpoint) {
 	var count = parseInt(sessionStorage.count);
 	if (before == null) {
 	    count = 50;
-		sessionStorage.count = count;		
-		//document.getElementById("mid-box-qty").innerHTML = "1<span>–</span>50 <span>of</span> 1,000";
-		
-		//$('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
-	    //$('#mid-box-lft').removeClass('before-lft').addClass('before-lft');
+		sessionStorage.count = count;				
+		$('#before-arw').removeClass('before-arw-prev').addClass('before-arw');
+	    $('#mid-box-lft').removeClass('before-lft').addClass('before-lft');
 	}
 	if (!count) {
 		count = 0;
 	}
-	console.log("Count: " + count);
 	if (count > 0) {
 		document.getElementById("mid-box-qty").innerHTML = count - 49 + "<span>–</span>" + count + " <span>of</span> 1,000";
 	} else {
