@@ -727,7 +727,6 @@ $(function() {
 function subSearch() {
     var sub_search = $("input.search").val();
     if (sub_search != "" || sub_search != "r/") {
-        $("input.search").val("");
         window.location.assign(redirect_uri + sub_search);
     }
 }
