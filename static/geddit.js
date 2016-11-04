@@ -326,9 +326,6 @@ function renderContent(json, endpoint) {
 	            return;
 	        }   
 	    }
-        //var postdate = moment.unix(ob.data.created_utc).format("MMM D");
-        var timeAgo = moment.unix(ob.data.created_utc);
-        timeAgo = moment(timeAgo).local().fromNow(false); //get local time since posted
         var post = "&lt;div class='mail-item' data-id='" + ob.data.name + "' data-dir='" + ob.data.likes + "'&gt;" +
         box(ob.data.likes) +
         star(ob.data.likes) +
@@ -340,12 +337,55 @@ function renderContent(json, endpoint) {
         ob.data.title  + "&lt;/div&gt;&lt;/a&gt;" + 
         nsfwTag(ob.data.over_18) +
         "&lt;a class='mail-date' href='https://reddit.com" + ob.data.permalink +"' &gt;" +
-        timeAgo + "&lt;/a&gt;&lt;/div&gt;";
+        timeAgo(ob.data.created_utc) + "&lt;/a&gt;&lt;/div&gt;";
         var rendered_link = $("<div />").html(post).text();
         main_list += rendered_link;
     });
     $("#main-list").html(main_list);
     $("#content").scrollTop(0);
+}
+
+
+function timeAgo(utc_time) {
+    //var postdate = moment.unix(ob.data.created_utc).format("MMM D");
+    //var timeAgo = moment.unix(ob.data.created_utc);
+    //timeAgo = moment(timeAgo).local().fromNow(false); //get local time since posted
+    var time_ago = moment.unix(utc_time);
+    time_ago = moment(time_ago).local().fromNow(false); //get local time since posted
+    if (time_ago.includes("seconds")) {
+        time_ago = time_ago.replace(" seconds", "sec");
+    }
+    if (time_ago.includes("minute")) {
+        time_ago = time_ago.replace(" minute", "min");
+    }
+    if (time_ago.includes("minutes")) {
+        time_ago = time_ago.replace(" minutes", "min");
+    }
+    if (time_ago.includes("hour")) {
+        time_ago = time_ago.replace(" hour", "h");
+    }
+    if (time_ago.includes("hours")) {
+        time_ago = time_ago.replace(" hours", "h");
+    }
+    if (time_ago.includes("day")) {
+        time_ago = time_ago.replace(" day", "d");
+    }
+    if (time_ago.includes("days")) {
+        time_ago = time_ago.replace(" days", "d");
+    }
+    if (time_ago.includes("month")) {
+        time_ago = time_ago.replace(" month", "mon");
+    }
+    if (time_ago.includes("months")) {
+        time_ago = time_ago.replace(" months", "mon");
+    }
+    if (time_ago.includes("year")) {
+        time_ago = time_ago.replace(" year", "y");
+    }
+    if (time_ago.includes("years")) {
+        time_ago = time_ago.replace(" years", "y");
+    }
+    return time_ago;
 }
 
 
