@@ -367,24 +367,6 @@ function timeAgo(utc_time) {
     if (time_ago.includes("hour")) {
         time_ago = time_ago.replace("hour", "h");
     }
-    if (time_ago.includes("days")) {
-        time_ago = time_ago.replace("days", "d");
-    }
-    if (time_ago.includes("day")) {
-        time_ago = time_ago.replace("day", "d");
-    }
-    if (time_ago.includes("months")) {
-        time_ago = time_ago.replace("months", "mon");
-    }
-    if (time_ago.includes("month")) {
-        time_ago = time_ago.replace("month", "mon");
-    }
-    if (time_ago.includes("years")) {
-        time_ago = time_ago.replace("years", "y");
-    }
-    if (time_ago.includes("year")) {
-        time_ago = time_ago.replace("year", "y");
-    }
     return time_ago;
 }
 
