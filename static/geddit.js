@@ -694,6 +694,19 @@ $(function() {
     });
 });
 
+$(function() {
+    $("input.search").focus(function(){
+        if (!$("input.search").val()) {
+            $("input.search").val("/r/");
+        }
+    });
+
+    $("input.search").focusout(function() {
+	    if ($("input.search").val() == "/r/") {
+            $("input.search").val("");	    
+	    }
+    })
+});
 
 $(function(){
     $(".srchbar").keypress(function (e) {
@@ -715,7 +728,7 @@ function subSearch() {
     var sub_search = $("input.search").val();
     console.log(sub_search);
     sub_search += ".json?limit=50";
-    checkAuth("/" + sub_search);
+    checkAuth(sub_search);
 }
 
 // remove test functions
