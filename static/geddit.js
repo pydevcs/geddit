@@ -235,7 +235,7 @@ function geddit(token, endpoint){
     } else {
 	    url = "https://oauth.reddit.com";
     }
-    console.log(endpoint);
+    //console.log(endpoint);
     var promise = $.ajax({
       url: url + endpoint,
       beforeSend: function (request) {
@@ -303,7 +303,7 @@ function renderContent(json, endpoint) {
 	var before = json.data.before;
 	sessionStorage.before = before;
 	sessionStorage.endpoint = endpoint;
-	console.log("Before: " + before);
+	//console.log("Before: " + before);
 	var count = parseInt(sessionStorage.count);
 	if (before == null) {
 	    count = 50;
@@ -391,7 +391,6 @@ function setTab(endpoint) {
     var tabSplit = tab[0].split("/");
     var tabLen = tabSplit.length;
     var tabID = tabSplit[tabLen - 1];
-    //console.log(tabSplit);
     switch (tabID) {
     default:
         tabID = "#tab-hot";
