@@ -714,8 +714,9 @@ $(function() {
 function subSearch() {
     var sub_search = $("input.search").val();
     console.log(sub_search);
+    sub_search += ".json?limit=50";
+    checkAuth(sub_search);
 }
-
 
 // remove test functions
 $(document).on("click", "#delCookies", function(event) {
