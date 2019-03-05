@@ -1,6 +1,6 @@
-#Geddit
+# Geddit
 
-##Reddit with gmail UI
+## Reddit with gmail UI
 
 https://pydevcs.github.io/geddit/
 
